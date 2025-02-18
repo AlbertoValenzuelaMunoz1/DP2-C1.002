@@ -11,4 +11,6 @@
 - Alberto Valenzuela Muñoz (albvalmunn@alum.us.es)
 - Fernando Cobos García (fercobgar@alum.us.es)
 - Antonio Roldán Pérez (antrolper@alum.us.es)
+- Rafael Pineda Pérez (rafpinper@alum.us.es)
+- Guillermo Rodriguez Carrillo (guirodcar@alum.us.es)
 
