@@ -23,6 +23,7 @@
 			<acme:menu-suboption code="master.menu.anonymous.favourite-link-Alberto" action="https://ev.us.es/"/>
 			<acme:menu-suboption code="master.menu.anonymous.favourite-link-Antonio" action="https://i.redd.it/0p0d4a8etnl51.jpg"/>
 			<acme:menu-suboption code="master.menu.anonymous.favourite-link-Fernando" action="https://www.futbin.com/"/>
+			<acme:menu-suboption code="master.menu.anonymous.favourite-link-Guillermo" action="https://www.instagram.com/"/>
 		</acme:menu-option>
 
 		<acme:menu-option code="master.menu.administrator" access="hasRealm('Administrator')">
