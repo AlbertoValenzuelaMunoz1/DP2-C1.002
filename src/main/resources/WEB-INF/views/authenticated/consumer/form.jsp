@@ -18,6 +18,12 @@
 <acme:form>
 	<acme:input-textbox code="authenticated.consumer.form.label.company" path="company"/>
 	<acme:input-textbox code="authenticated.consumer.form.label.sector" path="sector"/>
+	<jstl:if test="${_command == 'create'}">
+		<acme:submit code="authenticated.consumer.form.button.create" action="/authenticated/consumer/create"/>
+	</jstl:if>
+	<jstl:if test="${_command == 'update'}">
+		<acme:submit  code="authenticated.consumer.form.button.update" action="/authenticated/consumer/update"/>
+	</jstl:if>
 	
 		<jstl:if test="${_command == 'update'}">
 	<acme:submit code="authenticated.consumer.form.button.create" action="/authenticated/consumer/create"/>
