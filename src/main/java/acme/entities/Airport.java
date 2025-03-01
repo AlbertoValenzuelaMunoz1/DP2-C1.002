@@ -5,12 +5,18 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
-import javax.validation.constraints.Email;
+import javax.validation.Valid;
 import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.Pattern;
-import javax.validation.constraints.Size;
+import javax.validation.constraints.NotNull;
 
 import acme.client.components.basis.AbstractEntity;
+import acme.client.components.mappings.Automapped;
+import acme.client.components.validation.Mandatory;
+import acme.client.components.validation.Optional;
+import acme.client.components.validation.ValidEmail;
+import acme.client.components.validation.ValidString;
+import acme.client.components.validation.ValidUrl;
+import acme.datatypes.OperationalScope;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -25,35 +31,50 @@ public class Airport extends AbstractEntity {
 
 	//Attributes ---------------------------------
 
+	@Mandatory
 	@NotBlank
-	@Size(max = 50)
+	@Column(unique = true)
+	@ValidString(max = 50)
 	private String				name;
 
+	@Mandatory
 	@NotBlank
 	@Column(unique = true, length = 3)
-	@Pattern(regexp = "^[A-Z]{3}$", message = "IATA code must be three uppercase letters")
+	@ValidString(pattern = "^[A-Z]{3}$", message = "IATA code must be three uppercase letters")
 	private String				iataCode;
 
+	@Mandatory
+	@NotNull
 	@Enumerated(EnumType.STRING)
+	@Automapped
+	@Valid
 	private OperationalScope	operationalScope;
 
+	@Mandatory
 	@NotBlank
-	@Size(max = 50)
+	@ValidString(max = 50)
+	@Automapped
 	private String				city;
 
+	@Mandatory
 	@NotBlank
-	@Size(max = 50)
+	@ValidString(max = 50)
+	@Automapped
 	private String				country;
 
-	@Column(nullable = true)
+	@Optional
+	@ValidUrl
+	@Automapped
 	private String				website;
 
-	@Email
-	@Column(nullable = true)
+	@Optional
+	@ValidEmail
+	@Automapped
 	private String				email;
 
-	@Pattern(regexp = "^\\+?\\d{6,15}$", message = "Invalid phone number format")
-	@Column(nullable = true)
+	@Optional
+	@ValidString(pattern = "^\\+?\\d{6,15}$", message = "Invalid phone number format")
+	@Automapped
 	private String				contactPhoneNumber;
 
 }
