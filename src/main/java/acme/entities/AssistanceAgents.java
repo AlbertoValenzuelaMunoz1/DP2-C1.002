@@ -14,7 +14,6 @@ import javax.persistence.TemporalType;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
 
 import acme.client.components.basis.AbstractEntity;
@@ -44,7 +43,6 @@ public class AssistanceAgents extends AbstractEntity {
 	@NotBlank
 	@Column(unique = true, length = 9)
 	@ValidString(pattern = "^[A-Z]{2,3}\\d{6}$", message = "Employee code must start with 2-3 uppercase letters followed by 6 digits")
-	@ValidString
 	private String				employeeCode;
 
 	//@NotBlank
