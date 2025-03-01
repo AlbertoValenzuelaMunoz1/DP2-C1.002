@@ -10,14 +10,16 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
-import javax.validation.constraints.Email;
+import javax.validation.Valid;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Past;
-import javax.validation.constraints.Size;
 
 import acme.client.components.basis.AbstractEntity;
+import acme.client.components.mappings.Automapped;
 import acme.client.components.validation.Mandatory;
+import acme.client.components.validation.ValidEmail;
+import acme.client.components.validation.ValidMoment;
+import acme.client.components.validation.ValidString;
 import acme.datatypes.ClaimType;
 import lombok.Getter;
 import lombok.Setter;
@@ -35,33 +37,38 @@ public class Claim extends AbstractEntity {
 
 	@Mandatory
 	@NotNull
-	@Past
 	@Temporal(TemporalType.TIMESTAMP)
+	@ValidMoment(past = true)
 	private Date				registrationMoment;
 
 	@Mandatory
 	@NotBlank
-	@Email
+	@ValidEmail
+	@Automapped
 	private String				passengerEmail;
 
 	@Mandatory
 	@NotBlank
-	@Size(max = 255)
+	@ValidString(max = 255)
+	@Automapped
 	private String				description;
 
 	@Mandatory
 	@NotNull
 	@Enumerated(EnumType.STRING)
+	@Automapped
 	private ClaimType			type;
 
 	@Mandatory
 	@NotNull
-	private boolean				accepted;
+	@Automapped
+	private Boolean				accepted;
 
 	@Mandatory
 	@NotNull
 	@ManyToOne
 	@JoinColumn(name = "assistanceAgents_id", nullable = false)
+	@Valid
 	private AssistanceAgents	registredBy;
 
 	//posible asociacion con passenger o consumer 

@@ -14,13 +14,18 @@ import javax.persistence.TemporalType;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Past;
 import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
 
 import acme.client.components.basis.AbstractEntity;
+import acme.client.components.datatypes.Money;
+import acme.client.components.mappings.Automapped;
 import acme.client.components.validation.Mandatory;
 import acme.client.components.validation.Optional;
+import acme.client.components.validation.ValidMoment;
+import acme.client.components.validation.ValidMoney;
+import acme.client.components.validation.ValidString;
+import acme.client.components.validation.ValidUrl;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -39,6 +44,7 @@ public class AssistanceAgents extends AbstractEntity {
 	@NotBlank
 	@Column(unique = true, length = 9)
 	@Pattern(regexp = "^[A-Z]{2,3}\\d{6}$", message = "Employee code must start with 2-3 uppercase letters followed by 6 digits")
+	@ValidString
 	private String				employeeCode;
 
 	//@NotBlank
@@ -50,32 +56,42 @@ public class AssistanceAgents extends AbstractEntity {
 	@ElementCollection
 	@CollectionTable(name = "assistance_agent_languages", joinColumns = @JoinColumn(name = "agent_id"))
 	@Column(name = "language", length = 255)
+	@Automapped
 	private List<String>		spokenLanguages;
 
 	@Mandatory
 	@NotBlank
+	@ValidString
+	@Automapped
 	private String				airline;
 
 	// @Mandatory
 	//	@NotNull
 	//	@ManyToOne
 	//	@JoinColumn(name = "airline_id", nullable = false)
+	//  @Valid
 	//	private Airline airline;
 	//Esta es la correcta implementacion pero en la rama no esta Airline
 
 	@Mandatory
-	@Past
 	@Temporal(TemporalType.DATE)
 	@NotNull
+	@ValidMoment(past = true)
 	private Date				employmentStartDate;
 
 	@Optional
 	@Size(max = 255)
+	@ValidString
+	@Automapped
 	private String				bio;
 
 	@Optional
-	private Double				salary;
+	@ValidMoney
+	@Automapped
+	private Money				salary;
 
 	@Optional
+	@ValidUrl
+	@Automapped
 	private String				photoUrl;
 }
