@@ -56,7 +56,6 @@ public class TrackingLogs extends AbstractEntity {
 	private Boolean				claimAccepted;
 
 	@Mandatory
-	@Column(nullable = true)
 	@ValidString(max = 255)
 	@Automapped
 	private String				resolutionDetails;
