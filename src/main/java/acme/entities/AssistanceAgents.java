@@ -27,10 +27,16 @@ import lombok.Setter;
 @Setter
 public class AssistanceAgents extends AbstractEntity {
 
+	//Serialisation -------------------------------
+
+	private static final long	serialVersionUID	= 1L;
+
+	//Attributes ---------------------------------
+
 	@NotBlank
 	@Column(unique = true, length = 9)
 	@Pattern(regexp = "^[A-Z]{2,3}\\d{6}$", message = "Employee code must start with 2-3 uppercase letters followed by 6 digits")
-	private String			employeeCode;
+	private String				employeeCode;
 
 	//@NotBlank
 	//@Size(max = 255)
@@ -40,10 +46,10 @@ public class AssistanceAgents extends AbstractEntity {
 	@ElementCollection
 	@CollectionTable(name = "assistance_agent_languages", joinColumns = @JoinColumn(name = "agent_id"))
 	@Column(name = "language", length = 255)
-	private List<String>	spokenLanguages;
+	private List<String>		spokenLanguages;
 
 	@NotBlank
-	private String			airline;
+	private String				airline;
 
 	//	@NotNull
 	//	@ManyToOne
@@ -54,12 +60,12 @@ public class AssistanceAgents extends AbstractEntity {
 	@Past
 	@Temporal(TemporalType.DATE)
 	@NotNull
-	private Date			employmentStartDate;
+	private Date				employmentStartDate;
 
 	@Size(max = 255)
-	private String			bio;
+	private String				bio;
 
-	private Double			salary;
+	private Double				salary;
 
-	private String			photoUrl;
+	private String				photoUrl;
 }

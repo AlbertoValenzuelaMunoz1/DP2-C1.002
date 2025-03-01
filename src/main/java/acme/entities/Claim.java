@@ -23,25 +23,31 @@ import lombok.Setter;
 @Setter
 public class Claim extends AbstractEntity {
 
+	//Serialisation -------------------------------
+
+	private static final long	serialVersionUID	= 1L;
+
+	//Attributes ---------------------------------
+
 	@NotNull
 	@Past
 	@Temporal(TemporalType.TIMESTAMP)
-	private Date		registrationMoment;
+	private Date				registrationMoment;
 
 	@NotBlank
 	@Email
-	private String		passengerEmail;
+	private String				passengerEmail;
 
 	@NotBlank
 	@Size(max = 255)
-	private String		description;
+	private String				description;
 
 	@NotNull
 	@Enumerated(EnumType.STRING)
-	private ClaimType	type;
+	private ClaimType			type;
 
 	@NotNull
-	private boolean		accepted;
+	private boolean				accepted;
 
 
 	public enum ClaimType {

@@ -22,22 +22,28 @@ import lombok.Setter;
 @Setter
 public class TrackingLogs extends AbstractEntity {
 
+	//Serialisation -------------------------------
+
+	private static final long	serialVersionUID	= 1L;
+
+	//Attributes ---------------------------------
+
 	@NotNull
 	@Temporal(TemporalType.TIMESTAMP)
-	private Date	lastUpdateMoment;
+	private Date				lastUpdateMoment;
 
 	@NotBlank
 	@Size(max = 50)
-	private String	stepUndergoing;
+	private String				stepUndergoing;
 
 	@Min(0)
 	@Max(100)
 	@NotNull
-	private int		resolutionPercentage;
+	private int					resolutionPercentage;
 
-	private boolean	claimAccepted;
+	private boolean				claimAccepted;
 
 	@Size(max = 255)
 	@Column(nullable = true)
-	private String	resolutionDetails;
+	private String				resolutionDetails;
 }
