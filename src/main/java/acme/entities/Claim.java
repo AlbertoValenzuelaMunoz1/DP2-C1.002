@@ -15,6 +15,7 @@ import javax.validation.constraints.Past;
 import javax.validation.constraints.Size;
 
 import acme.client.components.basis.AbstractEntity;
+import acme.datatypes.ClaimType;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -49,8 +50,4 @@ public class Claim extends AbstractEntity {
 	@NotNull
 	private boolean				accepted;
 
-
-	public enum ClaimType {
-		FLIGHT_ISSUES, LUGGAGE_ISSUES, SECURITY_INCIDENT, OTHER_ISSUES
-	}
 }
