@@ -43,7 +43,7 @@ public class AssistanceAgents extends AbstractEntity {
 	@Mandatory
 	@NotBlank
 	@Column(unique = true, length = 9)
-	@Pattern(regexp = "^[A-Z]{2,3}\\d{6}$", message = "Employee code must start with 2-3 uppercase letters followed by 6 digits")
+	@ValidString(pattern = "^[A-Z]{2,3}\\d{6}$")
 	@ValidString
 	private String				employeeCode;
 
