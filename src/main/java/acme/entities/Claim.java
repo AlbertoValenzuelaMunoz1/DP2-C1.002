@@ -56,6 +56,7 @@ public class Claim extends AbstractEntity {
 	@Mandatory
 	@NotNull
 	@Enumerated(EnumType.STRING)
+	@Valid
 	@Automapped
 	private ClaimType			type;
 
