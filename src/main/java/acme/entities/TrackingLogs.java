@@ -3,7 +3,6 @@ package acme.entities;
 
 import java.util.Date;
 
-import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
@@ -13,9 +12,11 @@ import javax.validation.Valid;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 
+import Validators.ValidResolution;
 import acme.client.components.basis.AbstractEntity;
 import acme.client.components.mappings.Automapped;
 import acme.client.components.validation.Mandatory;
+import acme.client.components.validation.Optional;
 import acme.client.components.validation.ValidMoment;
 import acme.client.components.validation.ValidScore;
 import acme.client.components.validation.ValidString;
@@ -51,13 +52,22 @@ public class TrackingLogs extends AbstractEntity {
 	@Automapped
 	private Double				resolutionPercentage;
 
-	@Mandatory
-	@Automapped
-	private Boolean				claimAccepted;
+	//	@Optional
+	//	@Automapped
+	//	private Boolean				claimAccepted;
+	//
+	//
+	//	@Transient
+	//	public boolean isResolved() {
+	//		boolean result;
+	//		result = this.belongsTo != null && this.belongsTo.getIndicator() != null;
+	//		return result;
+	//	}
 
-	@Mandatory
+	@Optional
 	@ValidString(max = 255)
 	@Automapped
+	@ValidResolution
 	private String				resolutionDetails;
 
 	@Mandatory
