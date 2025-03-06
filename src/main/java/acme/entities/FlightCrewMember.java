@@ -25,36 +25,36 @@ public class FlightCrewMember extends AbstractRole {
 
 	private static final long	serialVersionUID	= 1L;
 
-	//--------------------------------------------------
+	// Attributes -------------------------------------------------------------
 
 	@Automapped
 	@Mandatory
 	@Column(unique = true, nullable = false)
 	@ValidString(pattern = "^[A-Z]{2,3}\\d{6}$")
-	private String				employeeCode; // Format: ^[A-Z]{2-3}\d{6}$
+	private String				employeeCode;
 
 	@Automapped
 	@Mandatory
 	@Column(nullable = false)
 	@ValidString(pattern = "^\\+?\\d{6,15}$")
-	private String				phoneNumber;  // Format: ^\+?\d{6,15}$
+	private String				phoneNumber;
 
 	@Automapped
-	@Optional
+	@Mandatory
 	@ValidString(max = 255)
-	private String				languageSkills; // Up to 255 characters
+	private String				languageSkills;
 
 	@Automapped
 	@Mandatory
 	@Enumerated(EnumType.STRING)
 	@Column(nullable = false)
-	private AvailabilityStatus	availabilityStatus; // "AVAILABLE", "ON VACATION", "ON LEAVE"
+	private AvailabilityStatus	availabilityStatus;
 
 	@Automapped
 	@Mandatory
 	@Column(nullable = false)
-	@ValidString(min = 1, max = 255)
-	private String				airline; // The airline they work for
+	@ValidString
+	private String				airline;
 
 	@Automapped
 	@Mandatory
@@ -65,6 +65,10 @@ public class FlightCrewMember extends AbstractRole {
 	@Automapped
 	@Optional
 	@Min(0)
-	private Integer				yearsOfExperience; // Optional
+	private Integer				yearsOfExperience;
+
+	// Derived attributes -----------------------------------------------------
+
+	// Relationships ----------------------------------------------------------
 
 }
