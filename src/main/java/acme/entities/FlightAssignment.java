@@ -28,42 +28,46 @@ public class FlightAssignment extends AbstractRole {
 
 	// Serialisation version --------------------------------------------------
 
-	private static final long	serialVersionUID	= 1L;
+	private static final long serialVersionUID = 1L;
 
-	//--------------------------------------------------
-
-	@Automapped
-	@Mandatory
-	@ManyToOne(optional = false)
-	@JoinColumn(name = "flight_crew_member_id", nullable = false)
-	private FlightCrewMember	flightCrewMember;
-
-	//	@Automapped
-	//	@Mandatory
-	//	@ManyToOne(optional = false)
-	//	@JoinColumn(name = "flight_leg_id", nullable = false)
-	//	private FlightLeg			flightLeg;
+	// Attributes -------------------------------------------------------------
 
 	@Automapped
 	@Mandatory
 	@Enumerated(EnumType.STRING)
 	@Column(nullable = false)
-	private FlightDuty			duty; // "PILOT", "CO-PILOT", "LEAD ATTENDANT", "CABIN ATTENDANT"
+	private FlightDuty duty;
 
 	@Automapped
 	@Mandatory
 	@PastOrPresent
 	@Column(nullable = false)
-	private LocalDateTime		lastUpdate; // Must be in the past or present
+	private LocalDateTime lastUpdate;
 
 	@Automapped
 	@Mandatory
 	@Enumerated(EnumType.STRING)
 	@Column(nullable = false)
-	private AssignmentStatus	status; // "CONFIRMED", "PENDING", "CANCELLED"
+	private AssignmentStatus status;
 
 	@Automapped
 	@Optional
 	@ValidString(max = 255)
-	private String				remarks; // Optional, max 255 characters
+	private String remarks;
+
+	// Derived attributes -----------------------------------------------------
+
+	// Relationships ----------------------------------------------------------
+
+	@Automapped
+	@Mandatory
+	@ManyToOne(optional = false)
+	@JoinColumn(name = "flight_crew_member_id", nullable = false)
+	private FlightCrewMember flightCrewMember;
+
+	@Automapped
+	@Mandatory
+	@ManyToOne(optional = false)
+	@JoinColumn(name = "flight_leg_id", nullable = false)
+	private Leg flightLeg;
 }
