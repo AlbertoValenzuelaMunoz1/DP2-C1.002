@@ -27,42 +27,40 @@ public class ActivityLog extends AbstractRole {
 
 	private static final long	serialVersionUID	= 1L;
 
-	//--------------------------------------------------;
-
-	@Automapped
-	@Mandatory
-	@ManyToOne(optional = false)
-	@JoinColumn(name = "flight_assignment_id", nullable = false)
-	private FlightAssignment	flightAssignment;
-
-	//	@Automapped
-	//	@Mandatory
-	//	@ManyToOne(optional = false)
-	//	@JoinColumn(name = "flight_leg_id", nullable = false)
-	//	private FlightLeg			flightLeg;
+	// Attributes -------------------------------------------------------------
 
 	@Automapped
 	@Mandatory
 	@PastOrPresent
 	@Column(nullable = false)
-	private LocalDateTime		registrationMoment; // Must be in the past or present
+	private LocalDateTime		registrationMoment;
 
 	@Automapped
 	@Mandatory
 	@ValidString(max = 50)
 	@Column(nullable = false, length = 50)
-	private String				incidentType; // Up to 50 characters
+	private String				incidentType;
 
 	@Automapped
 	@Mandatory
 	@ValidString(max = 255)
 	@Column(nullable = false, length = 255)
-	private String				description; // Up to 255 characters
+	private String				description;
 
 	@Automapped
 	@Mandatory
 	@Min(0)
 	@Max(10)
 	@Column(nullable = false)
-	private int					severity; // Range from 0 (no issue) to 10 (critical)
+	private int					severity;
+
+	// Derived attributes -----------------------------------------------------
+
+	// Relationships ----------------------------------------------------------
+
+	@Automapped
+	@Mandatory
+	@ManyToOne(optional = false)
+	@JoinColumn(name = "flight_assignment_id", nullable = false)
+	private FlightAssignment	flightAssignment;
 }
