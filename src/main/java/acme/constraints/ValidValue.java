@@ -21,7 +21,7 @@ import javax.validation.Payload;
 })
 public @interface ValidValue {
 
-	String message() default "{placeholder}";
+	String message() default "{acme.validation.object.message}";
 	Class<?>[] groups() default {};
 	Class<? extends Payload>[] payload() default {};
 	String[] values() default {};
