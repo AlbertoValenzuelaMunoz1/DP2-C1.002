@@ -38,7 +38,7 @@ public class Passenger extends AbstractEntity {
 	@Mandatory
 	@Temporal(TemporalType.TIMESTAMP)
 	@ValidMoment(past = true)
-	private Date				birth;
+	private Date				dateOfBirth;
 	@Optional
 	@Automapped
 	@ValidString(max = 50)

@@ -3,6 +3,7 @@ package acme.entities;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.Transient;
 
 import acme.client.components.basis.AbstractRealm;
 import acme.client.components.mappings.Automapped;
@@ -42,5 +43,11 @@ public class Customer extends AbstractRealm {
 	@Automapped
 	@ValidNumber(min = 0, max = 500000)
 	private Integer				earnedPoints;
+
+
+	@Transient
+	public String initials() {
+		return this.identifier.substring(0, this.identifier.length() - 6);
+	}
 
 }
