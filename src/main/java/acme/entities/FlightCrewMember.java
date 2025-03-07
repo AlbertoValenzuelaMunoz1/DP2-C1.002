@@ -27,15 +27,13 @@ public class FlightCrewMember extends AbstractRole {
 
 	// Attributes -------------------------------------------------------------
 
-	@Automapped
 	@Mandatory
-	@Column(unique = true, nullable = false)
+	@Column(unique = true)
 	@ValidString(pattern = "^[A-Z]{2,3}\\d{6}$")
 	private String				employeeCode;
 
 	@Automapped
 	@Mandatory
-	@Column(nullable = false)
 	@ValidString(pattern = "^\\+?\\d{6,15}$")
 	private String				phoneNumber;
 
@@ -47,19 +45,16 @@ public class FlightCrewMember extends AbstractRole {
 	@Automapped
 	@Mandatory
 	@Enumerated(EnumType.STRING)
-	@Column(nullable = false)
 	private AvailabilityStatus	availabilityStatus;
 
 	@Automapped
 	@Mandatory
-	@Column(nullable = false)
 	@ValidString
 	private String				airline;
 
 	@Automapped
 	@Mandatory
 	@Min(0)
-	@Column(nullable = false)
 	private double				salary;
 
 	@Automapped
