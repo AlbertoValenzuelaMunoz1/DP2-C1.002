@@ -2,6 +2,7 @@
 package acme.entities;
 
 import java.time.LocalDateTime;
+import java.util.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -14,6 +15,8 @@ import javax.validation.constraints.PastOrPresent;
 import acme.client.components.basis.AbstractRole;
 import acme.client.components.mappings.Automapped;
 import acme.client.components.validation.Mandatory;
+import acme.client.components.validation.ValidMoment;
+import acme.client.components.validation.ValidNumber;
 import acme.client.components.validation.ValidString;
 import lombok.Getter;
 import lombok.Setter;
@@ -25,34 +28,29 @@ public class ActivityLog extends AbstractRole {
 
 	// Serialisation version --------------------------------------------------
 
-	private static final long	serialVersionUID	= 1L;
+	private static final long													serialVersionUID	= 1L;
 
 	// Attributes -------------------------------------------------------------
 
 	@Automapped
 	@Mandatory
-	@PastOrPresent
-	@Column(nullable = false)
-	private LocalDateTime		registrationMoment;
+	@ValidMoment
+	private Date																registrationMoment;
 
 	@Automapped
 	@Mandatory
 	@ValidString(max = 50)
-	@Column(nullable = false, length = 50)
-	private String				incidentType;
+	private String																incidentType;
 
 	@Automapped
 	@Mandatory
 	@ValidString(max = 255)
-	@Column(nullable = false, length = 255)
-	private String				description;
+	private String																description;
 
 	@Automapped
 	@Mandatory
-	@Min(0)
-	@Max(10)
-	@Column(nullable = false)
-	private int					severity;
+	@ValidNumber(min = 0, max = 10)
+	private int																	severity;
 
 	// Derived attributes -----------------------------------------------------
 
@@ -60,7 +58,6 @@ public class ActivityLog extends AbstractRole {
 
 	@Automapped
 	@Mandatory
-	@ManyToOne(optional = false)
-	@JoinColumn(name = "flight_assignment_id", nullable = false)
+	@ManyToOne(optional = false))
 	private FlightAssignment	flightAssignment;
 }
