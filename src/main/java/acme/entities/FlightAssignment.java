@@ -1,20 +1,18 @@
 
 package acme.entities;
 
-import java.time.LocalDateTime;
+import java.util.Date;
 
-import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
-import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
-import javax.validation.constraints.PastOrPresent;
 
 import acme.client.components.basis.AbstractRole;
 import acme.client.components.mappings.Automapped;
 import acme.client.components.validation.Mandatory;
 import acme.client.components.validation.Optional;
+import acme.client.components.validation.ValidMoment;
 import acme.client.components.validation.ValidString;
 import acme.datatypes.AssignmentStatus;
 import acme.datatypes.FlightDuty;
@@ -28,32 +26,29 @@ public class FlightAssignment extends AbstractRole {
 
 	// Serialisation version --------------------------------------------------
 
-	private static final long serialVersionUID = 1L;
+	private static final long	serialVersionUID	= 1L;
 
 	// Attributes -------------------------------------------------------------
 
 	@Automapped
 	@Mandatory
 	@Enumerated(EnumType.STRING)
-	@Column(nullable = false)
-	private FlightDuty duty;
+	private FlightDuty			duty;
 
 	@Automapped
 	@Mandatory
-	@PastOrPresent
-	@Column(nullable = false)
-	private LocalDateTime lastUpdate;
+	@ValidMoment(past = true)
+	private Date				lastUpdate;
 
 	@Automapped
 	@Mandatory
 	@Enumerated(EnumType.STRING)
-	@Column(nullable = false)
-	private AssignmentStatus status;
+	private AssignmentStatus	status;
 
 	@Automapped
 	@Optional
 	@ValidString(max = 255)
-	private String remarks;
+	private String				remarks;
 
 	// Derived attributes -----------------------------------------------------
 
@@ -62,12 +57,10 @@ public class FlightAssignment extends AbstractRole {
 	@Automapped
 	@Mandatory
 	@ManyToOne(optional = false)
-	@JoinColumn(name = "flight_crew_member_id", nullable = false)
-	private FlightCrewMember flightCrewMember;
+	private FlightCrewMember	flightCrewMember;
 
 	@Automapped
 	@Mandatory
 	@ManyToOne(optional = false)
-	@JoinColumn(name = "flight_leg_id", nullable = false)
-	private Leg flightLeg;
+	private Leg					flightLeg;
 }
