@@ -5,12 +5,12 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
-import javax.validation.constraints.Min;
 
 import acme.client.components.basis.AbstractRole;
 import acme.client.components.mappings.Automapped;
 import acme.client.components.validation.Mandatory;
 import acme.client.components.validation.Optional;
+import acme.client.components.validation.ValidNumber;
 import acme.client.components.validation.ValidString;
 import acme.datatypes.AvailabilityStatus;
 import lombok.Getter;
@@ -54,12 +54,12 @@ public class FlightCrewMember extends AbstractRole {
 
 	@Automapped
 	@Mandatory
-	@Min(0)
+	@ValidNumber(min = 0)
 	private double				salary;
 
 	@Automapped
 	@Optional
-	@Min(0)
+	@ValidNumber(min = 0)
 	private Integer				yearsOfExperience;
 
 	// Derived attributes -----------------------------------------------------
