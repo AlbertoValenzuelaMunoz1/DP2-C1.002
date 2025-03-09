@@ -5,7 +5,7 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.validation.constraints.PositiveOrZero;
 
-import acme.client.components.basis.AbstractEntity;
+import acme.client.components.basis.AbstractRole;
 import acme.client.components.mappings.Automapped;
 import acme.client.components.validation.Mandatory;
 import acme.client.components.validation.Optional;
@@ -17,7 +17,7 @@ import lombok.Setter;
 @Entity
 @Getter
 @Setter
-public class Technician extends AbstractEntity {
+public class Technician extends AbstractRole {
 
 	private static final long	serialVersionUID	= 1L;
 
@@ -51,7 +51,5 @@ public class Technician extends AbstractEntity {
 	@ValidString(max = 255)
 	@Automapped
 	private String				certifications;
-
-	// Implementar la relacion con MaintenanceRecord
 
 }
