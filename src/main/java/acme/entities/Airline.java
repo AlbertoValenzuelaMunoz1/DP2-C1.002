@@ -31,7 +31,7 @@ public class Airline extends AbstractEntity {
 	private static final long	serialVersionUID	= 1L;
 	@Automapped
 	@Mandatory
-	@ValidString(max = 50)
+	@ValidString(min = 1, max = 50)
 	private String				name;
 	@Column(unique = true)
 	@ValidString(min = 3, max = 3, pattern = "^[A-Z]{2}X$")
@@ -50,6 +50,7 @@ public class Airline extends AbstractEntity {
 	@ValidValue(values = {
 		"LUXURY", "STANDARD", "LOW-COST"
 	})
+	// No se puede usar un enumerado porque no permite - en el nombre
 	private String				type;
 	@Automapped
 	@Optional
