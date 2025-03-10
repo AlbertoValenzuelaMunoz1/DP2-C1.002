@@ -1,16 +1,10 @@
 
 package acme.entities;
 
-import java.time.LocalDateTime;
 import java.util.Date;
 
-import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
-import javax.validation.constraints.Max;
-import javax.validation.constraints.Min;
-import javax.validation.constraints.PastOrPresent;
 
 import acme.client.components.basis.AbstractRole;
 import acme.client.components.mappings.Automapped;
@@ -28,29 +22,29 @@ public class ActivityLog extends AbstractRole {
 
 	// Serialisation version --------------------------------------------------
 
-	private static final long													serialVersionUID	= 1L;
+	private static final long	serialVersionUID	= 1L;
 
 	// Attributes -------------------------------------------------------------
 
 	@Automapped
 	@Mandatory
 	@ValidMoment
-	private Date																registrationMoment;
+	private Date				registrationMoment;
 
 	@Automapped
 	@Mandatory
 	@ValidString(max = 50)
-	private String																incidentType;
+	private String				incidentType;
 
 	@Automapped
 	@Mandatory
 	@ValidString(max = 255)
-	private String																description;
+	private String				description;
 
 	@Automapped
 	@Mandatory
 	@ValidNumber(min = 0, max = 10)
-	private int																	severity;
+	private int					severity;
 
 	// Derived attributes -----------------------------------------------------
 
@@ -58,6 +52,6 @@ public class ActivityLog extends AbstractRole {
 
 	@Automapped
 	@Mandatory
-	@ManyToOne(optional = false))
+	@ManyToOne(optional = false)
 	private FlightAssignment	flightAssignment;
 }
