@@ -29,15 +29,15 @@ public class Customer extends AbstractRole {
 	private String				phoneNumber;
 	@Mandatory
 	@Automapped
-	@ValidString(max = 255)
+	@ValidString(max = 255, min = 1)
 	private String				physicalAddres;
 	@Mandatory
 	@Automapped
-	@ValidString(max = 50)
+	@ValidString(max = 50, min = 1)
 	private String				city;
 	@Mandatory
 	@Automapped
-	@ValidString(max = 50)
+	@ValidString(max = 50, min = 1)
 	private String				country;
 	@Mandatory
 	@Automapped
