@@ -10,8 +10,8 @@
 
 master.company.title = La empresa
 master.company.text = \
-	Acme, Inc.  es una compañía ficticia que proporciona un proyecto inicial para los estudiantes de la asignatura de Diseño y Pruebas del plan de estudios de Ingeniería del Software de la Universidad de Sevilla. Especializada en soluciones innovadoras para la industria aeronáutica
-master.company.name = Acme, Inc.
-master.company.address = 01 Acme Drive, Wondercity, Wonderland
-master.company.phone = +1 000 111 222
-master.company.email = contact@acme.com
+	Acme ANS, Inc.  es una compañía ficticia que proporciona un proyecto inicial para los estudiantes de la asignatura de Diseño y Pruebas del plan de estudios de Ingeniería del Software de la Universidad de Sevilla. Especializada en soluciones innovadoras para la industria aeronáutica
+master.company.name = Acme ANS, Inc.
+master.company.address = Avenida Reina Mercedes, Sevilla
+master.company.phone = +34 689765345
+master.company.email = contact@acmeANS.com
