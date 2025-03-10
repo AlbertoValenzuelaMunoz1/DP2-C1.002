@@ -12,7 +12,6 @@ import javax.validation.Valid;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 
-import Validators.ValidResolution;
 import acme.client.components.basis.AbstractEntity;
 import acme.client.components.mappings.Automapped;
 import acme.client.components.validation.Mandatory;
@@ -67,7 +66,7 @@ public class TrackingLogs extends AbstractEntity {
 	@Optional
 	@ValidString(max = 255)
 	@Automapped
-	@ValidResolution
+	@acme.Validators.ValidResolution
 	private String				resolutionDetails;
 
 	@Mandatory

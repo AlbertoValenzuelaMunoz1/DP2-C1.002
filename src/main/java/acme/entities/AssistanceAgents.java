@@ -9,8 +9,10 @@ import javax.persistence.Column;
 import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
 import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import javax.validation.Valid;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
@@ -57,18 +59,18 @@ public class AssistanceAgents extends AbstractRole {
 	@Automapped
 	private List<String>		spokenLanguages;
 
-	@Mandatory
-	@NotBlank
-	@ValidString
-	@Automapped
-	private String				airline;
+	//	@Mandatory
+	//	@NotBlank
+	//	@ValidString
+	//	@Automapped
+	//	private String				airline;
 
-	// @Mandatory
-	//	@NotNull
-	//	@ManyToOne
-	//	@JoinColumn(name = "airline_id", nullable = false)
-	//  @Valid
-	//	private Airline airline;
+	@Mandatory
+	@NotNull
+	@ManyToOne
+	@JoinColumn(name = "airline_id", nullable = false)
+	@Valid
+	private Airline				airline;
 	//Esta es la correcta implementacion pero en la rama no esta Airline
 
 	@Mandatory
