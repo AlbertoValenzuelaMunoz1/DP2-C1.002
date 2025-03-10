@@ -3,8 +3,8 @@ package acme.entities;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.EnumType;
-import javax.persistence.Enumerated;
+import javax.persistence.ManyToOne;
+import javax.validation.Valid;
 
 import acme.client.components.basis.AbstractRole;
 import acme.client.components.mappings.Automapped;
@@ -44,13 +44,8 @@ public class FlightCrewMember extends AbstractRole {
 
 	@Automapped
 	@Mandatory
-	@Enumerated(EnumType.STRING)
+	@Valid
 	private AvailabilityStatus	availabilityStatus;
-
-	@Automapped
-	@Mandatory
-	@ValidString
-	private String				airline;
 
 	@Automapped
 	@Mandatory
@@ -65,5 +60,10 @@ public class FlightCrewMember extends AbstractRole {
 	// Derived attributes -----------------------------------------------------
 
 	// Relationships ----------------------------------------------------------
+
+	@Mandatory
+	@Automapped
+	@ManyToOne(optional = false)
+	private Airline				airline;
 
 }
