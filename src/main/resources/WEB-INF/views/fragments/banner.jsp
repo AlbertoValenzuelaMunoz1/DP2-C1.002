@@ -15,6 +15,6 @@
 <%@taglib prefix="jstl" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@taglib prefix="acme" uri="http://acme-framework.org/"%>
 
-<div class="rounded" style="background: <acme:print code='master.banner.background'/>">
+<div class="rounded" style="background: <acme:print code='master.banner.background'/>;text-align:center">
 	<img src="images/banner.png" alt="<acme:print code='master.banner.alt'/>" class="img-fluid rounded"/>
 </div>
