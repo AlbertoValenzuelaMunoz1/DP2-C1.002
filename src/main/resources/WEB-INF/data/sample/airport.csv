@@ -1,4 +1,4 @@
-key,key:name,iataCode,operationalScope,city,country,website,email,contactPhoneNumber
+key,name,iataCode,operationalScope,city,country,website,email,contactPhoneNumber
 airport-01,John F. Kennedy International Airport,NEW,INTERNATIONAL,New York,USA,http://jfkairport.com,contact@jfk.com,+1234567890
 airport-02,London Heathrow Airport,LHR,DOMESTIC,London,UK,http://heathrow.com,info@heathrow.com,+447911123456
 airport-03,Narita International Airport,NRT,INTERNATIONAL,Tokyo,Japan,http://narita-airport.jp,service@narita.jp,+81312345678

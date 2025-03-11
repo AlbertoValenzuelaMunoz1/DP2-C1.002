@@ -1,0 +1,11 @@
+key,name,iataCode,website,type,foundationMoment,email,phoneNumber
+airline-1,Lorem ipsum dolor sit ame,AZX,http://lorem.com/ipsum,LUXURY,2022/06/01 10:00,acme@lorem-ipsum.org,928145
+airline-2,L,ABX,http://lorem.com/ipsum,LOWCOST,2022/07/30 0:00,a@e.e,+928145
+airline-3,<script>alert(‘Hacked!’);</script>,ASX,http://lorem.com/ipsum,LOWCOST,2022/06/30 23:59,a@e.e,+928145
+airline-4,Lorem ipsum dolor sit ametm consectetur adipiscing,ACX,http://lorem.com/ipsum,LOWCOST,2000/01/01 0:01,a@e.es,+928646952461458
+airline-5,Lorem ipsum dolor sit ametm consectetur adipiscin,AVX,https://lorem.com/ipsum,LOWCOST,2000/01/01 0:00,a@e.e,+9281452
+airline-6,Lo,BVX,http://lorem.com:80/ipsum,LOWCOST,2000/01/01 0:00,a@e.e,928646952461458
+airline-7,洛伦·伊普森,ZVX,http://lorem.com:2000/ipsum,STANDARD,2000/01/01 0:00,ommodo.consequat.duis.aute.irur.dolor.es.org,+92864695246145
+airline-8,لوريم إيبسوم,GVX,http://example.org?a&b,STANDARD,2000/01/01 0:00,a@e.e,9228145
+airline-9,airline1,GVX,http://example.org:80/home?a&b,STANDARD,2010/02/03 23:20,airport1@gmail.es,+9228145267
+airline-10,airline2,GVX,http://example.org:80/home?a&b,STANDARD,2010/02/03 23:20,ipsum@dolor.sit.amet.consectetur.adipiscing.elit.sed.do.eiusmod.tempor.incididunt.ut.labore.et.dolore.magna.aliqua.Ut.enim.ad.minim.veniam.quis.nostrud.exercitation.ullamco.laboris.nisi.ut.aliquip.ex.ea.commodo.consequat.duis.aute.irure.dolor.es.org,+9228145267
