@@ -1,5 +1,5 @@
 
-package acme.entities;
+package acme.entities.student2.booking;
 
 import java.util.Date;
 
@@ -20,6 +20,9 @@ import acme.client.components.validation.ValidMoment;
 import acme.client.components.validation.ValidMoney;
 import acme.client.components.validation.ValidString;
 import acme.datatypes.TravelClass;
+import acme.entities.student1.flight.Flight;
+import acme.entities.student2.customer.Customer;
+import acme.entities.student2.passenger.Passenger;
 import lombok.Getter;
 import lombok.Setter;
 

@@ -1,5 +1,5 @@
 
-package acme.entities;
+package acme.entities.student4.assistanceAgents;
 
 import java.util.Date;
 
@@ -20,6 +20,7 @@ import acme.client.components.validation.ValidMoment;
 import acme.client.components.validation.ValidMoney;
 import acme.client.components.validation.ValidString;
 import acme.client.components.validation.ValidUrl;
+import acme.entities.group.airline.Airline;
 import lombok.Getter;
 import lombok.Setter;
 

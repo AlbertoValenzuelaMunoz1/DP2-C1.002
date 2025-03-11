@@ -1,10 +1,10 @@
 
-package acme.entities;
+package acme.entities.student4.claim;
 
 import java.util.Date;
 
 import javax.persistence.Entity;
-import javax.persistence.OneToOne;
+import javax.persistence.ManyToOne;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.validation.Valid;
@@ -12,17 +12,18 @@ import javax.validation.Valid;
 import acme.client.components.basis.AbstractEntity;
 import acme.client.components.mappings.Automapped;
 import acme.client.components.validation.Mandatory;
-import acme.client.components.validation.Optional;
+import acme.client.components.validation.ValidEmail;
 import acme.client.components.validation.ValidMoment;
-import acme.client.components.validation.ValidScore;
 import acme.client.components.validation.ValidString;
+import acme.datatypes.ClaimType;
+import acme.entities.student4.assistanceAgents.AssistanceAgents;
 import lombok.Getter;
 import lombok.Setter;
 
 @Entity
 @Getter
 @Setter
-public class TrackingLogs extends AbstractEntity {
+public class Claim extends AbstractEntity {
 
 	//Serialisation -------------------------------
 
@@ -32,39 +33,31 @@ public class TrackingLogs extends AbstractEntity {
 
 	@Mandatory
 	@Temporal(TemporalType.TIMESTAMP)
-	@ValidMoment
-	private Date				lastUpdateMoment;
+	@ValidMoment(past = true)
+	private Date				registrationMoment;
 
 	@Mandatory
-	@ValidString(min = 1, max = 50)
+	@ValidEmail
 	@Automapped
-	private String				stepUndergoing;
+	private String				passengerEmail;
 
 	@Mandatory
-	@ValidScore
+	@ValidString(min = 1, max = 255)
 	@Automapped
-	private Double				resolutionPercentage;
-
-	@Optional
-	@Automapped
-	private Boolean				claimAccepted;
-	//
-	//
-	//	@Transient
-	//	public boolean isResolved() {
-	//		boolean result;
-	//		result = this.belongsTo != null && this.belongsTo.getIndicator() != null;
-	//		return result;
-	//	}
-
-	@Optional
-	@Automapped
-	@acme.Validators.ValidResolution
-	private String				resolutionDetails;
+	private String				description;
 
 	@Mandatory
-	@OneToOne
+	@Automapped
 	@Valid
-	private Claim				belongsTo;
+	private ClaimType			type;
+
+	//	@Optional
+	//	@Automapped
+	//	public Boolean				indicator;
+
+	@Mandatory
+	@ManyToOne
+	@Valid
+	private AssistanceAgents	registredBy;
 
 }

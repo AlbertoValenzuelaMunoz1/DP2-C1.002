@@ -1,5 +1,5 @@
 
-package acme.entities;
+package acme.entities.student1.leg;
 
 import java.util.Date;
 
@@ -17,6 +17,9 @@ import acme.client.components.mappings.Automapped;
 import acme.client.components.validation.Mandatory;
 import acme.client.components.validation.ValidMoment;
 import acme.client.components.validation.ValidString;
+import acme.entities.group.aircraft.Aircraft;
+import acme.entities.group.airport.Airport;
+import acme.entities.student1.flight.Flight;
 import lombok.Getter;
 import lombok.Setter;
 

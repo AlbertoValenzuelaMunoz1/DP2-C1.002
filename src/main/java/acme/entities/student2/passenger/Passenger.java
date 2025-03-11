@@ -1,62 +1,46 @@
 
-package acme.entities;
+package acme.entities.student2.passenger;
 
 import java.util.Date;
 
 import javax.persistence.Entity;
-import javax.persistence.ManyToOne;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
-import javax.validation.Valid;
 
 import acme.client.components.basis.AbstractEntity;
 import acme.client.components.mappings.Automapped;
 import acme.client.components.validation.Mandatory;
+import acme.client.components.validation.Optional;
 import acme.client.components.validation.ValidEmail;
 import acme.client.components.validation.ValidMoment;
 import acme.client.components.validation.ValidString;
-import acme.datatypes.ClaimType;
 import lombok.Getter;
 import lombok.Setter;
 
 @Entity
 @Getter
 @Setter
-public class Claim extends AbstractEntity {
-
-	//Serialisation -------------------------------
+public class Passenger extends AbstractEntity {
 
 	private static final long	serialVersionUID	= 1L;
-
-	//Attributes ---------------------------------
-
+	@Mandatory
+	@Automapped
+	@ValidString(max = 255, min = 1)
+	private String				fullName;
+	@Mandatory
+	@Automapped
+	@ValidEmail
+	private String				email;
+	@Mandatory
+	@Automapped
+	@ValidString(pattern = "^[A-Z0-9]{6,9}$")
+	private String				passportNumber;
 	@Mandatory
 	@Temporal(TemporalType.TIMESTAMP)
 	@ValidMoment(past = true)
-	private Date				registrationMoment;
-
-	@Mandatory
-	@ValidEmail
+	private Date				dateOfBirth;
+	@Optional
 	@Automapped
-	private String				passengerEmail;
-
-	@Mandatory
-	@ValidString(min = 1, max = 255)
-	@Automapped
-	private String				description;
-
-	@Mandatory
-	@Automapped
-	@Valid
-	private ClaimType			type;
-
-	//	@Optional
-	//	@Automapped
-	//	public Boolean				indicator;
-
-	@Mandatory
-	@ManyToOne
-	@Valid
-	private AssistanceAgents	registredBy;
-
+	@ValidString(max = 50, min = 0)
+	private String				specialNeeds;
 }
