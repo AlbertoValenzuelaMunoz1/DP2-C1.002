@@ -37,30 +37,37 @@ public class Booking extends AbstractEntity {
 	@Mandatory
 	@Valid
 	private Customer			customer;
+
 	@ManyToOne
 	@Mandatory
 	@Valid
 	private Flight				flight;
+
 	@OneToOne
 	@Mandatory
 	@Valid
 	private Passenger			passenger;
+
 	@Mandatory
 	@Column(unique = true)
 	@ValidString(pattern = "^[A-Z0-9]{6,8}$")
 	private String				locatorCode;
+
 	@Mandatory
 	@Temporal(TemporalType.TIMESTAMP)
 	@ValidMoment(past = true)
 	private Date				purchaseMoment;
+
 	@Mandatory
 	@Automapped
 	@Valid
 	private TravelClass			travelClass;
+
 	@Mandatory
 	@Automapped
 	@ValidMoney(min = 0.)
 	private Money				price;
+
 	@Optional
 	@Automapped
 	@ValidString(min = 4, max = 4, pattern = "^[0-9]{4}$")
