@@ -34,7 +34,7 @@ public class Airport extends AbstractEntity {
 	@Mandatory
 	@NotBlank
 	@Column(unique = true)
-	@ValidString(max = 50)
+	@ValidString(min = 1, max = 50)
 	private String				name;
 
 	@Mandatory
@@ -52,13 +52,13 @@ public class Airport extends AbstractEntity {
 
 	@Mandatory
 	@NotBlank
-	@ValidString(max = 50)
+	@ValidString(min = 1, max = 50)
 	@Automapped
 	private String				city;
 
 	@Mandatory
 	@NotBlank
-	@ValidString(max = 50)
+	@ValidString(min = 1, max = 50)
 	@Automapped
 	private String				country;
 
@@ -71,6 +71,11 @@ public class Airport extends AbstractEntity {
 	@ValidEmail
 	@Automapped
 	private String				email;
+
+	@Optional
+	@ValidString(max = 50)
+	@Automapped
+	private String				address;
 
 	@Optional
 	@ValidString(pattern = "^\\+?\\d{6,15}$", message = "Invalid phone number format")
