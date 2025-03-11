@@ -7,13 +7,15 @@ import javax.persistence.Entity;
 
 import org.dom4j.tree.AbstractEntity;
 
-import acme.client.components.datatypes.Moment;
 import acme.client.components.datatypes.Money;
 import acme.client.components.mappings.Automapped;
 import acme.client.components.validation.Mandatory;
 import acme.client.components.validation.Optional;
 import acme.client.components.validation.ValidMoney;
 import acme.client.components.validation.ValidString;
+import acme.client.helpers.SpringHelper;
+import acme.entities.group.airport.Airport;
+import acme.entities.student1.leg.LegRepository;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -42,35 +44,45 @@ public class Flight extends AbstractEntity {
 	@Automapped
 	private String				description;
 
-	//	@Mandatory
-	//	@Valid
-	//	@OneToOne(optional = false)
-	//	private Manager				manager;
-
 
 	@Transient
-	public Moment scheduledDeparture() {
-		return null;
+	public Date scheduledDeparture() {
+
+		LegRepository legRepository = SpringHelper.getBean(LegRepository.class);
+
+		return legRepository.firstFlightLeg(this).getScheduledDeparture();
 	}
 
 	@Transient
-	private Moment scheduledArrival() {
-		return null;
+	private Date scheduledArrival() {
+
+		LegRepository legRepository = SpringHelper.getBean(LegRepository.class);
+
+		return legRepository.lastFlightLeg(this).getScheduledArrival();
 	}
 
 	@Transient
-	public String originCity() {
-		return null;
+	public Airport originCity() {
+
+		LegRepository legRepository = SpringHelper.getBean(LegRepository.class);
+
+		return legRepository.firstFlightLeg(this).getDepartureAirport;
 	}
 
 	@Transient
-	public String destinationCity() {
-		return null;
+	public Airport destinationCity() {
+
+		LegRepository legRepository = SpringHelper.getBean(LegRepository.class);
+
+		return legRepository.lastFlightLeg(this).getArrivalAirport();
 	}
 
 	@Transient
 	public Integer numberOfLayovers() {
-		return null;
+
+		LegRepository legRepository = SpringHelper.getBean(LegRepository.class);
+
+		return legRepository.numberOfLegs(this).intValue();
 	}
 
 }
