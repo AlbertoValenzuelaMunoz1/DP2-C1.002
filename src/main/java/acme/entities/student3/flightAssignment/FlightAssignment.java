@@ -1,25 +1,30 @@
 
-package acme.entities;
+package acme.entities.student3.flightAssignment;
 
-import javax.persistence.Column;
+import java.util.Date;
+
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.ManyToOne;
-import javax.validation.Valid;
 
 import acme.client.components.basis.AbstractRole;
 import acme.client.components.mappings.Automapped;
 import acme.client.components.validation.Mandatory;
 import acme.client.components.validation.Optional;
-import acme.client.components.validation.ValidNumber;
+import acme.client.components.validation.ValidMoment;
 import acme.client.components.validation.ValidString;
-import acme.datatypes.AvailabilityStatus;
+import acme.datatypes.AssignmentStatus;
+import acme.datatypes.FlightDuty;
+import acme.entities.student1.leg.Leg;
+import acme.entities.student3.flightCrewMember.FlightCrewMember;
 import lombok.Getter;
 import lombok.Setter;
 
 @Entity
 @Getter
 @Setter
-public class FlightCrewMember extends AbstractRole {
+public class FlightAssignment extends AbstractRole {
 
 	// Serialisation version --------------------------------------------------
 
@@ -27,43 +32,37 @@ public class FlightCrewMember extends AbstractRole {
 
 	// Attributes -------------------------------------------------------------
 
+	@Automapped
 	@Mandatory
-	@Column(unique = true)
-	@ValidString(pattern = "^[A-Z]{2,3}\\d{6}$")
-	private String				employeeCode;
+	@Enumerated(EnumType.STRING)
+	private FlightDuty			duty;
 
 	@Automapped
 	@Mandatory
-	@ValidString(pattern = "^\\+?\\d{6,15}$")
-	private String				phoneNumber;
+	@ValidMoment(past = true)
+	private Date				lastUpdate;
 
 	@Automapped
 	@Mandatory
-	@ValidString(max = 255)
-	private String				languageSkills;
-
-	@Automapped
-	@Mandatory
-	@Valid
-	private AvailabilityStatus	availabilityStatus;
-
-	@Automapped
-	@Mandatory
-	@ValidNumber(min = 0)
-	private double				salary;
+	@Enumerated(EnumType.STRING)
+	private AssignmentStatus	status;
 
 	@Automapped
 	@Optional
-	@ValidNumber(min = 0)
-	private Integer				yearsOfExperience;
+	@ValidString(max = 255)
+	private String				remarks;
 
 	// Derived attributes -----------------------------------------------------
 
 	// Relationships ----------------------------------------------------------
 
-	@Mandatory
 	@Automapped
+	@Mandatory
 	@ManyToOne(optional = false)
-	private Airline				airline;
+	private FlightCrewMember	flightCrewMember;
 
+	@Automapped
+	@Mandatory
+	@ManyToOne(optional = false)
+	private Leg					flightLeg;
 }
