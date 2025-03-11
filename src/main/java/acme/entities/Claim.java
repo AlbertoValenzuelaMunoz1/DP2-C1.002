@@ -50,7 +50,7 @@ public class Claim extends AbstractEntity {
 
 	@Mandatory
 	@NotBlank
-	@ValidString(max = 255)
+	@ValidString(min = 1, max = 255)
 	@Automapped
 	private String				description;
 
@@ -71,7 +71,5 @@ public class Claim extends AbstractEntity {
 	@JoinColumn(name = "assistanceAgents_id", nullable = false)
 	@Valid
 	private AssistanceAgents	registredBy;
-
-	//posible asociacion con passenger o consumer 
 
 }
