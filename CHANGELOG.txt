@@ -8,4 +8,6 @@
 # purposes.  The copyright owner does not offer any warranties or representations, nor do
 # they accept any liabilities with respect to them.
 
-1.0.0 This is the first version of Acme-Ans-D01
+D01 This is the first version of Acme-ANS
+D02 This is the second version of Acme-ANS
+
