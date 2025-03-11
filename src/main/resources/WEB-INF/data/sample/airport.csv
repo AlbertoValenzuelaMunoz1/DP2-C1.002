@@ -1,0 +1,17 @@
+key,key:name,iataCode,operationalScope,city,country,website,email,contactPhoneNumber
+airport-01,John F. Kennedy International Airport,NEW,INTERNATIONAL,New York,USA,http://jfkairport.com,contact@jfk.com,+1234567890
+airport-02,London Heathrow Airport,LHR,DOMESTIC,London,UK,http://heathrow.com,info@heathrow.com,+447911123456
+airport-03,Narita International Airport,NRT,INTERNATIONAL,Tokyo,Japan,http://narita-airport.jp,service@narita.jp,+81312345678
+airport-04,Charles de Gaulle Airport,CDG,DOMESTIC,Paris,France,http://aeroportsdeparis.fr,help@cdg.fr,+33123456789
+airport-05,Frankfurt Airport,FRA,DOMESTIC,Frankfurt,Germany,http://frankfurt-airport.com,assist@fra.de,+496912345678
+airport-06,Sydney Kingsford Smith Airport,SYD,INTERNATIONAL,Sydney,Australia,http://sydneyairport.com.au,contact@syd.com.au,+61234567890
+airport-07,Guarulhos International Airport,GRU,INTERNATIONAL,São Paulo,Brazil,http://gru.com.br,info@gru.com.br,+5511998765432
+airport-08,Dubai International Airport,DXB,INTERNATIONAL,Dubai,UAE,http://dubaiairports.ae,help@dxb.ae,+971501234567
+airport-09,Toronto Pearson International Airport,YYZ,INTERNATIONAL,Toronto,Canada,http://torontopearson.com,info@yyz.ca,+14161234567
+airport-10,Sheremetyevo International Airport,SVO,INTERNATIONAL,Moscow,Russia,http://svo.aero,contact@svo.ru,+74951234567
+airport-11,Adolfo Suárez Madrid-Barajas Airport,MAD,REGIONAL,Madrid,Spain,http://aena.es/mad,contact@mad.aena.es,+34913211100
+airport-12,Josep Tarradellas Barcelona-El Prat Airport,BCN,REGIONAL,Barcelona,Spain,http://aena.es/bcn,info@bcn.aena.es,+34913221100
+airport-13,Chhatrapati Shivaji Maharaj International Airport,BOM,REGIONAL,Mumbai,India,http://csia.in,
+
+
+
