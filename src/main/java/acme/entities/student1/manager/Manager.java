@@ -1,56 +1,54 @@
 
-package acme.entities;
+package acme.entities.student1.manager;
 
 import java.util.Date;
 
 import javax.persistence.Entity;
+import javax.persistence.ManyToOne;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
-import acme.client.components.basis.AbstractEntity;
+import acme.client.components.basis.AbstractRole;
 import acme.client.components.mappings.Automapped;
 import acme.client.components.validation.Mandatory;
 import acme.client.components.validation.Optional;
 import acme.client.components.validation.ValidMoment;
 import acme.client.components.validation.ValidNumber;
 import acme.client.components.validation.ValidString;
+import acme.client.components.validation.ValidUrl;
+import acme.entities.group.airline.Airline;
 import lombok.Getter;
 import lombok.Setter;
 
 @Entity
 @Getter
 @Setter
-public class Review extends AbstractEntity {
+public class Manager extends AbstractRole {
 
 	private static final long	serialVersionUID	= 1L;
 
 	@Mandatory
+	@ValidString(pattern = "^[A-Z]{2-3}\\\\d{6}$")
 	@Automapped
-	@ValidString(max = 50)
-	private String				name;
+	private String				identifierNumber;
 
 	@Mandatory
-	@Temporal(value = TemporalType.TIMESTAMP)
+	@ValidNumber(min = 0)
+	@Automapped
+	private Integer				experienceYears;
+
+	@Mandatory
 	@ValidMoment(past = true)
-	private Date				moment;
-
-	@Mandatory
-	@Automapped
-	@ValidString(max = 50)
-	private String				subject;
-
-	@Mandatory
-	@Automapped
-	@ValidString(max = 255)
-	private String				text;
+	@Temporal(value = TemporalType.TIMESTAMP)
+	private Date				birthDate;
 
 	@Optional
+	@ValidUrl
 	@Automapped
-	@ValidNumber(min = 0, max = 10, integer = 2, fraction = 2)
-	private Double				score;
+	private String				pictureLink;
 
-	@Optional
+	@ManyToOne(optional = false)
+	@Mandatory
 	@Automapped
-	private Boolean				recommendation;
-
+	private Airline				airline;
 }

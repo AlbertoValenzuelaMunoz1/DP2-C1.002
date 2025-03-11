@@ -1,5 +1,5 @@
 
-package acme.entities;
+package acme.entities.student2.passenger;
 
 import java.util.Date;
 
@@ -25,7 +25,7 @@ public class Passenger extends AbstractEntity {
 	private static final long	serialVersionUID	= 1L;
 	@Mandatory
 	@Automapped
-	@ValidString(max = 255)
+	@ValidString(max = 255, min = 1)
 	private String				fullName;
 	@Mandatory
 	@Automapped
@@ -41,6 +41,6 @@ public class Passenger extends AbstractEntity {
 	private Date				dateOfBirth;
 	@Optional
 	@Automapped
-	@ValidString(max = 50)
+	@ValidString(max = 50, min = 0)
 	private String				specialNeeds;
 }

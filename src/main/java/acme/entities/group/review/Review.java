@@ -1,62 +1,56 @@
 
-package acme.entities;
+package acme.entities.group.review;
 
 import java.util.Date;
 
-import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
-import acme.Validators.ValidValue;
 import acme.client.components.basis.AbstractEntity;
 import acme.client.components.mappings.Automapped;
 import acme.client.components.validation.Mandatory;
 import acme.client.components.validation.Optional;
-import acme.client.components.validation.ValidEmail;
 import acme.client.components.validation.ValidMoment;
+import acme.client.components.validation.ValidNumber;
 import acme.client.components.validation.ValidString;
-import acme.client.components.validation.ValidUrl;
 import lombok.Getter;
 import lombok.Setter;
 
 @Entity
 @Getter
 @Setter
-public class Airline extends AbstractEntity {
+public class Review extends AbstractEntity {
 
-	/**
-	 * 
-	 */
 	private static final long	serialVersionUID	= 1L;
-	@Automapped
+
 	@Mandatory
+	@Automapped
 	@ValidString(max = 50)
 	private String				name;
-	@Column(unique = true)
-	@ValidString(min = 3, max = 3, pattern = "^[A-Z]{2}X$")
+
 	@Mandatory
-	private String				iataCode;
-	@Automapped
-	@Mandatory
-	@ValidUrl
-	private String				website;
-	@Temporal(TemporalType.TIMESTAMP)
-	@Mandatory
+	@Temporal(value = TemporalType.TIMESTAMP)
 	@ValidMoment(past = true)
-	private Date				foundationMoment;
-	@Automapped
+	private Date				moment;
+
 	@Mandatory
-	@ValidValue(values = {
-		"LUXURY", "STANDARD", "LOW-COST"
-	})
-	private String				type;
 	@Automapped
-	@Optional
-	@ValidEmail
-	private String				email;
+	@ValidString(max = 50)
+	private String				subject;
+
+	@Mandatory
 	@Automapped
+	@ValidString(max = 255)
+	private String				text;
+
 	@Optional
-	@ValidString(pattern = "^\\+?\\d{6,15}$")
-	private String				phoneNumber;
+	@Automapped
+	@ValidNumber(min = 0, max = 10, integer = 2, fraction = 2)
+	private Double				score;
+
+	@Optional
+	@Automapped
+	private Boolean				recommendation;
+
 }

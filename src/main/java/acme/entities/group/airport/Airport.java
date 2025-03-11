@@ -1,13 +1,10 @@
 
-package acme.entities;
+package acme.entities.group.airport;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
-import javax.validation.Valid;
-import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.NotNull;
 
 import acme.client.components.basis.AbstractEntity;
 import acme.client.components.mappings.Automapped;
@@ -25,40 +22,34 @@ import lombok.Setter;
 @Setter
 public class Airport extends AbstractEntity {
 
-	//Serialisation -------------------------------
+	//Serialisation ------------------------------
 
 	private static final long	serialVersionUID	= 1L;
 
-	//Attributes ---------------------------------
+	//Attributes --------------------------------
 
 	@Mandatory
-	@NotBlank
 	@Column(unique = true)
-	@ValidString(max = 50)
+	@ValidString(min = 1, max = 50)
 	private String				name;
 
 	@Mandatory
-	@NotBlank
 	@Column(unique = true, length = 3)
 	@ValidString(pattern = "^[A-Z]{3}$", message = "IATA code must be three uppercase letters")
 	private String				iataCode;
 
 	@Mandatory
-	@NotNull
-	@Enumerated(EnumType.STRING)
 	@Automapped
-	@Valid
+	@Enumerated(EnumType.STRING)
 	private OperationalScope	operationalScope;
 
 	@Mandatory
-	@NotBlank
-	@ValidString(max = 50)
+	@ValidString(min = 1, max = 50)
 	@Automapped
 	private String				city;
 
 	@Mandatory
-	@NotBlank
-	@ValidString(max = 50)
+	@ValidString(min = 1, max = 50)
 	@Automapped
 	private String				country;
 
@@ -71,6 +62,11 @@ public class Airport extends AbstractEntity {
 	@ValidEmail
 	@Automapped
 	private String				email;
+
+	@Optional
+	@ValidString(max = 50)
+	@Automapped
+	private String				address;
 
 	@Optional
 	@ValidString(pattern = "^\\+?\\d{6,15}$", message = "Invalid phone number format")
