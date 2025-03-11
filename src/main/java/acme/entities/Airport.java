@@ -5,9 +5,6 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
-import javax.validation.Valid;
-import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.NotNull;
 
 import acme.client.components.basis.AbstractEntity;
 import acme.client.components.mappings.Automapped;
@@ -32,32 +29,26 @@ public class Airport extends AbstractEntity {
 	//Attributes --------------------------------
 
 	@Mandatory
-	@NotBlank
 	@Column(unique = true)
 	@ValidString(min = 1, max = 50)
 	private String				name;
 
 	@Mandatory
-	@NotBlank
 	@Column(unique = true, length = 3)
 	@ValidString(pattern = "^[A-Z]{3}$", message = "IATA code must be three uppercase letters")
 	private String				iataCode;
 
 	@Mandatory
-	@NotNull
-	@Enumerated(EnumType.STRING)
 	@Automapped
-	@Valid
+	@Enumerated(EnumType.STRING)
 	private OperationalScope	operationalScope;
 
 	@Mandatory
-	@NotBlank
 	@ValidString(min = 1, max = 50)
 	@Automapped
 	private String				city;
 
 	@Mandatory
-	@NotBlank
 	@ValidString(min = 1, max = 50)
 	@Automapped
 	private String				country;
