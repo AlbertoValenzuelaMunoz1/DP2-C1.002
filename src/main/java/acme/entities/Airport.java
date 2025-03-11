@@ -25,11 +25,11 @@ import lombok.Setter;
 @Setter
 public class Airport extends AbstractEntity {
 
-	//Serialisation -------------------------------
+	//Serialisation ------------------------------
 
 	private static final long	serialVersionUID	= 1L;
 
-	//Attributes ---------------------------------
+	//Attributes --------------------------------
 
 	@Mandatory
 	@NotBlank
