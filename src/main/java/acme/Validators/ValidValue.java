@@ -10,19 +10,19 @@ import java.lang.annotation.Target;
 import javax.validation.Constraint;
 import javax.validation.Payload;
 
-@Documented
-@Constraint(validatedBy = ResolutionValidator.class)
 @Target({
-	ElementType.FIELD
+	ElementType.FIELD, ElementType.ANNOTATION_TYPE
 })
 @Retention(RetentionPolicy.RUNTIME)
-public @interface ValidResolution {
+@Documented
 
-	int min() default 0;
-	int max() default 255;
-	String pattern() default "";
+@Constraint(validatedBy = {
+	ValueValidator.class
+})
+public @interface ValidValue {
 
-	String message() default "Resolution must be null if claim is unresolved, and mandatory if resolved.";
+	String message() default "{acme.validation.object.message}";
 	Class<?>[] groups() default {};
 	Class<? extends Payload>[] payload() default {};
+	String[] values() default {};
 }
