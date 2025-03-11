@@ -58,7 +58,6 @@ public class TrackingLogs extends AbstractEntity {
 	//	}
 
 	@Optional
-	@ValidString(max = 255)
 	@Automapped
 	@acme.Validators.ValidResolution
 	private String				resolutionDetails;
