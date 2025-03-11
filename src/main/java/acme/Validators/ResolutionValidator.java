@@ -21,7 +21,7 @@ public class ResolutionValidator extends AbstractValidator<ValidResolution, Stri
 		if (trackingLog.getBelongsTo() == null)
 			return true;
 
-		Boolean indicator = trackingLog.getBelongsTo().getIndicator();
+		Boolean indicator = trackingLog.getClaimAccepted();
 
 		if (indicator == null)
 			return resolutionDetails == null; // Si Claim no está aceptado/rechazado debe ser null

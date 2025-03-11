@@ -18,6 +18,10 @@ import javax.validation.Payload;
 @Retention(RetentionPolicy.RUNTIME)
 public @interface ValidResolution {
 
+	int min() default 0;
+	int max() default 255;
+	String pattern() default "";
+
 	String message() default "Resolution must be null if claim is unresolved, and mandatory if resolved.";
 	Class<?>[] groups() default {};
 	Class<? extends Payload>[] payload() default {};
