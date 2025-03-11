@@ -33,18 +33,22 @@ public class Airline extends AbstractEntity {
 	@Mandatory
 	@ValidString(min = 1, max = 50)
 	private String				name;
+
 	@Column(unique = true)
 	@ValidString(min = 3, max = 3, pattern = "^[A-Z]{2}X$")
 	@Mandatory
 	private String				iataCode;
+
 	@Automapped
 	@Mandatory
 	@ValidUrl
 	private String				website;
+
 	@Temporal(TemporalType.TIMESTAMP)
 	@Mandatory
 	@ValidMoment(past = true)
 	private Date				foundationMoment;
+
 	@Automapped
 	@Mandatory
 	@ValidValue(values = {
@@ -52,10 +56,12 @@ public class Airline extends AbstractEntity {
 	})
 	// No se puede usar un enumerado porque no permite - en el nombre
 	private String				type;
+
 	@Automapped
 	@Optional
 	@ValidEmail
 	private String				email;
+
 	@Automapped
 	@Optional
 	@ValidString(pattern = "^\\+?\\d{6,15}$")

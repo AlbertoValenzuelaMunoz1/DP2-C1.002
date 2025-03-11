@@ -1,13 +1,14 @@
 
 package acme.entities;
 
+import java.util.Date;
+
 import javax.persistence.Entity;
 import javax.persistence.ManyToOne;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
 import acme.client.components.basis.AbstractRole;
-import acme.client.components.datatypes.Moment;
 import acme.client.components.mappings.Automapped;
 import acme.client.components.validation.Mandatory;
 import acme.client.components.validation.Optional;
@@ -38,7 +39,7 @@ public class Manager extends AbstractRole {
 	@Mandatory
 	@ValidMoment(past = true)
 	@Temporal(value = TemporalType.TIMESTAMP)
-	private Moment				birthDate;
+	private Date				birthDate;
 
 	@Optional
 	@ValidUrl
