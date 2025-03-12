@@ -6,8 +6,7 @@ import java.util.Date;
 
 import javax.persistence.Entity;
 
-import org.dom4j.tree.AbstractEntity;
-
+import acme.client.components.basis.AbstractEntity;
 import acme.client.components.datatypes.Money;
 import acme.client.components.mappings.Automapped;
 import acme.client.components.validation.Mandatory;
