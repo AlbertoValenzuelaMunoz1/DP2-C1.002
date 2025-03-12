@@ -24,6 +24,8 @@ import lombok.Setter;
 @Setter
 public class Manager extends AbstractRole {
 
+	private static final long	serialVersionUID	= 1L;
+
 	@Mandatory
 	@ValidIdentifier
 	@Column(unique = true)
