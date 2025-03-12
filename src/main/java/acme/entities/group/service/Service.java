@@ -1,5 +1,5 @@
 
-package acme.entities;
+package acme.entities.group.service;
 
 import javax.persistence.Entity;
 import javax.persistence.ManyToOne;
@@ -15,6 +15,7 @@ import acme.client.components.validation.ValidMoney;
 import acme.client.components.validation.ValidNumber;
 import acme.client.components.validation.ValidString;
 import acme.client.components.validation.ValidUrl;
+import acme.entities.group.airport.Airport;
 import lombok.Getter;
 import lombok.Setter;
 

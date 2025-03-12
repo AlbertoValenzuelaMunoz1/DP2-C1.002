@@ -1,5 +1,5 @@
 
-package acme.entities;
+package acme.entities.student2.booking;
 
 import java.util.Date;
 
@@ -20,6 +20,9 @@ import acme.client.components.validation.ValidMoment;
 import acme.client.components.validation.ValidMoney;
 import acme.client.components.validation.ValidString;
 import acme.datatypes.TravelClass;
+import acme.entities.student1.flight.Flight;
+import acme.entities.student2.customer.Customer;
+import acme.entities.student2.passenger.Passenger;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -34,30 +37,37 @@ public class Booking extends AbstractEntity {
 	@Mandatory
 	@Valid
 	private Customer			customer;
+
 	@ManyToOne
 	@Mandatory
 	@Valid
 	private Flight				flight;
+
 	@OneToOne
 	@Mandatory
 	@Valid
 	private Passenger			passenger;
+
 	@Mandatory
 	@Column(unique = true)
 	@ValidString(pattern = "^[A-Z0-9]{6,8}$")
 	private String				locatorCode;
+
 	@Mandatory
 	@Temporal(TemporalType.TIMESTAMP)
 	@ValidMoment(past = true)
 	private Date				purchaseMoment;
+
 	@Mandatory
 	@Automapped
 	@Valid
 	private TravelClass			travelClass;
+
 	@Mandatory
 	@Automapped
 	@ValidMoney(min = 0.)
 	private Money				price;
+
 	@Optional
 	@Automapped
 	@ValidString(min = 4, max = 4, pattern = "^[0-9]{4}$")

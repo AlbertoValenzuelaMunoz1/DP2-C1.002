@@ -1,5 +1,7 @@
 
-package acme.entities;
+package acme.entities.student1.manager;
+
+import java.util.Date;
 
 import javax.persistence.Entity;
 import javax.persistence.ManyToOne;
@@ -7,7 +9,6 @@ import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
 import acme.client.components.basis.AbstractRole;
-import acme.client.components.datatypes.Moment;
 import acme.client.components.mappings.Automapped;
 import acme.client.components.validation.Mandatory;
 import acme.client.components.validation.Optional;
@@ -15,6 +16,7 @@ import acme.client.components.validation.ValidMoment;
 import acme.client.components.validation.ValidNumber;
 import acme.client.components.validation.ValidString;
 import acme.client.components.validation.ValidUrl;
+import acme.entities.group.airline.Airline;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -38,7 +40,7 @@ public class Manager extends AbstractRole {
 	@Mandatory
 	@ValidMoment(past = true)
 	@Temporal(value = TemporalType.TIMESTAMP)
-	private Moment				birthDate;
+	private Date				birthDate;
 
 	@Optional
 	@ValidUrl

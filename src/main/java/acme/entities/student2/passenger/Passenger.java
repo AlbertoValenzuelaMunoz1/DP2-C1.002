@@ -1,5 +1,5 @@
 
-package acme.entities;
+package acme.entities.student2.passenger;
 
 import java.util.Date;
 
@@ -11,8 +11,8 @@ import acme.client.components.basis.AbstractEntity;
 import acme.client.components.mappings.Automapped;
 import acme.client.components.validation.Mandatory;
 import acme.client.components.validation.Optional;
+import acme.client.components.validation.ValidEmail;
 import acme.client.components.validation.ValidMoment;
-import acme.client.components.validation.ValidNumber;
 import acme.client.components.validation.ValidString;
 import lombok.Getter;
 import lombok.Setter;
@@ -20,37 +20,31 @@ import lombok.Setter;
 @Entity
 @Getter
 @Setter
-public class Review extends AbstractEntity {
+public class Passenger extends AbstractEntity {
 
 	private static final long	serialVersionUID	= 1L;
+	@Mandatory
+	@Automapped
+	@ValidString(max = 255, min = 1)
+	private String				fullName;
 
 	@Mandatory
 	@Automapped
-	@ValidString(max = 50)
-	private String				name;
+	@ValidEmail
+	private String				email;
 
 	@Mandatory
-	@Temporal(value = TemporalType.TIMESTAMP)
+	@Automapped
+	@ValidString(pattern = "^[A-Z0-9]{6,9}$")
+	private String				passportNumber;
+
+	@Mandatory
+	@Temporal(TemporalType.TIMESTAMP)
 	@ValidMoment(past = true)
-	private Date				moment;
-
-	@Mandatory
-	@Automapped
-	@ValidString(max = 50)
-	private String				subject;
-
-	@Mandatory
-	@Automapped
-	@ValidString(max = 255)
-	private String				text;
+	private Date				dateOfBirth;
 
 	@Optional
 	@Automapped
-	@ValidNumber(min = 0, max = 10, integer = 2, fraction = 2)
-	private Double				score;
-
-	@Optional
-	@Automapped
-	private Boolean				recommendation;
-
+	@ValidString(max = 50, min = 0)
+	private String				specialNeeds;
 }
