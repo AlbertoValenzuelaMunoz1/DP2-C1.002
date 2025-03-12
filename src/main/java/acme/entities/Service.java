@@ -4,7 +4,6 @@ package acme.entities;
 import javax.persistence.Entity;
 import javax.persistence.ManyToOne;
 import javax.validation.Valid;
-import javax.validation.constraints.PositiveOrZero;
 
 import acme.client.components.basis.AbstractEntity;
 import acme.client.components.datatypes.Money;
@@ -33,19 +32,17 @@ public class Service extends AbstractEntity {
 
 	@Mandatory
 	@ValidUrl
-	@ValidString(max = 50)
 	@Automapped
 	private String				imageLink;
 
 	@Mandatory
-	@PositiveOrZero
-	@ValidNumber(integer = 3, fraction = 2)
+	@ValidNumber(min = 0, integer = 3, fraction = 2)
 	@Automapped
 	private Double				averageDwellTime;
 
 	@Optional
 	@ValidScore
-	@ValidString(pattern = "^[A-Z]{4}-[0-9]{2}$", message = "El código promocional no es válido. Debe ser de 4 letras y 2 dígitos.")
+	@ValidString(pattern = "^[A-Z]{4}-[0-9]{2}$")
 	@Automapped
 	private String				promotionCode;
 
