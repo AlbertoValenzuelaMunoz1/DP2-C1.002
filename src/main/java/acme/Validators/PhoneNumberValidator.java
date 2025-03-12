@@ -39,7 +39,7 @@ public class PhoneNumberValidator extends AbstractValidator<ValidPhoneNumber, St
 			result = Pattern.matches(this.phonePattern, value);
 
 			if (!result)
-				HibernateHelper.replaceParameter(context, "placeholder", "acme.validation.phonenumber");
+				HibernateHelper.replaceParameter(context, "placeholder", "acme.validation.phonenumber.message");
 		}
 
 		return result;
