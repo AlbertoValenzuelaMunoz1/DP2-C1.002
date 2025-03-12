@@ -60,7 +60,8 @@ public class TrackingLogs extends AbstractEntity {
 
 	@Optional
 	@Automapped
-	@acme.Validators.ValidResolution
+	@ValidString
+	//@ValidResolution
 	private String				resolutionDetails;
 
 	@Mandatory
