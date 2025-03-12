@@ -2,6 +2,7 @@
 package acme.entities.student1.flight;
 
 import java.beans.Transient;
+import java.util.Date;
 
 import javax.persistence.Entity;
 
@@ -66,7 +67,7 @@ public class Flight extends AbstractEntity {
 
 		LegRepository legRepository = SpringHelper.getBean(LegRepository.class);
 
-		return legRepository.firstFlightLeg(this).getDepartureAirport;
+		return legRepository.firstFlightLeg(this).getDepartureAirport();
 	}
 
 	@Transient
