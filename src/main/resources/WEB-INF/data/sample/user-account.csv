@@ -7,3 +7,6 @@ user-account-provider-02,true,"UserIdentity{name: 'Martina', surname: 'коза 
 user-account-provider-03,true,"UserIdentity{name: 'Antonia', surname: 'אבטיח Æløzå', email: 'antonia@acme.com'}",provider3,provider3
 user-account-administrator-02,true,"UserIdentity{name: 'Alberto', surname: 'โลเร็ม อิปซัม',email: 'alberto@acme.com'}",administrator1,administrator1
 user-account-administrator-03,true,"UserIdentity{name: 'Juan', surname: '洛伦·伊普森',email: 'juan@acme.com'}",administrator2,administrator2
+user-account-customer-01,true,"UserIdentity{name: 'Customer', surname: '洛伦·伊普森',email: 'juan@customer.com'}",customer1,customer1
+user-account-customer-02,true,"UserIdentity{name: '洛伦·伊普森', surname: '洛伦·伊普森',email: 'customer2@acme.com'}",customer2,customer2
+user-account-customer-03,true,"UserIdentity{name: 'customer3', surname: '洛伦·伊普森',email: 'customer3@acme.com'}",customer3,customer3
