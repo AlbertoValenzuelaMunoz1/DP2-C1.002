@@ -4,11 +4,12 @@ package acme.entities.student3.flightAssignment;
 import java.util.Date;
 
 import javax.persistence.Entity;
-import javax.persistence.EnumType;
-import javax.persistence.Enumerated;
 import javax.persistence.ManyToOne;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
+import javax.validation.Valid;
 
-import acme.client.components.basis.AbstractRole;
+import acme.client.components.basis.AbstractEntity;
 import acme.client.components.mappings.Automapped;
 import acme.client.components.validation.Mandatory;
 import acme.client.components.validation.Optional;
@@ -24,7 +25,7 @@ import lombok.Setter;
 @Entity
 @Getter
 @Setter
-public class FlightAssignment extends AbstractRole {
+public class FlightAssignment extends AbstractEntity {
 
 	// Serialisation version --------------------------------------------------
 
@@ -34,17 +35,17 @@ public class FlightAssignment extends AbstractRole {
 
 	@Automapped
 	@Mandatory
-	@Enumerated(EnumType.STRING)
+	@Valid
 	private FlightDuty			duty;
 
-	@Automapped
 	@Mandatory
 	@ValidMoment(past = true)
+	@Temporal(TemporalType.TIMESTAMP)
 	private Date				lastUpdate;
 
 	@Automapped
 	@Mandatory
-	@Enumerated(EnumType.STRING)
+	@Valid
 	private AssignmentStatus	status;
 
 	@Automapped
@@ -56,13 +57,13 @@ public class FlightAssignment extends AbstractRole {
 
 	// Relationships ----------------------------------------------------------
 
-	@Automapped
 	@Mandatory
+	@Valid
 	@ManyToOne(optional = false)
 	private FlightCrewMember	flightCrewMember;
 
-	@Automapped
 	@Mandatory
+	@Valid
 	@ManyToOne(optional = false)
 	private Leg					flightLeg;
 }

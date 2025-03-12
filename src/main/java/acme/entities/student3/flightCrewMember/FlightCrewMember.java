@@ -6,10 +6,13 @@ import javax.persistence.Entity;
 import javax.persistence.ManyToOne;
 import javax.validation.Valid;
 
+import acme.Validators.ValidPhoneNumber;
 import acme.client.components.basis.AbstractRole;
+import acme.client.components.datatypes.Money;
 import acme.client.components.mappings.Automapped;
 import acme.client.components.validation.Mandatory;
 import acme.client.components.validation.Optional;
+import acme.client.components.validation.ValidMoney;
 import acme.client.components.validation.ValidNumber;
 import acme.client.components.validation.ValidString;
 import acme.datatypes.AvailabilityStatus;
@@ -35,7 +38,7 @@ public class FlightCrewMember extends AbstractRole {
 
 	@Automapped
 	@Mandatory
-	@ValidString(pattern = "^\\+?\\d{6,15}$")
+	@ValidPhoneNumber
 	private String				phoneNumber;
 
 	@Automapped
@@ -50,8 +53,8 @@ public class FlightCrewMember extends AbstractRole {
 
 	@Automapped
 	@Mandatory
-	@ValidNumber(min = 0)
-	private double				salary;
+	@ValidMoney
+	private Money				salary;
 
 	@Automapped
 	@Optional
@@ -63,7 +66,7 @@ public class FlightCrewMember extends AbstractRole {
 	// Relationships ----------------------------------------------------------
 
 	@Mandatory
-	@Automapped
+	@Valid
 	@ManyToOne(optional = false)
 	private Airline				airline;
 

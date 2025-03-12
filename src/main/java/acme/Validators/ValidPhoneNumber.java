@@ -1,6 +1,7 @@
 
-package Validators;
+package acme.Validators;
 
+import java.lang.annotation.Documented;
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
@@ -8,19 +9,18 @@ import java.lang.annotation.Target;
 
 import javax.validation.Constraint;
 import javax.validation.Payload;
-import javax.validation.ReportAsSingleViolation;
-import javax.validation.constraints.Pattern;
 
 @Target(ElementType.FIELD)
 @Retention(RetentionPolicy.RUNTIME)
-@Constraint(validatedBy = {})
-@ReportAsSingleViolation
+@Documented
 
-@Pattern(regexp = "^[A-Z]{2-3}\\\\d{6}$")
-public @interface ValidIdentifier {
+@Constraint(validatedBy = PhoneNumberValidator.class)
 
-	String message() default "Identificador no válido.";
+public @interface ValidPhoneNumber {
 
+	// Standard validation properties -----------------------------------------
+
+	String message() default "{placeholder}";
 	Class<?>[] groups() default {};
 	Class<? extends Payload>[] payload() default {};
 
