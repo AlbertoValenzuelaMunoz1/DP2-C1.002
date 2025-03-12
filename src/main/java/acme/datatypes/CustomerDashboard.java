@@ -1,6 +1,7 @@
 
 package acme.datatypes;
 
+import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
 
@@ -16,13 +17,14 @@ import lombok.Setter;
 public class CustomerDashboard {
 
 	private Double					moneySpent;
+	private List<String>			lastDestinations;
 	private Map<TravelClass, Long>	bookings;
-	private Long					countBookingsLastFiveYears;
+	private Long					countPriceLastFiveYears;
 	private Double					averageBookingsCost;
 	private Double					minBookingsCost;
 	private Double					maxBookingsCost;
 	private Double					standardDesviationBookingsCost;
-	private Long					countBookings;
+	private Long					countPassengers;
 
 	private Double					averagePassengers;
 	private Integer					minPassengers;
@@ -36,7 +38,8 @@ public class CustomerDashboard {
 		this.moneySpent = repository.findMoneySpent(customer);
 		this.bookings = repository.findBookingsPerTravelClass(customer).stream().collect(Collectors.toMap(x -> (TravelClass) x[1], x -> (Long) x[0]));
 		this.updateCostStatistics(repository, customer);
-		this.countBookings = repository.findCountBookingPassenger(customer);
+		//this.lastDestinations = repository.findLastFlights(customer).stream().map(Flight::destination).limit(5).toList();
+		this.countPassengers = repository.findCountBookingPassenger(customer);
 		this.averagePassengers = repository.findAverageBookingPassenger(customer);
 		this.minPassengers = repository.findMinBookingPassenger(customer);
 		this.maxPassengers = repository.findMaxBookingPassenger(customer);
@@ -44,7 +47,7 @@ public class CustomerDashboard {
 	private void updateCostStatistics(final CustomerRepository repository, final Customer customer) {
 		@SuppressWarnings("deprecation")
 		Object[] statistics = repository.findCostStatistics(customer, MomentHelper.getCurrentMoment().getYear() - 5);
-		this.countBookingsLastFiveYears = (Long) statistics[0];
+		this.countPriceLastFiveYears = (Long) statistics[0];
 		this.averageBookingsCost = (Double) statistics[1];
 		this.minBookingsCost = (Double) statistics[2];
 		this.maxBookingsCost = (Double) statistics[3];
