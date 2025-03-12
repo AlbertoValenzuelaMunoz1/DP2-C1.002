@@ -1,5 +1,5 @@
 
-package acme.constraints;
+package acme.Validators;
 
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;
@@ -20,7 +20,7 @@ import acme.client.components.validation.Validator;
 @Constraint(validatedBy = ValidPromotionCode.PromotionCodeValidator.class)
 public @interface ValidPromotionCode {
 
-	String message() default "Código promocional no válido";
+	String message() default "acme.validation.promotion-code.invalid";
 
 	Class<?>[] groups() default {};
 
@@ -28,35 +28,38 @@ public @interface ValidPromotionCode {
 
 
 	@Validator
-	public static class PromotionCodeValidator extends AbstractValidator<ValidPromotionCode, String> {
+	class PromotionCodeValidator extends AbstractValidator<ValidPromotionCode, String> {
 
 		private static final Pattern PROMO_CODE_PATTERN = Pattern.compile("^[A-Z]{4}-[0-9]{2}$");
 
 
 		@Override
+		public void initialize(final ValidPromotionCode annotation) {
+			assert annotation != null;
+		}
+
+		@Override
 		public boolean isValid(final String promotionCode, final ConstraintValidatorContext context) {
+			assert context != null;
+
 			if (promotionCode == null)
-				return true; // El código es opcional, se permite null
+				return true; // Se permite null, es opcional
 
-			if (!PromotionCodeValidator.PROMO_CODE_PATTERN.matcher(promotionCode).matches()) {
-				context.buildConstraintViolationWithTemplate("El formato debe ser AAAA-99").addConstraintViolation();
-				return false;
-			}
+			boolean patternMatched = PromotionCodeValidator.PROMO_CODE_PATTERN.matcher(promotionCode).matches();
+			super.state(context, patternMatched, "*", "acme.validation.promotion-code.mismatch");
 
+			boolean lastTwoDigitsMatchYear = false;
 			try {
-				int añoActual = Year.now().getValue() % 100;
-				int añoCodigo = Integer.parseInt(promotionCode.substring(5));
-
-				if (añoCodigo != añoActual && añoCodigo != añoActual - 1) {
-					context.buildConstraintViolationWithTemplate("Los últimos dígitos deben ser el año actual o el anterior").addConstraintViolation();
-					return false;
-				}
-			} catch (NumberFormatException e) {
-				context.buildConstraintViolationWithTemplate("Error al procesar el código promocional").addConstraintViolation();
-				return false;
+				int year = Year.now().getValue() % 100;
+				String lastTwoDigitsString = promotionCode.substring(5);
+				int lastTwoDigits = Integer.parseInt(lastTwoDigitsString);
+				lastTwoDigitsMatchYear = lastTwoDigits == year;
+			} catch (NumberFormatException | StringIndexOutOfBoundsException e) {
+				lastTwoDigitsMatchYear = false;
 			}
 
-			return true;
+			super.state(context, lastTwoDigitsMatchYear, "*", "acme.validation.promotion-code.year-mismatch");
+			return !super.hasErrors(context);
 		}
 	}
 }
