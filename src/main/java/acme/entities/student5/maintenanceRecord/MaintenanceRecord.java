@@ -1,25 +1,25 @@
 
-package acme.entities;
+package acme.entities.student5.maintenanceRecord;
 
 import java.util.Date;
 
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
-import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
-import javax.validation.constraints.FutureOrPresent;
 
 import acme.client.components.basis.AbstractEntity;
 import acme.client.components.datatypes.Money;
 import acme.client.components.mappings.Automapped;
 import acme.client.components.validation.Mandatory;
 import acme.client.components.validation.Optional;
+import acme.client.components.validation.ValidMoment;
 import acme.client.components.validation.ValidMoney;
 import acme.client.components.validation.ValidString;
 import acme.datatypes.enums.Status;
+import acme.entities.student5.technician.Technician;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -31,7 +31,7 @@ public class MaintenanceRecord extends AbstractEntity {
 	private static final long	serialVersionUID	= 1L;
 
 	@Mandatory
-	// @ValidMoment(past = true)
+	@ValidMoment(past = true)
 	@Temporal(TemporalType.TIMESTAMP)
 	private Date				moment;
 
@@ -41,9 +41,9 @@ public class MaintenanceRecord extends AbstractEntity {
 	private Status				status;
 
 	@Mandatory
-	@FutureOrPresent
-	@Temporal(TemporalType.TIMESTAMP)
-	private Date				nextInspectionDueDate;
+	@ValidString(pattern = "^[A-Za-z0-9]{6,8}$")
+	@Automapped
+	private String				nextInspectionDueDate;
 
 	@Mandatory
 	@ValidMoney(min = 0)
@@ -51,13 +51,12 @@ public class MaintenanceRecord extends AbstractEntity {
 	private Money				estimateCost;
 
 	@Optional
-	@ValidString(max = 255)
+	@ValidString(min = 1, max = 255)
 	@Automapped
 	private String				notes;
 
 	// Un tecnico puede tener varios registros de mantenimiento
 
 	@ManyToOne
-	@JoinColumn(name = "technician_id")
 	private Technician			technician;
 }
