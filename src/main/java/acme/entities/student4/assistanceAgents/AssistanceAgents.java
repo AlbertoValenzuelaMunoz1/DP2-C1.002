@@ -54,12 +54,12 @@ public class AssistanceAgents extends AbstractRole {
 	//	private List<String>		spokenLanguages;
 
 	@Mandatory
-	@ManyToOne
+	@ManyToOne(optional = false)
 	@Valid
 	private Airline				airline;
 
 	@Mandatory
-	@Temporal(TemporalType.DATE)
+	@Temporal(TemporalType.TIMESTAMP)
 	@ValidMoment(past = true)
 	private Date				employmentStartDate;
 
