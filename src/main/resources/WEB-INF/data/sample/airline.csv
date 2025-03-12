@@ -1,0 +1,5 @@
+key,name,iata_code,website,foundation_moment,type,email,phone_number
+airline-01,Iberia,IBX,http://www.iberia.com,2000/01/02 00:00,STANDARD,contact@iberia.com,+34913211100
+airline-02,Vueling,VUX,http://www.vueling.com,2000/01/02 00:00,LOW-COST,support@vueling.com,+34932234567
+airline-03,Lufthansa,LHX,http://www.lufthansa.com,2000/01/02 00:00,LUXURY,info@lufthansa.com,+4911122334455
+airline-04,Air France,AFX,http://www.airfrance.com,2000/01/02 00:00,STANDARD,customers@airfrance.com,+33123456789

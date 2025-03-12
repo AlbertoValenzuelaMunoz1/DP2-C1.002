@@ -4,7 +4,7 @@ package acme.entities.student4.tranckingLogs;
 import java.util.Date;
 
 import javax.persistence.Entity;
-import javax.persistence.OneToOne;
+import javax.persistence.ManyToOne;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.validation.Valid;
@@ -64,7 +64,7 @@ public class TrackingLogs extends AbstractEntity {
 	private String				resolutionDetails;
 
 	@Mandatory
-	@OneToOne
+	@ManyToOne
 	@Valid
 	private Claim				belongsTo;
 
