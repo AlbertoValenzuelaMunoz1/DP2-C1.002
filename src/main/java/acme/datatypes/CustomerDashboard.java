@@ -1,7 +1,6 @@
 
 package acme.datatypes;
 
-import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
 
@@ -23,7 +22,7 @@ public class CustomerDashboard {
 	private Double					minBookingsCost;
 	private Double					maxBookingsCost;
 	private Double					standardDesviationBookingsCost;
-	private Integer					countBookings;
+	private Long					countBookings;
 
 	private Double					averagePassengers;
 	private Integer					minPassengers;
@@ -37,7 +36,10 @@ public class CustomerDashboard {
 		this.moneySpent = repository.findMoneySpent(customer);
 		this.bookings = repository.findBookingsPerTravelClass(customer).stream().collect(Collectors.toMap(x -> (TravelClass) x[1], x -> (Long) x[0]));
 		this.updateCostStatistics(repository, customer);
-		this.updatePassengerStatistics(repository, customer);
+		this.countBookings = repository.findCountBookingPassenger(customer);
+		this.averagePassengers = repository.findAverageBookingPassenger(customer);
+		this.minPassengers = repository.findMinBookingPassenger(customer);
+		this.maxPassengers = repository.findMaxBookingPassenger(customer);
 	}
 	private void updateCostStatistics(final CustomerRepository repository, final Customer customer) {
 		@SuppressWarnings("deprecation")
@@ -47,14 +49,6 @@ public class CustomerDashboard {
 		this.minBookingsCost = (Double) statistics[2];
 		this.maxBookingsCost = (Double) statistics[3];
 		this.standardDesviationBookingsCost = (Double) statistics[4];
-	}
-	private void updatePassengerStatistics(final CustomerRepository repository, final Customer customer) {
-		List<Long> numberPassengers = repository.findNumberOfPassengersPerBooking(customer);
-		this.countBookings = numberPassengers.size();
-		this.averagePassengers = numberPassengers.stream().mapToDouble(Long::doubleValue).average().orElse(0);
-		this.maxPassengers = numberPassengers.stream().mapToInt(Long::intValue).max().orElse(0);
-		this.minPassengers = numberPassengers.stream().mapToInt(Long::intValue).min().orElse(0);
-		this.standardDesviationPassengers = Math.sqrt(numberPassengers.stream().mapToDouble(c -> Math.pow(c - this.averagePassengers, 2)).average().orElse(0));
 	}
 
 }
