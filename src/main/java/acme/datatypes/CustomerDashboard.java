@@ -1,6 +1,7 @@
 
 package acme.datatypes;
 
+import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
 
@@ -22,7 +23,7 @@ public class CustomerDashboard {
 	private Double					minBookingsCost;
 	private Double					maxBookingsCost;
 	private Double					standardDesviationBookingsCost;
-	private Long					countBookings;
+	private Integer					countBookings;
 
 	private Double					averagePassengers;
 	private Integer					minPassengers;
@@ -48,12 +49,12 @@ public class CustomerDashboard {
 		this.standardDesviationBookingsCost = (Double) statistics[4];
 	}
 	private void updatePassengerStatistics(final CustomerRepository repository, final Customer customer) {
-		Object[] statistics = repository.findPassengerStatistics(customer);
-		this.countBookings = (Long) statistics[0];
-		this.averagePassengers = (Double) statistics[1];
-		this.maxPassengers = (Integer) statistics[2];
-		this.minPassengers = (Integer) statistics[3];
-		this.standardDesviationPassengers = (Double) statistics[4];
+		List<Long> numberPassengers = repository.findNumberOfPassengersPerBooking(customer);
+		this.countBookings = numberPassengers.size();
+		this.averagePassengers = numberPassengers.stream().mapToDouble(Long::doubleValue).average().orElse(0);
+		this.maxPassengers = numberPassengers.stream().mapToInt(Long::intValue).max().orElse(0);
+		this.minPassengers = numberPassengers.stream().mapToInt(Long::intValue).min().orElse(0);
+		this.standardDesviationPassengers = Math.sqrt(numberPassengers.stream().mapToDouble(c -> Math.pow(c - this.averagePassengers, 2)).average().orElse(0));
 	}
 
 }

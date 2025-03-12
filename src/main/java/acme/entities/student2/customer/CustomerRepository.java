@@ -19,6 +19,13 @@ public interface CustomerRepository extends AbstractRepository {
 	public List<Object[]> findBookingsPerTravelClass(final Customer customer);
 	@Query("select count(b),avg(b.price.amount),min(b.price.amount),max(b.price.amount),stddev(b.price.amount) from Booking b where b.customer=:customer and year(b.purchaseMoment)>=:minimumYear")
 	public Object[] findCostStatistics(final Customer customer, Integer minimumYear);
-	@Query("select count(count(r.booking)),avg(count(r.booking)),max(count(r.booking)),min(count(r.booking)),stddev(count(r.booking)) from BookingRecord r where r.booking.customer=:customer group by r.booking")
-	public Object[] findPassengerStatistics(final Customer customer);
+	/*
+	 * No es posible sacar la media, el máximo, el mínimo, etc en la consulta porque
+	 * jpql no admite subconsultas dentro del from, en sql sí sería posible pero para
+	 * seguir las pautas de la asignatura se realizará en jpql y solo se obtendrá el numero
+	 * de pasageros por booking y los cálculos estadísticos se harán una vez obtenida
+	 * la consulta
+	 */
+	@Query("select count(r.booking) from BookingRecord r where r.booking.customer=:customer group by r.booking")
+	public List<Long> findNumberOfPassengersPerBooking(final Customer customer);
 }
