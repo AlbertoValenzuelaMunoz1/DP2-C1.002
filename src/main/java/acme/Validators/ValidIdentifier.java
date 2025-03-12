@@ -1,5 +1,5 @@
 
-package Validators;
+package acme.Validators;
 
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;
@@ -19,7 +19,7 @@ import javax.validation.constraints.Pattern;
 @Pattern(regexp = "^[A-Z]{2-3}\\\\d{6}$")
 public @interface ValidIdentifier {
 
-	String message() default "Identificador no válido.";
+	String message() default "{javax.validation.constraints.Pattern.message}";
 
 	Class<?>[] groups() default {};
 	Class<? extends Payload>[] payload() default {};
