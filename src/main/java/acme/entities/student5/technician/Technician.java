@@ -1,8 +1,9 @@
 
-package acme.entities;
+package acme.entities.student5.technician;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.validation.Valid;
 
 import acme.client.components.basis.AbstractRole;
 import acme.client.components.mappings.Automapped;
@@ -31,16 +32,17 @@ public class Technician extends AbstractRole {
 	private String				phoneNumber;
 
 	@Mandatory
-	@ValidString(max = 50)
+	@ValidString(min = 1, max = 50)
 	@Automapped
 	private String				specialization;
 
 	@Mandatory
+	@Valid
 	@Automapped
 	private Boolean				annualHealthTest;
 
 	@Mandatory
-	@ValidNumber(min = 0, integer = 2, fraction = 0)
+	@ValidNumber(min = 0, integer = 3, fraction = 0)
 	@Automapped
 	private Integer				yearsOfExperience;
 
