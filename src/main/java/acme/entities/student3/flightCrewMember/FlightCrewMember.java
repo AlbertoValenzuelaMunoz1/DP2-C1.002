@@ -11,6 +11,7 @@ import acme.client.components.mappings.Automapped;
 import acme.client.components.validation.Mandatory;
 import acme.client.components.validation.Optional;
 import acme.client.components.validation.ValidNumber;
+import acme.client.components.validation.ValidPhoneNumber;
 import acme.client.components.validation.ValidString;
 import acme.datatypes.AvailabilityStatus;
 import acme.entities.group.airline.Airline;
@@ -35,7 +36,7 @@ public class FlightCrewMember extends AbstractRole {
 
 	@Automapped
 	@Mandatory
-	@ValidString(pattern = "^\\+?\\d{6,15}$")
+	@ValidPhoneNumber
 	private String				phoneNumber;
 
 	@Automapped

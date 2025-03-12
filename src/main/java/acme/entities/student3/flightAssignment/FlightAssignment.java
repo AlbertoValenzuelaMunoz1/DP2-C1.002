@@ -4,9 +4,8 @@ package acme.entities.student3.flightAssignment;
 import java.util.Date;
 
 import javax.persistence.Entity;
-import javax.persistence.EnumType;
-import javax.persistence.Enumerated;
 import javax.persistence.ManyToOne;
+import javax.validation.Valid;
 
 import acme.client.components.basis.AbstractRole;
 import acme.client.components.mappings.Automapped;
@@ -34,7 +33,7 @@ public class FlightAssignment extends AbstractRole {
 
 	@Automapped
 	@Mandatory
-	@Enumerated(EnumType.STRING)
+	@Valid
 	private FlightDuty			duty;
 
 	@Automapped
@@ -44,7 +43,7 @@ public class FlightAssignment extends AbstractRole {
 
 	@Automapped
 	@Mandatory
-	@Enumerated(EnumType.STRING)
+	@Valid
 	private AssignmentStatus	status;
 
 	@Automapped
