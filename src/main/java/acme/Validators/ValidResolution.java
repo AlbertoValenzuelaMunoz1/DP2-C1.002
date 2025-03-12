@@ -10,12 +10,11 @@ import java.lang.annotation.Target;
 import javax.validation.Constraint;
 import javax.validation.Payload;
 
-@Documented
-@Constraint(validatedBy = ResolutionValidator.class)
-@Target({
-	ElementType.FIELD
-})
+@Target(ElementType.FIELD)
 @Retention(RetentionPolicy.RUNTIME)
+@Documented
+
+@Constraint(validatedBy = ResolutionValidator.class)
 public @interface ValidResolution {
 
 	int min() default 0;
