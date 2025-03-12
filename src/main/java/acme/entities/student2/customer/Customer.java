@@ -4,6 +4,7 @@ package acme.entities.student2.customer;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 
+import acme.Validators.ValidPhoneNumber;
 import acme.client.components.basis.AbstractRole;
 import acme.client.components.mappings.Automapped;
 import acme.client.components.validation.Mandatory;
@@ -25,7 +26,7 @@ public class Customer extends AbstractRole {
 
 	@Mandatory
 	@Automapped
-	@ValidString(pattern = "^\\+?\\d{6,15}$")
+	@ValidPhoneNumber
 	private String				phoneNumber;
 
 	@Mandatory
