@@ -32,7 +32,7 @@ public class Review extends AbstractEntity {
 	@Mandatory
 	@Temporal(value = TemporalType.TIMESTAMP)
 	@ValidMoment(past = true)
-	private Date				moment;
+	private Date				postedAt;
 
 	@Mandatory
 	@Automapped
@@ -51,6 +51,6 @@ public class Review extends AbstractEntity {
 
 	@Optional
 	@Automapped
-	private Boolean				recommendation;
+	private boolean				recommendation;
 
 }

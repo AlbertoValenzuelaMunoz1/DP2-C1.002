@@ -1,0 +1,5 @@
+key,name,posted_at,subject,text,score,recommendation
+review-01,"L",2000/01/01 0:00,"L","L",0.0,true
+review-02,"Lo",2000/01/01 0:01,"Lo","Lo",0.1,true
+review-03,"Lorem ipsum dolor sit amet, consectetur adipiscin",2010/12/31 23:59,"Lorem ipsum dolor sit amet, consectetur adipiscin","Lorem ipsum dolor sit amet, consectetur adipiscin",9.9,false
+review-04,"Lorem ipsum dolor sit amet, consectetur adipiscing",2014/10/20 10:30,"Lorem ipsum dolor sit amet, consectetur adipiscing","Lorem ipsum dolor sit amet, consectetur adipiscing",10.0,false
