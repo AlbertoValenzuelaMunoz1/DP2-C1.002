@@ -2,12 +2,14 @@
 package acme.entities.student2.booking;
 
 import java.util.Date;
+import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.ManyToOne;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import javax.persistence.Transient;
 import javax.validation.Valid;
 
 import acme.client.components.basis.AbstractEntity;
@@ -18,6 +20,7 @@ import acme.client.components.validation.Optional;
 import acme.client.components.validation.ValidMoment;
 import acme.client.components.validation.ValidMoney;
 import acme.client.components.validation.ValidString;
+import acme.client.helpers.SpringHelper;
 import acme.datatypes.TravelClass;
 import acme.entities.student1.flight.Flight;
 import acme.entities.student2.customer.Customer;
@@ -65,5 +68,12 @@ public class Booking extends AbstractEntity {
 	@Automapped
 	@ValidString(min = 4, max = 4, pattern = "^[0-9]{4}$")
 	private String				lastNibble;
+
+
+	@Transient
+	public List<Passenger> passengers() {
+		BookingRecordRepository repository = SpringHelper.getBean(BookingRecordRepository.class);
+		return repository.findPassengersBooking(this);
+	}
 
 }
