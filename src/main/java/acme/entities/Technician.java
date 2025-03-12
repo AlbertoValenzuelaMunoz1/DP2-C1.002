@@ -3,7 +3,6 @@ package acme.entities;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.validation.constraints.PositiveOrZero;
 
 import acme.client.components.basis.AbstractRole;
 import acme.client.components.mappings.Automapped;
@@ -37,13 +36,11 @@ public class Technician extends AbstractRole {
 	private String				specialization;
 
 	@Mandatory
-	// @AssertTrue
 	@Automapped
 	private Boolean				annualHealthTest;
 
 	@Mandatory
-	@PositiveOrZero
-	@ValidNumber(integer = 2, fraction = 0)
+	@ValidNumber(min = 0, integer = 2, fraction = 0)
 	@Automapped
 	private Integer				yearsOfExperience;
 
