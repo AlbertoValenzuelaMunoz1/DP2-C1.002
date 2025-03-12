@@ -14,10 +14,12 @@ import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.validation.Valid;
 
+import acme.client.components.basis.AbstractEntity;
 import acme.client.components.mappings.Automapped;
 import acme.client.components.validation.Mandatory;
 import acme.client.components.validation.ValidMoment;
 import acme.client.components.validation.ValidString;
+import acme.entities.group.aircraft.Aircraft;
 import acme.entities.group.airport.Airport;
 import acme.entities.student1.flight.Flight;
 import lombok.Getter;
@@ -26,7 +28,7 @@ import lombok.Setter;
 @Entity
 @Getter
 @Setter
-public class Leg {
+public class Leg extends AbstractEntity {
 
 	private static final long	serialVersionUID	= 1L;
 
@@ -57,6 +59,11 @@ public class Leg {
 	@Mandatory
 	@Valid
 	@ManyToOne(optional = false)
+	private Aircraft			aircraft;
+
+	@Mandatory
+	@Valid
+	@ManyToOne(optional = false)
 	private Flight				flight;
 
 	@Mandatory
@@ -67,6 +74,7 @@ public class Leg {
 
 	@Transient
 	public int durationInHours() {
+
 		Instant departure = this.scheduledDeparture.toInstant();
 		Instant arrival = this.scheduledArrival.toInstant();
 
