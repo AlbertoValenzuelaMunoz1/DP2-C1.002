@@ -14,7 +14,7 @@ user-account-manager-01,true,"UserIdentity{name: 'Antonio', surname: 'ընդու
 user-account-manager-02,true,"UserIdentity{name: 'Alberto', surname: 'इलाका', email: 'alberto@acme.com'}",manager2,manager2
 user-account-manager-03,true,"UserIdentity{name: 'Fernando', surname: 'সালে যাত্রাবাড়িতে', email: 'fernandojacobo@acme.com'}",manager3,manager3
 user-account-member-01,true,"UserIdentity{name: 'Emily', surname: 'โลเร็ม อิปซัม', email: 'acme@lorem-ipsum.org'}", member1,member1
-user-account-member-02,true,"UserIdentity{name: 'Daniel', surname: 'لوريم إيبسوم', email: 'acme:password@lorem-ipsum.org'}", member2,member2
+user-account-member-02,true,"UserIdentity{name: 'Daniel', surname: 'لوريم إيبسوم', email: 'acmepassword@lorem-ipsum.org'}", member2,member2
 user-account-member-03,true,"UserIdentity{name: 'Sophia', surname: '洛伦·伊普森', email: 'a@b.e'}", member3,member3
 user-account-member-04,true,"UserIdentity{name: 'James', surname: 'Carter', email: 'a@b.es'}", member4,member4
 user-account-member-05,true,"UserIdentity{name: 'Olivia', surname: 'Morales', email: 'a@b.esx'}", member,member
