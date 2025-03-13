@@ -29,20 +29,20 @@ public class Manager extends AbstractRole {
 	@Mandatory
 	@ValidIdentifier
 	@Column(unique = true)
-	private String	identifier;
+	private String				identifier;
 
 	@Mandatory
-	@ValidNumber(max = 150, integer = 3)
+	@ValidNumber(min = 0, max = 150, integer = 3)
 	@Automapped
-	private int		yearsOfExperience;
+	private int					yearsOfExperience;
 
 	@Mandatory
 	@ValidMoment(past = true)
 	@Temporal(TemporalType.TIMESTAMP)
-	private Date	birthDate;
+	private Date				birthDate;
 
 	@Optional
 	@ValidUrl
-	private String	link;
+	private String				link;
 
 }
