@@ -58,5 +58,6 @@ public class MaintenanceRecord extends AbstractEntity {
 	// Un tecnico puede tener varios registros de mantenimiento
 
 	@ManyToOne
+	@Automapped
 	private Technician			technician;
 }
