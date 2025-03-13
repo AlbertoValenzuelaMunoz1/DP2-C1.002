@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<diagram program="umlet" version="15.1">
+  <zoom_level>8</zoom_level>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>56</x>
+      <y>360</y>
+      <w>520</w>
+      <h>120</h>
+    </coordinates>
+    <panel_attributes>«Entity»
+Technician
+--
++ licenseNumber: String {Mandatory, ValidString(pattern = "^[A-Z]{2,3}\d{6}$"), Column(unique = true)}
++ phoneNumber: String {Mandatory, ValidPhoneNumber, Automapped}
++ specialization: String {Mandatory, ValidString(min=1, max=50), Automapped}
++ annualHealthTest: Boolean {Mandatory, Valid, Automapped}
++ yearsOfExperience: Integer {Mandatory, ValidNumber(min=0, integer=3, fraction=0), Automapped}
++ certifications: String {Optional, ValidString(max=255), Automapped}</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>584</x>
+      <y>264</y>
+      <w>512</w>
+      <h>96</h>
+    </coordinates>
+    <panel_attributes>«Entity»
+Task
+--
++ taskType: TaskType {Mandatory, Automapped}
++ description: String {Mandatory, ValidString(min=1, max=255), Automapped}
++ priority: Integer {Mandatory, ValidNumber(min=0, max=10, fraction=0), Automapped}
++ estimatedDuration: Integer {Mandatory, ValidNumber(min=0, max=1000, fraction=0), Automapped}
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>8</x>
+      <y>160</y>
+      <w>512</w>
+      <h>112</h>
+    </coordinates>
+    <panel_attributes>«Entity»
+MaintenanceRecord
+--
++ moment: Date {Mandatory, ValidMoment(past=true), Temporal(TIMESTAMP)}
++ status: Status {Mandatory, Automapped}
++ nextInspectionDueDate: String {Mandatory, ValidString(pattern="^[A-Za-z0-9]{6,8}$"), Automapped}
++ estimatedCost: Money {Mandatory, ValidMoney(min=0), Automapped}
++ notes: String {Optional, ValidString(min=1, max=255), Automapped}</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>512</x>
+      <y>192</y>
+      <w>168</w>
+      <h>88</h>
+    </coordinates>
+    <panel_attributes>lt=x-&gt;
+m1=1
+m2=*
+relies on</panel_attributes>
+    <additional_attributes>10.0;20.0;190.0;20.0;190.0;90.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>568</x>
+      <y>352</y>
+      <w>168</w>
+      <h>88</h>
+    </coordinates>
+    <panel_attributes>lt=x-&gt;
+m1=1
+m2=*
+                                asigned to</panel_attributes>
+    <additional_attributes>10.0;80.0;130.0;80.0;130.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>376</x>
+      <y>264</y>
+      <w>64</w>
+      <h>112</h>
+    </coordinates>
+    <panel_attributes>lt=x-&gt;
+m1=*
+m2=1
+performs</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;120.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>792</x>
+      <y>168</y>
+      <w>168</w>
+      <h>88</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;Enumeration&gt;&gt;
+TaskType
+--
+MAINTENANCE
+INSPECTION
+REPAIR
+SYSTEM_CHECK
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>200</x>
+      <y>72</y>
+      <w>168</w>
+      <h>72</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;Enumeration&gt;&gt;
+Status
+--
+PENDING
+IN_PROGRESS
+COMPLETED</panel_attributes>
+    <additional_attributes/>
+  </element>
+</diagram>
