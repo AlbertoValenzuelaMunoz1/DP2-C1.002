@@ -1,4 +1,4 @@
 key,moment,status,nextInspectionDueDate,estimateCost,key:technician
 record-1,2024/03/10 14:30,PENDING,AB123456,150.75,technician-01
 record-2,2024/03/11 09:15,COMPLETED,CD789012,200.50,technician-02
-record-3,2024/03/12 16:45,IN_PROGRESS,EF345678,175.30,technician-03
+record-3,2024/03/12 16:45,IN_PROGRESS,EF345678,175.30
