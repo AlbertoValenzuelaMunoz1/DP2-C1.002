@@ -1,19 +1,16 @@
-key,name,iata_code,operational_scope,city,country,website,email,contact_phone_number
-airport-01,John F. Kennedy International Airport,NEW,INTERNATIONAL,New York,USA,http://jfkairport.com,contact@jfk.com,+1234567890
-airport-02,London Heathrow Airport,LHR,DOMESTIC,London,UK,http://heathrow.com,info@heathrow.com,+447911123456
-airport-03,Narita International Airport,NRT,INTERNATIONAL,Tokyo,Japan,http://narita-airport.jp,service@narita.jp,+81312345678
-airport-04,Charles de Gaulle Airport,CDG,DOMESTIC,Paris,France,http://aeroportsdeparis.fr,help@cdg.fr,+33123456789
-airport-05,Frankfurt Airport,FRA,DOMESTIC,Frankfurt,Germany,http://frankfurt-airport.com,assist@fra.de,+496912345678
-airport-06,Sydney Kingsford Smith Airport,SYD,INTERNATIONAL,Sydney,Australia,http://sydneyairport.com.au,contact@syd.com.au,+61234567890
-airport-07,Guarulhos International Airport,GRU,INTERNATIONAL,São Paulo,Brazil,http://gru.com.br,info@gru.com.br,+5511998765432
-airport-08,Dubai International Airport,DXB,INTERNATIONAL,Dubai,UAE,http://dubaiairports.ae,help@dxb.ae,+971501234567
-airport-09,Toronto Pearson International Airport,YYZ,INTERNATIONAL,Toronto,Canada,http://torontopearson.com,info@yyz.ca,+14161234567
-airport-10,Sheremetyevo International Airport,SVO,INTERNATIONAL,Moscow,Russia,http://svo.aero,contact@svo.ru,+74951234567
-airport-11,Adolfo Suárez Madrid-Barajas Airport,MAD,REGIONAL,Madrid,Spain,http://aena.es/mad,contact@mad.aena.es,+34913211100
-airport-13,L,BCN,REGIONAL,Barcelona,Spain,hftp://a,a@b.e,+34913221100
-airport-14,Lo,ADC,INTERNATIONAL,L,S,ftp://a.b,a@b.es,673653
-airport-15,"Lorem ipsum dolor sit amet, consectetur adipiscin",SPP,REGIONAL,"Lorem ipsum dolor sit amet, consectetur adipiscin","Lorem ipsum dolor sit amet, consectetur adipiscin","http://www.lorem-ipsum.org/dolor/sit/amet,/consectetur/adipiscing/elit,/sed/do/eiusmod/tempor/incididunt/ut/labore/et/dolore/magna/aliqua/Ut/enim/ad/minim/veniam/quis/nostrud/exercitation/ullamco/laboris/nisi/ut/aliquip/ex/ea/commodo/consequat/duis/aute/",lorem-ipsum@dolor.sit.amet.consectetur.adipiscing.elit.sed.do.eiusmod.tempor.incididunt.ut.labore.et.dolore.magna.aliqua.Ut.enim.ad.minim.veniam.quis.nostrud.exercitation.ullamco.laboris.nisi.ut.aliquip.ex.ea.commodo.consequat.duis.aute.irure.doloris.edu,66666677777712
-airport-16,"Lorem ipsum dolor sit amet, consectetur adipiscing",TOP,DOMESTIC,"Lorem ipsum dolor sit amet, consectetur adipiscing","Lorem ipsum dolor sit amet, consectetur adipiscing","http://www.lorem-ipsum.org/dolor/sit/amet,/consectetur/adipiscing/elit,/sed/do/eiusmod/tempor/incididunt/ut/labore/et/dolore/magna/aliqua/Ut/enim/ad/minim/veniam/quis/nostrud/exercitation/ullamco/laboris/nisi/ut/aliquip/ex/ea/commodo/consequat/duis/aute/X",lorem-ipsum@dolor.sit.amet.consectetur.adipiscing.elit.sed.do.eiusmod.tempor.incididunt.ut.labore.et.dolore.magna.aliqua.Ut.enim.ad.minim.veniam.quis.nostrud.exercitation.ullamco.laboris.nisi.ut.aliquip.ex.ea.commodo.consequat.duis.aute.irure.dolor.es.org,666666777777128
-
-
-
+key,name,iata_code,operational_scope,city,country,website,email,contact_phone_number,address
+airport-01,John F. Kennedy International Airport,NEW,INTERNATIONAL,New York,USA,http://jfkairport.com,contact@jfk.com,+1234567890,aaaaaaa
+airport-02,London Heathrow Airport,LHR,DOMESTIC,London,UK,http://heathrow.com,info@heathrow.com,+447911123456,aaaa
+airport-03,Narita International Airport,NRT,INTERNATIONAL,Tokyo,Japan,http://narita-airport.jp,service@narita.jp,+81312345678,aaaaaaa
+airport-04,Charles de Gaulle Airport,CDG,DOMESTIC,Paris,France,http://aeroportsdeparis.fr,help@cdg.fr,+33123456789,aaaaaaa
+airport-05,Frankfurt Airport,FRA,DOMESTIC,Frankfurt,Germany,http://frankfurt-airport.com,assist@fra.de,+496912345678,aaaaaaa
+airport-06,Sydney Kingsford Smith Airport,SYD,INTERNATIONAL,Sydney,Australia,http://sydneyairport.com.au,contact@syd.com.au,+61234567890,aaaaaaa
+airport-07,Guarulhos International Airport,GRU,INTERNATIONAL,São Paulo,Brazil,http://gru.com.br,info@gru.com.br,+5511998765432,aaaaaaa
+airport-08,Dubai International Airport,DXB,INTERNATIONAL,Dubai,UAE,http://dubaiairports.ae,help@dxb.ae,+971501234567,aaaaaaa
+airport-09,Toronto Pearson International Airport,YYZ,INTERNATIONAL,Toronto,Canada,http://torontopearson.com,info@yyz.ca,+14161234567,aaaaaaa
+airport-10,Sheremetyevo International Airport,SVO,INTERNATIONAL,Moscow,Russia,http://svo.aero,contact@svo.ru,+74951234567,aaaaaaa
+airport-11,Adolfo Suárez Madrid-Barajas Airport,MAD,REGIONAL,Madrid,Spain,http://aena.es/mad,contact@mad.aena.es,+34913211100,aaaaaaa
+airport-13,L,BCN,REGIONAL,Barcelona,Spain,ftp://a,a@b.e,+34913221100,L
+airport-14,Lo,ADC,INTERNATIONAL,L,S,ftp://a.b,a@b.es,673653,Lo
+airport-15,"Lorem ipsum dolor sit amet, consectetur adipiscin",SPP,REGIONAL,"Lorem ipsum dolor sit amet, consectetur adipiscin","Lorem ipsum dolor sit amet, consectetur adipiscin","http://www.lorem-ipsum.org/dolor/sit/amet,/consectetur/adipiscing/elit,/sed/do/eiusmod/tempor/incididunt/ut/labore/et/dolore/magna/aliqua/Ut/enim/ad/minim/veniam/quis/nostrud/exercitation/ullamco/laboris/nisi/ut/aliquip/ex/ea/commodo/consequat/duis/aute/",lorem-ipsum@dolor.sit.amet.consectetur.adipiscing.elit.sed.do.eiusmod.tempor.incididunt.ut.labore.et.dolore.magna.aliqua.Ut.enim.ad.minim.veniam.quis.nostrud.exercitation.ullamco.laboris.nisi.ut.aliquip.ex.ea.commodo.consequat.duis.aute.irure.doloris.edu,66666677777712,"Lorem ipsum dolor sit amet, consectetur adipiscin"
+airport-16,"Lorem ipsum dolor sit amet, consectetur adipiscing",TOP,DOMESTIC,"Lorem ipsum dolor sit amet, consectetur adipiscing","Lorem ipsum dolor sit amet, consectetur adipiscing","http://www.lorem-ipsum.org/dolor/sit/amet,/consectetur/adipiscing/elit,/sed/do/eiusmod/tempor/incididunt/ut/labore/et/dolore/magna/aliqua/Ut/enim/ad/minim/veniam/quis/nostrud/exercitation/ullamco/laboris/nisi/ut/aliquip/ex/ea/commodo/consequat/duis/aute/X",lorem-ipsum@dolor.sit.amet.consectetur.adipiscing.elit.sed.do.eiusmod.tempor.incididunt.ut.labore.et.dolore.magna.aliqua.Ut.enim.ad.minim.veniam.quis.nostrud.exercitation.ullamco.laboris.nisi.ut.aliquip.ex.ea.commodo.consequat.duis.aute.irure.dolor.es.org,666666777777128,"Lorem ipsum dolor sit amet, consectetur adipiscing"

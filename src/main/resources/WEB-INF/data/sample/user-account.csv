@@ -10,3 +10,6 @@ user-account-administrator-03,true,"UserIdentity{name: 'Juan', surname: '洛伦�
 user-account-customer-01,true,"UserIdentity{name: 'Customer', surname: '洛伦·伊普森',email: 'juan@customer.com'}",customer1,customer1
 user-account-customer-02,true,"UserIdentity{name: '洛伦·伊普森', surname: '洛伦·伊普森',email: 'customer2@acme.com'}",customer2,customer2
 user-account-customer-03,true,"UserIdentity{name: 'customer3', surname: '洛伦·伊普森',email: 'customer3@acme.com'}",customer3,customer3
+user-account-manager-01,true,"UserIdentity{name: 'Antonio', surname: 'ընդունուած', email: 'antonio@acme.com'}",manager1,manager1
+user-account-manager-02,true,"UserIdentity{name: 'Alberto', surname: 'इलाका', email: 'alberto@acme.com'}",manager2,manager2
+user-account-manager-03,true,"UserIdentity{name: 'Fernando', surname: 'সালে যাত্রাবাড়িতে', email: 'fernandojacobo@acme.com'}",manager3,manager3
