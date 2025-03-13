@@ -9,7 +9,6 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.validation.Valid;
-import javax.validation.constraints.NotBlank;
 
 import acme.client.components.basis.AbstractEntity;
 import acme.client.components.datatypes.Money;
@@ -41,8 +40,8 @@ public class AssistanceAgents extends AbstractEntity {
 	private String				employeeCode;
 
 	@Mandatory
-	@NotBlank
 	@ValidString(min = 1)
+	@Automapped
 	private String				spokenLanguages;
 
 	//	@Mandatory
