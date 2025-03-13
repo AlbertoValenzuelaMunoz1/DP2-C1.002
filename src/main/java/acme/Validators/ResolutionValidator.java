@@ -8,43 +8,23 @@ import acme.entities.student4.tranckingLogs.TrackingLogs;
 
 public class ResolutionValidator extends AbstractValidator<ValidResolution, String> {
 
+	private TrackingLogs trackingLog;
+
+
+	public ResolutionValidator(final TrackingLogs trackingLog) {
+		this.trackingLog = trackingLog;
+	}
+
 	@Override
 	public boolean isValid(final String resolutionDetails, final ConstraintValidatorContext context) {
+		if (this.trackingLog == null)
+			return true; // No se valida si el objeto es null
 
-		Object trackingLogObject = context.unwrap(TrackingLogs.class);
+		Boolean claimAccepted = this.trackingLog.getClaimAccepted();
 
-		if (!(trackingLogObject instanceof TrackingLogs))
-			return true;
-
-		TrackingLogs trackingLog = (TrackingLogs) trackingLogObject;
-
-		if (trackingLog.getBelongsTo() == null)
-			return true;
-
-		Boolean indicator = trackingLog.getClaimAccepted();
-
-		if (indicator == null)
-			return resolutionDetails == null; // Si Claim no está aceptado/rechazado debe ser null
+		if (claimAccepted == null)
+			return resolutionDetails == null; // Si claimAccepted es null, resolutionDetails también debe ser null
 		else
-			return resolutionDetails != null && !resolutionDetails.trim().isEmpty(); // Si está aceptado/rechazado resolutionDetails debe ser obligatorio
+			return resolutionDetails != null && !resolutionDetails.trim().isEmpty(); // Si claimAccepted no es null, resolutionDetails debe ser NotNull
 	}
 }
-
-//Hice esta opcion pero no me dejaba aplicarla al atributo directamente
-
-//public class ResolutionValidator extends AbstractValidator<ValidResolution, TrackingLogs> {
-//
-//@Override
-//public boolean isValid(final TrackingLogs trackingLog, final ConstraintValidatorContext context) {
-//if (trackingLog == null || trackingLog.getBelongsTo() == null)
-//return true;
-//
-//Boolean indicator = trackingLog.getBelongsTo().getIndicator();
-//String resolutionDetails = trackingLog.getResolutionDetails();
-//
-//if (indicator == null)
-//return resolutionDetails == null; // Si el claim no está aceptado/rechazado debe ser null
-//else
-//return resolutionDetails != null && !resolutionDetails.trim().isEmpty(); // Si está aceptado/rechazado debe ser obligatorio
-//}
-//}

@@ -7,8 +7,9 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import javax.validation.Valid;
 
-import acme.Validators.ValidValue;
+import acme.Validators.ValidPhoneNumber;
 import acme.client.components.basis.AbstractEntity;
 import acme.client.components.mappings.Automapped;
 import acme.client.components.validation.Mandatory;
@@ -17,6 +18,7 @@ import acme.client.components.validation.ValidEmail;
 import acme.client.components.validation.ValidMoment;
 import acme.client.components.validation.ValidString;
 import acme.client.components.validation.ValidUrl;
+import acme.datatypes.AirlineType;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -51,11 +53,8 @@ public class Airline extends AbstractEntity {
 
 	@Automapped
 	@Mandatory
-	@ValidValue(values = {
-		"LUXURY", "STANDARD", "LOW-COST"
-	})
-	// No se puede usar un enumerado porque no permite - en el nombre
-	private String				type;
+	@Valid
+	private AirlineType			type;
 
 	@Automapped
 	@Optional
@@ -64,6 +63,6 @@ public class Airline extends AbstractEntity {
 
 	@Automapped
 	@Optional
-	@ValidString(pattern = "^\\+?\\d{6,15}$")
+	@ValidPhoneNumber
 	private String				phoneNumber;
 }

@@ -1,22 +1,21 @@
 
 package acme.entities.student1.flight;
 
+import java.beans.Transient;
 import java.util.Date;
 
 import javax.persistence.Entity;
-import javax.persistence.OneToOne;
-import javax.persistence.Temporal;
-import javax.persistence.TemporalType;
-import javax.validation.Valid;
 
 import acme.client.components.basis.AbstractEntity;
+import acme.client.components.datatypes.Money;
 import acme.client.components.mappings.Automapped;
 import acme.client.components.validation.Mandatory;
 import acme.client.components.validation.Optional;
-import acme.client.components.validation.ValidMoment;
-import acme.client.components.validation.ValidNumber;
+import acme.client.components.validation.ValidMoney;
 import acme.client.components.validation.ValidString;
-import acme.entities.student1.manager.Manager;
+import acme.client.helpers.SpringHelper;
+import acme.entities.group.airport.Airport;
+import acme.entities.student1.leg.LegRepository;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -34,45 +33,56 @@ public class Flight extends AbstractEntity {
 
 	@Mandatory
 	@Automapped
-	private Boolean				transfer;
+	private boolean				transfer;
 
 	@Mandatory
-	@ValidNumber(fraction = 2)
-	private Double				cost;
+	@ValidMoney
+	private Money				cost;
 
 	@Optional
 	@ValidString(max = 255)
 	@Automapped
 	private String				description;
 
-	@Mandatory
-	@Valid
-	@OneToOne(optional = false)
-	private Manager				manager;
 
-	@Mandatory
-	@ValidMoment
-	@Temporal(value = TemporalType.TIMESTAMP)
-	private Date				scheduledDeparture;
+	@Transient
+	public Date scheduledDeparture() {
 
-	@Mandatory
-	@ValidMoment
-	@Temporal(value = TemporalType.TIMESTAMP)
-	private Date				scheduledArrival;
+		LegRepository legRepository = SpringHelper.getBean(LegRepository.class);
 
-	@Mandatory
-	@ValidString
-	@Automapped
-	private String				originCity;
+		return legRepository.firstFlightLeg(this).getScheduledDeparture();
+	}
 
-	@Mandatory
-	@ValidString
-	@Automapped
-	private String				destinationCity;
+	@Transient
+	private Date scheduledArrival() {
 
-	@Mandatory
-	@ValidNumber
-	@Automapped
-	private Integer				numberOfLayovers;
+		LegRepository legRepository = SpringHelper.getBean(LegRepository.class);
+
+		return legRepository.lastFlightLeg(this).getScheduledArrival();
+	}
+
+	@Transient
+	public Airport originCity() {
+
+		LegRepository legRepository = SpringHelper.getBean(LegRepository.class);
+
+		return legRepository.firstFlightLeg(this).getDepartureAirport();
+	}
+
+	@Transient
+	public Airport destinationCity() {
+
+		LegRepository legRepository = SpringHelper.getBean(LegRepository.class);
+
+		return legRepository.lastFlightLeg(this).getArrivalAirport();
+	}
+
+	@Transient
+	public Integer numberOfLayovers() {
+
+		LegRepository legRepository = SpringHelper.getBean(LegRepository.class);
+
+		return legRepository.numberOfLegs(this).intValue();
+	}
 
 }
