@@ -8,6 +8,7 @@ import acme.Validators.ValidPhoneNumber;
 import acme.client.components.basis.AbstractRole;
 import acme.client.components.mappings.Automapped;
 import acme.client.components.validation.Mandatory;
+import acme.client.components.validation.Optional;
 import acme.client.components.validation.ValidNumber;
 import acme.client.components.validation.ValidString;
 import lombok.Getter;
@@ -44,7 +45,7 @@ public class Customer extends AbstractRole {
 	@ValidString(max = 50, min = 1)
 	private String				country;
 
-	@Mandatory
+	@Optional
 	@Automapped
 	@ValidNumber(min = 0, max = 500000)
 	private Integer				earnedPoints;
