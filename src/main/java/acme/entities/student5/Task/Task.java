@@ -11,7 +11,7 @@ import acme.client.components.mappings.Automapped;
 import acme.client.components.validation.Mandatory;
 import acme.client.components.validation.ValidNumber;
 import acme.client.components.validation.ValidString;
-import acme.datatypes.enums.TaskType;
+import acme.datatypes.TaskType;
 import acme.entities.student5.maintenanceRecord.MaintenanceRecord;
 import acme.entities.student5.technician.Technician;
 import lombok.Getter;

@@ -1,0 +1,4 @@
+key,useraccount,license_number,phone_number,specialization,annual_health_test,years_of_experience,certifications
+technician-01,user-account-technician-01,AB123456,+123456789,Mechanic,true,5,Certified Aviation Technician
+technician-02,user-account-technician-02,CD789012,+987654321,Electronics,true,2,FAA Approved Engineer
+technician-03,,,,,,,
