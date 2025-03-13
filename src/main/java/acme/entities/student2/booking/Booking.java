@@ -24,6 +24,7 @@ import acme.client.helpers.SpringHelper;
 import acme.datatypes.TravelClass;
 import acme.entities.student1.flight.Flight;
 import acme.entities.student2.customer.Customer;
+import acme.entities.student2.passenger.Passenger;
 import lombok.Getter;
 import lombok.Setter;
 
