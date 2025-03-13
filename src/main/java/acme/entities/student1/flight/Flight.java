@@ -5,6 +5,7 @@ import java.beans.Transient;
 import java.util.Date;
 
 import javax.persistence.Entity;
+import javax.persistence.ManyToOne;
 
 import acme.client.components.basis.AbstractEntity;
 import acme.client.components.datatypes.Money;
@@ -16,6 +17,7 @@ import acme.client.components.validation.ValidString;
 import acme.client.helpers.SpringHelper;
 import acme.entities.group.airport.Airport;
 import acme.entities.student1.leg.LegRepository;
+import acme.entities.student1.manager.Manager;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -43,6 +45,11 @@ public class Flight extends AbstractEntity {
 	@ValidString(max = 255)
 	@Automapped
 	private String				description;
+
+	@Mandatory
+	@ManyToOne(optional = false)
+	@Automapped
+	private Manager manager;
 
 
 	@Transient
