@@ -4,6 +4,7 @@ package acme.entities.student2.customer;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 
+import acme.Validators.ValidPhoneNumber;
 import acme.client.components.basis.AbstractRole;
 import acme.client.components.mappings.Automapped;
 import acme.client.components.validation.Mandatory;
@@ -20,12 +21,12 @@ public class Customer extends AbstractRole {
 	private static final long	serialVersionUID	= 1L;
 	@Mandatory
 	@Column(unique = true)
-	@ValidString(pattern = "^[A-Z]{2-3}\\d{6}$")
+	@ValidString(pattern = "^[A-Z]{2,3}\\d{6}$")
 	private String				identifier;
 
 	@Mandatory
 	@Automapped
-	@ValidString(pattern = "^\\+?\\d{6,15}$")
+	@ValidPhoneNumber
 	private String				phoneNumber;
 
 	@Mandatory

@@ -11,7 +11,7 @@ import javax.persistence.TemporalType;
 import javax.validation.Valid;
 import javax.validation.constraints.NotBlank;
 
-import acme.client.components.basis.AbstractRole;
+import acme.client.components.basis.AbstractEntity;
 import acme.client.components.datatypes.Money;
 import acme.client.components.mappings.Automapped;
 import acme.client.components.validation.Mandatory;
@@ -27,7 +27,7 @@ import lombok.Setter;
 @Entity
 @Getter
 @Setter
-public class AssistanceAgents extends AbstractRole {
+public class AssistanceAgents extends AbstractEntity {
 
 	//Serialisation -------------------------------
 
@@ -54,12 +54,12 @@ public class AssistanceAgents extends AbstractRole {
 	//	private List<String>		spokenLanguages;
 
 	@Mandatory
-	@ManyToOne
+	@ManyToOne(optional = false)
 	@Valid
 	private Airline				airline;
 
 	@Mandatory
-	@Temporal(TemporalType.DATE)
+	@Temporal(TemporalType.TIMESTAMP)
 	@ValidMoment(past = true)
 	private Date				employmentStartDate;
 
