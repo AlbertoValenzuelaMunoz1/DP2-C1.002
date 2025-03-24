@@ -10,6 +10,7 @@ import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.validation.Valid;
 
+import Validators.ValidIdentifier;
 import acme.client.components.basis.AbstractEntity;
 import acme.client.components.datatypes.Money;
 import acme.client.components.mappings.Automapped;
@@ -36,7 +37,7 @@ public class AssistanceAgents extends AbstractEntity {
 
 	@Mandatory
 	@Column(unique = true)
-	@ValidString(pattern = "^[A-Z]{2,3}\\d{6}$", message = "Employee code must start with 2-3 uppercase letters followed by 6 digits")
+	@ValidIdentifier
 	private String				employeeCode;
 
 	@Mandatory

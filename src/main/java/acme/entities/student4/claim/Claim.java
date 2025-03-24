@@ -16,6 +16,7 @@ import acme.client.components.validation.ValidEmail;
 import acme.client.components.validation.ValidMoment;
 import acme.client.components.validation.ValidString;
 import acme.datatypes.ClaimType;
+import acme.datatypes.IndicatorStatus;
 import acme.entities.student4.assistanceAgents.AssistanceAgents;
 import lombok.Getter;
 import lombok.Setter;
@@ -53,7 +54,8 @@ public class Claim extends AbstractEntity {
 
 	@Mandatory
 	@Automapped
-	public Boolean				accepted;
+	@Valid
+	public IndicatorStatus		indicator;
 
 	@Mandatory
 	@ManyToOne
