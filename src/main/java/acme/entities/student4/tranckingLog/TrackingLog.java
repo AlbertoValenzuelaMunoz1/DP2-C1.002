@@ -1,5 +1,5 @@
 
-package acme.entities.student4.tranckingLogs;
+package acme.entities.student4.tranckingLog;
 
 import java.util.Date;
 
@@ -24,7 +24,7 @@ import lombok.Setter;
 @Entity
 @Getter
 @Setter
-public class TrackingLogs extends AbstractEntity {
+public class TrackingLog extends AbstractEntity {
 
 	//Serialisation -------------------------------
 
