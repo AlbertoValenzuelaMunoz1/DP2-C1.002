@@ -1,11 +1,11 @@
 key,model,registrationNumber,passengerCapacity,cargoWeight,status,details,key:airline
-aircraft-01,"โลเร็ม อิปซัม","L",300,45000,ACTIVE,"Lorem ipsum dolor sit ame",airline-01
+aircraft-01,"โลเร็ม อิปซัม","L",255,45000,ACTIVE,"Lorem ipsum dolor sit ame",airline-01
 aircraft-02,"洛伦·伊普森","Lo",100,15000,ACTIVE,"L",airline-02
-aircraft-03,"<marquee>Hacked</marquee>","Lorem ipsum dolor sit amet, consectetur adipiscing",750,25000,UNDER_MAINTENANCE,"Lo",airline-03
+aircraft-03,"<marquee>Hacked</marquee>","Lorem ipsum dolor sit amet, consectetur adipiscing",250,25000,UNDER_MAINTENANCE,"Lo",airline-03
 aircraft-04,"<script>alert(‘Hacked!’);</script>","Lorem ipsum dolor sit amet, consectetur adipiscin",10,5000,UNDER_MAINTENANCE,"Lorem ipsum dolor sit amet, consectetur adipiscin",airline-04
-aircraft-05,"' or 'A' = 'A ","Lorem ipsum dolor sit ame",1000,35000,ACTIVE,"Lorem ipsum dolor sit amet, consectetur adipiscing",airline-05
-aircraft-06,"โลเร็ม อิปซัม","L",50,40000,UNDER_MAINTENANCE,"Lorem ipsum dolor sit amet, consectetur adipiscing",airline-06
-aircraft-07,"洛伦·伊普森","Lo",500,2000,ACTIVE,"Lorem ipsum dolor sit amet, consectetur adipiscin",airline-07
-aircraft-08,"<marquee>Hacked</marquee>","โลเร็ม อิปซัม",150,30000,UNDER_MAINTENANCE,"Lo",airline-08
-aircraft-09,"<script>alert(‘Hacked!’);</script>","洛伦·伊普森",400,10000,ACTIVE,"L",airline-09
-aircraft-10,"' or 'A' = 'A ","Lo",200,20000,ACTIVE,"Lorem ipsum dolor sit ame",airline-10
+aircraft-05,"' or 'A' = 'A ","Lorem ipsum dolor sit ame",50,35000,ACTIVE,"Lorem ipsum dolor sit amet, consectetur adipiscing",airline-05
+aircraft-06,"โลเร็ม อิปซัม","L",150,40000,UNDER_MAINTENANCE,"Lorem ipsum dolor sit amet, consectetur adipiscing",airline-06
+aircraft-07,"洛伦·伊普森","Lo",25,2000,ACTIVE,"Lorem ipsum dolor sit amet, consectetur adipiscin",airline-07
+aircraft-08,"<marquee>Hacked</marquee>","โลเร็ม อิปซัม",130,30000,UNDER_MAINTENANCE,"Lo",airline-08
+aircraft-09,"<script>alert(‘Hacked!’);</script>","洛伦·伊普森",20,10000,ACTIVE,"L",airline-09
+aircraft-10,"' or 'A' = 'A ","Lo",1,20000,ACTIVE,"Lorem ipsum dolor sit ame",airline-10

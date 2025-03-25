@@ -58,7 +58,7 @@ public class FlightCrewMember extends AbstractRole {
 
 	@Automapped
 	@Optional
-	@ValidNumber(min = 0)
+	@ValidNumber(min = 0, max = 120)
 	private Integer				yearsOfExperience;
 
 	// Derived attributes -----------------------------------------------------
