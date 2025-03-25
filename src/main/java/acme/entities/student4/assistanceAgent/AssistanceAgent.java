@@ -1,5 +1,5 @@
 
-package acme.entities.student4.assistanceAgents;
+package acme.entities.student4.assistanceAgent;
 
 import java.util.Date;
 
@@ -27,7 +27,7 @@ import lombok.Setter;
 @Entity
 @Getter
 @Setter
-public class AssistanceAgents extends AbstractEntity {
+public class AssistanceAgent extends AbstractEntity {
 
 	//Serialisation -------------------------------
 
