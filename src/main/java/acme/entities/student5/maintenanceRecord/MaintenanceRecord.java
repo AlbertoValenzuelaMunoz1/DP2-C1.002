@@ -4,11 +4,10 @@ package acme.entities.student5.maintenanceRecord;
 import java.util.Date;
 
 import javax.persistence.Entity;
-import javax.persistence.EnumType;
-import javax.persistence.Enumerated;
 import javax.persistence.ManyToOne;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import javax.validation.Valid;
 
 import acme.client.components.basis.AbstractEntity;
 import acme.client.components.datatypes.Money;
@@ -36,7 +35,7 @@ public class MaintenanceRecord extends AbstractEntity {
 	private Date				moment;
 
 	@Mandatory
-	@Enumerated(EnumType.STRING)
+	@Valid
 	@Automapped
 	private Status				status;
 
@@ -58,6 +57,7 @@ public class MaintenanceRecord extends AbstractEntity {
 	// Un tecnico puede tener varios registros de mantenimiento
 
 	@ManyToOne
+	@Valid
 	@Automapped
 	private Technician			technician;
 }
