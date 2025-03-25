@@ -1,0 +1,4 @@
+key,taskType,description,priority,estimatedDuration,key:technician,key:maintenanceRecord
+task-1,INSPECTION,Revisión del sistema de refrigeración,5,120,technician-01,record-1
+task-2,REPAIR,Cambio de componentes eléctricos,8,180,technician-02,record-2
+task-3,MAINTENANCE,Lubricación y ajuste de piezas,4,90,technician-02,record-3

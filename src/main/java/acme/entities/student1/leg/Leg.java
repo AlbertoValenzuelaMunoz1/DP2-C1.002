@@ -1,12 +1,14 @@
 
 package acme.entities.student1.leg;
 
+import java.beans.Transient;
+import java.time.Duration;
+import java.time.Instant;
 import java.util.Date;
 
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
-import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -31,30 +33,18 @@ public class Leg extends AbstractEntity {
 	private static final long	serialVersionUID	= 1L;
 
 	@Mandatory
-	@ValidString(max = 10)
-	@Automapped
-	private String				flightNumber;
+	@ValidString(pattern = "^[0-9]{4}$")
+	private String				flightNumberDigits;
 
 	@Mandatory
-	@ValidMoment(past = false)
+	@ValidMoment
 	@Temporal(TemporalType.TIMESTAMP)
 	private Date				scheduledDeparture;
 
 	@Mandatory
-	@ValidMoment(past = false)
+	@ValidMoment
 	@Temporal(TemporalType.TIMESTAMP)
 	private Date				scheduledArrival;
-
-	@Mandatory
-	@ValidMoment
-	@Temporal(TemporalType.TIME)
-	@Automapped
-	private Date				duration;
-
-	@Mandatory
-	@Enumerated(EnumType.STRING)
-	@Automapped
-	private FlightStatus		status;
 
 	@Mandatory
 	@Valid
@@ -71,13 +61,26 @@ public class Leg extends AbstractEntity {
 	@ManyToOne(optional = false)
 	private Aircraft			aircraft;
 
-	@ManyToOne
-	@JoinColumn(name = "flight_id", nullable = false)
+	@Mandatory
+	@Valid
+	@ManyToOne(optional = false)
 	private Flight				flight;
 
+	@Mandatory
+	@Enumerated(EnumType.STRING)
+	@Automapped
+	private LegStatus			status;
 
-	public enum FlightStatus {
-		ON_TIME, DELAYED, CANCELLED, LANDED
+
+	@Transient
+	public int durationInHours() {
+
+		Instant departure = this.scheduledDeparture.toInstant();
+		Instant arrival = this.scheduledArrival.toInstant();
+
+		Duration time = Duration.between(departure, arrival);
+
+		return time.toHoursPart();
 	}
 
 }

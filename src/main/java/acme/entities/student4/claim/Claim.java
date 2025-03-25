@@ -7,6 +7,7 @@ import javax.persistence.Entity;
 import javax.persistence.ManyToOne;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import javax.persistence.Transient;
 import javax.validation.Valid;
 
 import acme.client.components.basis.AbstractEntity;
@@ -52,13 +53,14 @@ public class Claim extends AbstractEntity {
 	@Valid
 	private ClaimType			type;
 
+	@Transient
 	@Mandatory
 	@Automapped
 	@Valid
 	public IndicatorStatus		indicator;
 
 	@Mandatory
-	@ManyToOne
+	@ManyToOne(optional = false)
 	@Valid
 	private AssistanceAgents	registredBy;
 

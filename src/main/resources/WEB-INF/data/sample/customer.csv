@@ -1,0 +1,4 @@
+key,key:userAccount,identifier,phoneNumber,physicalAddres,city,country,earnedPoints
+customer-01,user-account-customer-01,AVM389362,+872982,Dirección,Sevilla,España,500000
+customer-02,user-account-customer-02,ABM389362,+392830284923645,D,Lorem ipsum dolor sit amet  consectetur adipiscing,Lorem ipsum dolor sit amet  consectetur adipiscing,499999
+customer-03,user-account-customer-03,ACM389362,+9273882,Lorem ipsum dolor sit ameta consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut enim ad minim veniam? Quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor*,Ci,Es,1

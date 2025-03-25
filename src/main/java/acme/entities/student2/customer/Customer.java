@@ -4,9 +4,11 @@ package acme.entities.student2.customer;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 
+import acme.Validators.ValidPhoneNumber;
 import acme.client.components.basis.AbstractRole;
 import acme.client.components.mappings.Automapped;
 import acme.client.components.validation.Mandatory;
+import acme.client.components.validation.Optional;
 import acme.client.components.validation.ValidNumber;
 import acme.client.components.validation.ValidString;
 import lombok.Getter;
@@ -20,12 +22,12 @@ public class Customer extends AbstractRole {
 	private static final long	serialVersionUID	= 1L;
 	@Mandatory
 	@Column(unique = true)
-	@ValidString(pattern = "^[A-Z]{2-3}\\d{6}$")
+	@ValidString(pattern = "^[A-Z]{2,3}\\d{6}$")
 	private String				identifier;
 
 	@Mandatory
 	@Automapped
-	@ValidString(pattern = "^\\+?\\d{6,15}$")
+	@ValidPhoneNumber
 	private String				phoneNumber;
 
 	@Mandatory
@@ -43,7 +45,7 @@ public class Customer extends AbstractRole {
 	@ValidString(max = 50, min = 1)
 	private String				country;
 
-	@Mandatory
+	@Optional
 	@Automapped
 	@ValidNumber(min = 0, max = 500000)
 	private Integer				earnedPoints;
