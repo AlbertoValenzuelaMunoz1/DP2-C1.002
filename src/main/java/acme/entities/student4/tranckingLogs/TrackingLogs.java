@@ -16,6 +16,7 @@ import acme.client.components.validation.Optional;
 import acme.client.components.validation.ValidMoment;
 import acme.client.components.validation.ValidScore;
 import acme.client.components.validation.ValidString;
+import acme.datatypes.IndicatorStatus;
 import acme.entities.student4.claim.Claim;
 import lombok.Getter;
 import lombok.Setter;
@@ -46,9 +47,14 @@ public class TrackingLogs extends AbstractEntity {
 	@Automapped
 	private Double				resolutionPercentage;
 
-	@Optional
+	@Mandatory
 	@Automapped
-	private Boolean				claimAccepted;
+	@Valid
+	public IndicatorStatus		claimStatus;
+
+	//	@Optional
+	//	@Automapped
+	//	private Boolean				claimAccepted;
 	//
 	//
 	//	@Transient
@@ -64,7 +70,7 @@ public class TrackingLogs extends AbstractEntity {
 	private String				resolutionDetails;
 
 	@Mandatory
-	@ManyToOne
+	@ManyToOne(optional = false)
 	@Valid
 	private Claim				belongsTo;
 
