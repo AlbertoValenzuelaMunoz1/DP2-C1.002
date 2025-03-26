@@ -1,1 +1,2 @@
 acme.validation.phonenumber.message = El número de teléfono no es válido
+acme.validation.booking.published.message = Para que una booking este publicada debe contener al menos un pasajero
