@@ -77,4 +77,9 @@ public class Booking extends AbstractEntity {
 		return repository.findPassengersBooking(this);
 	}
 
+
+	@Mandatory
+	@Automapped
+	private boolean published;
+
 }
