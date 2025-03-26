@@ -25,9 +25,10 @@
 			<acme:menu-suboption code="master.menu.anonymous.favourite-link-Fernando" action="https://www.futbin.com/"/>
 			<acme:menu-suboption code="master.menu.anonymous.favourite-link-Guillermo" action="https://www.instagram.com/"/>
 		</acme:menu-option>
-
+		
 		<acme:menu-option code="master.menu.administrator" access="hasRealm('Administrator')">
 			<acme:menu-suboption code="master.menu.administrator.list-user-accounts" action="/administrator/user-account/list"/>
+			<acme:menu-suboption code="master.menu.administrator.list-airport" action="/administrator2/airport/list"/>
 			<acme:menu-separator/>
 			<acme:menu-suboption code="master.menu.administrator.populate-db-initial" action="/administrator/system/populate-initial"/>
 			<acme:menu-suboption code="master.menu.administrator.populate-db-sample" action="/administrator/system/populate-sample"/>			
@@ -54,4 +55,3 @@
 		</acme:menu-option>
 	</acme:menu-right>
 </acme:menu-bar>
-

@@ -1,0 +1,34 @@
+# defaults-en.i18n
+#
+# Copyright (C) 2012-2025 Rafael Corchuelo.
+#
+# In keeping with the traditional purpose of furthering education and research, it is
+# the policy of the copyright owner to permit non-commercial use and redistribution of
+# this software. It has been tested carefully, but it is not guaranteed for any particular
+# purposes.  The copyright owner does not offer any warranties or representations, nor do
+# they accept any liabilities with respect to them.
+
+administrator.airport.form.title = Details of airport
+administrator.airport.list.title = Listing of airports
+
+administrator.airport.form.label.name = Name
+administrator.airport.form.label.iataCode = Iata Code
+administrator.airport.form.label.operationalScope = Operational Scope
+administrator.airport.form.label.city = City
+administrator.airport.form.label.country = Country
+administrator.airport.form.label.website = Website
+administrator.airport.form.label.email = Email
+administrator.airport.form.label.address = Address
+administrator.airport.form.label.contactPhoneNumber = Contact Phone Number
+
+administrator.airport.form.button.update = Update
+
+administrator.airport.list.label.name = Name
+administrator.airport.list.label.iataCode = Iata Code
+administrator.airport.list.label.operationalScope = Operational Scope
+administrator.airport.list.label.city = City
+administrator.airport.list.label.country = Country
+administrator.airport.list.label.website = Website
+administrator.airport.list.label.email = Email
+administrator.airport.list.label.address = Address
+administrator.airport.list.label.contactPhoneNumber = Contact Phone Number
