@@ -16,19 +16,16 @@ public class AirportController extends AbstractGuiController<Administrator, Airp
 	// Internal state ---------------------------------------------------------
 
 	@Autowired
-	private AirportListService listService;
+	private AirportListService		listService;
 
-	//	@Autowired
-	//	private AirportShowService	showService;
-	//
-	//	@Autowired
-	//	private AirportCreateService	createService;
-	//
-	//	@Autowired
-	//	private AirportUpdateService	updateService;
-	//
-	//	@Autowired
-	//	private AdministratorAircraftDeleteService	deleteService;
+	@Autowired
+	private AirportShowService		showService;
+
+	@Autowired
+	private AirportCreateService	createService;
+
+	@Autowired
+	private AirportUpdateService	updateService;
 
 	// Constructors -----------------------------------------------------------
 
@@ -36,10 +33,9 @@ public class AirportController extends AbstractGuiController<Administrator, Airp
 	@PostConstruct
 	protected void initialise() {
 		super.addBasicCommand("list", this.listService);
-		//		super.addBasicCommand("show", this.showService);
-		//		super.addBasicCommand("create", this.createService);
-		//		super.addBasicCommand("update", this.updateService);
-		//		super.addBasicCommand("delete", this.deleteService);
+		super.addBasicCommand("show", this.showService);
+		super.addBasicCommand("create", this.createService);
+		super.addBasicCommand("update", this.updateService);
 
 		//super.addCustomCommand("publish", "update", this.publishService);
 	}
