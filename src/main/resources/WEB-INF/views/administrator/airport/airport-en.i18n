@@ -21,6 +21,7 @@ administrator.airport.form.label.email = Email
 administrator.airport.form.label.address = Address
 administrator.airport.form.label.contactPhoneNumber = Contact Phone Number
 
+administrator.airport.list.button.create = Create
 administrator.airport.form.button.update = Update
 
 administrator.airport.list.label.name = Name

@@ -52,15 +52,15 @@ public class AirportCreateService extends AbstractGuiService<Administrator, Airp
 
 	@Override
 	public void unbind(final Airport airport) {
-		SelectChoices operationalScope;
+		SelectChoices choices;
 		Dataset dataset;
 
-		operationalScope = SelectChoices.from(OperationalScope.class, airport.getOperationalScope());
+		choices = SelectChoices.from(OperationalScope.class, airport.getOperationalScope());
 
 		dataset = super.unbindObject(airport, "name", "iataCode", "operationalScope", "city", "country", "website", "email", "address", "contactPhoneNumber");
 		dataset.put("confirmation", false);
 		dataset.put("readonly", false);
-		dataset.put("operationalScope", operationalScope);
+		dataset.put("operationalScope", choices);
 
 		super.getResponse().addData(dataset);
 	}
