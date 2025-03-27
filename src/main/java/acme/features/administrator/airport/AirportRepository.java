@@ -1,5 +1,5 @@
 
-package acme.entities.group.airport;
+package acme.features.administrator.airport;
 
 import java.util.List;
 
@@ -8,6 +8,7 @@ import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
 import acme.client.repositories.AbstractRepository;
+import acme.entities.group.airport.Airport;
 
 @Repository
 public interface AirportRepository extends AbstractRepository {

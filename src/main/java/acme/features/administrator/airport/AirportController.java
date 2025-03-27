@@ -1,5 +1,5 @@
 
-package acme.entities.group.airport;
+package acme.features.administrator.airport;
 
 import javax.annotation.PostConstruct;
 
@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import acme.client.components.principals.Administrator;
 import acme.client.controllers.AbstractGuiController;
 import acme.client.controllers.GuiController;
+import acme.entities.group.airport.Airport;
 
 @GuiController
 public class AirportController extends AbstractGuiController<Administrator, Airport> {

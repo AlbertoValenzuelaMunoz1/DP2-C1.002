@@ -1,5 +1,5 @@
 
-package acme.entities.group.airport;
+package acme.features.administrator.airport;
 
 import java.util.Collection;
 
@@ -9,6 +9,7 @@ import acme.client.components.models.Dataset;
 import acme.client.components.principals.Administrator;
 import acme.client.services.AbstractService;
 import acme.client.services.GuiService;
+import acme.entities.group.airport.Airport;
 
 @GuiService
 public class AirportListService extends AbstractService<Administrator, Airport> {
