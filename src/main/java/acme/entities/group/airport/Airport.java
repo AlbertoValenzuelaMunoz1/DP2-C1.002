@@ -6,6 +6,7 @@ import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
 
+import acme.Validators.ValidPhoneNumber;
 import acme.client.components.basis.AbstractEntity;
 import acme.client.components.mappings.Automapped;
 import acme.client.components.validation.Mandatory;
@@ -69,7 +70,7 @@ public class Airport extends AbstractEntity {
 	private String				address;
 
 	@Optional
-	@ValidString(pattern = "^\\+?\\d{6,15}$", message = "Invalid phone number format")
+	@ValidPhoneNumber
 	@Automapped
 	private String				contactPhoneNumber;
 
