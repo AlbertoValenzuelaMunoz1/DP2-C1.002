@@ -21,8 +21,10 @@ administrator.airport.form.label.email = Email
 administrator.airport.form.label.address = Address
 administrator.airport.form.label.contactPhoneNumber = Contact Phone Number
 
+administrator.airport.form.button.create = Create
 administrator.airport.list.button.create = Create
 administrator.airport.form.button.update = Update
+administrator.airport.form.label.confirmation = Confirm that the aircraft is correct
 
 administrator.airport.list.label.name = Name
 administrator.airport.list.label.iataCode = Iata Code

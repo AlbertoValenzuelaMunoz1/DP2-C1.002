@@ -17,5 +17,6 @@
     <acme:list-payload path="payload" />
 </acme:list>
 
-
-<acme:button code="administrator.airport.list.button.create" action="/administrator/aircraft/create"/>
+<jstl:if test="${_command == 'list'}">
+	<acme:button code="administrator.airport.list.button.create" action="/administrator/airport/create"/>
+</jstl:if>	
