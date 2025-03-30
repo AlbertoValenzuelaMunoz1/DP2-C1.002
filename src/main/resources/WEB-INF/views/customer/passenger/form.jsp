@@ -5,7 +5,7 @@
 
 <acme:form readonly="${readonly}">
 	<acme:input-textarea code="customer.passenger.form.label.fullName" path="fullName"/>	
-	<acme:input-textarea code="customer.passenger.form.label.email" path="email" />
+	<acme:input-email code="customer.passenger.form.label.email" path="email" />
 	<acme:input-textbox code="customer.passenger.form.label.passportNumber" path="passportNumber"/>
 	<acme:input-textarea code="customer.passenger.form.label.specialNeeds" path="specialNeeds" />
 	<acme:input-moment code="customer.passenger.form.label.dateOfBirth" path="dateOfBirth" />

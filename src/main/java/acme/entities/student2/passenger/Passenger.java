@@ -51,7 +51,7 @@ public class Passenger extends AbstractEntity {
 	@ValidString(max = 50, min = 0)
 	private String				specialNeeds;
 	@Mandatory
-	@ManyToOne
+	@ManyToOne(optional = false)
 	@Valid
 	private Customer			customer;
 	@Mandatory

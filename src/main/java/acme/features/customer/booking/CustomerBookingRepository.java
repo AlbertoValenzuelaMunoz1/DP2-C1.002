@@ -22,6 +22,8 @@ public interface CustomerBookingRepository extends AbstractRepository {
 	public Customer findCustomerById(int id);
 	@Query("select f from Flight f")
 	public Collection<Flight> findAllFlights();
+	@Query("select b from Booking b where b.locatorCode=:locatorCode and not b.id=:excludeId")
+	public Booking findByLocatorCode(String locatorCode, int excludeId);
 	@Query("select b from Booking b where b.locatorCode=:locatorCode")
 	public Booking findByLocatorCode(String locatorCode);
 }

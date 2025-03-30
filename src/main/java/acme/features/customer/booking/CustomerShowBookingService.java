@@ -56,11 +56,5 @@ public class CustomerShowBookingService extends AbstractGuiService<Customer, Boo
 		dataset.put("readonly", booking.isPublished());
 		super.getResponse().addData(dataset);
 	}
-	@Override
-	public void validate(final Booking booking) {
-		boolean confirmation;
-		confirmation = super.getRequest().getData("confirmation", boolean.class);
-		super.state(confirmation, "confirmation", "acme.validation.confirmation.message");
-	}
 
 }

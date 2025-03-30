@@ -12,7 +12,9 @@
 		<acme:input-money code="customer.booking.form.label.price" path="price" readonly="true"/>
 	</jstl:if>
 	<acme:input-textbox code="customer.booking.form.label.lastNibble" path="lastNibble"/>
-	<acme:input-checkbox code="customer.booking.form.label.confirmation" path="confirmation" />
+	<jstl:if test="${!readonly }">
+		<acme:input-checkbox code="customer.booking.form.label.confirmation" path="confirmation" />
+	</jstl:if>
 	<jstl:choose>
 		<jstl:when test="${acme:anyOf(_command, 'show|update|publish')}">
 			<acme:button code="customer.booking.form.button.passengers" action="/customer/passenger/listBooking?bookingId=${bookingId}"/>

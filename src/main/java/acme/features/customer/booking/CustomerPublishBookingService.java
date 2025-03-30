@@ -73,7 +73,7 @@ public class CustomerPublishBookingService extends AbstractGuiService<Customer, 
 		boolean uniqueLocatorCode;
 		confirmation = super.getRequest().getData("confirmation", boolean.class);
 		valid = booking.getLastNibble() != null && !StringHelper.isBlank(booking.getLastNibble()) && !booking.passengers().isEmpty();
-		uniqueLocatorCode = this.repository.findByLocatorCode(booking.getLocatorCode()) == null;
+		uniqueLocatorCode = this.repository.findByLocatorCode(booking.getLocatorCode(), booking.getId()) == null;
 		super.state(confirmation, "confirmation", "acme.validation.confirmation.message");
 		super.state(valid, "confirmation", "acme.validation.booking.published.message");
 		super.state(uniqueLocatorCode, "locatorCode", "acme.validation.booking.locatorCode.message");

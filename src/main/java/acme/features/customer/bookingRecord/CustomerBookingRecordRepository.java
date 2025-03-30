@@ -18,7 +18,7 @@ public interface CustomerBookingRecordRepository extends AbstractRepository {
 	public Passenger findPassengerById(int id);
 	@Query("select c from Customer c where c.id=:id")
 	public Customer findCustomerById(int id);
-	@Query("select p from Passenger p where p.customer.id=:customerId and not exists(select r from BookingRecord r where r.passenger=p and r.booking.id=:bookingId)")
+	@Query("select p from Passenger p where p.customer.id=:customerId and not exists(select r from BookingRecord r where r.passenger=p and r.booking.id=:bookingId) and p.published=true")
 	public List<Passenger> findAvailablePassengersForBooking(int customerId, int bookingId);
 	@Query("select b from Booking b where b.id=:id")
 	public Booking findBookingById(int id);

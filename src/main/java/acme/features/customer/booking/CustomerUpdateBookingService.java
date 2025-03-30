@@ -69,7 +69,7 @@ public class CustomerUpdateBookingService extends AbstractGuiService<Customer, B
 		boolean confirmation;
 		boolean uniqueLocatorCode;
 		confirmation = super.getRequest().getData("confirmation", boolean.class);
-		uniqueLocatorCode = this.repository.findByLocatorCode(booking.getLocatorCode()) == null;
+		uniqueLocatorCode = this.repository.findByLocatorCode(booking.getLocatorCode(), booking.getId()) == null;
 		super.state(confirmation, "confirmation", "acme.validation.confirmation.message");
 		super.state(uniqueLocatorCode, "locatorCode", "acme.validation.booking.locatorCode.message");
 	}

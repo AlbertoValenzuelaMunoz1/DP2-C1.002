@@ -34,12 +34,12 @@ public class Booking extends AbstractEntity {
 
 	private static final long	serialVersionUID	= 1L;
 
-	@ManyToOne
+	@ManyToOne(optional = false)
 	@Mandatory
 	@Valid
 	private Customer			customer;
 
-	@ManyToOne
+	@ManyToOne(optional = false)
 	@Mandatory
 	@Valid
 	private Flight				flight;
