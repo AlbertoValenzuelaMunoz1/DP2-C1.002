@@ -18,7 +18,6 @@ import acme.client.components.mappings.Automapped;
 import acme.client.components.validation.Mandatory;
 import acme.client.components.validation.Optional;
 import acme.client.components.validation.ValidMoment;
-import acme.client.components.validation.ValidMoney;
 import acme.client.components.validation.ValidString;
 import acme.client.helpers.SpringHelper;
 import acme.datatypes.TravelClass;
@@ -60,11 +59,6 @@ public class Booking extends AbstractEntity {
 	@Valid
 	private TravelClass			travelClass;
 
-	@Mandatory
-	@Automapped
-	@ValidMoney(min = 0.)
-	private Money				price;
-
 	@Optional
 	@Automapped
 	@ValidString(min = 4, max = 4, pattern = "^[0-9]{4}$")
@@ -75,6 +69,15 @@ public class Booking extends AbstractEntity {
 	public List<Passenger> passengers() {
 		BookingRecordRepository repository = SpringHelper.getBean(BookingRecordRepository.class);
 		return repository.findPassengersBooking(this);
+	}
+	@Transient
+	public Money price() {
+		BookingRecordRepository repository = SpringHelper.getBean(BookingRecordRepository.class);
+		Money priceFlight = this.flight.getCost();
+		Money price = new Money();
+		price.setCurrency(priceFlight.getCurrency());
+		price.setAmount(priceFlight.getAmount() * repository.findCountPassengersBooking(this));
+		return price;
 	}
 
 
