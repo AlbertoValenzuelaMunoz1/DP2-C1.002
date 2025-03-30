@@ -3,6 +3,7 @@ customer.passenger.list.label.email=Correo electrónico
 customer.passenger.list.label.passportNumber=Número de pasaporte
 customer.passenger.list.label.specialNeeds=Necesidades especiales
 customer.passenger.list.label.dateOfBirth=Fecha de nacimiento
+customer.passenger.list.label.published=Publicado
 customer.passenger.list.title=Pasajeros
 customer.passenger.list.button.create=Crear pasajero
 customer.passenger.form.title=Detalles de pasajero

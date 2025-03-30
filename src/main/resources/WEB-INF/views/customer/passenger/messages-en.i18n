@@ -4,6 +4,7 @@ customer.passenger.list.label.passportNumber=Passport number
 customer.passenger.list.label.specialNeeds=Special needs
 customer.passenger.list.label.dateOfBirth=Date of birth
 customer.passenger.list.button.create=Create passenger
+customer.passenger.list.label.published=Published
 customer.passenger.list.title=Passengers
 customer.passenger.form.title=Passenger details
 customer.passenger.form.label.fullName=Full name
