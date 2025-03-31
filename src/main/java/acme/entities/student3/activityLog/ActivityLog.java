@@ -7,6 +7,7 @@ import javax.persistence.Entity;
 import javax.persistence.ManyToOne;
 import javax.validation.Valid;
 
+import acme.Validators.ValidActivityLog;
 import acme.client.components.basis.AbstractEntity;
 import acme.client.components.mappings.Automapped;
 import acme.client.components.validation.Mandatory;
@@ -20,6 +21,7 @@ import lombok.Setter;
 @Entity
 @Getter
 @Setter
+@ValidActivityLog
 public class ActivityLog extends AbstractEntity {
 
 	// Serialisation version --------------------------------------------------
@@ -47,6 +49,10 @@ public class ActivityLog extends AbstractEntity {
 	@Mandatory
 	@ValidNumber(min = 0, max = 10)
 	private int					severity;
+
+	@Mandatory
+	@Automapped
+	private boolean				draftMode;
 
 	// Derived attributes -----------------------------------------------------
 
