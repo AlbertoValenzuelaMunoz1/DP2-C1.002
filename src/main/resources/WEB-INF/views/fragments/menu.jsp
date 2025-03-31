@@ -19,6 +19,7 @@
 <acme:menu-bar>
 	<acme:menu-left>
 		<acme:menu-option code="master.menu.anonymous" access="isAnonymous()">
+			<acme:menu-suboption code="master.menu.anonymous.favourite-link" action="http://www.example.com/"/>
 			<acme:menu-suboption code="master.menu.anonymous.favourite-link-Rafa" action="https://www.youtube.com/watch?v=ML6r5pwKX1E"/> 
 			<acme:menu-suboption code="master.menu.anonymous.favourite-link-Alberto" action="https://ev.us.es/"/>
 			<acme:menu-suboption code="master.menu.anonymous.favourite-link-Antonio" action="https://i.redd.it/0p0d4a8etnl51.jpg"/>
@@ -50,6 +51,11 @@
 			<acme:menu-suboption code="master.menu.customer.passengers" action="/customer/passenger/list" />
 		</acme:menu-option>
 	</acme:menu-left>
+	
+	<acme:menu-option code="master.menu.flight-crew-member" access="hasRealm('FlightCrewMember')">
+			<acme:menu-suboption code="master.menu.flight-crew-member.flightAssignmentCompleted" action="/flight-crew-member/flight-assignment/list-completed"/>
+			<acme:menu-suboption code="master.menu.flight-crew-member.flightAssignmentPlanned" action="/flight-crew-member/flight-assignment/list-planned"/>
+	</acme:menu-option>
 
 	<acme:menu-right>		
 		<acme:menu-option code="master.menu.user-account" access="isAuthenticated()">
