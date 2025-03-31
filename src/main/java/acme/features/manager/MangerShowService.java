@@ -30,7 +30,7 @@ public class MangerShowService extends AbstractGuiService<Manager, Flight> {
 		masterId = super.getRequest().getData("id", int.class);
 		flight = this.repository.findFlightById(masterId).orElse(null);
 		manager = flight == null ? null : flight.getManager();
-		status = super.getRequest().getPrincipal().hasRealm(manager) || flight != null;
+		status = super.getRequest().getPrincipal().hasRealm(manager) && flight != null;
 
 		super.getResponse().setAuthorised(status);
 	}
