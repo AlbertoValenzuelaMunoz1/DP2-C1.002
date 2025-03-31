@@ -71,6 +71,10 @@ public class Leg extends AbstractEntity {
 	@Automapped
 	private LegStatus			status;
 
+	//	@Mandatory
+	//	@Automapped
+	//	boolean						draftMode;
+
 
 	@Transient
 	public int durationInHours() {
