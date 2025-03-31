@@ -55,7 +55,7 @@ public class ManagerDeleteService extends AbstractGuiService<Manager, Flight> {
 
 		status = super.getRequest().getData("draftMode", boolean.class);
 
-		super.state(status, "draftMode", "acme.validation.confirmation.message");
+		super.state(status, "draftMode", "no puedes borrar un flight publicado");
 	}
 
 	@Override

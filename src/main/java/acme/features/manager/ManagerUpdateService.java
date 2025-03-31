@@ -51,7 +51,11 @@ public class ManagerUpdateService extends AbstractGuiService<Manager, Flight> {
 
 	@Override
 	public void validate(final Flight flight) {
-		;
+		boolean mode;
+
+		mode = flight.isDraftMode();
+
+		super.state(mode, "drafMode", "El vuelo tiene q estar en modo borrador");
 	}
 
 	@Override

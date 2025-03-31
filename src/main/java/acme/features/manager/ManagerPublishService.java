@@ -62,10 +62,10 @@ public class ManagerPublishService extends AbstractGuiService<Manager, Flight> {
 
 		super.state(hasLeg, "*", "tiene q tener leg");
 
-		//		if (hasLeg) {
-		//			boolean allPublished = legs.stream().allMatch(leg -> !leg.isDraftMode());
-		//			this.state(allPublished, "*", "las legs tienen q estar publicadas");
-		//		}
+		if (hasLeg) {
+			boolean allPublished = legs.stream().allMatch(leg -> !leg.isDraftMode());
+			this.state(allPublished, "*", "las legs tienen q estar publicadas");
+		}
 	}
 
 	@Override
