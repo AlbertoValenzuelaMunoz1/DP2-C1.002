@@ -24,9 +24,9 @@ public class ManagerUpdateService extends AbstractGuiService<Manager, Flight> {
 		Manager manager;
 
 		masterId = super.getRequest().getData("id", int.class);
-		flight = this.repository.findFlightById(masterId);
+		flight = this.repository.findFlightById(masterId).orElse(null);
 		manager = flight == null ? null : flight.getManager();
-		status = flight != null || flight.isDraftMode() && super.getRequest().getPrincipal().hasRealm(manager);
+		status = flight != null && flight.isDraftMode() && super.getRequest().getPrincipal().hasRealm(manager);
 
 		super.getResponse().setAuthorised(status);
 	}
@@ -37,7 +37,7 @@ public class ManagerUpdateService extends AbstractGuiService<Manager, Flight> {
 		int id;
 
 		id = super.getRequest().getData("id", int.class);
-		flight = this.repository.findFlightById(id);
+		flight = this.repository.findFlightById(id).get();
 
 		super.getBuffer().addData(flight);
 	}
@@ -61,12 +61,15 @@ public class ManagerUpdateService extends AbstractGuiService<Manager, Flight> {
 
 	@Override
 	public void unbind(final Flight flight) {
-		int managerId;
+
 		Dataset dataset;
 
-		managerId = super.getRequest().getPrincipal().getActiveRealm().getId();
-
 		dataset = super.unbindObject(flight, "tag", "transfer", "cost", "draftMode", "description");
+		dataset.put("origin", flight.originCity());
+		dataset.put("destiny", flight.destinationCity());
+		dataset.put("departureDate", flight.scheduledDeparture());
+		dataset.put("arrivalDate", flight.scheduledArrival());
+		dataset.put("numberOfLayovers", flight.numberOfLayovers());
 
 		super.getResponse().addData(dataset);
 	}

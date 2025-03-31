@@ -4,7 +4,6 @@ package acme.features.manager;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import acme.client.components.models.Dataset;
-import acme.client.helpers.MomentHelper;
 import acme.client.services.AbstractGuiService;
 import acme.client.services.GuiService;
 import acme.entities.student1.flight.Flight;
@@ -27,13 +26,11 @@ public class MangerShowService extends AbstractGuiService<Manager, Flight> {
 		int masterId;
 		Flight flight;
 		Manager manager;
-		java.util.Date currentMoment;
 
 		masterId = super.getRequest().getData("id", int.class);
-		flight = this.repository.findFlightById(masterId);
+		flight = this.repository.findFlightById(masterId).orElse(null);
 		manager = flight == null ? null : flight.getManager();
-		currentMoment = MomentHelper.getCurrentMoment();
-		status = super.getRequest().getPrincipal().hasRealm(manager) || flight != null && !flight.isDraftMode();//&& MomentHelper.isAfter(flight.getDeadline(), currentMoment);
+		status = super.getRequest().getPrincipal().hasRealm(manager) || flight != null;
 
 		super.getResponse().setAuthorised(status);
 	}
@@ -44,17 +41,21 @@ public class MangerShowService extends AbstractGuiService<Manager, Flight> {
 		int id;
 
 		id = super.getRequest().getData("id", int.class);
-		flight = this.repository.findFlightById(id);
+		flight = this.repository.findFlightById(id).get();
 
 		super.getBuffer().addData(flight);
 	}
 
 	@Override
 	public void unbind(final Flight flight) {
-		int managerId;
 		Dataset dataset;
 
 		dataset = super.unbindObject(flight, "tag", "transfer", "cost", "draftMode", "description");
+		dataset.put("origin", flight.originCity());
+		dataset.put("destiny", flight.destinationCity());
+		dataset.put("departureDate", flight.scheduledDeparture());
+		dataset.put("arrivalDate", flight.scheduledArrival());
+		dataset.put("numberOfLayovers", flight.numberOfLayovers());
 
 		super.getResponse().addData(dataset);
 	}

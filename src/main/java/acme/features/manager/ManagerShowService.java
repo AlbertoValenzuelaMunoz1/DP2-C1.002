@@ -25,13 +25,13 @@ public class ManagerShowService extends AbstractGuiService<Manager, Flight> {
 
 		flightId = super.getRequest().getData("id", int.class);
 		System.out.println("id" + flightId);
-		flight = this.repository.findFlightById(flightId);
+		flight = this.repository.findFlightById(flightId).orElse(null);
 		System.out.println("fli" + flight);
 		manager = flight == null ? null : flight.getManager();
 		System.out.println(manager);
 		System.out.println(super.getRequest().getPrincipal().getActiveRealm());
 
-		status = flight != null || super.getRequest().getPrincipal().hasRealm(manager) && !flight.isDraftMode();
+		status = flight != null && super.getRequest().getPrincipal().hasRealm(manager);
 
 		System.out.println("esnull?   " + flight != null + "manager?    " + super.getRequest().getPrincipal().hasRealm(manager) + "drafmode?   " + !flight.isDraftMode());
 		System.out.println("stratus   " + status);
@@ -45,7 +45,9 @@ public class ManagerShowService extends AbstractGuiService<Manager, Flight> {
 		int id;
 
 		id = super.getRequest().getData("id", int.class);
-		flight = this.repository.findFlightById(id);
+		flight = this.repository.findFlightById(id).get();
+
+		System.out.println(flight);
 
 		super.getBuffer().addData(flight);
 	}
@@ -54,9 +56,12 @@ public class ManagerShowService extends AbstractGuiService<Manager, Flight> {
 	public void unbind(final Flight flight) {
 		Dataset dataset;
 
-		dataset = super.unbindObject(flight, "tag", "transfer", "cost");
-		super.addPayload(dataset, flight, "description", "manager.id");
-		dataset.put("masterId", flight.getId());
+		dataset = super.unbindObject(flight, "tag", "transfer", "cost", "draftMode", "description");
+		dataset.put("origin", flight.originCity());
+		dataset.put("destiny", flight.destinationCity());
+		dataset.put("departureDate", flight.scheduledDeparture());
+		dataset.put("arrivalDate", flight.scheduledArrival());
+		dataset.put("numberOfLayovers", flight.numberOfLayovers());
 
 		super.getResponse().addData(dataset);
 	}

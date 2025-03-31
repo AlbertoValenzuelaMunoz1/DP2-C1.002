@@ -1,12 +1,15 @@
 
 package acme.features.manager;
 
+import java.util.Collection;
+
 import org.springframework.beans.factory.annotation.Autowired;
 
 import acme.client.components.models.Dataset;
 import acme.client.services.AbstractGuiService;
 import acme.client.services.GuiService;
 import acme.entities.student1.flight.Flight;
+import acme.entities.student1.leg.Leg;
 import acme.entities.student1.manager.Manager;
 
 @GuiService
@@ -28,7 +31,7 @@ public class ManagerPublishService extends AbstractGuiService<Manager, Flight> {
 		Manager manager;
 
 		flightId = super.getRequest().getData("id", int.class);
-		flight = this.repository.findFlightById(flightId);
+		flight = this.repository.findFlightById(flightId).orElse(null);
 		manager = flight == null ? null : flight.getManager();
 		status = flight != null && flight.isDraftMode() && super.getRequest().getPrincipal().hasRealm(manager);
 
@@ -41,7 +44,7 @@ public class ManagerPublishService extends AbstractGuiService<Manager, Flight> {
 		int id;
 
 		id = super.getRequest().getData("id", int.class);
-		flight = this.repository.findFlightById(id);
+		flight = this.repository.findFlightById(id).get();
 
 		super.getBuffer().addData(flight);
 	}
@@ -54,16 +57,10 @@ public class ManagerPublishService extends AbstractGuiService<Manager, Flight> {
 
 	@Override
 	public void validate(final Flight flight) {
-		boolean oneLeg;
-		boolean allLegsPublished;
+		Collection<Leg> legs = this.repository.findLegsByFlightId(flight.getId());
+		boolean hasLeg = !legs.isEmpty();
 
-		oneLeg = this.repository.findNumberLegsByFlightId(flight.getId()) > 1;
-
-		//para ver que todas las legs estan publicadas todavia no esta el drafMode en leg
-		//allLegsPublished = this.repository.findAllLegsByFlightId(flight.getId()).stream().allMatch(i -> i.isDraftMode() == false);
-
-		//falta añadir el allLegs
-		super.state(oneLeg, null, null, null);
+		super.state(hasLeg, "*", "tiene q tener leg");
 
 	}
 

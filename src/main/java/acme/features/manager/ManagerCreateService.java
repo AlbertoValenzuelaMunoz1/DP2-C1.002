@@ -24,15 +24,15 @@ public class ManagerCreateService extends AbstractGuiService<Manager, Flight> {
 	@Override
 	public void load() {
 		Manager manager;
-		Flight object;
+		Flight flight;
 
 		manager = (Manager) super.getRequest().getPrincipal().getActiveRealm();
 
-		object = new Flight();
-		object.setManager(manager);
-		object.setDraftMode(true);
+		flight = new Flight();
+		flight.setManager(manager);
+		flight.setDraftMode(true);
 
-		super.getBuffer().addData(object);
+		super.getBuffer().addData(flight);
 	}
 
 	@Override
@@ -54,10 +54,7 @@ public class ManagerCreateService extends AbstractGuiService<Manager, Flight> {
 
 	@Override
 	public void unbind(final Flight flight) {
-		int managerId;
 		Dataset dataset;
-
-		managerId = super.getRequest().getPrincipal().getActiveRealm().getId();
 
 		dataset = super.unbindObject(flight, "tag", "transfer", "cost", "draftMode", "description");
 
