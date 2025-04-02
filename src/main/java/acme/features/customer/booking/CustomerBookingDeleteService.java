@@ -1,20 +1,22 @@
 
 package acme.features.customer.booking;
 
+import java.util.Collection;
+
 import org.springframework.beans.factory.annotation.Autowired;
 
 import acme.client.components.datatypes.Money;
 import acme.client.components.models.Dataset;
 import acme.client.components.views.SelectChoices;
-import acme.client.helpers.StringHelper;
 import acme.client.services.AbstractGuiService;
 import acme.client.services.GuiService;
 import acme.datatypes.TravelClass;
 import acme.entities.student2.booking.Booking;
+import acme.entities.student2.booking.BookingRecord;
 import acme.entities.student2.customer.Customer;
 
 @GuiService
-public class CustomerPublishBookingService extends AbstractGuiService<Customer, Booking> {
+public class CustomerBookingDeleteService extends AbstractGuiService<Customer, Booking> {
 	// Internal state ---------------------------------------------------------
 
 	@Autowired
@@ -63,22 +65,15 @@ public class CustomerPublishBookingService extends AbstractGuiService<Customer, 
 	}
 	@Override
 	public void perform(final Booking booking) {
-		booking.setPublished(true);
-		this.repository.save(booking);
+		Collection<BookingRecord> records = this.repository.findBookingRecordByBookingId(booking.getId());
+		records.stream().forEach(r -> this.repository.delete(r));
+		this.repository.delete(booking);
 	}
 	@Override
 	public void validate(final Booking booking) {
 		boolean confirmation;
-		boolean valid;
-		boolean uniqueLocatorCode;
-		boolean allPassengersPublished;
 		confirmation = super.getRequest().getData("confirmation", boolean.class);
-		valid = booking.getLastNibble() != null && !StringHelper.isBlank(booking.getLastNibble()) && !booking.passengers().isEmpty();
-		uniqueLocatorCode = this.repository.findByLocatorCode(booking.getLocatorCode(), booking.getId()) == null;
-		allPassengersPublished = this.repository.findBookingRecordByBookingId(booking.getId()).stream().allMatch(r -> r.getPassenger().isPublished());
 		super.state(confirmation, "confirmation", "acme.validation.confirmation.message");
-		super.state(valid, "confirmation", "acme.validation.booking.published.message");
-		super.state(allPassengersPublished, "confirmation", "acme.validation.booking.publishedPassengers.message");
-		super.state(uniqueLocatorCode, "locatorCode", "acme.validation.booking.locatorCode.message");
 	}
+
 }
