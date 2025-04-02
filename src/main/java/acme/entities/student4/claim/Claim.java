@@ -19,9 +19,9 @@ import acme.client.components.validation.ValidString;
 import acme.client.helpers.SpringHelper;
 import acme.datatypes.ClaimType;
 import acme.datatypes.IndicatorStatus;
-import acme.entities.student4.assistanceAgent.AssistanceAgent;
 import acme.entities.student4.tranckingLog.TrackingLog;
-import acme.entities.student4.tranckingLog.TrackingLogRepository;
+import acme.features.agent.trackingLog.TrackingLogRepository;
+import acme.realms.AssistanceAgent;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -63,10 +63,10 @@ public class Claim extends AbstractEntity {
 
 
 	@Transient
-	public IndicatorStatus indicator() {
+	public IndicatorStatus getIndicator() {
 		TrackingLogRepository repository;
 		repository = SpringHelper.getBean(TrackingLogRepository.class);
-		TrackingLog topLog = repository.findTopByClaimIdOrderByResolutionPercentageDesc(this.getId());
+		TrackingLog topLog = repository.findFirstByClaimIdOrderByResolutionPercentageDesc(this.getId());
 
 		return topLog != null ? topLog.getClaimStatus() : null;
 	}
