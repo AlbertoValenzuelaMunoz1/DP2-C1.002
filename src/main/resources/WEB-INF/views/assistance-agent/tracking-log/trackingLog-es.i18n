@@ -1,0 +1,17 @@
+agent.tracking-log.list.label.lastUpdateMoment = Última actualización
+agent.tracking-log.list.label.stepUndergoing = Paso actual
+agent.tracking-log.list.label.resolutionPercentage = Porcentaje de resolución
+agent.tracking-log.list.label.claimStatus = Estado
+agent.tracking-log.list.label.resolutionDetails = Detalles de resolución
+agent.tracking-log.list.button.create = Crear seguimiento
+
+agent.tracking-log.form.label.lastUpdateMoment = Última actualización
+agent.tracking-log.form.label.stepUndergoing = Paso actual
+agent.tracking-log.form.label.resolutionPercentage = Porcentaje de resolución
+agent.tracking-log.form.label.claimStatus = Estado
+agent.tracking-log.form.label.resolutionDetails = Detalles de resolución
+agent.tracking-log.form.label.confirmation = Confirmación
+
+agent.tracking-log.form.button.update = Actualizar seguimiento
+agent.tracking-log.form.button.create = Crear seguimiento
+assistanceAgent.trackingLog.form.label.claim = Dirección de correo electrónico del pasajero que realizó la reclamación respecto a este registro de seguimiento

@@ -35,6 +35,12 @@
 			<acme:menu-separator/>
 			<acme:menu-suboption code="master.menu.administrator.shut-system-down" action="/administrator/system/shut-down"/>
 		</acme:menu-option>
+		
+		<acme:menu-option code="master.menu.agent" access="hasRealm('AssistanceAgent')">
+			<acme:menu-suboption code="master.menu.agent.list-claim" action="/assistance-agent/claim/list"/>
+			<acme:menu-suboption code="master.menu.agent.list-logs" action="/assistance-agent/tracking-log/list"/>
+		</acme:menu-option>
+
 
 		<acme:menu-option code="master.menu.provider" access="hasRealm('Provider')">
 			<acme:menu-suboption code="master.menu.provider.favourite-link" action="http://www.example.com/"/>
