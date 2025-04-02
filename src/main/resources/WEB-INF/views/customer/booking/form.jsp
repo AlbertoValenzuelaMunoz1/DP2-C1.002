@@ -16,12 +16,13 @@
 		<acme:input-checkbox code="customer.booking.form.label.confirmation" path="confirmation" />
 	</jstl:if>
 	<jstl:choose>
-		<jstl:when test="${acme:anyOf(_command, 'show|update|publish')}">
-			<acme:button code="customer.booking.form.button.passengers" action="/customer/passenger/listBooking?bookingId=${bookingId}"/>
+		<jstl:when test="${acme:anyOf(_command, 'show|update|publish|delete')}">
+			<acme:button code="customer.booking.form.button.passengers" action="/customer/booking-record/list?bookingId=${bookingId}"/>
 			<jstl:if test="${!readonly}">
 				<acme:submit code="customer.booking.form.button.update" action="/customer/booking/update"/>
-			<acme:button code="customer.booking.form.button.addPassengers" action="/customer/booking-record/create?bookingId=${bookingId}"/>
+			<%-- <acme:button code="customer.booking.form.button.addPassengers" action="/customer/booking-record/create?bookingId=${bookingId}"/> --%>
 			<acme:submit code="customer.booking.form.button.publish" action="/customer/booking/publish"/>
+			<acme:submit code="customer.passenger.form.button.delete" action="/customer/booking/delete"/>
 			</jstl:if>
 		</jstl:when>
 		<jstl:when test="${_command == 'create'}">

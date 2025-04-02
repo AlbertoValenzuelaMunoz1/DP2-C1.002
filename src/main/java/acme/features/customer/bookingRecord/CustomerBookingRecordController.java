@@ -14,11 +14,20 @@ import acme.entities.student2.customer.Customer;
 public class CustomerBookingRecordController extends AbstractGuiController<Customer, BookingRecord> {
 
 	@Autowired
-	private CustomerAddPassengerToBookingService addToBooking;
+	private CustomerAddPassengerToBookingService	addToBooking;
+	@Autowired
+	private CustomerListPassengersBookingService	list;
+	@Autowired
+	private CustomerBookingRecordShowService		showSerice;
+	@Autowired
+	private CustomerBookingRecordDeleteService		deleteSerice;
 
 
 	@PostConstruct
 	protected void initialise() {
 		super.addBasicCommand("create", this.addToBooking);
+		super.addBasicCommand("list", this.list);
+		super.addBasicCommand("show", this.showSerice);
+		super.addBasicCommand("delete", this.deleteSerice);
 	}
 }

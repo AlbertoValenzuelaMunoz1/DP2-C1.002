@@ -1,4 +1,5 @@
 acme.validation.phonenumber.message = The phone number is not valid
-acme.validation.booking.published.message = A booking must contain the last nibble credit card and at leat one passenger to be published
+acme.validation.booking.published.message = A booking must contain the last nibble credit card and at least one passenger to be published
 acme.validation.booking.locatorCode.message = The locator code must be unique
 acme.validation.airline.iataCode.message = The IATA code must be unique
+acme.validation.booking.publishedPassengers.message= To publish a booking all passengers must be published
