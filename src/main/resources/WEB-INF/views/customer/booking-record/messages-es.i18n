@@ -1,0 +1,6 @@
+customer.booking-record.form.title=Pasajero
+customer.booking-record.form.label.passenger=Pasajero
+customer.booking-record.form.button.create= Añadir pasajero
+customer.booking-record.list.button.create= Añadir pasajero
+customer.booking-record.form.button.delete=Eliminar de la reserva
+customer.booking-record.list.title=Pasajeros de la reserva

@@ -1,2 +1,5 @@
 acme.validation.phonenumber.message = El número de teléfono no es válido
-acme.validation.booking.published.message = Para que una booking este publicada debe contener al menos un pasajero
+acme.validation.booking.published.message = Para que una reserva este publicada debe contener al menos un pasajero y tener especificado los últimos cuatro dígitos de la tarjeta de crédito
+acme.validation.booking.locatorCode.message = El código de localización debe ser único
+acme.validation.airline.iataCode.message = El código IATA debe ser úinico
+acme.validation.booking.publishedPassengers.message= Para publicar una reserva todos sus pasajeros deben estar publicados

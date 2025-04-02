@@ -5,7 +5,7 @@
 
 <acme:form readonly="${readonly}">
 	<acme:input-textarea code="customer.passenger.form.label.fullName" path="fullName"/>	
-	<acme:input-textarea code="customer.passenger.form.label.email" path="email" />
+	<acme:input-email code="customer.passenger.form.label.email" path="email" />
 	<acme:input-textbox code="customer.passenger.form.label.passportNumber" path="passportNumber"/>
 	<acme:input-textarea code="customer.passenger.form.label.specialNeeds" path="specialNeeds" />
 	<acme:input-moment code="customer.passenger.form.label.dateOfBirth" path="dateOfBirth" />
@@ -16,9 +16,10 @@
 	<jstl:if test="${_command == 'create'}">
 		<acme:submit code="customer.passenger.form.button.create" action="/customer/passenger/create"/>
 	</jstl:if>
-	<jstl:if test="${acme:anyOf(_command, 'show|update|publish') && !readonly}">
+	<jstl:if test="${acme:anyOf(_command, 'show|update|publish|delete') && !readonly}">
 		<acme:submit code="customer.passenger.form.button.update" action="/customer/passenger/update"/>
 		<acme:submit code="customer.passenger.form.button.publish" action="/customer/passenger/publish"/>
+		<acme:submit code="customer.passenger.form.button.delete" action="/customer/passenger/delete"/>
 	</jstl:if>
 	
 </acme:form>

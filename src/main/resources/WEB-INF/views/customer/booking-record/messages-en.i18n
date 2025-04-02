@@ -1,0 +1,6 @@
+customer.booking-record.form.title=Passenger
+customer.booking-record.form.label.passenger=Passenger
+customer.booking-record.form.button.create= Add passenger
+customer.booking-record.list.button.create= Add passenger
+customer.booking-record.form.button.delete=Remove from booking
+customer.booking-record.list.title=Booking passengers
