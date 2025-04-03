@@ -4,10 +4,9 @@
 <%@taglib prefix="acme" uri="http://acme-framework.org/"%>
 
 <acme:form>
-	<acme:input-select code="flight-crew-member.activity-log.form.label.flight-assignment" path="assignment" choices="${assignments}"/>
-	<acme:input-textbox code="flight-crew-member.activity-log.form.label.incident-type" path="incidentType"/>
+	<acme:input-textbox code="flight-crew-member.activity-log.form.label.incidentType" path="incidentType"/>
 	<acme:input-textarea code="flight-crew-member.activity-log.form.label.description" path="description"/>
-	<acme:input-integer code="flight-crew-member.activity-log.form.label.severity" path="severity"/>
+	<acme:input-integer code="flight-crew-member.activity-log.form.label.severity" path="severity" />
 	
 	<jstl:choose>	 
 		<jstl:when test="${acme:anyOf(_command, 'show|update|delete|publish') && draftMode == true}">
@@ -16,7 +15,7 @@
 			<acme:submit code="flight-crew-member.activity-log.form.button.publish" action="/flight-crew-member/activity-log/publish"/>
 		</jstl:when>
 		<jstl:when test="${_command == 'create'}">
-			<acme:submit code="flight-crew-member.activity-log.form.button.create" action="/flight-crew-member/activity-log/create"/>
+			<acme:submit code="flight-crew-member.activity-log.form.button.create" action="/flight-crew-member/activity-log/create?masterId=${masterId}"/>
 		</jstl:when>		
 	</jstl:choose>
 </acme:form>

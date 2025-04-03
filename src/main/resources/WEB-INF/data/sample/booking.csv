@@ -1,9 +1,9 @@
 key,key:customer,key:flight,locatorCode,purchaseMoment,travelClass,lastNibble,published
-booking-01,customer-01,flight-01,A382B2,2012/07/20 0:00,ECONOMY,3928,true
-booking-02,customer-02,flight-01,A32C223,2025/01/01 0:00,BUSINESS,3923,true
-booking-03,customer-01,flight-02,A32D223,2025/01/01 0:00,BUSINESS,,false
-booking-04,customer-02,flight-02,38928936,2024/12/31 23:59,ECONOMY,3934,true
-booking-05,customer-01,flight-03,SDIKAEJD,2000/01/01 0:00,ECONOMY,6534,false
-booking-06,customer-02,flight-03,38201983,2000/01/01 0:01,BUSINESS,8534,true
+booking-01,customer-01,flight-04,A382B2,2012/07/20 0:00,ECONOMY,3928,true
+booking-02,customer-02,flight-04,A32C223,2025/01/01 0:00,BUSINESS,3923,true
+booking-03,customer-01,flight-04,A32D223,2025/01/01 0:00,BUSINESS,,false
+booking-04,customer-02,flight-04,38928936,2024/12/31 23:59,ECONOMY,3934,true
+booking-05,customer-01,flight-04,SDIKAEJD,2000/01/01 0:00,ECONOMY,6534,false
+booking-06,customer-02,flight-04,38201983,2000/01/01 0:01,BUSINESS,8534,true
 booking-07,customer-02,flight-04,38201F83,2000/01/01 0:01,BUSINESS,,false
-booking-08,customer-02,flight-05,38209V83,2000/01/01 0:01,BUSINESS,2534,false
+booking-08,customer-02,flight-04,38209V83,2000/01/01 0:01,BUSINESS,2534,false
