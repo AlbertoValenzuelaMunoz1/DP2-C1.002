@@ -1,5 +1,5 @@
 
-package acme.features.manager;
+package acme.features.manager.flight;
 
 import java.util.Collection;
 
@@ -9,7 +9,7 @@ import acme.client.components.models.Dataset;
 import acme.client.services.AbstractGuiService;
 import acme.client.services.GuiService;
 import acme.entities.student1.flight.Flight;
-import acme.entities.student1.manager.Manager;
+import acme.realms.Manager;
 
 @GuiService
 public class ManagerListService extends AbstractGuiService<Manager, Flight> {
@@ -37,8 +37,9 @@ public class ManagerListService extends AbstractGuiService<Manager, Flight> {
 	@Override
 	public void unbind(final Flight flight) {
 		Dataset dataset;
+		System.out.println("Al clicar");
 
-		dataset = super.unbindObject(flight, "tag", "transfer", "cost");
+		dataset = super.unbindObject(flight, "tag", "transfer", "cost", "draftMode");
 		super.addPayload(dataset, flight, "description");
 
 		super.getResponse().addData(dataset);

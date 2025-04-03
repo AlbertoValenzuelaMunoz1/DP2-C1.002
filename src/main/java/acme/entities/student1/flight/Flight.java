@@ -20,7 +20,7 @@ import acme.client.helpers.SpringHelper;
 import acme.entities.group.airport.Airport;
 import acme.entities.student1.leg.Leg;
 import acme.entities.student1.leg.LegRepository;
-import acme.entities.student1.manager.Manager;
+import acme.realms.Manager;
 import lombok.Getter;
 import lombok.Setter;
 

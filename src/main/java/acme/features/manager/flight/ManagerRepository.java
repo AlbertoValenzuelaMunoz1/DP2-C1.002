@@ -1,5 +1,5 @@
 
-package acme.features.manager;
+package acme.features.manager.flight;
 
 import java.util.Collection;
 import java.util.Optional;
@@ -10,7 +10,7 @@ import org.springframework.stereotype.Repository;
 import acme.client.repositories.AbstractRepository;
 import acme.entities.student1.flight.Flight;
 import acme.entities.student1.leg.Leg;
-import acme.entities.student1.manager.Manager;
+import acme.realms.Manager;
 
 @Repository
 public interface ManagerRepository extends AbstractRepository {

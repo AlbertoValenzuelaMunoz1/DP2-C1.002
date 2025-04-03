@@ -1,5 +1,7 @@
 
-package acme.features.manager;
+package acme.features.manager.flight;
+
+import java.util.Collection;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
@@ -7,24 +9,29 @@ import acme.client.components.models.Dataset;
 import acme.client.services.AbstractGuiService;
 import acme.client.services.GuiService;
 import acme.entities.student1.flight.Flight;
-import acme.entities.student1.manager.Manager;
+import acme.entities.student1.leg.Leg;
+import acme.realms.Manager;
 
 @GuiService
-public class ManagerDeleteService extends AbstractGuiService<Manager, Flight> {
+public class ManagerPublishService extends AbstractGuiService<Manager, Flight> {
+
+	// Internal state ---------------------------------------------------------
 
 	@Autowired
 	private ManagerRepository repository;
+
+	// AbstractGuiService interface -------------------------------------------
 
 
 	@Override
 	public void authorise() {
 		boolean status;
-		int masterId;
+		int flightId;
 		Flight flight;
 		Manager manager;
 
-		masterId = super.getRequest().getData("id", int.class);
-		flight = this.repository.findFlightById(masterId).orElse(null);
+		flightId = super.getRequest().getData("id", int.class);
+		flight = this.repository.findFlightById(flightId).orElse(null);
 		manager = flight == null ? null : flight.getManager();
 		status = flight != null && flight.isDraftMode() && super.getRequest().getPrincipal().hasRealm(manager);
 
@@ -46,22 +53,25 @@ public class ManagerDeleteService extends AbstractGuiService<Manager, Flight> {
 	public void bind(final Flight flight) {
 
 		super.bindObject(flight, "tag", "transfer", "cost", "description");
-
 	}
 
 	@Override
 	public void validate(final Flight flight) {
-		boolean status;
+		Collection<Leg> legs = this.repository.findLegsByFlightId(flight.getId());
+		boolean hasLeg = !legs.isEmpty();
 
-		status = super.getRequest().getData("draftMode", boolean.class);
+		super.state(hasLeg, "*", "tiene q tener leg");
 
-		super.state(status, "draftMode", "no puedes borrar un flight publicado");
+		if (hasLeg) {
+			boolean allPublished = legs.stream().allMatch(leg -> !leg.isDraftMode());
+			this.state(allPublished, "*", "las legs tienen q estar publicadas");
+		}
 	}
 
 	@Override
 	public void perform(final Flight flight) {
-
-		this.repository.delete(flight);
+		flight.setDraftMode(false);
+		this.repository.save(flight);
 	}
 
 	@Override
@@ -74,6 +84,7 @@ public class ManagerDeleteService extends AbstractGuiService<Manager, Flight> {
 		dataset.put("departureDate", flight.scheduledDeparture());
 		dataset.put("arrivalDate", flight.scheduledArrival());
 		dataset.put("numberOfLayovers", flight.numberOfLayovers());
+
 		super.getResponse().addData(dataset);
 	}
 

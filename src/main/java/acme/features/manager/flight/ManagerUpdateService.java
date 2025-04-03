@@ -1,7 +1,5 @@
 
-package acme.features.manager;
-
-import java.util.Collection;
+package acme.features.manager.flight;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
@@ -9,29 +7,24 @@ import acme.client.components.models.Dataset;
 import acme.client.services.AbstractGuiService;
 import acme.client.services.GuiService;
 import acme.entities.student1.flight.Flight;
-import acme.entities.student1.leg.Leg;
-import acme.entities.student1.manager.Manager;
+import acme.realms.Manager;
 
 @GuiService
-public class ManagerPublishService extends AbstractGuiService<Manager, Flight> {
-
-	// Internal state ---------------------------------------------------------
+public class ManagerUpdateService extends AbstractGuiService<Manager, Flight> {
 
 	@Autowired
 	private ManagerRepository repository;
-
-	// AbstractGuiService interface -------------------------------------------
 
 
 	@Override
 	public void authorise() {
 		boolean status;
-		int flightId;
+		int masterId;
 		Flight flight;
 		Manager manager;
 
-		flightId = super.getRequest().getData("id", int.class);
-		flight = this.repository.findFlightById(flightId).orElse(null);
+		masterId = super.getRequest().getData("id", int.class);
+		flight = this.repository.findFlightById(masterId).orElse(null);
 		manager = flight == null ? null : flight.getManager();
 		status = flight != null && flight.isDraftMode() && super.getRequest().getPrincipal().hasRealm(manager);
 
@@ -53,29 +46,26 @@ public class ManagerPublishService extends AbstractGuiService<Manager, Flight> {
 	public void bind(final Flight flight) {
 
 		super.bindObject(flight, "tag", "transfer", "cost", "description");
+
 	}
 
 	@Override
 	public void validate(final Flight flight) {
-		Collection<Leg> legs = this.repository.findLegsByFlightId(flight.getId());
-		boolean hasLeg = !legs.isEmpty();
+		boolean mode;
 
-		super.state(hasLeg, "*", "tiene q tener leg");
+		mode = flight.isDraftMode();
 
-		if (hasLeg) {
-			boolean allPublished = legs.stream().allMatch(leg -> !leg.isDraftMode());
-			this.state(allPublished, "*", "las legs tienen q estar publicadas");
-		}
+		super.state(mode, "draftMode", "El vuelo tiene q estar en modo borrador");
 	}
 
 	@Override
 	public void perform(final Flight flight) {
-		flight.setDraftMode(false);
 		this.repository.save(flight);
 	}
 
 	@Override
 	public void unbind(final Flight flight) {
+
 		Dataset dataset;
 
 		dataset = super.unbindObject(flight, "tag", "transfer", "cost", "draftMode", "description");

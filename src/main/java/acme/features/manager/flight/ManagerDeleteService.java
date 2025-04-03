@@ -1,5 +1,7 @@
 
-package acme.features.manager;
+package acme.features.manager.flight;
+
+import java.util.Collection;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
@@ -7,10 +9,11 @@ import acme.client.components.models.Dataset;
 import acme.client.services.AbstractGuiService;
 import acme.client.services.GuiService;
 import acme.entities.student1.flight.Flight;
-import acme.entities.student1.manager.Manager;
+import acme.entities.student1.leg.Leg;
+import acme.realms.Manager;
 
 @GuiService
-public class ManagerUpdateService extends AbstractGuiService<Manager, Flight> {
+public class ManagerDeleteService extends AbstractGuiService<Manager, Flight> {
 
 	@Autowired
 	private ManagerRepository repository;
@@ -51,21 +54,32 @@ public class ManagerUpdateService extends AbstractGuiService<Manager, Flight> {
 
 	@Override
 	public void validate(final Flight flight) {
-		boolean mode;
+		boolean status;
+		boolean legsPublish;
 
-		mode = flight.isDraftMode();
+		status = super.getRequest().getData("draftMode", boolean.class);
 
-		super.state(mode, "drafMode", "El vuelo tiene q estar en modo borrador");
+		Collection<Leg> legs = this.repository.findLegsByFlightId(flight.getId());
+
+		legsPublish = legs.stream().allMatch(Leg::isDraftMode);
+
+		super.state(legsPublish, "*", "no puedes borrar un vuelo con legs publicadas.");
+
+		super.state(status, "draftMode", "no puedes borrar un flight publicado");
+
 	}
 
 	@Override
 	public void perform(final Flight flight) {
-		this.repository.save(flight);
+		Collection<Leg> flightLegs = this.repository.findLegsByFlightId(flight.getId());
+
+		flightLegs.stream().forEach(l -> this.repository.delete(l));
+
+		this.repository.delete(flight);
 	}
 
 	@Override
 	public void unbind(final Flight flight) {
-
 		Dataset dataset;
 
 		dataset = super.unbindObject(flight, "tag", "transfer", "cost", "draftMode", "description");
@@ -74,7 +88,6 @@ public class ManagerUpdateService extends AbstractGuiService<Manager, Flight> {
 		dataset.put("departureDate", flight.scheduledDeparture());
 		dataset.put("arrivalDate", flight.scheduledArrival());
 		dataset.put("numberOfLayovers", flight.numberOfLayovers());
-
 		super.getResponse().addData(dataset);
 	}
 

@@ -23,7 +23,7 @@ public interface LegFlightRepository extends AbstractRepository {
 	Optional<Flight> findFlightById(int flightId);
 
 	@Query("select l from Leg l where l.flight.id = :flightId")
-	Collection<Leg> findLegByFlightId(int flightId);
+	Collection<Leg> findLegsByFlightId(int flightId);
 
 	@Query("select l.flight from Leg l where l.id = :legId")
 	Optional<Flight> findFlightByLegId(int legId);
@@ -36,4 +36,7 @@ public interface LegFlightRepository extends AbstractRepository {
 
 	@Query("select f from Flight f where f.manager.id = :id")
 	Collection<Flight> findFlightsByManagerId(int id);
+
+	@Query("SELECT l FROM Leg l where l.flight.id = :id ORDER BY l.scheduledArrival ASC")
+	Collection<Leg> findLegsOrderedByFlightId(int id);
 }

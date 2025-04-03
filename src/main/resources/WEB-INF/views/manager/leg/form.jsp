@@ -9,16 +9,26 @@
  	<input type="hidden" name="id" value="${id}" />
 	<input type="hidden" name="version" value="${version}" />
  		
- 	<acme:input-integer code="manager.leg.form.label.flightNumberDigits" path="flightNumberDigits"/>
+ 		
+  	<jstl:choose>
+  		<jstl:when test="${_command == 'create'}">
+  			<acme:input-integer code="manager.leg.form.label.flightNumberDigits" path="flightNumberDigits"/>
+		</jstl:when>
+		
+		<jstl:when test="${acme:anyOf(_command, 'show|update|delete|publish')}">
+  			<acme:input-double 	code="manager.leg.form.label.flightNumberDigits" path="flightNumberDigits" readonly="true"/>
+		</jstl:when>
+  	</jstl:choose>
 	<acme:input-moment code="manager.leg.form.label.scheduledDeparture" path="scheduledDeparture" />
 	<acme:input-moment code="manager.leg.form.label.scheduledArrival" path="scheduledArrival"/>
+	<acme:input-double  code="manager.leg.form.label.durationInHours" path="durationInHours" readonly="true"/>
 	<acme:input-select code="manager.leg.form.label.status" path="status" choices="${statuses}"/>
 	<acme:input-select code="manager.leg.form.label.departureAirport" path="departureAirport" choices="${departureAirports}"/>
 	<acme:input-select code="manager.leg.form.label.arrivalAirport" path="arrivalAirport" choices="${arrivalAirports}"/>
 	<acme:input-select code="manager.leg.form.label.aircraft" path="aircraft" choices="${aircrafts}"/>
-	<acme:input-select code="manager.leg.form.label.flight" path="flight" choices="${flights}"/>
+	<acme:input-textbox code="manager.leg.form.label.flight" path="flight"  readonly="true"/>
  	<acme:input-textbox code = "manager.flight.form.label.draftMode" path= "draftMode" readonly="true"/>
- 	<>
+
  	
  	
  	<jstl:choose>	 

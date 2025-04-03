@@ -15,7 +15,7 @@ import acme.entities.group.airport.Airport;
 import acme.entities.student1.flight.Flight;
 import acme.entities.student1.leg.Leg;
 import acme.entities.student1.leg.LegStatus;
-import acme.entities.student1.manager.Manager;
+import acme.realms.Manager;
 
 @GuiService
 public class LegFlightPublishService extends AbstractGuiService<Manager, Leg> {
@@ -110,13 +110,14 @@ public class LegFlightPublishService extends AbstractGuiService<Manager, Leg> {
 		choicesDepartureAirports = SelectChoices.from(airports, "iataCode", leg.getDepartureAirport());
 		choicesAircraft = SelectChoices.from(aircrafts, "model", leg.getAircraft());
 
-		dataset = super.unbindObject(leg, "flightNumberDigits", "scheduledDeparture", "scheduledArrival", "departureAirport", "arrivalAirport", "aircraft", "flight", "status", "drafMode");
+		dataset = super.unbindObject(leg, "flightNumberDigits", "scheduledDeparture", "scheduledArrival", "departureAirport", "arrivalAirport", "aircraft", "flight", "status", "draftMode");
 		dataset.put("masterId", leg.getFlight().getId());
 		dataset.put("flights", choicesFlight);
 		dataset.put("arrivalAirports", choicesArrivalAirports);
 		dataset.put("departureAirports", choicesDepartureAirports);
 		dataset.put("aircrafts", choicesAircraft);
 		dataset.put("statuses", choicesStatus);
+		dataset.put("durationInHours", leg.durationInHours());
 
 		super.getResponse().addData(dataset);
 	}

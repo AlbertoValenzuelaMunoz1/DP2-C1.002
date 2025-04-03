@@ -1,5 +1,5 @@
 
-package acme.features.manager;
+package acme.features.manager.flight;
 
 import javax.annotation.PostConstruct;
 
@@ -8,7 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import acme.client.controllers.AbstractGuiController;
 import acme.client.controllers.GuiController;
 import acme.entities.student1.flight.Flight;
-import acme.entities.student1.manager.Manager;
+import acme.realms.Manager;
 
 @GuiController
 public class ManagerController extends AbstractGuiController<Manager, Flight> {

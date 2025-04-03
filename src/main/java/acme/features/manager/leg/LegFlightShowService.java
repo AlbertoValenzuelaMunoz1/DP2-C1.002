@@ -15,7 +15,7 @@ import acme.entities.group.airport.Airport;
 import acme.entities.student1.flight.Flight;
 import acme.entities.student1.leg.Leg;
 import acme.entities.student1.leg.LegStatus;
-import acme.entities.student1.manager.Manager;
+import acme.realms.Manager;
 
 @GuiService
 public class LegFlightShowService extends AbstractGuiService<Manager, Leg> {
@@ -35,28 +35,13 @@ public class LegFlightShowService extends AbstractGuiService<Manager, Leg> {
 		Leg leg;
 		Manager manager;
 
-		System.out.println("fodjsbgodsbgds");
-
 		legId = super.getRequest().getData("id", int.class);
-		System.out.println(legId);
 		Optional<Leg> optionalLeg = this.repository.findLegById(legId);
-		System.out.println(optionalLeg.isEmpty());
-		if (optionalLeg.isPresent())
-			System.out.println(optionalLeg.get());
 		leg = optionalLeg.isPresent() ? optionalLeg.get() : null;
-
-		System.out.println(leg);
 
 		manager = leg.getFlight().getManager();
 
-		System.out.println(manager);
-
-		System.out.println(leg != null);
-		System.out.println(super.getRequest().getPrincipal().hasRealm(manager));
-
 		status = leg != null && super.getRequest().getPrincipal().hasRealm(manager);
-
-		System.out.println(status);
 
 		super.getResponse().setAuthorised(status);
 	}
@@ -107,6 +92,7 @@ public class LegFlightShowService extends AbstractGuiService<Manager, Leg> {
 		dataset.put("departureAirports", choicesDepartureAirports);
 		dataset.put("aircrafts", choicesAircraft);
 		dataset.put("statuses", choicesStatus);
+		dataset.put("durationInHours", leg.durationInHours());
 
 		super.getResponse().addData(dataset);
 	}

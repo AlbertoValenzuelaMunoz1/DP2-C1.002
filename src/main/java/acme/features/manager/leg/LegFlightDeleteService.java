@@ -15,7 +15,7 @@ import acme.entities.group.airport.Airport;
 import acme.entities.student1.flight.Flight;
 import acme.entities.student1.leg.Leg;
 import acme.entities.student1.leg.LegStatus;
-import acme.entities.student1.manager.Manager;
+import acme.realms.Manager;
 
 @GuiService
 public class LegFlightDeleteService extends AbstractGuiService<Manager, Leg> {
@@ -59,7 +59,7 @@ public class LegFlightDeleteService extends AbstractGuiService<Manager, Leg> {
 	@Override
 	public void bind(final Leg leg) {
 
-		super.bindObject(leg, "flightNumber", "scheduledDeparture", "scheduledArrival", "status", "departureAirport", "arrivalAirport", "aircraft", "flight");
+		super.bindObject(leg, "flightNumberDigits", "scheduledDeparture", "scheduledArrival", "status", "departureAirport", "arrivalAirport", "aircraft", "flight");
 	}
 
 	@Override
@@ -111,6 +111,7 @@ public class LegFlightDeleteService extends AbstractGuiService<Manager, Leg> {
 		dataset.put("departureAirports", choicesDepartureAirports);
 		dataset.put("aircrafts", choicesAircraft);
 		dataset.put("statuses", choicesStatus);
+		dataset.put("durationInHours", leg.durationInHours());
 
 		super.getResponse().addData(dataset);
 

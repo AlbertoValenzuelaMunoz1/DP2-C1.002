@@ -28,7 +28,7 @@
  	<jstl:choose>	 
  	
  		<jstl:when test="${_command == 'show' && draftMode == false}">
-			<acme:button code="manager.flight.form.button.duties" action="/manager/leg/list?masterId=${id}"/>			
+			<acme:button code="manager.flight.form.button.legs" action="/manager/leg/list?masterId=${id}"/>			
 		</jstl:when>
  		
  		<jstl:when test="${acme:anyOf(_command, 'show|update|delete|publish') && draftMode == true}">
