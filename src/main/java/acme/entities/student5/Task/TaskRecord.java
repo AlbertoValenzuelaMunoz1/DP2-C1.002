@@ -4,10 +4,11 @@ package acme.entities.student5.Task;
 import javax.persistence.ManyToOne;
 import javax.validation.Valid;
 
+import acme.client.components.basis.AbstractEntity;
 import acme.client.components.validation.Mandatory;
 import acme.entities.student5.maintenanceRecord.MaintenanceRecord;
 
-public class TaskRecord {
+public class TaskRecord extends AbstractEntity {
 
 	private static final long	serialVersionUID	= 1L;
 
