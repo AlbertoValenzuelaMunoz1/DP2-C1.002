@@ -46,7 +46,6 @@ master.menu.customer.passengers = Passengers
 # master.menu.flight-crew-member ##########################################################
 
 master.menu.flight-crew-member = Flight Crew Member
-master.menu.flight-crew-member.activityLogs = List activity logs 
 # master.menu.assistance-agent ####################################################
 
 master.menu.agent = Agent

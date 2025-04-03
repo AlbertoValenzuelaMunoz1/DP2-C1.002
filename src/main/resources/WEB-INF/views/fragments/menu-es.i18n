@@ -43,8 +43,6 @@ master.menu.customer.passengers = Pasajeros
 # master.menu.flight-crewMember ##########################################################
 
 master.menu.flight-crew-member = Miembro de la tripulación de vuelo
-master.menu.flight-crew-member.activityLogs = Ver registros de actividad
-
 # master.menu.user-account ####################################################
 
 master.menu.user-account = Cuenta
