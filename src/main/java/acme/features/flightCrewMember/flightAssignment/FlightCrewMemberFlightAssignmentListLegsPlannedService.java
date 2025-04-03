@@ -34,7 +34,7 @@ public class FlightCrewMemberFlightAssignmentListLegsPlannedService extends Abst
 		id = super.getRequest().getPrincipal().getActiveRealm().getId();
 		now = MomentHelper.getCurrentMoment();
 
-		assignments = this.repository.findPlannedFlightAssignmentsByMemberId(now, id);
+		assignments = this.repository.findPlannedPublishedOrMemberAssignments(id, now);
 
 		super.getBuffer().addData(assignments);
 

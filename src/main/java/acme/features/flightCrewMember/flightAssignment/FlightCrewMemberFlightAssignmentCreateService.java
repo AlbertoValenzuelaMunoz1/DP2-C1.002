@@ -42,15 +42,14 @@ public class FlightCrewMemberFlightAssignmentCreateService extends AbstractGuiSe
 	public void bind(final FlightAssignment assignment) {
 		int legId;
 		Leg leg;
-		int memberId;
 		FlightCrewMember member;
 
 		legId = super.getRequest().getData("flightLeg", int.class);
 		leg = this.repository.findLegById(legId);
-		memberId = super.getRequest().getData("member", int.class);
-		member = this.repository.findFlightCrewMemberById(memberId);
 
 		super.bindObject(assignment, "duty", "status", "remarks");
+		member = (FlightCrewMember) super.getRequest().getPrincipal().getActiveRealm();
+
 		assignment.setFlightLeg(leg);
 		assignment.setFlightCrewMember(member);
 		assignment.setLastUpdate(MomentHelper.getCurrentMoment());
@@ -73,24 +72,20 @@ public class FlightCrewMemberFlightAssignmentCreateService extends AbstractGuiSe
 		SelectChoices duties;
 		Collection<Leg> legs;
 		SelectChoices selectedLegs;
-		Collection<FlightCrewMember> members;
-		SelectChoices selectedMembers;
+		FlightCrewMember member;
 
 		legs = this.repository.findAllLegs();
-		members = this.repository.findAllFlightCrewMembers();
-
+		member = assignment.getFlightCrewMember();
 		statuses = SelectChoices.from(AssignmentStatus.class, assignment.getStatus());
 		duties = SelectChoices.from(FlightDuty.class, assignment.getDuty());
 		selectedLegs = SelectChoices.from(legs, "flightNumberDigits", assignment.getFlightLeg());
-		selectedMembers = SelectChoices.from(members, "employeeCode", assignment.getFlightCrewMember());
 
 		dataset = super.unbindObject(assignment, "duty", "lastUpdate", "status", "remarks", "draftMode");
+		dataset.put("member", member);
 		dataset.put("statuses", statuses);
 		dataset.put("duties", duties);
-		dataset.put("leg", selectedLegs.getSelected().getKey());
+		dataset.put("flightLeg", selectedLegs.getSelected().getKey());
 		dataset.put("legs", selectedLegs);
-		dataset.put("member", selectedMembers.getSelected().getKey());
-		dataset.put("members", selectedMembers);
 
 		super.getResponse().addData(dataset);
 	}
