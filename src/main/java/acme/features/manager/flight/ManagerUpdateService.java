@@ -1,5 +1,5 @@
 
-package acme.features.manager;
+package acme.features.manager.flight;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
@@ -7,7 +7,7 @@ import acme.client.components.models.Dataset;
 import acme.client.services.AbstractGuiService;
 import acme.client.services.GuiService;
 import acme.entities.student1.flight.Flight;
-import acme.entities.student1.manager.Manager;
+import acme.realms.Manager;
 
 @GuiService
 public class ManagerUpdateService extends AbstractGuiService<Manager, Flight> {
@@ -51,7 +51,11 @@ public class ManagerUpdateService extends AbstractGuiService<Manager, Flight> {
 
 	@Override
 	public void validate(final Flight flight) {
-		;
+		boolean mode;
+
+		mode = flight.isDraftMode();
+
+		super.state(mode, "draftMode", "El vuelo tiene q estar en modo borrador");
 	}
 
 	@Override

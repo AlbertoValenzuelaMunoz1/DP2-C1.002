@@ -8,6 +8,7 @@
 	<acme:list-column  code="manager.list.label.tag" path="tag"/>	
 	<acme:list-column code="manager.list.label.transfer" path="transfer"/>
 	<acme:list-column code="manager.list.label.cost" path="cost"/>
+	<acme:list-column code="manager.list.label.draftMode" path="draftMode"/>
 	<acme:list-payload path="payload"/>
 </acme:list>
 

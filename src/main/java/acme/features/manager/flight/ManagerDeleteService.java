@@ -1,5 +1,7 @@
 
-package acme.features.manager;
+package acme.features.manager.flight;
+
+import java.util.Collection;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
@@ -7,7 +9,8 @@ import acme.client.components.models.Dataset;
 import acme.client.services.AbstractGuiService;
 import acme.client.services.GuiService;
 import acme.entities.student1.flight.Flight;
-import acme.entities.student1.manager.Manager;
+import acme.entities.student1.leg.Leg;
+import acme.realms.Manager;
 
 @GuiService
 public class ManagerDeleteService extends AbstractGuiService<Manager, Flight> {
@@ -52,14 +55,25 @@ public class ManagerDeleteService extends AbstractGuiService<Manager, Flight> {
 	@Override
 	public void validate(final Flight flight) {
 		boolean status;
+		boolean legsPublish;
 
 		status = super.getRequest().getData("draftMode", boolean.class);
 
-		super.state(status, "draftMode", "acme.validation.confirmation.message");
+		Collection<Leg> legs = this.repository.findLegsByFlightId(flight.getId());
+
+		legsPublish = legs.stream().allMatch(Leg::isDraftMode);
+
+		super.state(legsPublish, "*", "no puedes borrar un vuelo con legs publicadas.");
+
+		super.state(status, "draftMode", "no puedes borrar un flight publicado");
+
 	}
 
 	@Override
 	public void perform(final Flight flight) {
+		Collection<Leg> flightLegs = this.repository.findLegsByFlightId(flight.getId());
+
+		flightLegs.stream().forEach(l -> this.repository.delete(l));
 
 		this.repository.delete(flight);
 	}
