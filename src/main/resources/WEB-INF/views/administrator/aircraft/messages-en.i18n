@@ -1,0 +1,24 @@
+administrator.aircraft.form.title = Aircraft details
+administrator.aircraft.list.title = Listing of aircrafts
+
+administrator.aircraft.form.label.model = Model:
+administrator.aircraft.form.label.registrationNumber = Registration number:
+administrator.aircraft.form.label.passengerCapacity = Capacity:
+administrator.aircraft.form.label.cargoWeight = Cargo weight:
+administrator.aircraft.form.label.status = Status:
+administrator.aircraft.form.label.airline= Airline:
+administrator.aircraft.form.label.details = Details: (Optional)
+
+administrator.aircraft.form.button.create = Create
+administrator.aircraft.form.button.update = Update
+administrator.aircraft.form.button.delete = Delete
+administrator.aircraft.form.button.publish = Publish
+administrator.aircraft.form.label.confirmation = Confirm that the aircraft is correct.
+
+administrator.aircraft.list.label.model = Model
+administrator.aircraft.list.label.registrationNumber = Registration number
+administrator.aircraft.list.label.passengerCapacity = Capacity
+administrator.aircraft.list.label.cargoWeight = Cargo weight
+administrator.aircraft.list.label.status = Status
+
+administrator.aircraft.list.button.create = Create

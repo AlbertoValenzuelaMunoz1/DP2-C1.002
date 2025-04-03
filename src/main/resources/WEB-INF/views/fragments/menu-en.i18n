@@ -28,6 +28,7 @@ master.menu.administrator.populate-db-sample = Populate DB (samples)
 master.menu.administrator.shut-system-down = Shut system down
 master.menu.administrator.list-airport = List Airports
 master.menu.administrator.airline=List airlines
+master.menu.administrator.aircrafts = List aircrafts
 # master.menu.provider ########################################################
 
 master.menu.provider = Provider
