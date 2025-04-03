@@ -15,7 +15,7 @@ import acme.entities.student5.maintenanceRecord.MaintenanceRecord;
 import acme.entities.student5.technician.Technician;
 
 @GuiService
-public class TechnicianMaintenanceRecordCreateService extends AbstractGuiService<Technician, MaintenanceRecord> {
+public class TechnicianMaintenanceRecordUpdateService extends AbstractGuiService<Technician, MaintenanceRecord> {
 
 	@Autowired
 	private TechnicianMaintenanceRecordRepository repository;
@@ -23,55 +23,65 @@ public class TechnicianMaintenanceRecordCreateService extends AbstractGuiService
 
 	@Override
 	public void authorise() {
-		Technician technician = (Technician) super.getRequest().getPrincipal().getActiveRealm();
-		boolean status = technician != null;
+		boolean status;
+		int recordId;
+		MaintenanceRecord record;
+		Technician technician;
+
+		recordId = super.getRequest().getData("id", int.class);
+		record = this.repository.findMaintenanceRecordById(recordId);
+		technician = (Technician) super.getRequest().getPrincipal().getActiveRealm();
+		status = record != null && record.getStatus() == Status.IN_PROGRESS && super.getRequest().getPrincipal().hasRealm(technician);
+
 		super.getResponse().setAuthorised(status);
 	}
 
 	@Override
 	public void load() {
-		MaintenanceRecord record = new MaintenanceRecord();
-		record.setStatus(Status.PENDING);
+		MaintenanceRecord record;
+		int id;
+
+		id = super.getRequest().getData("id", int.class);
+		record = this.repository.findMaintenanceRecordById(id);
+
 		super.getBuffer().addData(record);
 	}
 
 	@Override
 	public void bind(final MaintenanceRecord record) {
-		int aircraftId = super.getRequest().getData("aircraft", int.class);
-
-		Aircraft aircraft = this.repository.findAircraftById(aircraftId);
 		super.bindObject(record, "maintanenceMoment", "status", "nextMaintanence", "estimatedCost", "notes");
-
-		record.setAircraft(aircraft);
-		record.setStatus(Status.COMPLETED);
-
 	}
 
 	@Override
 	public void validate(final MaintenanceRecord record) {
-		if (record.getAircraft() == null)
-			super.state(false, "aircraft", "technician.maintenance-record.error.no-aircraft");
+
+		if (record.getEstimateCost().getAmount() < 0)
+			super.state(false, "estimatedCost", "technician.maintenance-record.error.negative-cost");
+
 	}
 
 	@Override
 	public void perform(final MaintenanceRecord record) {
-		Technician technician = (Technician) super.getRequest().getPrincipal().getActiveRealm();
-		record.setTechnician(technician);
+
 		this.repository.save(record);
 	}
 
 	@Override
 	public void unbind(final MaintenanceRecord record) {
-		Collection<Aircraft> aircrafts = this.repository.findAvailableAircrafts();
-		SelectChoices aircraftChoices = SelectChoices.from(aircrafts, "model", record.getAircraft());
-		SelectChoices statusChoices = SelectChoices.from(Status.class, record.getStatus());
+		Dataset dataset;
+		SelectChoices choices;
+		SelectChoices aircraftChoices;
+		Collection<Aircraft> aircrafts;
 
-		Dataset dataset = super.unbindObject(record, "maintenanceDate", "nextInspectionDueDate", "status", "estimatedCost", "notes");
+		aircrafts = this.repository.findAvailableAircrafts();
+		aircraftChoices = SelectChoices.from(aircrafts, "registrationNumber", record.getAircraft());
+		choices = SelectChoices.from(Status.class, record.getStatus());
+
+		dataset = super.unbindObject(record, "maintanenceMoment", "status", "nextMaintanence", "estimatedCost", "notes");
 		dataset.put("aircraft", aircraftChoices.getSelected().getKey());
 		dataset.put("aircrafts", aircraftChoices);
-		dataset.put("statuses", statusChoices);
+		dataset.put("statuses", choices);
 
 		super.getResponse().addData(dataset);
 	}
-
 }
