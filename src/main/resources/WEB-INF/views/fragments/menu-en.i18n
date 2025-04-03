@@ -43,9 +43,11 @@ master.menu.consumer.favourite-link = Favourite link
 master.menu.customer = Customer
 master.menu.customer.bookings = Bookings
 master.menu.customer.passengers = Passengers
-# master.menu.flight-crew-member ##########################################################
+# master.menu.flightCrewMember ##########################################################
 
 master.menu.flight-crew-member = Flight Crew Member
+master.menu.flight-crew-member.flightAssignmentCompleted = List completed flight assignments 
+master.menu.flight-crew-member.flightAssignmentPlanned = List planned flight assignments 
 # master.menu.assistance-agent ####################################################
 
 master.menu.agent = Agent
