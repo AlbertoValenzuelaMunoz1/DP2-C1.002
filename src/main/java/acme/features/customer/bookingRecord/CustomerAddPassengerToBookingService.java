@@ -29,7 +29,7 @@ public class CustomerAddPassengerToBookingService extends AbstractGuiService<Cus
 		int bookingId = super.getRequest().getData("bookingId", int.class);
 		Customer customer = this.repository.findCustomerById(customerId);
 		Booking booking = this.repository.findBookingById(bookingId);
-		super.getResponse().setAuthorised(booking.getCustomer().equals(customer));
+		super.getResponse().setAuthorised(booking.getCustomer().equals(customer) && !booking.isPublished());
 	}
 
 	@Override

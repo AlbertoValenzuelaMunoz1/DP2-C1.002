@@ -18,3 +18,8 @@ user-account-member-02,true,"UserIdentity{name: 'Daniel', surname: 'لوريم �
 user-account-member-03,true,"UserIdentity{name: 'Sophia', surname: '洛伦·伊普森', email: 'a@b.e'}",member3,member3
 user-account-member-04,true,"UserIdentity{name: 'James', surname: 'Carter', email: 'a@b.es'}",member4,member4
 user-account-member-05,true,"UserIdentity{name: 'Olivia', surname: 'Morales', email: 'a@b.esx'}",member,member
+user-account-assistance-agent-03,true,"UserIdentity{name: 'Juan', surname: '洛伦·伊普森', email: 'a@b.e'}",agent3,agent3
+user-account-assistance-agent-04,true,"UserIdentity{name: 'Rafa', surname: 'Pineda', email: 'a@b.es'}",agent4,agent4
+user-account-assistance-agent-01,true,"UserIdentity{name: 'Pedro', surname: 'Gonzalez', email: 'a@b.esx'}",agent1,agent1
+user-account-assistance-agent-02,true,"UserIdentity{name: 'Pin', surname: 'Pin', email: 'a@b.esx'}",agent2,agent2
+

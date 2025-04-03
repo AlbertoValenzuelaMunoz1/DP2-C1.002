@@ -3,8 +3,11 @@ package acme.entities.student1.flight;
 
 import java.beans.Transient;
 import java.util.Date;
+import java.util.List;
 
 import javax.persistence.Entity;
+import javax.persistence.ManyToOne;
+import javax.validation.Valid;
 
 import acme.client.components.basis.AbstractEntity;
 import acme.client.components.datatypes.Money;
@@ -15,7 +18,9 @@ import acme.client.components.validation.ValidMoney;
 import acme.client.components.validation.ValidString;
 import acme.client.helpers.SpringHelper;
 import acme.entities.group.airport.Airport;
+import acme.entities.student1.leg.Leg;
 import acme.entities.student1.leg.LegRepository;
+import acme.realms.Manager;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -39,6 +44,10 @@ public class Flight extends AbstractEntity {
 	@ValidMoney
 	private Money				cost;
 
+	@Mandatory
+	@Automapped
+	private boolean				draftMode;
+
 	@Optional
 	@ValidString(max = 255)
 	@Automapped
@@ -50,15 +59,29 @@ public class Flight extends AbstractEntity {
 
 		LegRepository legRepository = SpringHelper.getBean(LegRepository.class);
 
-		return legRepository.firstFlightLeg(this).getScheduledDeparture();
+		List<Leg> legs = legRepository.firstFlightLeg(this);
+
+		Leg leg = legs == null || legs.isEmpty() ? null : legs.get(0);
+
+		Date date = leg == null ? null : leg.getScheduledDeparture();
+
+		return date;
 	}
 
 	@Transient
-	private Date scheduledArrival() {
+	public Date scheduledArrival() {
 
 		LegRepository legRepository = SpringHelper.getBean(LegRepository.class);
 
-		return legRepository.lastFlightLeg(this).getScheduledArrival();
+		List<Leg> legs = legRepository.lastFlightLeg(this);
+
+		Leg leg = legs == null || legs.isEmpty() ? null : legs.get(0);
+
+		System.out.println(leg);
+
+		Date date = leg == null ? null : leg.getScheduledArrival();
+
+		return date;
 	}
 
 	@Transient
@@ -66,7 +89,13 @@ public class Flight extends AbstractEntity {
 
 		LegRepository legRepository = SpringHelper.getBean(LegRepository.class);
 
-		return legRepository.firstFlightLeg(this).getDepartureAirport();
+		List<Leg> legs = legRepository.firstFlightLeg(this);
+
+		Leg leg = legs == null || legs.isEmpty() ? null : legs.get(0);
+
+		Airport airport = leg == null ? null : leg.getDepartureAirport();
+
+		return airport;
 	}
 
 	@Transient
@@ -74,15 +103,27 @@ public class Flight extends AbstractEntity {
 
 		LegRepository legRepository = SpringHelper.getBean(LegRepository.class);
 
-		return legRepository.lastFlightLeg(this).getArrivalAirport();
+		List<Leg> legs = legRepository.lastFlightLeg(this);
+
+		Leg leg = legs == null || legs.isEmpty() ? null : legs.get(0);
+
+		Airport airport = leg == null ? null : leg.getArrivalAirport();
+
+		return airport;
 	}
 
 	@Transient
 	public Integer numberOfLayovers() {
 
 		LegRepository legRepository = SpringHelper.getBean(LegRepository.class);
-
-		return legRepository.numberOfLegs(this).intValue();
+		Long result = legRepository.numberOfLegs(this);
+		return result != null ? result.intValue() : 0;
 	}
+
+
+	@Mandatory
+	@ManyToOne(optional = false)
+	@Valid
+	private Manager manager;
 
 }

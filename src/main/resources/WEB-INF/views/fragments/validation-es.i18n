@@ -8,3 +8,6 @@ acme.validation.flight-assignment.leg-has-copilot.message = La escala selecciona
 acme.validation.flight-assignment.leg-has-pilot.message = La escala seleccionada ya tiene un piloto
 acme.validation.flight-assignment.member-not-available.message = El miembro seleccionado no está disponible
 acme.validation.flight-assignment.leg-has-occurred.message = La escala seleccionada ya ha ocurrido 
+
+acme.validation.booking.publishedPassengers.message= Para publicar una reserva todos sus pasajeros deben estar publicados
+

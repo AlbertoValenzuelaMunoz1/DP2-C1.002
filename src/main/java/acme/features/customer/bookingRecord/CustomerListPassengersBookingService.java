@@ -1,5 +1,5 @@
 
-package acme.features.customer.passenger;
+package acme.features.customer.bookingRecord;
 
 import java.util.Collection;
 
@@ -9,14 +9,14 @@ import acme.client.components.models.Dataset;
 import acme.client.services.AbstractGuiService;
 import acme.client.services.GuiService;
 import acme.entities.student2.booking.Booking;
+import acme.entities.student2.booking.BookingRecord;
 import acme.entities.student2.customer.Customer;
-import acme.entities.student2.passenger.Passenger;
 
 @GuiService
-public class CustomerListPassengersBooking extends AbstractGuiService<Customer, Passenger> {
+public class CustomerListPassengersBookingService extends AbstractGuiService<Customer, BookingRecord> {
 
 	@Autowired
-	public CustomerPassengerRepository passengerRepository;
+	public CustomerBookingRecordRepository passengerRepository;
 
 
 	@Override
@@ -30,16 +30,16 @@ public class CustomerListPassengersBooking extends AbstractGuiService<Customer, 
 	@Override
 	public void load() {
 		int bookingId = super.getRequest().getData("bookingId", int.class);
-		Collection<Passenger> passengers = this.passengerRepository.findPassengersByBookingId(bookingId);
+		Collection<BookingRecord> passengers = this.passengerRepository.findBookingRecordByBookingId(bookingId);
 		super.getBuffer().addData(passengers);
+		super.getResponse().addGlobal("bookingId", bookingId);
+		super.getResponse().addGlobal("published", this.passengerRepository.findBookingById(bookingId).isPublished());
 	}
 
 	@Override
-	public void unbind(final Passenger passenger) {
+	public void unbind(final BookingRecord record) {
 		Dataset dataset;
-		dataset = super.unbindObject(passenger, "fullName", "email", "passportNumber", "dateOfBirth", "specialNeeds", "published");
-		int bookingId = super.getRequest().getData("bookingId", int.class);
-		dataset.put("bookingId", bookingId);
+		dataset = super.unbindObject(record, "passenger.fullName", "passenger.email", "passenger.passportNumber", "passenger.dateOfBirth", "passenger.specialNeeds", "passenger.published");
 		super.getResponse().addData(dataset);
 	}
 }

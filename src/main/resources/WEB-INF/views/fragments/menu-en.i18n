@@ -47,6 +47,11 @@ master.menu.customer.passengers = Passengers
 master.menu.flight-crew-member = Flight Crew Member
 master.menu.flight-crew-member.flightAssignmentCompleted = List completed flight assignments 
 master.menu.flight-crew-member.flightAssignmentPlanned = List planned flight assignments 
+master.menu.flight-crew-member.activityLogs = List activity logs 
+# master.menu.assistance-agent ####################################################
+
+master.menu.agent = Agent
+master.menu.agent.list-claim = List Claims
 # master.menu.user-account ####################################################
 
 master.menu.user-account = Account
@@ -55,3 +60,8 @@ master.menu.user-account.become-provider = Become a provider
 master.menu.user-account.provider-profile = Provider profile
 master.menu.user-account.become-consumer = Become a consumer
 master.menu.user-account.consumer-profile = Consumer profile
+
+# master.menu.manager ##########################################################
+
+master.menu.manager = Manager
+master.menu.manager.flights = Flights

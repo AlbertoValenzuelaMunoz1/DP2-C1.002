@@ -71,11 +71,14 @@ public class CustomerPublishBookingService extends AbstractGuiService<Customer, 
 		boolean confirmation;
 		boolean valid;
 		boolean uniqueLocatorCode;
+		boolean allPassengersPublished;
 		confirmation = super.getRequest().getData("confirmation", boolean.class);
 		valid = booking.getLastNibble() != null && !StringHelper.isBlank(booking.getLastNibble()) && !booking.passengers().isEmpty();
 		uniqueLocatorCode = this.repository.findByLocatorCode(booking.getLocatorCode(), booking.getId()) == null;
+		allPassengersPublished = this.repository.findBookingRecordByBookingId(booking.getId()).stream().allMatch(r -> r.getPassenger().isPublished());
 		super.state(confirmation, "confirmation", "acme.validation.confirmation.message");
 		super.state(valid, "confirmation", "acme.validation.booking.published.message");
+		super.state(allPassengersPublished, "confirmation", "acme.validation.booking.publishedPassengers.message");
 		super.state(uniqueLocatorCode, "locatorCode", "acme.validation.booking.locatorCode.message");
 	}
 }
