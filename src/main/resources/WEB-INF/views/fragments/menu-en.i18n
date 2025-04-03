@@ -47,7 +47,6 @@ master.menu.customer.passengers = Passengers
 master.menu.flight-crew-member = Flight Crew Member
 master.menu.flight-crew-member.flightAssignmentCompleted = List completed flight assignments 
 master.menu.flight-crew-member.flightAssignmentPlanned = List planned flight assignments 
-master.menu.flight-crew-member.activityLogs = List activity logs 
 # master.menu.user-account ####################################################
 
 master.menu.user-account = Account

@@ -7,16 +7,18 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 import acme.client.components.models.Dataset;
 import acme.client.components.views.SelectChoices;
+import acme.client.helpers.MomentHelper;
 import acme.client.services.AbstractGuiService;
 import acme.client.services.GuiService;
 import acme.datatypes.AssignmentStatus;
 import acme.datatypes.FlightDuty;
 import acme.entities.student1.leg.Leg;
+import acme.entities.student3.activityLog.ActivityLog;
 import acme.entities.student3.flightAssignment.FlightAssignment;
 import acme.entities.student3.flightCrewMember.FlightCrewMember;
 
 @GuiService
-public class FlightCrewMemberFlightAssignmentShowService extends AbstractGuiService<FlightCrewMember, FlightAssignment> {
+public class FlightCrewMemberFlightAssignmentDeleteService extends AbstractGuiService<FlightCrewMember, FlightAssignment> {
 
 	@Autowired
 	private FlightCrewMemberFlightAssignmentRepository repository;
@@ -46,6 +48,41 @@ public class FlightCrewMemberFlightAssignmentShowService extends AbstractGuiServ
 		assignment = this.repository.findFlightAssignmentById(assignmentId);
 
 		super.getBuffer().addData(assignment);
+	}
+
+	@Override
+	public void bind(final FlightAssignment assignment) {
+		Integer legId;
+		Leg leg;
+		Integer memberId;
+		FlightCrewMember member;
+
+		legId = super.getRequest().getData("flightLeg", int.class);
+		leg = this.repository.findLegById(legId);
+		memberId = super.getRequest().getData("member", int.class);
+		member = this.repository.findFlightCrewMemberById(memberId);
+
+		super.bindObject(assignment, "duty", "status", "remarks");
+		assignment.setFlightLeg(leg);
+		assignment.setFlightCrewMember(member);
+		assignment.setLastUpdate(MomentHelper.getCurrentMoment());
+	}
+
+	@Override
+	public void validate(final FlightAssignment assignment) {
+		;
+	}
+
+	@Override
+	public void perform(final FlightAssignment assignment) {
+		Collection<ActivityLog> logs;
+		int assignmentId;
+
+		assignmentId = assignment.getId();
+		logs = this.repository.findActivityLogsByAssignmentId(assignmentId);
+
+		this.repository.deleteAll(logs);
+		this.repository.delete(assignment);
 	}
 
 	@Override

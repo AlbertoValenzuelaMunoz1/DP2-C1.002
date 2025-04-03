@@ -50,12 +50,11 @@
 			<acme:menu-separator />
 			<acme:menu-suboption code="master.menu.customer.passengers" action="/customer/passenger/list" />
 		</acme:menu-option>
-	</acme:menu-left>
-	
-	<acme:menu-option code="master.menu.flight-crew-member" access="hasRealm('FlightCrewMember')">
+		<acme:menu-option code="master.menu.flight-crew-member" access="hasRealm('FlightCrewMember')">
 			<acme:menu-suboption code="master.menu.flight-crew-member.flightAssignmentCompleted" action="/flight-crew-member/flight-assignment/list-completed"/>
 			<acme:menu-suboption code="master.menu.flight-crew-member.flightAssignmentPlanned" action="/flight-crew-member/flight-assignment/list-planned"/>
-	</acme:menu-option>
+		</acme:menu-option>
+	</acme:menu-left>
 
 	<acme:menu-right>		
 		<acme:menu-option code="master.menu.user-account" access="isAuthenticated()">

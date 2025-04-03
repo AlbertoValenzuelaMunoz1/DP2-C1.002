@@ -45,12 +45,12 @@ public class FlightCrewMemberFlightAssignmentCreateService extends AbstractGuiSe
 		int memberId;
 		FlightCrewMember member;
 
-		legId = super.getRequest().getData("leg", int.class);
+		legId = super.getRequest().getData("flightLeg", int.class);
 		leg = this.repository.findLegById(legId);
 		memberId = super.getRequest().getData("member", int.class);
 		member = this.repository.findFlightCrewMemberById(memberId);
 
-		super.bindObject(assignment, "flightCrewDuty", "status", "remarks");
+		super.bindObject(assignment, "duty", "status", "remarks");
 		assignment.setFlightLeg(leg);
 		assignment.setFlightCrewMember(member);
 		assignment.setLastUpdate(MomentHelper.getCurrentMoment());
@@ -58,10 +58,7 @@ public class FlightCrewMemberFlightAssignmentCreateService extends AbstractGuiSe
 
 	@Override
 	public void validate(final FlightAssignment assignment) {
-		boolean confirmation;
-
-		confirmation = super.getRequest().getData("confirmation", boolean.class);
-		super.state(confirmation, "confirmation", "acme.validation.confirmation.message");
+		;
 	}
 
 	@Override
@@ -87,8 +84,7 @@ public class FlightCrewMemberFlightAssignmentCreateService extends AbstractGuiSe
 		selectedLegs = SelectChoices.from(legs, "flightNumberDigits", assignment.getFlightLeg());
 		selectedMembers = SelectChoices.from(members, "employeeCode", assignment.getFlightCrewMember());
 
-		dataset = super.unbindObject(assignment, "Duty", "lastUpdate", "status", "remarks", "draftMode");
-		dataset.put("confirmation", false);
+		dataset = super.unbindObject(assignment, "duty", "lastUpdate", "status", "remarks", "draftMode");
 		dataset.put("statuses", statuses);
 		dataset.put("duties", duties);
 		dataset.put("leg", selectedLegs.getSelected().getKey());
