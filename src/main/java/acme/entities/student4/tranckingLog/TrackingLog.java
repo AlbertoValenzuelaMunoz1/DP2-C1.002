@@ -52,18 +52,6 @@ public class TrackingLog extends AbstractEntity {
 	@Valid
 	public IndicatorStatus		claimStatus;
 
-	//	@Optional
-	//	@Automapped
-	//	private Boolean				claimAccepted;
-	//
-	//
-	//	@Transient
-	//	public boolean isResolved() {
-	//		boolean result;
-	//		result = this.belongsTo != null && this.belongsTo.getIndicator() != null;
-	//		return result;
-	//	}
-
 	@Optional
 	@Automapped
 	@ValidString

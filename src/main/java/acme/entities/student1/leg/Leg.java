@@ -71,20 +71,25 @@ public class Leg extends AbstractEntity {
 	@Automapped
 	private LegStatus			status;
 
-	//	@Mandatory
-	//	@Automapped
-	//	boolean						draftMode;
+	@Mandatory
+	@Automapped
+	boolean						draftMode;
 
 
 	@Transient
-	public int durationInHours() {
+	public Long durationInHours() {
 
-		Instant departure = this.scheduledDeparture.toInstant();
-		Instant arrival = this.scheduledArrival.toInstant();
+		Long hours = null;
 
-		Duration time = Duration.between(departure, arrival);
+		if (this.scheduledDeparture != null && this.scheduledArrival != null) {
+			Instant departure = this.scheduledDeparture.toInstant();
+			Instant arrival = this.scheduledArrival.toInstant();
 
-		return time.toHoursPart();
+			Duration time = Duration.between(departure, arrival);
+			hours = time.toHours();
+		}
+
+		return hours;
 	}
 
 }

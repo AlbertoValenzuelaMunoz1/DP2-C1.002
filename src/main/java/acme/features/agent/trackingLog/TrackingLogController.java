@@ -1,5 +1,5 @@
 
-package acme.features.manager;
+package acme.features.agent.trackingLog;
 
 import javax.annotation.PostConstruct;
 
@@ -7,32 +7,31 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 import acme.client.controllers.AbstractGuiController;
 import acme.client.controllers.GuiController;
-import acme.entities.student1.flight.Flight;
-import acme.entities.student1.manager.Manager;
+import acme.entities.student4.tranckingLog.TrackingLog;
+import acme.realms.AssistanceAgent;
 
 @GuiController
-public class ManagerController extends AbstractGuiController<Manager, Flight> {
+public class TrackingLogController extends AbstractGuiController<AssistanceAgent, TrackingLog> {
 
 	// Internal state ---------------------------------------------------------
 
 	@Autowired
-	private ManagerListService		listService;
+	private TrackingLogListService		listService;
 
 	@Autowired
-	private ManagerShowService		showService;
+	private TrackingLogShowService		showService;
 
 	@Autowired
-	private ManagerCreateService	createService;
+	private TrackingLogCreateService	createService;
 
 	@Autowired
-	private ManagerUpdateService	updateService;
+	private TrackingLogUpdateService	updateService;
 
 	@Autowired
-	private ManagerDeleteService	deleteService;
+	private TrackingLogDeleteService	deleteService;
 
 	@Autowired
-	private ManagerPublishService	publishService;
-
+	private TrackingLogPublishService	publishService;
 	// Constructors -----------------------------------------------------------
 
 
