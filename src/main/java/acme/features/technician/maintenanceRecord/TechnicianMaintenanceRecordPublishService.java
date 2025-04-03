@@ -11,7 +11,6 @@ import acme.client.services.AbstractGuiService;
 import acme.client.services.GuiService;
 import acme.datatypes.Status;
 import acme.entities.group.aircraft.Aircraft;
-import acme.entities.student5.Task.Task;
 import acme.entities.student5.maintenanceRecord.MaintenanceRecord;
 import acme.entities.student5.technician.Technician;
 
@@ -27,13 +26,13 @@ public class TechnicianMaintenanceRecordPublishService extends AbstractGuiServic
 		boolean status;
 		int recordId;
 		MaintenanceRecord record;
-		Technician technician;
-
+		Technician tech;
 		recordId = super.getRequest().getData("id", int.class);
 		record = this.repository.findMaintenanceRecordById(recordId);
-		technician = record != null ? record.getTechnician() : null;
 
-		status = record != null && (record.getStatus() == Status.IN_PROGRESS || record.getStatus() == Status.COMPLETED) && super.getRequest().getPrincipal().hasRealm(technician);
+		tech = (Technician) super.getRequest().getPrincipal().getActiveRealm();
+
+		status = record != null && record.getStatus() == Status.IN_PROGRESS && super.getRequest().getPrincipal().hasRealm(tech);
 
 		super.getResponse().setAuthorised(status);
 	}
@@ -42,7 +41,6 @@ public class TechnicianMaintenanceRecordPublishService extends AbstractGuiServic
 	public void load() {
 		MaintenanceRecord record;
 		int id;
-
 		id = super.getRequest().getData("id", int.class);
 		record = this.repository.findMaintenanceRecordById(id);
 
@@ -56,19 +54,14 @@ public class TechnicianMaintenanceRecordPublishService extends AbstractGuiServic
 
 	@Override
 	public void validate(final MaintenanceRecord record) {
+		if (record.getEstimateCost().getAmount() < 0)
+			super.state(false, "estimatedCost", "technician.maintenance-record.error.negative-cost");
 
-		Collection<Task> tasks = this.repository.findTasksByMaintenanceRecordId(record.getId());
-		boolean atLeastOnePublished = tasks.stream().anyMatch(task -> task.getTaskRecord().getMaintenanceRecord().getStatus() == Status.IN_PROGRESS || task.getTaskRecord().getMaintenanceRecord().getStatus() == Status.COMPLETED);
-
-		super.state(atLeastOnePublished, "*", "technician.maintanence-record.error.noPublishedTasks.message");
-
-		super.state(record.getStatus() != Status.PENDING, "*", "technician.maintanence-record.error.invalid-status-pending");
+		super.state(record.getStatus() != Status.PENDING, "*", "technician.maintenance-record.error.invalid-status-pending");
 	}
 
 	@Override
 	public void perform(final MaintenanceRecord record) {
-
-		record.setStatus(Status.COMPLETED);
 		this.repository.save(record);
 	}
 
@@ -81,6 +74,7 @@ public class TechnicianMaintenanceRecordPublishService extends AbstractGuiServic
 
 		aircrafts = this.repository.findAvailableAircrafts();
 		aircraftChoices = SelectChoices.from(aircrafts, "registrationNumber", record.getAircraft());
+
 		choices = SelectChoices.from(Status.class, record.getStatus());
 
 		dataset = super.unbindObject(record, "maintanenceMoment", "status", "nextMaintanence", "estimatedCost", "notes");
