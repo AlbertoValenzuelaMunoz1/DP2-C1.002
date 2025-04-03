@@ -31,8 +31,15 @@ public class FlightCrewMemberActivityLogCreateService extends AbstractGuiService
 	public void load() {
 		ActivityLog log;
 
+		int masterId;
+		FlightAssignment flightAssignment;
+
+		masterId = super.getRequest().getData("masterId", int.class);
+		flightAssignment = this.repository.findFlightAssignmentById(masterId);
+
 		log = new ActivityLog();
 		log.setDraftMode(true);
+		log.setFlightAssignment(flightAssignment);
 
 		super.getBuffer().addData(log);
 	}
@@ -43,7 +50,7 @@ public class FlightCrewMemberActivityLogCreateService extends AbstractGuiService
 		int assignmentId;
 		FlightAssignment assignment;
 
-		assignmentId = super.getRequest().getData("assignment", int.class);
+		assignmentId = super.getRequest().getData("masterId", int.class);
 		assignment = this.repository.findFlightAssignmentById(assignmentId);
 		now = MomentHelper.getCurrentMoment();
 
@@ -54,6 +61,9 @@ public class FlightCrewMemberActivityLogCreateService extends AbstractGuiService
 
 	@Override
 	public void validate(final ActivityLog log) {
+		Date now = MomentHelper.getCurrentMoment();
+		if (MomentHelper.isBefore(now, log.getFlightAssignment().getFlightLeg().getScheduledArrival()))
+			super.state(false, "*", "El momento de registro del registro debe ocurrir después de que termine la escala");
 		;
 	}
 
@@ -67,13 +77,16 @@ public class FlightCrewMemberActivityLogCreateService extends AbstractGuiService
 		Dataset dataset;
 		SelectChoices selectedAssignments;
 		Collection<FlightAssignment> assignments;
+		FlightCrewMember member;
 
-		assignments = this.repository.findAllAssignments();
-		selectedAssignments = SelectChoices.from(assignments, "id", log.getFlightAssignment());
+		member = (FlightCrewMember) super.getRequest().getPrincipal().getActiveRealm();
+		assignments = this.repository.findFlightAssignmentsByMemberId(member.getId());
+		selectedAssignments = SelectChoices.from(assignments, "leg.flightNumber", log.getFlightAssignment());
 
 		dataset = super.unbindObject(log, "registrationMoment", "incidentType", "description", "severity", "draftMode");
 		dataset.put("assignments", selectedAssignments);
 		dataset.put("assignment", selectedAssignments.getSelected().getKey());
+		dataset.put("masterId", super.getRequest().getData("masterId", int.class));
 
 		super.getResponse().addData(dataset);
 	}
