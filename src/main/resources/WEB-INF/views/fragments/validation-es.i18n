@@ -14,4 +14,5 @@ acme.validation.activity-log.flight-assignment-not-published.message = Este regi
 acme.validation.log.registration-moment.message = El momento de registro del registro debe ocurrir después de que termine la escala.
 
 acme.validation.booking.publishedPassengers.message= Para publicar una reserva todos sus pasajeros deben estar publicados
+acme.validation.customer.identifier.message= El identificador de un cliente debe ser único
 
