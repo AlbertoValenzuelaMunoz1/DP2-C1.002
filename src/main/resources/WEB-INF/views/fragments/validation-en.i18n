@@ -14,4 +14,5 @@ acme.validation.activity-log.flight-assignment-not-published.message = This log 
 acme.validation.log.registration-moment.message = The log registration moment must occur after the leg finishes
 
 acme.validation.booking.publishedPassengers.message= To publish a booking all passengers must be published
+acme.validation.customer.identifier.message= The customer identifier must be unique
 
