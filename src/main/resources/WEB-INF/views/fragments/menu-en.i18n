@@ -46,6 +46,7 @@ master.menu.customer.bookings = Bookings
 master.menu.customer.passengers = Passengers
 master.menu.user-account.become-customer=Become a customer
 master.menu.user-account.customer-profile=Customer profile
+master.menu.customer.customer-dashboard=Customer dashboard
 # master.menu.flightCrewMember ##########################################################
 
 master.menu.flight-crew-member = Flight Crew Member

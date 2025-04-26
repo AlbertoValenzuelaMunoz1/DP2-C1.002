@@ -43,6 +43,7 @@ master.menu.customer.bookings = Reservas
 master.menu.customer.passengers = Pasajeros
 master.menu.user-account.become-customer=Registrarse como cliente
 master.menu.user-account.customer-profile=Perfil de cliente
+master.menu.customer.customer-dashboard=Estadísticas del cliente
 # master.menu.flight-crewMember ##########################################################
 
 master.menu.flight-crew-member = Miembro de la tripulación de vuelo
