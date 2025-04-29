@@ -24,21 +24,28 @@ public class ClaimListService extends AbstractGuiService<AssistanceAgent, Claim>
 
 	@Override
 	public void authorise() {
-		super.getResponse().setAuthorised(true);
+
+		boolean status;
+		status = super.getRequest().getPrincipal().hasRealmOfType(AssistanceAgent.class);
+
+		super.getResponse().setAuthorised(status);
 	}
 
 	@Override
 	public void load() {
-		Collection<Claim> claim;
+		Collection<Claim> claims;
+		int id;
 
-		claim = this.repository.findAllClaims();
-		super.getBuffer().addData(claim);
+		id = super.getRequest().getPrincipal().getActiveRealm().getId();
+		claims = this.repository.findAllClaimsByAssistanceAgentId(id);
+
+		super.getBuffer().addData(claims);
 	}
 
 	@Override
 	public void unbind(final Claim claim) {
 
-		Dataset dataset = super.unbindObject(claim, "registrationMoment", "passengerEmail", "description", "type", "indicator");
+		Dataset dataset = super.unbindObject(claim, "registrationMoment", "passengerEmail", "description", "type", "indicator", "leg");
 
 		super.getResponse().addData(dataset);
 	}
