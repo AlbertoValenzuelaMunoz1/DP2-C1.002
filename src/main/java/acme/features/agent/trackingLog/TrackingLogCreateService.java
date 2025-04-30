@@ -1,11 +1,12 @@
 
 package acme.features.agent.trackingLog;
 
-import java.util.Collection;
+import java.util.Date;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
 import acme.client.components.models.Dataset;
+import acme.client.components.principals.Principal;
 import acme.client.components.views.SelectChoices;
 import acme.client.helpers.MomentHelper;
 import acme.client.services.AbstractGuiService;
@@ -27,27 +28,46 @@ public class TrackingLogCreateService extends AbstractGuiService<AssistanceAgent
 
 	@Override
 	public void authorise() {
-		super.getResponse().setAuthorised(true);
+		boolean status;
+		int claimId;
+		int currentAssistanceAgentId;
+		Claim claim;
+		Principal principal;
+
+		principal = super.getRequest().getPrincipal();
+
+		currentAssistanceAgentId = principal.getActiveRealm().getId();
+		claimId = super.getRequest().getData("claimId", int.class);
+		claim = this.repository.findClaimById(claimId);
+
+		status = principal.hasRealmOfType(AssistanceAgent.class) && claim.getAssistanceAgent().getId() == currentAssistanceAgentId;
+
+		super.getResponse().setAuthorised(status);
 	}
 
 	@Override
 	public void load() {
-		TrackingLog TrackingLog;
-		TrackingLog = new TrackingLog();
+		int claimId;
+		TrackingLog trackingLog;
+		Claim claim;
+		Date currentMoment;
 
-		TrackingLog.setLastUpdateMoment(MomentHelper.getCurrentMoment());
-		//TrackingLog.setDraftMode(true);
-		//int claimId = super.getRequest().getData("claimId", int.class);
+		claimId = super.getRequest().getData("claimId", int.class);
+		claim = this.repository.findClaimById(claimId);
 
-		//	Claim claim = this.repository2.findClaimById(claimId);
-		//TrackingLog.setClaim(claim);
+		currentMoment = MomentHelper.getCurrentMoment();
 
-		super.getBuffer().addData(TrackingLog);
+		trackingLog = new TrackingLog();
+		trackingLog.setClaim(claim);
+		trackingLog.setLastUpdateMoment(currentMoment);
+		trackingLog.setDraftMode(true);
+
+		super.getBuffer().addData(trackingLog);
 	}
 
 	@Override
 	public void bind(final TrackingLog trackingLog) {
-		super.bindObject(trackingLog, "lastUpdateMoment", "stepUndergoing", "resolutionPercentage", "claimStatus", "resolutionDetails", "claim");
+		super.bindObject(trackingLog, "stepUndergoing", "resolutionPercentage", "claimStatus", "resolutionDetails");
 	}
 
 	@Override
@@ -67,16 +87,12 @@ public class TrackingLogCreateService extends AbstractGuiService<AssistanceAgent
 	public void unbind(final TrackingLog trackingLog) {
 
 		Dataset dataset;
-		Collection<Claim> claims;
-		AssistanceAgent assistance = (AssistanceAgent) super.getRequest().getPrincipal().getActiveRealm();
 
-		claims = this.repository2.findAllClaimsByAssistanceAgentId(assistance.getId());
-		dataset = super.unbindObject(trackingLog, "lastUpdateMoment", "stepUndergoing", "resolutionPercentage", "resolutionDetails", "claimStatus", "claim");
-		SelectChoices claimsChoices = SelectChoices.from(claims, "passengerEmail", trackingLog.getClaim());
-		dataset.put("claim", claimsChoices);
+		dataset = super.unbindObject(trackingLog, "lastUpdateMoment", "stepUndergoing", "resolutionPercentage", "resolutionDetails");
 
 		SelectChoices statusChoices = SelectChoices.from(IndicatorStatus.class, trackingLog.getClaimStatus());
 		dataset.put("claimStatus", statusChoices);
+		dataset.put("claimId", trackingLog.getClaim().getId());
 
 		super.getResponse().addData(dataset);
 	}

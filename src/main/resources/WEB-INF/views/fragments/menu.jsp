@@ -39,7 +39,6 @@
 		
 		<acme:menu-option code="master.menu.agent" access="hasRealm('AssistanceAgent')">
 			<acme:menu-suboption code="master.menu.agent.list-claim" action="/assistance-agent/claim/list"/>
-			<acme:menu-suboption code="master.menu.agent.list-logs" action="/assistance-agent/tracking-log/list"/>
 		</acme:menu-option>
 
 
