@@ -8,9 +8,9 @@ flight-06,"لوريم إيبسوم",false,EUR 100.00,true,"L",manager2
 flight-07,"洛伦·伊普森",false,EUR 100.00,true,"Lo",manager2
 flight-08,"<marquee>Hacked</marquee>",false,EUR 100.00,true,"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut enim ad minim veniam? Quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor",manager1
 flight-09,"<script>alert(‘Hacked!’);</script>",false,EUR 100.00,true,"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut enim ad minim veniam? Quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor*",manager1
-flight-10,"' or 'A' = 'A ",false,EUR 100.00,true,"โลเร็ม อิปซัม",manager3
-flight-11,"' or 'A' = 'A ",false,EUR 100.00,true,"لوريم إيبسوم",manager3
-flight-12,"' or 'A' = 'A ",false,EUR 100.00,true,"洛伦·伊普森",manager3
-flight-13,"' or 'A' = 'A ",false,EUR 100.00,true,"<marquee>Hacked</marquee>",manager3
-flight-14,"' or 'A' = 'A ",false,EUR 100.00,true,"<script>alert(‘Hacked!’);</script>",manager3
+flight-10,"' or 'A' = 'A ",false,EUR 100.00,true,"โลเร็ม อิปซัม",manager2
+flight-11,"' or 'A' = 'A ",false,EUR 100.00,true,"لوريم إيبسوم",manager2
+flight-12,"' or 'A' = 'A ",false,EUR 100.00,true,"洛伦·伊普森",manager2
+flight-13,"' or 'A' = 'A ",false,EUR 100.00,true,"<marquee>Hacked</marquee>",manager2
+flight-14,"' or 'A' = 'A ",false,EUR 100.00,true,"<script>alert(‘Hacked!’);</script>",manager2
 flight-15,"' or 'A' = 'A ",false,EUR 100.00,true,"' or 'A' = 'A ",manager2

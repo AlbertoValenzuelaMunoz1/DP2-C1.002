@@ -1,0 +1,14 @@
+administrator.booking.list.title=Reservas
+administrator.booking.list.label.locatorCode=Código de localización
+administrator.booking.list.label.purchaseMoment=Momento de compra
+administrator.booking.list.label.travelClass=Clase de viaje
+administrator.booking.list.label.lastNibble=Últimos dígitos tarjeta de crédito
+administrator.booking.list.label.price=Precio
+administrator.booking.form.title=Detalles de la reserva
+administrator.booking.form.label.locatorCode=Código de localización
+administrator.booking.form.label.purchaseMoment=Momento de compra
+administrator.booking.form.label.travelClass=Clase de viaje
+administrator.booking.form.label.flight=Vuelo
+administrator.booking.form.label.price=Precio
+administrator.booking.form.label.lastNibble=Últimos dígitos tarjeta de crédito
+administrator.booking.form.button.passengers=Pasajeros

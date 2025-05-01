@@ -1,0 +1,9 @@
+authenticated.customer.form.title= Customer profile
+authenticated.customer.form.label.identifier=Identifier
+authenticated.customer.form.label.phoneNumber=Phone number
+authenticated.customer.form.label.physicalAddres=Physical addres
+authenticated.customer.form.label.city=City
+authenticated.customer.form.label.country=Country
+authenticated.customer.form.label.earnedPoints=Earned points
+authenticated.customer.form.button.update=Update
+authenticated.customer.form.button.create=Create

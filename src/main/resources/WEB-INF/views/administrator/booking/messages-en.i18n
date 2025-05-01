@@ -1,0 +1,14 @@
+administrator.booking.list.title=Bookings
+administrator.booking.list.label.locatorCode=Locator code
+administrator.booking.list.label.purchaseMoment=Purchase moment
+administrator.booking.list.label.travelClass=Travel class
+administrator.booking.list.label.lastNibble=Last nibble
+administrator.booking.list.label.price=Price
+administrator.booking.form.title=Booking details
+administrator.booking.form.label.locatorCode=Locator code
+administrator.booking.form.label.purchaseMoment=Purchase moment
+administrator.booking.form.label.travelClass=Travel class
+administrator.booking.form.label.flight=Flight
+administrator.booking.form.label.price=price
+administrator.booking.form.label.lastNibble=Last credit card nibble
+administrator.booking.form.button.passengers=Passsengers

@@ -1,11 +1,11 @@
-key,duty,lastUpdate,status,remarks,key:flightCrewMember,key:flightLeg
-assignment-01,PILOT,2024/12/31 23:59,CONFIRMED,"",member1,leg-1
-assignment-02,CO_PILOT,2023/05/16 13:59,PENDING,"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut*",member2,leg-2
-assignment-03,LEAD_ATTENDANT,2022/09/03 00:30,CONFIRMED,"",member3,leg-3
-assignment-04,CABIN_ATTENDANT,2000/01/01 00:01,PENDING,"Lo",member4,leg-4
-assignment-05,PILOT,2012/07/02 00:00,CONFIRMED,"L",member2,leg-5
-assignment-06,LEAD_ATTENDANT,2022/07/25 16:30,CANCELLED,"' or 'A' = 'A ",member1,leg-6
-assignment-07,CO_PILOT,2022/06/02 00:30,PENDING,"لوريم إيبسوم",member2,leg-7
-assignment-08,CABIN_ATTENDANT,2020/04/26 17:15,CANCELLED,"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut enim ad minim veniam? Quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor",member3,leg-8
-assignment-09,PILOT,2021/01/05 08:45,CONFIRMED,"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut enim ad minim veniam? Quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor*",member4,leg-9
-assignment-10,PILOT,2025/01/01 00:00,CONFIRMED,"<marquee>Hacked</marquee>",member1,leg-10
+key,duty,lastUpdate,status,remarks,key:flightCrewMember,key:flightLeg,draftMode
+assignment-01,PILOT,2024/12/31 23:59,CONFIRMED,"",member1,leg-1,true
+assignment-02,CO_PILOT,2023/05/16 13:59,PENDING,"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut*",member2,leg-2,true
+assignment-03,LEAD_ATTENDANT,2022/09/03 00:30,CONFIRMED,"",member3,leg-3,true
+assignment-04,CABIN_ATTENDANT,2000/01/01 00:01,PENDING,"Lo",member4,leg-4,true
+assignment-05,PILOT,2012/07/02 00:00,CONFIRMED,"L",member2,leg-5,true
+assignment-06,LEAD_ATTENDANT,2022/07/25 16:30,CANCELLED,"' or 'A' = 'A ",member1,leg-6,true
+assignment-07,CO_PILOT,2022/06/02 00:30,PENDING,"لوريم إيبسوم",member2,leg-7,true
+assignment-08,CABIN_ATTENDANT,2020/04/26 17:15,CANCELLED,"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut enim ad minim veniam? Quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor",member3,leg-8,true
+assignment-09,PILOT,2021/01/05 08:45,CONFIRMED,"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut enim ad minim veniam? Quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor*",member4,leg-9,true
+assignment-10,PILOT,2025/01/01 00:00,CONFIRMED,"<marquee>Hacked</marquee>",member1,leg-10,false

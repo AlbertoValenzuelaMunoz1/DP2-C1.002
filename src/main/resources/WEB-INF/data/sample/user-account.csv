@@ -22,3 +22,6 @@ user-account-assistance-agent-03,true,"UserIdentity{name: 'Juan', surname: '洛�
 user-account-assistance-agent-04,true,"UserIdentity{name: 'Rafa', surname: 'Pineda', email: 'a@b.es'}",agent4,agent4
 user-account-assistance-agent-01,true,"UserIdentity{name: 'Pedro', surname: 'Gonzalez', email: 'a@b.esx'}",agent1,agent1
 user-account-assistance-agent-02,true,"UserIdentity{name: 'Pin', surname: 'Pin', email: 'a@b.esx'}",agent2,agent2
+user-account-technician-01,true,"UserIdentity{name: 'Pedro', surname: 'Gonzalez', email: 'a@b.esx'}",technician1,technician1
+user-account-technician-02,true,"UserIdentity{name: 'Pin', surname: 'Pin', email: 'a@b.esx'}",technician2,technician2
+user-account-technician-03,true,"UserIdentity{name: 'Juan', surname: '洛伦·伊普森', email: 'a@b.e'}",technician3,technician3

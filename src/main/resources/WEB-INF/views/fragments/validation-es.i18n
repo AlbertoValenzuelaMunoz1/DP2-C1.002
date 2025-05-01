@@ -2,4 +2,17 @@ acme.validation.phonenumber.message = El número de teléfono no es válido
 acme.validation.booking.published.message = Para que una reserva este publicada debe contener al menos un pasajero y tener especificado los últimos cuatro dígitos de la tarjeta de crédito
 acme.validation.booking.locatorCode.message = El código de localización debe ser único
 acme.validation.airline.iataCode.message = El código IATA debe ser úinico
+
+acme.validation.flight-assignment.member-with-overlapping-legs.message = El miembro seleccionado tiene escaladas solapadas
+acme.validation.flight-assignment.leg-has-copilot.message = La escala seleccionada ya tiene un copiloto
+acme.validation.flight-assignment.leg-has-pilot.message = La escala seleccionada ya tiene un piloto
+acme.validation.flight-assignment.member-not-available.message = El miembro seleccionado no está disponible
+acme.validation.flight-assignment.leg-has-occurred.message = La escala seleccionada ya ha ocurrido 
+
+acme.validation.activity-log.leg-not-finished.message = No puedes guardar el registro porque la escala seleccionada aún no ha finalizado
+acme.validation.activity-log.flight-assignment-not-published.message = Este registro no puede ser publicado porque la asignación de vuelo seleccionada no ha sido publicada todavía
+acme.validation.log.registration-moment.message = El momento de registro del registro debe ocurrir después de que termine la escala.
+
 acme.validation.booking.publishedPassengers.message= Para publicar una reserva todos sus pasajeros deben estar publicados
+acme.validation.customer.identifier.message= El identificador de un cliente debe ser único
+
