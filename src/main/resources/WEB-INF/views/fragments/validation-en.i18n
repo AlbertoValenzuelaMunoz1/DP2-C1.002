@@ -3,3 +3,12 @@ acme.validation.booking.published.message = A booking must contain the last nibb
 acme.validation.booking.locatorCode.message = The locator code must be unique
 acme.validation.airline.iataCode.message = The IATA code must be unique
 acme.validation.booking.publishedPassengers.message= To publish a booking all passengers must be published
+
+
+acme.validation.airport.code-duplicated.message = The airport code is already in use
+
+acme.validation.trackingLog.resolPercentage.message = Resolution percentage must be between 0.0 and 100.0
+acme.validation.trackingLog.status.message = When resolution percentage is 100.0, status must be ACCEPTED or DENIED. Otherwise, status must be PENDING.
+acme.validation.trackingLog.resolution.message = When resolution percentage is 100.0, resolution cannot be empty
+acme.validation.claim.registrationMoment.message = The registration moment must be after the assistance agent's work start date.
+acme.validation.claim.leg.cancelled.message= Claim must be linked to a leg that occured
