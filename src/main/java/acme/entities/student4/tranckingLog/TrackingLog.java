@@ -16,6 +16,7 @@ import acme.client.components.validation.Optional;
 import acme.client.components.validation.ValidMoment;
 import acme.client.components.validation.ValidScore;
 import acme.client.components.validation.ValidString;
+import acme.constraints.ValidTrackingLog;
 import acme.datatypes.IndicatorStatus;
 import acme.entities.student4.claim.Claim;
 import lombok.Getter;
@@ -24,6 +25,7 @@ import lombok.Setter;
 @Entity
 @Getter
 @Setter
+@ValidTrackingLog
 public class TrackingLog extends AbstractEntity {
 
 	//Serialisation -------------------------------
