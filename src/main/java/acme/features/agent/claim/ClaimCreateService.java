@@ -1,13 +1,18 @@
 
 package acme.features.agent.claim;
 
+import java.util.Collection;
+import java.util.Date;
+
 import org.springframework.beans.factory.annotation.Autowired;
 
 import acme.client.components.models.Dataset;
 import acme.client.components.views.SelectChoices;
+import acme.client.helpers.MomentHelper;
 import acme.client.services.AbstractGuiService;
 import acme.client.services.GuiService;
 import acme.datatypes.ClaimType;
+import acme.entities.student1.leg.Leg;
 import acme.entities.student4.claim.Claim;
 import acme.realms.AssistanceAgent;
 
@@ -20,33 +25,43 @@ public class ClaimCreateService extends AbstractGuiService<AssistanceAgent, Clai
 
 	@Override
 	public void authorise() {
-		super.getResponse().setAuthorised(true);
+		boolean status;
+
+		status = super.getRequest().getPrincipal().hasRealmOfType(AssistanceAgent.class);
+
+		super.getResponse().setAuthorised(status);
 	}
 
 	@Override
 	public void load() {
 		Claim claim;
-		AssistanceAgent assistance;
-		assistance = (AssistanceAgent) super.getRequest().getPrincipal().getActiveRealm();
+		AssistanceAgent agent;
+		Date registrationMoment;
+
+		agent = (AssistanceAgent) super.getRequest().getPrincipal().getActiveRealm();
+		registrationMoment = MomentHelper.getCurrentMoment();
 		claim = new Claim();
-		//claim.setRegistrationMoment(MomentHelper.getCurrentMoment());
-		claim.setAssistanceAgent(assistance);
-		//claim.setDraftMode(true);
+		claim.setRegistrationMoment(registrationMoment);
+		claim.setAssistanceAgent(agent);
+		claim.setDraftMode(true);
 
 		super.getBuffer().addData(claim);
 	}
 
 	@Override
 	public void bind(final Claim claim) {
-		super.bindObject(claim, "registrationMoment", "passengerEmail", "description", "type", "indicator");
+		int legId;
+		Leg leg;
+
+		legId = super.getRequest().getData("leg", int.class);
+		leg = this.repository.findLegById(legId);
+
+		claim.setLeg(leg);
+		super.bindObject(claim, "passengerEmail", "description", "type");
 	}
 
 	@Override
 	public void validate(final Claim claim) {
-		boolean confirmation;
-
-		confirmation = super.getRequest().getData("confirmation", boolean.class);
-		super.state(confirmation, "confirmation", "acme.validation.confirmation.message");
 	}
 
 	@Override
@@ -58,13 +73,19 @@ public class ClaimCreateService extends AbstractGuiService<AssistanceAgent, Clai
 	public void unbind(final Claim claim) {
 		SelectChoices choices;
 		Dataset dataset;
+		SelectChoices choices_leg;
+		Collection<Leg> legs;
+
+		legs = this.repository.findAllPublishedCompletedLegs(claim.getRegistrationMoment());
 
 		choices = SelectChoices.from(ClaimType.class, claim.getType());
+		choices_leg = SelectChoices.from(legs, "flightNumberDigits", claim.getLeg());
+		legs = this.repository.findAllPublishedCompletedLegs(claim.getRegistrationMoment());
 
 		dataset = super.unbindObject(claim, "registrationMoment", "passengerEmail", "description", "type", "indicator");
-		dataset.put("confirmation", false);
-		dataset.put("readonly", false);
 		dataset.put("type", choices);
+		dataset.put("legs", choices_leg);
+		dataset.put("flightNumberDigits", choices_leg.getSelected().getKey());
 
 		super.getResponse().addData(dataset);
 	}

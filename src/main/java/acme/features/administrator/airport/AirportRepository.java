@@ -19,4 +19,7 @@ public interface AirportRepository extends AbstractRepository {
 	@Query("SELECT a FROM Airport a WHERE a.id = :id")
 	Airport findOneById(@Param("id") int id);
 
+	@Query("select a from Airport a where BINARY(a.iataCode) = :code")
+	Airport findAirportByCode(String code);
+
 }

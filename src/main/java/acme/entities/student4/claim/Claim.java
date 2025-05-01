@@ -19,6 +19,7 @@ import acme.client.components.validation.ValidString;
 import acme.client.helpers.SpringHelper;
 import acme.datatypes.ClaimType;
 import acme.datatypes.IndicatorStatus;
+import acme.entities.student1.leg.Leg;
 import acme.entities.student4.tranckingLog.TrackingLog;
 import acme.features.agent.trackingLog.TrackingLogRepository;
 import acme.realms.AssistanceAgent;
@@ -57,9 +58,18 @@ public class Claim extends AbstractEntity {
 	private ClaimType			type;
 
 	@Mandatory
+	@Automapped
+	private boolean				draftMode;
+
+	@Mandatory
 	@ManyToOne(optional = false)
 	@Valid
 	private AssistanceAgent		assistanceAgent;
+
+	@Mandatory
+	@Valid
+	@ManyToOne(optional = false)
+	private Leg					leg;
 
 
 	@Transient

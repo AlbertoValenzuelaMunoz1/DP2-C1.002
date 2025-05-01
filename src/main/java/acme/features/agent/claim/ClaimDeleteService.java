@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import acme.client.components.models.Dataset;
 import acme.client.services.AbstractGuiService;
 import acme.client.services.GuiService;
+import acme.entities.student1.leg.Leg;
 import acme.entities.student4.claim.Claim;
 import acme.realms.AssistanceAgent;
 
@@ -18,25 +19,40 @@ public class ClaimDeleteService extends AbstractGuiService<AssistanceAgent, Clai
 
 	@Override
 	public void authorise() {
+		boolean status;
 
-		super.getResponse().setAuthorised(true);
+		status = super.getRequest().getPrincipal().hasRealmOfType(AssistanceAgent.class);
+
+		super.getResponse().setAuthorised(status);
 	}
 
 	@Override
 	public void load() {
-		int id = super.getRequest().getData("id", int.class);
-		Claim claim = this.repository.findClaimById(id);
+		int id;
+		Claim claim;
+
+		id = super.getRequest().getData("id", int.class);
+		claim = this.repository.findClaimById(id);
+
 		super.getBuffer().addData(claim);
 	}
 
 	@Override
 	public void bind(final Claim claim) {
+		int legId;
+		Leg leg;
+
+		legId = super.getRequest().getData("leg", int.class);
+		leg = this.repository.findLegById(legId);
+
+		claim.setLeg(leg);
 		super.bindObject(claim, "registrationMoment", "passengerEmail", "description", "type", "indicator");
 	}
 
 	@Override
 	public void validate(final Claim claim) {
-		//super.state(true, "*", "assistance-agent.claim.delete.claim-linked"); //
+		if (claim.isDraftMode())
+			super.state(claim.isDraftMode(), "draftMode", "assistanceAgent.claim.form.error.draftMode");
 	}
 
 	@Override
