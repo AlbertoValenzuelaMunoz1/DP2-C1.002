@@ -46,7 +46,7 @@ public class TrackingLogValidator extends AbstractValidator<ValidTrackingLog, Tr
 				String errorMessage = String.format("Resolution percentage %.2f must be higher than the highest resolution percentage %.2f for claim ID %d", trackingLog.getResolutionPercentage(), highestTrackingLog.getResolutionPercentage(),
 					claim.getId());
 				context.disableDefaultConstraintViolation();
-				context.buildConstraintViolationWithTemplate(errorMessage).addPropertyNode("resolPercentage").addConstraintViolation();
+				context.buildConstraintViolationWithTemplate(errorMessage).addPropertyNode("resolutionPercentage").addConstraintViolation();
 				return false;
 			}
 		}
@@ -58,12 +58,12 @@ public class TrackingLogValidator extends AbstractValidator<ValidTrackingLog, Tr
 
 		if (!isNull) {
 			{
-				Double resolPercentage;
+				Double resolutionPercentage;
 				boolean validPercentage;
 
-				resolPercentage = trackingLog.getResolutionPercentage();
-				validPercentage = resolPercentage >= 0.0 && resolPercentage <= 100.0;
-				super.state(context, validPercentage, "resolPercentage", "acme.validation.trackingLog.resolPercentage.message");
+				resolutionPercentage = trackingLog.getResolutionPercentage();
+				validPercentage = resolutionPercentage >= 0.0 && resolutionPercentage <= 100.0;
+				super.state(context, validPercentage, "resolutionPercentage", "acme.validation.trackingLog.resolutionPercentage.message");
 			}
 			{
 				IndicatorStatus status;
@@ -74,7 +74,7 @@ public class TrackingLogValidator extends AbstractValidator<ValidTrackingLog, Tr
 					validStatus = status == IndicatorStatus.ACCEPTED || status == IndicatorStatus.REJECTED;
 				else
 					validStatus = status == IndicatorStatus.PENDING;
-				super.state(context, validStatus, "status", "acme.validation.trackingLog.status.message");
+				super.state(context, validStatus, "claimStatus", "acme.validation.trackingLog.status.message");
 			}
 			{
 				String resolution;
@@ -85,7 +85,7 @@ public class TrackingLogValidator extends AbstractValidator<ValidTrackingLog, Tr
 					validResolution = resolution != null && !resolution.isEmpty();
 				else
 					validResolution = true;
-				super.state(context, validResolution, "resolution", "acme.validation.trackingLog.resolution.message");
+				super.state(context, validResolution, "resolutionDetails", "acme.validation.trackingLog.resolution.message");
 			}
 		}
 

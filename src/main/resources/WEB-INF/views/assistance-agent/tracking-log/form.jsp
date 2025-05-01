@@ -8,7 +8,7 @@
 	<acme:input-textbox code="agent.tracking-log.form.label.stepUndergoing" path="stepUndergoing" />
 	<acme:input-double code="agent.tracking-log.form.label.resolutionPercentage" path="resolutionPercentage" />
 	<acme:input-select code="agent.tracking-log.form.label.claimStatus" path="claimStatus" choices="${claimStatus}" />
-	<acme:input-textarea code="agent.tracking-log.form.label.resolutionDetails" path="resolutionDetails" />
+	<acme:input-textbox code="agent.tracking-log.form.label.resolutionDetails" path="resolutionDetails" />
 
 	<jstl:choose>	 
 		<jstl:when test="${acme:anyOf(_command, 'show|update|delete|publish') && draftMode == true}">
