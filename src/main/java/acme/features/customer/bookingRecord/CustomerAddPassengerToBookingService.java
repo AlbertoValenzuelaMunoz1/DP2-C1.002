@@ -35,7 +35,7 @@ public class CustomerAddPassengerToBookingService extends AbstractGuiService<Cus
 			int passengerId = super.getRequest().getData("passenger", int.class);
 			if (passengerId != 0) {
 				Passenger passenger = this.repository.findPassengerById(passengerId);
-				validPassenger = passenger.getCustomer().equals(customer);
+				validPassenger = passenger != null && passenger.getCustomer().equals(customer) && this.repository.findBookingRecordByBookingId(bookingId).stream().noneMatch(r -> r.getPassenger().equals(passenger));
 			}
 		}
 
