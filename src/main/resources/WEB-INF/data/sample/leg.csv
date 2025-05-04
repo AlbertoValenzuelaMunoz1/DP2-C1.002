@@ -1,11 +1,13 @@
-key,flightNumberDigits,scheduledDeparture,scheduledArrival,key:departureAirport,key:arrivalAirport,key:aircraft,key:flight,status
-leg-1,3213,2019/03/15 20:45,2019/03/16 20:45,airport-01,airport-02,aircraft-01,flight-01,ON_TIME
-leg-2,6746,2019/03/20 20:45,2019/03/21 21:46,airport-02,airport-01,aircraft-02,flight-03,DELAYED
-leg-3,4367,2019/03/17 20:45,2019/03/18 21:46,airport-03,airport-02,aircraft-03,flight-01,CANCELLED
-leg-4,8464,2019/03/19 20:45,2019/03/20 21:46,airport-01,airport-04,aircraft-01,flight-02,ON_TIME
-leg-5,9194,2019/03/21 20:45,2019/03/22 21:46,airport-03,airport-02,aircraft-03,flight-03,CANCELLED
-leg-6,4147,2019/03/18 20:45,2019/03/19 21:46,airport-04,airport-03,aircraft-04,flight-02,LANDED
-leg-7,9999,2019/03/23 20:45,2019/03/24 21:46,airport-01,airport-04,aircraft-01,flight-05,ON_TIME
-leg-8,0000,2019/03/24 20:45,2019/03/25 21:46,airport-02,airport-01,aircraft-02,flight-05,DELAYED
-leg-9,4324,2000/01/01 0:00,2000/01/01 0:01,airport-02,airport-01,aircraft-02,flight-01,DELAYED
-leg-10,4568,2019/03/22 20:45,2019/03/23 21:46,airport-04,airport-03,aircraft-04,flight-04,LANDED
+key,flightNumberDigits,scheduledDeparture,scheduledArrival,key:departureAirport,key:arrivalAirport,key:aircraft,key:flight,status,draftMode
+leg-1,3213,2019/03/15 20:45,2019/03/16 20:45,airport-01,airport-02,aircraft-01,flight-01,ON_TIME,true
+leg-2,6746,2019/03/20 20:45,2019/03/21 21:46,airport-02,airport-01,aircraft-02,flight-03,DELAYED,true
+leg-3,4367,2019/03/17 20:45,2019/03/18 21:46,airport-03,airport-02,aircraft-03,flight-01,CANCELLED,true
+leg-4,8464,2019/03/19 20:45,2019/03/20 21:46,airport-01,airport-04,aircraft-01,flight-08,ON_TIME,false
+leg-5,9194,2019/03/21 20:45,2019/03/22 21:46,airport-03,airport-02,aircraft-03,flight-03,CANCELLED,true
+leg-6,4147,2019/03/18 20:45,2019/03/19 21:46,airport-04,airport-03,aircraft-04,flight-02,LANDED,true
+leg-7,9999,2019/03/23 20:45,2019/03/24 21:46,airport-01,airport-04,aircraft-01,flight-05,ON_TIME,true
+leg-8,0000,2019/03/24 20:45,2019/03/25 21:46,airport-02,airport-01,aircraft-02,flight-05,DELAYED,true
+leg-9,4324,2000/01/01 0:00,2000/01/01 0:01,airport-02,airport-01,aircraft-02,flight-01,DELAYED,true
+leg-10,4568,2019/03/22 20:45,2019/03/23 21:46,airport-04,airport-03,aircraft-04,flight-04,LANDED,true
+leg-11,3288,2026/03/22 20:45,2026/03/22 22:45,airport-04,airport-03,aircraft-04,flight-16,ON_TIME,false
+leg-12,3288,2027/03/22 20:45,2027/03/22 22:45,airport-04,airport-03,aircraft-04,flight-17,ON_TIME,false

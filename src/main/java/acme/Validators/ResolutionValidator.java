@@ -4,14 +4,15 @@ package acme.Validators;
 import javax.validation.ConstraintValidatorContext;
 
 import acme.client.components.validation.AbstractValidator;
-import acme.entities.student4.tranckingLogs.TrackingLogs;
+import acme.datatypes.IndicatorStatus;
+import acme.entities.student4.tranckingLog.TrackingLog;
 
 public class ResolutionValidator extends AbstractValidator<ValidResolution, String> {
 
-	private TrackingLogs trackingLog;
+	private TrackingLog trackingLog;
 
 
-	public ResolutionValidator(final TrackingLogs trackingLog) {
+	public ResolutionValidator(final TrackingLog trackingLog) {
 		this.trackingLog = trackingLog;
 	}
 
@@ -20,7 +21,7 @@ public class ResolutionValidator extends AbstractValidator<ValidResolution, Stri
 		if (this.trackingLog == null)
 			return true; // No se valida si el objeto es null
 
-		Boolean claimAccepted = this.trackingLog.getClaimAccepted();
+		IndicatorStatus claimAccepted = this.trackingLog.getClaimStatus();
 
 		if (claimAccepted == null)
 			return resolutionDetails == null; // Si claimAccepted es null, resolutionDetails también debe ser null

@@ -5,7 +5,8 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.validation.Valid;
 
-import acme.client.components.basis.AbstractEntity;
+import acme.Validators.ValidPhoneNumber;
+import acme.client.components.basis.AbstractRole;
 import acme.client.components.mappings.Automapped;
 import acme.client.components.validation.Mandatory;
 import acme.client.components.validation.Optional;
@@ -17,7 +18,7 @@ import lombok.Setter;
 @Entity
 @Getter
 @Setter
-public class Technician extends AbstractEntity {
+public class Technician extends AbstractRole {
 
 	private static final long	serialVersionUID	= 1L;
 
@@ -27,7 +28,7 @@ public class Technician extends AbstractEntity {
 	private String				licenseNumber;
 
 	@Mandatory
-	@ValidString(pattern = "^\\+?\\d{6,15}$")
+	@ValidPhoneNumber
 	@Automapped
 	private String				phoneNumber;
 
@@ -42,7 +43,7 @@ public class Technician extends AbstractEntity {
 	private Boolean				annualHealthTest;
 
 	@Mandatory
-	@ValidNumber(min = 0, integer = 3, fraction = 0)
+	@ValidNumber(min = 0, max = 1000)
 	@Automapped
 	private Integer				yearsOfExperience;
 

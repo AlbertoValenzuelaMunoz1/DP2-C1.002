@@ -1,11 +1,11 @@
-key,fullName,email,passportNumber,dateOfBirth,specialNeeds
-passenger-01,A,acme@lorem-ipsum.org,AV922924,2011/04/16 0:00,N
-passenger-02,Lorem ipsum dolor sit amea consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut enim ad minim veniam? Quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor*,acme@lorem-ipsum.org,AV92924,2011/04/16 0:00,N
-passenger-03,Lore ipsum dolor sit amea consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut enim ad minim veniam? Quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor*,lorem-ipsum@dolor.sit.amet.consectetur.adipiscing.elit.sed.do.eiusmod.tempor.incididunt.ut.labore.et.dolore.magna.aliqua.Ut.enim.ad.minim.veniam.quis.nostrud.exercitation.ullamco.laboris.nisi.ut.aliquip.ex.ea.commodo.consequat.duis.aute.irure.dolor.es.org,AV92924,2025/01/01 0:00,Na
-passenger-04,Al,lorem-ipsum@dolor.sit.amet.consectetur.adipiscing.elit.sed.do.eiusmod.tempor.incididunt.ut.labore.et.dolore.magna.aliqua.Ut.enim.ad.minim.veniam.quis.nostrud.exercitation.ullamco.laboris.nisi.ut.aliquip.ex.ea.commodo.consequat.duis.aute.irure.doloris.edu,AVX923924,2000/01/1 0:00,Na
-passenger-05,Alberto,a@b.esx,AVS23924,2024/12/31 23:59,Lorem ipsum dolor sit ameta consectetur adipiscing
-passenger-06,Alberto,a@b.es,AV923924,2000/01/1 00:01,Lorem ipsum dolor sit amet consectetur adipiscing
-passenger-07,洛伦·伊普森,a@b.e,77923924,2000/01/1 00:01,sk
-passenger-08,لوريم إيبسوم,acmepassword@lorem-ipsum.org,AVZ792392,2000/01/1 00:01,sk
-passenger-09,<script>alert(‘Hacked!’);</script>,acme@lorem-ipsum.org,AV7923924,2000/01/1 00:01,sk
-passenger-10,Passenger,acme@lorem-ipsum.org,AV7923924,2000/01/1 00:01,sk
+key,fullName,email,passportNumber,dateOfBirth,specialNeeds,published,key:customer
+passenger-01,A,acme@lorem-ipsum.org,AV922924,2011/04/16 0:00,N,true,customer-01
+passenger-02,Lorem ipsum dolor sit amea consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut enim ad minim veniam? Quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor*,acme@lorem-ipsum.org,AV92924,2011/04/16 0:00,N,false,customer-01
+passenger-03,Lore ipsum dolor sit amea consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut enim ad minim veniam? Quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor*,lorem-ipsum@dolor.sit.amet.consectetur.adipiscing.elit.sed.do.eiusmod.tempor.incididunt.ut.labore.et.dolore.magna.aliqua.Ut.enim.ad.minim.veniam.quis.nostrud.exercitation.ullamco.laboris.nisi.ut.aliquip.ex.ea.commodo.consequat.duis.aute.irure.dolor.es.org,AV92924,2025/01/01 0:00,Na,true,customer-01
+passenger-04,Al,lorem-ipsum@dolor.sit.amet.consectetur.adipiscing.elit.sed.do.eiusmod.tempor.incididunt.ut.labore.et.dolore.magna.aliqua.Ut.enim.ad.minim.veniam.quis.nostrud.exercitation.ullamco.laboris.nisi.ut.aliquip.ex.ea.commodo.consequat.duis.aute.irure.doloris.edu,AVX923924,2000/01/1 0:00,Na,false,customer-02
+passenger-05,Alberto,a@b.esx,AVS23924,2024/12/31 23:59,Lorem ipsum dolor sit ameta consectetur adipiscing,true,customer-02
+passenger-06,Alberto,a@b.es,AV923924,2000/01/1 00:01,Lorem ipsum dolor sit amet consectetur adipiscing,true,customer-01
+passenger-07,洛伦·伊普森,a@b.e,77923924,2000/01/1 00:01,sk,true,customer-01
+passenger-08,لوريم إيبسوم,acmepassword@lorem-ipsum.org,AVZ792392,2000/01/1 00:01,sk,false,customer-01
+passenger-09,<script>alert(‘Hacked!’);</script>,acme@lorem-ipsum.org,AV7923924,2000/01/1 00:01,sk,true,customer-02
+passenger-10,Passenger,acme@lorem-ipsum.org,AV7923924,2000/01/1 00:01,sk,false,customer-01

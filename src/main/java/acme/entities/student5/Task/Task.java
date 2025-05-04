@@ -2,9 +2,8 @@
 package acme.entities.student5.Task;
 
 import javax.persistence.Entity;
-import javax.persistence.EnumType;
-import javax.persistence.Enumerated;
 import javax.persistence.ManyToOne;
+import javax.validation.Valid;
 
 import acme.client.components.basis.AbstractEntity;
 import acme.client.components.mappings.Automapped;
@@ -12,7 +11,6 @@ import acme.client.components.validation.Mandatory;
 import acme.client.components.validation.ValidNumber;
 import acme.client.components.validation.ValidString;
 import acme.datatypes.TaskType;
-import acme.entities.student5.maintenanceRecord.MaintenanceRecord;
 import acme.entities.student5.technician.Technician;
 import lombok.Getter;
 import lombok.Setter;
@@ -25,7 +23,7 @@ public class Task extends AbstractEntity {
 	private static final long	serialVersionUID	= 1L;
 
 	@Mandatory
-	@Enumerated(EnumType.STRING)
+	@Valid
 	@Automapped
 	private TaskType			taskType;
 
@@ -35,19 +33,18 @@ public class Task extends AbstractEntity {
 	private String				description;
 
 	@Mandatory
-	@ValidNumber(min = 0, max = 10, fraction = 0)
+	@ValidNumber(min = 0, max = 10)
 	@Automapped
 	private Integer				priority;
 
 	@Mandatory
-	@ValidNumber(min = 0, max = 1000, fraction = 0)
+	@ValidNumber(min = 0, max = 1000)
 	@Automapped
 	private Integer				estimatedDuration;
 
 	@ManyToOne
+	@Mandatory
+	@Valid
 	private Technician			technician;
-
-	@ManyToOne
-	private MaintenanceRecord	maintenanceRecord;
 
 }
