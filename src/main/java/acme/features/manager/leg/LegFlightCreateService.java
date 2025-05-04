@@ -109,11 +109,11 @@ public class LegFlightCreateService extends AbstractGuiService<Manager, Leg> {
 
 		statusAircraft = leg.getAircraft().getStatus().equals(AircraftStatus.ACTIVE);
 
-		super.state(statusAircraft, "aircraft", "el aircraft esta en mantenimiento");
+		super.state(statusAircraft, "aircraft", "acme.validation.manager.leg.statusAircraft.message");
 		super.state(!destAndArrvAirport, "*", "el aeropuerto de salida no puede ser el mismo q de llegada");
-		super.state(destAndArrvScheduled, "scheduledArrival", "La fecha de llegada no puede ser anterio a la de salida");
+		super.state(destAndArrvScheduled, "scheduledArrival", "acme.validation.manager.leg.departureTime.message");
 		super.state(transferFlight, "departureAirport", "El aeropuerto de salida tiene que ser el aeropuerto de llegada del tramo anterior: " + lastLeg.getArrivalAirport().getIataCode());
-		super.state(scheduledDepartureOrder, "scheduledDeparture", "La fecha de salida tiene que ser despues de la fecha de llegada de la Leg anterior: " + lastLeg.getScheduledArrival());
+		super.state(scheduledDepartureOrder, "scheduledDeparture", "acme.validation.manager.leg.scheduledDepartureOrder.message" + ": " + lastLeg.getScheduledArrival());
 	}
 
 	@Override
