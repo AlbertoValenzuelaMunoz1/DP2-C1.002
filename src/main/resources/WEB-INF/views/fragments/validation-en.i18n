@@ -1,1 +1,23 @@
+<<<<<<< Updated upstream
 acme.validation.phonenumber.message = The phone number is not valid
+=======
+acme.validation.phonenumber.message = The phone number is not valid
+acme.validation.booking.published.message = A booking must contain the last nibble credit card and at least one passenger to be published
+acme.validation.booking.locatorCode.message = The locator code must be unique
+acme.validation.airline.iataCode.message = The IATA code must be unique
+
+acme.validation.flight-assignment.member-with-overlapping-legs.message = The selected member has overlapping legs
+acme.validation.flight-assignment.leg-has-copilot.message = The selected leg already has a copilot
+acme.validation.flight-assignment.leg-has-pilot.message = The selected leg already has a pilot
+acme.validation.flight-assignment.member-not-available.message = The selected member is not available
+acme.validation.flight-assignment.leg-has-occurred.message = The selected leg has already occurred 
+
+acme.validation.activity-log.leg-not-finished.message = You cannot save the log because the selected leg has not yet been completed 
+acme.validation.activity-log.flight-assignment-not-published.message = This log cannot be published as the selected flight assignment has not been published yet
+acme.validation.log.registration-moment.message = The log registration moment must occur after the leg finishes
+
+acme.validation.booking.publishedPassengers.message= To publish a booking all passengers must be published
+
+##Manager
+
+>>>>>>> Stashed changes
