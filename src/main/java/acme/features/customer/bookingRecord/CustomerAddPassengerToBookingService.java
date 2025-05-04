@@ -29,7 +29,18 @@ public class CustomerAddPassengerToBookingService extends AbstractGuiService<Cus
 		int bookingId = super.getRequest().getData("bookingId", int.class);
 		Customer customer = this.repository.findCustomerById(customerId);
 		Booking booking = this.repository.findBookingById(bookingId);
-		super.getResponse().setAuthorised(booking.getCustomer().equals(customer) && !booking.isPublished());
+		boolean validPassenger = true;
+		if (super.getRequest().getMethod().equals("POST")) {
+
+			int passengerId = super.getRequest().getData("passenger", int.class);
+			if (passengerId != 0) {
+				Passenger passenger = this.repository.findPassengerById(passengerId);
+				validPassenger = passenger.getCustomer().equals(customer);
+			}
+		}
+
+		super.getResponse().setAuthorised(validPassenger && booking != null && booking.getCustomer().equals(customer) && !booking.isPublished());
+
 	}
 
 	@Override
@@ -48,7 +59,7 @@ public class CustomerAddPassengerToBookingService extends AbstractGuiService<Cus
 
 	@Override
 	public void validate(final BookingRecord bookingRecord) {
-		;
+
 	}
 
 	@Override

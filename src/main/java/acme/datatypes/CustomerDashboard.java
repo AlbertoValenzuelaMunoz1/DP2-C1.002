@@ -19,6 +19,10 @@ import lombok.Setter;
 @Setter
 public class CustomerDashboard extends AbstractObject {
 
+	/**
+	 * 
+	 */
+	private static final long		serialVersionUID	= 1L;
 	private List<String>			lastDestinations;
 	private Double					moneySpent;
 	private Map<TravelClass, Long>	numberBookings;
@@ -26,6 +30,7 @@ public class CustomerDashboard extends AbstractObject {
 	private Statistics<Integer>		passengerStatistics;
 
 
+	@SuppressWarnings("deprecation")
 	public CustomerDashboard(final int customerId, final CustomerDashboardRepository repository) {
 		this.lastDestinations = repository.findLastFlightsByCustomerId(customerId, PageRequest.of(0, 5)).stream().map(f -> f.destinationCity().getCity()).toList();
 		Date maximumDateSumCostStatistics = (Date) MomentHelper.getCurrentMoment().clone();

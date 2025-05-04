@@ -14,3 +14,5 @@ flight-12,"' or 'A' = 'A ",false,EUR 100.00,true,"洛伦·伊普森",manager2
 flight-13,"' or 'A' = 'A ",false,EUR 100.00,true,"<marquee>Hacked</marquee>",manager2
 flight-14,"' or 'A' = 'A ",false,EUR 100.00,true,"<script>alert(‘Hacked!’);</script>",manager2
 flight-15,"' or 'A' = 'A ",false,EUR 100.00,true,"' or 'A' = 'A ",manager2
+flight-16,"' or 'A' = 'A ",false,EUR 100.00,false,"' or 'A' = 'A ",manager2
+flight-17,"洛伦·伊普森",false,EUR 100.00,false,"' or 'A' = 'A ",manager2

@@ -72,6 +72,8 @@ public class Booking extends AbstractEntity {
 	}
 	@Transient
 	public Money price() {
+		if (this.flight == null)
+			return null;
 		BookingRecordRepository repository = SpringHelper.getBean(BookingRecordRepository.class);
 		Money priceFlight = this.flight.getCost();
 		Money price = new Money();
