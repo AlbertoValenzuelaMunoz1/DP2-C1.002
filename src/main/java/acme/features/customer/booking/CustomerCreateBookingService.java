@@ -5,9 +5,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 import acme.client.components.models.Dataset;
 import acme.client.components.views.SelectChoices;
+import acme.client.helpers.MomentHelper;
 import acme.client.services.AbstractGuiService;
 import acme.client.services.GuiService;
 import acme.datatypes.TravelClass;
+import acme.entities.student1.flight.Flight;
 import acme.entities.student2.booking.Booking;
 import acme.entities.student2.customer.Customer;
 
@@ -23,7 +25,16 @@ public class CustomerCreateBookingService extends AbstractGuiService<Customer, B
 
 	@Override
 	public void authorise() {
-		super.getResponse().setAuthorised(true);
+		boolean validFlight = true;
+		if (super.getRequest().getMethod().equals("POST")) {
+			int flightId = super.getRequest().getData("flight", int.class);
+			if (flightId != 0) {
+				Flight flight = this.repository.findFlightById(flightId);
+				validFlight = flight != null && !flight.isDraftMode() && flight.scheduledDeparture().after(MomentHelper.getCurrentMoment());
+			}
+
+		}
+		super.getResponse().setAuthorised(validFlight);
 	}
 
 	@Override
@@ -32,6 +43,7 @@ public class CustomerCreateBookingService extends AbstractGuiService<Customer, B
 		int customerId = super.getRequest().getPrincipal().getActiveRealm().getId();
 		Customer customer = this.repository.findCustomerById(customerId);
 		booking.setCustomer(customer);
+		booking.setPurchaseMoment(MomentHelper.getCurrentMoment());
 		super.getBuffer().addData(booking);
 	}
 
@@ -39,7 +51,7 @@ public class CustomerCreateBookingService extends AbstractGuiService<Customer, B
 	public void unbind(final Booking booking) {
 		Dataset dataset;
 		SelectChoices choices = SelectChoices.from(TravelClass.class, booking.getTravelClass());
-		SelectChoices choicesFlight = SelectChoices.from(this.repository.findAllPublishedFlights(), "tag", booking.getFlight());
+		SelectChoices choicesFlight = SelectChoices.from(this.repository.findAllPublishedFutureFlights(MomentHelper.getCurrentMoment()), "tag", booking.getFlight());
 		dataset = super.unbindObject(booking, "locatorCode", "purchaseMoment", "lastNibble");
 		dataset.put("choices", choices);
 		dataset.put("choicesFlight", choicesFlight);
@@ -50,7 +62,7 @@ public class CustomerCreateBookingService extends AbstractGuiService<Customer, B
 	}
 	@Override
 	public void bind(final Booking booking) {
-		super.bindObject(booking, "locatorCode", "purchaseMoment", "lastNibble", "flight", "travelClass");
+		super.bindObject(booking, "locatorCode", "lastNibble", "flight", "travelClass");
 	}
 	@Override
 	public void perform(final Booking booking) {

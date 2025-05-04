@@ -1,14 +1,18 @@
 
 package acme.features.customer.booking;
 
+import java.util.Collection;
+
 import org.springframework.beans.factory.annotation.Autowired;
 
 import acme.client.components.datatypes.Money;
 import acme.client.components.models.Dataset;
 import acme.client.components.views.SelectChoices;
+import acme.client.helpers.MomentHelper;
 import acme.client.services.AbstractGuiService;
 import acme.client.services.GuiService;
 import acme.datatypes.TravelClass;
+import acme.entities.student1.flight.Flight;
 import acme.entities.student2.booking.Booking;
 import acme.entities.student2.customer.Customer;
 
@@ -28,7 +32,16 @@ public class CustomerUpdateBookingService extends AbstractGuiService<Customer, B
 		int customerId = super.getRequest().getPrincipal().getActiveRealm().getId();
 		Customer customer = this.repository.findCustomerById(customerId);
 		Booking booking = this.repository.findBookingById(bookingId);
-		super.getResponse().setAuthorised(customer.equals(booking.getCustomer()) && !booking.isPublished());
+		boolean validFlight = true;
+		if (super.getRequest().getMethod().equals("POST")) {
+			int flightId = super.getRequest().getData("flight", int.class);
+			if (flightId != 0) {
+				Flight flight = this.repository.findFlightById(flightId);
+				validFlight = flight != null && (booking != null && booking.getFlight().getId() == flightId || !flight.isDraftMode() && flight.scheduledDeparture().after(MomentHelper.getCurrentMoment()));
+			}
+
+		}
+		super.getResponse().setAuthorised(booking != null && customer.equals(booking.getCustomer()) && !booking.isPublished());
 	}
 
 	@Override
@@ -45,7 +58,10 @@ public class CustomerUpdateBookingService extends AbstractGuiService<Customer, B
 		Dataset dataset;
 		Money price = booking.price();
 		SelectChoices choices = SelectChoices.from(TravelClass.class, booking.getTravelClass());
-		SelectChoices choicesFlight = SelectChoices.from(this.repository.findAllPublishedFlights(), "tag", booking.getFlight());
+		Collection<Flight> futureFlights = this.repository.findAllPublishedFutureFlights(MomentHelper.getCurrentMoment());
+		if (booking.getFlight() != null && !futureFlights.contains(booking.getFlight()))
+			futureFlights.add(booking.getFlight());
+		SelectChoices choicesFlight = SelectChoices.from(futureFlights, "tag", booking.getFlight());
 		dataset = super.unbindObject(booking, "locatorCode", "purchaseMoment", "lastNibble");
 		dataset.put("price", price);
 		dataset.put("choices", choices);
@@ -58,7 +74,7 @@ public class CustomerUpdateBookingService extends AbstractGuiService<Customer, B
 	}
 	@Override
 	public void bind(final Booking booking) {
-		super.bindObject(booking, "locatorCode", "purchaseMoment", "lastNibble", "flight", "travelClass");
+		super.bindObject(booking, "locatorCode", "lastNibble", "flight", "travelClass");
 	}
 	@Override
 	public void perform(final Booking booking) {
@@ -68,10 +84,13 @@ public class CustomerUpdateBookingService extends AbstractGuiService<Customer, B
 	public void validate(final Booking booking) {
 		boolean confirmation;
 		boolean uniqueLocatorCode;
+		boolean validFlight;
 		confirmation = super.getRequest().getData("confirmation", boolean.class);
 		uniqueLocatorCode = this.repository.findByLocatorCode(booking.getLocatorCode(), booking.getId()) == null;
+		validFlight = booking.getFlight() == null || booking.getFlight().scheduledDeparture().after(MomentHelper.getCurrentMoment());
 		super.state(confirmation, "confirmation", "acme.validation.confirmation.message");
 		super.state(uniqueLocatorCode, "locatorCode", "acme.validation.booking.locatorCode.message");
+		super.state(validFlight, "flight", "acme.validation.booking.flight.message");
 	}
 
 }

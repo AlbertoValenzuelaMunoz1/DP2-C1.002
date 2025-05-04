@@ -5,11 +5,11 @@
 
 <acme:form readonly="${readonly}">
 	<acme:input-textbox code="customer.booking.form.label.locatorCode" path="locatorCode"/>
-	<acme:input-moment code="customer.booking.form.label.purchaseMoment" path="purchaseMoment"/>
 	<acme:input-select code="customer.booking.form.label.travelClass" path="travelClass" choices="${choices}"/>
 	<acme:input-select code="customer.booking.form.label.flight" path="flight" choices="${choicesFlight}"/>
-	<jstl:if test="${acme:anyOf(_command, 'show|update|publish')}">
+	<jstl:if test="${acme:anyOf(_command, 'show|update|publish|delete')}">
 		<acme:input-money code="customer.booking.form.label.price" path="price" readonly="true"/>
+		<acme:input-moment code="customer.booking.form.label.purchaseMoment" path="purchaseMoment" readonly="true"/>
 	</jstl:if>
 	<acme:input-textbox code="customer.booking.form.label.lastNibble" path="lastNibble"/>
 	<jstl:if test="${!readonly }">

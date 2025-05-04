@@ -22,8 +22,7 @@ public class CustomerBookingRecordDeleteService extends AbstractGuiService<Custo
 		Customer customer = this.passengerRepository.findCustomerById(customerId);
 		int bookingRecordId = super.getRequest().getData("id", int.class);
 		BookingRecord bookingRecord = this.passengerRepository.findBookingRecordById(bookingRecordId);
-		super.getResponse().setAuthorised(customer.equals(bookingRecord.getBooking().getCustomer()) && !bookingRecord.getBooking().isPublished());
-		super.getResponse().setAuthorised(true);
+		super.getResponse().setAuthorised(bookingRecord != null && customer.equals(bookingRecord.getBooking().getCustomer()) && !bookingRecord.getBooking().isPublished());
 	}
 	@Override
 	public void load() {
