@@ -96,7 +96,7 @@ public class CustomerPublishBookingService extends AbstractGuiService<Customer, 
 		allPassengersPublished = this.repository.findBookingRecordByBookingId(booking.getId()).stream().allMatch(r -> r.getPassenger().isPublished());
 		validFlight = booking.getFlight() == null || booking.getFlight().scheduledDeparture().after(MomentHelper.getCurrentMoment());
 		super.state(confirmation, "confirmation", "acme.validation.confirmation.message");
-		super.state(valid, "confirmation", "acme.validation.booking.published.message");
+		super.state(valid, "*", "acme.validation.booking.published.message");
 		super.state(allPassengersPublished, "*", "acme.validation.booking.publishedPassengers.message");
 		super.state(uniqueLocatorCode, "locatorCode", "acme.validation.booking.locatorCode.message");
 		super.state(validFlight, "flight", "acme.validation.booking.flight.message");
