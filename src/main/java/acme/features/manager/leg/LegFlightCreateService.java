@@ -72,7 +72,6 @@ public class LegFlightCreateService extends AbstractGuiService<Manager, Leg> {
 	@Override
 	public void bind(final Leg leg) {
 
-		System.out.println("bind");
 		super.bindObject(leg, "flightNumberDigits", "scheduledDeparture", "scheduledArrival", "departureAirport", "arrivalAirport", "aircraft", "flight", "status");
 	}
 
@@ -93,27 +92,30 @@ public class LegFlightCreateService extends AbstractGuiService<Manager, Leg> {
 
 		Optional<Leg> optionalLastLeg = legs != null ? legs.stream().reduce((first, second) -> second) : null;
 
-		Leg lastLeg = optionalLastLeg == null ? null : optionalLastLeg.get();
+		Leg lastLeg = optionalLastLeg != null && optionalLastLeg.isPresent() ? optionalLastLeg.get() : null;
 
-		if (lastLeg != null && !flight.isTransfer())
-			transferFlight = leg.getDepartureAirport().equals(lastLeg.getArrivalAirport());
+		if (lastLeg != null)
+			transferFlight = leg.getDepartureAirport() == null || lastLeg == null || leg.getDepartureAirport().equals(lastLeg.getArrivalAirport());
 
 		scheduledDepartureOrder = true;
 
 		if (lastLeg != null)
-			scheduledDepartureOrder = leg.getScheduledDeparture().after(lastLeg.getScheduledArrival());
+			scheduledDepartureOrder = leg.getScheduledDeparture() == null || lastLeg == null || leg.getScheduledDeparture().after(lastLeg.getScheduledArrival());
 
-		destAndArrvScheduled = leg.getScheduledArrival().after(leg.getScheduledDeparture());
+		destAndArrvScheduled = leg.getScheduledArrival() == null || leg.getScheduledDeparture() == null || leg.getScheduledArrival().after(leg.getScheduledDeparture());
 
-		destAndArrvAirport = leg.getArrivalAirport().equals(leg.getDepartureAirport());
+		destAndArrvAirport = leg.getArrivalAirport() == null || leg.getDepartureAirport() == null || leg.getArrivalAirport().equals(leg.getDepartureAirport());
 
-		statusAircraft = leg.getAircraft().getStatus().equals(AircraftStatus.ACTIVE);
+		statusAircraft = leg.getAircraft() == null || leg.getAircraft().getStatus().equals(AircraftStatus.ACTIVE);
 
 		super.state(statusAircraft, "aircraft", "acme.validation.manager.leg.statusAircraft.message");
 		super.state(!destAndArrvAirport, "*", "el aeropuerto de salida no puede ser el mismo q de llegada");
 		super.state(destAndArrvScheduled, "scheduledArrival", "acme.validation.manager.leg.departureTime.message");
-		super.state(transferFlight, "departureAirport", "El aeropuerto de salida tiene que ser el aeropuerto de llegada del tramo anterior: " + lastLeg.getArrivalAirport().getIataCode());
-		super.state(scheduledDepartureOrder, "scheduledDeparture", "acme.validation.manager.leg.scheduledDepartureOrder.message" + ": " + lastLeg.getScheduledArrival());
+		if (lastLeg != null) {
+			super.state(!(!transferFlight && !flight.isTransfer()), "departureAirport", "El aeropuerto de salida tiene que ser el aeropuerto de llegada del tramo anterior: " + lastLeg.getArrivalAirport().getIataCode());
+			super.state(!(transferFlight && flight.isTransfer()), "departureAirport", "El aeropuerto de salida tiene que ser distinto al de llegada del tramo anterior: " + lastLeg.getArrivalAirport().getIataCode());
+			super.state(scheduledDepartureOrder, "scheduledDeparture", "acme.validation.manager.leg.scheduledDepartureOrder.message" + ": " + lastLeg.getScheduledArrival());
+		}
 	}
 
 	@Override
@@ -130,14 +132,11 @@ public class LegFlightCreateService extends AbstractGuiService<Manager, Leg> {
 		SelectChoices choicesDepartureAirports;
 		SelectChoices choicesAircraft;
 		SelectChoices choicesStatus;
-		int managerId;
 		int flightId;
 
 		flightId = leg.getFlight().getId();
 
 		choicesStatus = SelectChoices.from(LegStatus.class, leg.getStatus());
-
-		managerId = super.getRequest().getPrincipal().getActiveRealm().getId();
 
 		airports = this.repository.findAllAirports();
 
