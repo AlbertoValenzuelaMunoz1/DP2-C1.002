@@ -1,0 +1,14 @@
+manager.manager-dashboard.form.title = Manager Dashboard
+manager.dashboard.form.label.ranking = Ranking Position
+manager.dashboard.form.label.yearsToRetire = Years To Retire
+manager.dashboard.form.label.ratio = Ratio of on-time and delayed legs
+manager.dashboard.form.label.mostPopularAirports = Most Popular Airports
+manager.dashboard.form.label.lessPopularAirports = Less Popular Airports
+manager.dashboard.form.label.landed = Number Of Landed Legs
+manager.dashboard.form.label.onTime = Number Of On Time Legs
+manager.dashboard.form.label.delayed = Number Of Delayed Legs
+manager.dashboard.form.label.canceled = Number Of Canceled Legs
+manager.dashboard.form.label.averageCost = Average Cost Of Flights
+manager.dashboard.form.label.maxCost = Maximum Cost Of A Flight
+manager.dashboard.form.label.minCost = Minimum Cost Of A Flight
+manager.dashboard.form.label.standardDesviation = Standard Desviation Of the Cost of Flights
