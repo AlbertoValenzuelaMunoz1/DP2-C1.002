@@ -1,0 +1,14 @@
+manager.manager-dashboard.form.title = Estadísticas del cliente
+manager.dashboard.form.label.ranking = Posición en el Ranking
+manager.dashboard.form.label.yearsToRetire = Años hasta la Jubilación
+manager.dashboard.form.label.ratio = Proporción de vuelos a tiempo y retrasados
+manager.dashboard.form.label.mostPopularAirports = Aeropuertos Más Populares
+manager.dashboard.form.label.lessPopularAirports = Aeropuertos Menos Populares
+manager.dashboard.form.label.landed = Número de Vuelos Aterrizados
+manager.dashboard.form.label.onTime = Número de Vuelos a Tiempo
+manager.dashboard.form.label.delayed = Número de Vuelos Retrasados
+manager.dashboard.form.label.canceled = Número de Vuelos Cancelados
+manager.dashboard.form.label.averageCost = Costo Promedio de los Vuelos
+manager.dashboard.form.label.maxCost = Costo Máximo de un Vuelo
+manager.dashboard.form.label.minCost = Costo Mínimo de un Vuelo
+manager.dashboard.form.label.standardDesviation = Desviación Estándar del Costo de los Vuelos
