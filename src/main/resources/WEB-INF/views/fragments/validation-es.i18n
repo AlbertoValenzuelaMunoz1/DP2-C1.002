@@ -29,3 +29,14 @@ acme.validation.manager.leg.scheduledDepartureOrder.message = El momento de sali
 acme.validation.customer.identifier.message= El identificador de un cliente debe ser único
 acme.validation.booking.lastNibble.message=Una reserva debe tener especificada los últimos cuatro dígitos de la tarjeta de crédito para ser publicada
 acme.validation.booking.passengersNotEmpty.message=Para publicar una reserva debe contener al menos un pasajero
+
+
+
+acme.validation.trackingLog.resolPercentage.message = El porcentaje de resolución debe estar entre 0.0 y 100.0
+acme.validation.trackingLog.status.message = Cuando el porcentaje de resolución es 100.0, el estado debe ser ACCEPTED o DENIED. En caso contrario, debe ser PENDING.
+acme.validation.trackingLog.resolution.message = Cuando el porcentaje de resolución es 100.0, la resolución no puede estar vacía
+acme.validation.claim.registrationMoment.message = El momento de registro debe ser posterior a la fecha de inicio del agente de asistencia.
+acme.validation.claim.leg.cancelled.message = La reclamación debe estar vinculada a un tramo que haya ocurrido
+acme.validation.trackingLog.limit-100.message = No puede haber más de dos registros de seguimiento con un 100% de resolución para esta reclamación.
+acme.validation.trackingLog.strict-increase.message = El porcentaje de resolución no puede ser menor al ya registrado para esta reclamación.
+

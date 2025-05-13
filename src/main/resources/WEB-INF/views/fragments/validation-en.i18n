@@ -38,3 +38,6 @@ acme.validation.trackingLog.status.message = When resolution percentage is 100.0
 acme.validation.trackingLog.resolution.message = When resolution percentage is 100.0, resolution cannot be empty
 acme.validation.claim.registrationMoment.message = The registration moment must be after the assistance agent's work start date.
 acme.validation.claim.leg.cancelled.message= Claim must be linked to a leg that occured
+acme.validation.trackingLog.limit-100.message = There cannot be more than two tracking logs with 100% resolution for this claim.
+acme.validation.trackingLog.strict-increase.message = The resolution percentage must not be lower than any existing one for this claim.
+

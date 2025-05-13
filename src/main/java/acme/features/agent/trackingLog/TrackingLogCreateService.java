@@ -73,9 +73,21 @@ public class TrackingLogCreateService extends AbstractGuiService<AssistanceAgent
 	@Override
 	public void validate(final TrackingLog trackingLog) {
 		boolean confirmation;
+		int claimId = trackingLog.getClaim().getId();
+		Double maxExisting = this.repository.findMaxResolutionPercentageByClaimId(claimId);
 
 		confirmation = super.getRequest().getData("confirmation", boolean.class);
 		super.state(confirmation, "confirmation", "acme.validation.confirmation.message");
+
+		if (trackingLog.getResolutionPercentage() == 100.00) {
+			int existingCount = this.repository.countFullyResolvedLogs(claimId);
+			super.state(existingCount < 2, "resolutionPercentage", "acme.validation.trackingLog.limit-100.message");
+		}
+
+		if (maxExisting != null) {
+			boolean validPercentage = trackingLog.getResolutionPercentage() >= maxExisting;
+			super.state(validPercentage, "resolutionPercentage", "acme.validation.trackingLog.strict-increase.message");
+		}
 	}
 
 	@Override

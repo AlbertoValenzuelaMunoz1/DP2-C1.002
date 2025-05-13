@@ -1,17 +1,23 @@
 agent.tracking-log.list.label.lastUpdateMoment = Última actualización
-agent.tracking-log.list.label.stepUndergoing = Paso actual
+agent.tracking-log.list.label.stepUndergoing = Paso
 agent.tracking-log.list.label.resolutionPercentage = Porcentaje de resolución
 agent.tracking-log.list.label.claimStatus = Estado
-agent.tracking-log.list.label.resolutionDetails = Detalles de resolución
-agent.tracking-log.list.button.create = Crear seguimiento
+agent.tracking-log.list.label.resolutionDetails = Detalles de la resolución
+agent.tracking-log.list.button.create = Crear registro de seguimiento
 
 agent.tracking-log.form.label.lastUpdateMoment = Última actualización
-agent.tracking-log.form.label.stepUndergoing = Paso actual
+agent.tracking-log.form.label.stepUndergoing = Paso
 agent.tracking-log.form.label.resolutionPercentage = Porcentaje de resolución
 agent.tracking-log.form.label.claimStatus = Estado
-agent.tracking-log.form.label.resolutionDetails = Detalles de resolución
+agent.tracking-log.form.label.resolutionDetails = Detalles de la resolución
 agent.tracking-log.form.label.confirmation = Confirmación
 
-agent.tracking-log.form.button.update = Actualizar seguimiento
-agent.tracking-log.form.button.create = Crear seguimiento
-assistanceAgent.trackingLog.form.label.claim = Dirección de correo electrónico del pasajero que realizó la reclamación respecto a este registro de seguimiento
+agent.tracking-log.form.button.update = Actualizar
+agent.tracking-log.form.button.create = Crear
+master.menu.agent.list-logs = Listar registros de seguimiento
+agent.tracking-log.form.button.delete = Eliminar
+agent.tracking-log.form.button.publish = Publicar
+assistance-agent.tracking-log.list.title = Registros de seguimiento
+assistance-agent.tracking-log.form.title = Datos del registro de seguimiento
+assistanceAgent.trackingLog.form.label.claim = Correo electrónico del pasajero que hizo la reclamación relacionada con este registro
+
