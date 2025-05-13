@@ -27,4 +27,5 @@ acme.validation.manager.leg.departureTime.message = El momento de llegada tiene 
 acme.validation.manager.leg.scheduledDepartureOrder.message = El momento de salida tiene que ser después de la fecha de llegada del tramo anterior
 
 acme.validation.customer.identifier.message= El identificador de un cliente debe ser único
-
+acme.validation.booking.lastNibble.message=Una reserva debe tener especificada los últimos cuatro dígitos de la tarjeta de crédito para ser publicada
+acme.validation.booking.passengersNotEmpty.message=Para publicar una reserva debe contener al menos un pasajero
