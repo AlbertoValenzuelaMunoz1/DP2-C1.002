@@ -1,11 +1,49 @@
 key,model,registrationNumber,passengerCapacity,cargoWeight,status,details,key:airline
-aircraft-01,"โลเร็ม อิปซัม","L",255,45000,ACTIVE,"Lorem ipsum dolor sit ame",airline-01
-aircraft-02,"洛伦·伊普森","Lo",100,15000,ACTIVE,"L",airline-02
-aircraft-03,"<marquee>Hacked</marquee>","Lorem ipsum dolor sit amet, consectetur adipiscing",250,25000,UNDER_MAINTENANCE,"Lo",airline-03
-aircraft-04,"<script>alert(‘Hacked!’);</script>","Lorem ipsum dolor sit amet, consectetur adipiscin",10,5000,UNDER_MAINTENANCE,"Lorem ipsum dolor sit amet, consectetur adipiscin",airline-04
-aircraft-05,"' or 'A' = 'A ","Lorem ipsum dolor sit ame",50,35000,ACTIVE,"Lorem ipsum dolor sit amet, consectetur adipiscing",airline-05
-aircraft-06,"โลเร็ม อิปซัม","L",150,40000,UNDER_MAINTENANCE,"Lorem ipsum dolor sit amet, consectetur adipiscing",airline-06
-aircraft-07,"洛伦·伊普森","Lo",25,2000,ACTIVE,"Lorem ipsum dolor sit amet, consectetur adipiscin",airline-07
-aircraft-08,"<marquee>Hacked</marquee>","โลเร็ม อิปซัม",130,30000,UNDER_MAINTENANCE,"Lo",airline-08
-aircraft-09,"<script>alert(‘Hacked!’);</script>","洛伦·伊普森",20,10000,ACTIVE,"L",airline-09
-aircraft-10,"' or 'A' = 'A ","Lo",1,20000,ACTIVE,"Lorem ipsum dolor sit ame",airline-10
+# base-entity
+aircraft-01,aircraft1,20,50,3000,ACTIVE,Detalles,airline-01
+# registrationNumber must change because it is unique
+# model variations
+aircraft-02,L,21,50,3000,ACTIVE,Detalles,airline-01
+aircraft-03,Lo,22,50,3000,ACTIVE,Detalles,airline-01
+aircraft-04,Lorem ipsum dolor sit ametf consectetur adipiscing,23,50,3000,ACTIVE,Detalles,airline-01
+aircraft-05,Lorem ipsum dolor sit ameth consectetur adipiscin,24,50,3000,ACTIVE,Detalles,airline-01
+aircraft-06,โลเร็ม อิปซัม,25,50,3000,ACTIVE,Detalles,airline-01
+aircraft-07,لوريم إيبسوم,26,50,3000,ACTIVE,Detalles,airline-01
+aircraft-08,洛伦·伊普森,20,50,3000,ACTIVE,Detalles,airline-01
+aircraft-09,<marquee>Hacked</marquee>,27,50,3000,ACTIVE,Detalles,airline-01
+aircraft-10,<script>alert(‘Hacked!’);</script>,28,50,3000,ACTIVE,Detalles,airline-01
+aircraft-11,' or 'A' = 'A ,29,50,3000,ACTIVE,Detalles,airline-01
+# passengerCapacity variations
+aircraft-12,aircraft1,30,1,3000,ACTIVE,Detalles,airline-01
+aircraft-13,aircraft1,31,2,3000,ACTIVE,Detalles,airline-01
+aircraft-14,aircraft1,32,255,3000,ACTIVE,Detalles,airline-01
+aircraft-15,aircraft1,33,254,3000,ACTIVE,Detalles,airline-01
+# cargoWeight variations
+aircraft-16,aircraft1,34,50,2000,ACTIVE,Detalles,airline-01
+aircraft-17,aircraft1,35,50,2001,ACTIVE,Detalles,airline-01
+aircraft-18,aircraft1,36,50,50000,ACTIVE,Detalles,airline-01
+aircraft-19,aircraft1,37,50,49999,ACTIVE,Detalles,airline-01
+# status variations
+aircraft-20,aircraft1,38,50,3000,UNDER_MAINTENANCE,Detalles,airline-01
+# details variations
+aircraft-21,aircraft1,39,50,3000,ACTIVE,L,airline-01
+aircraft-22,aircraft1,40,50,3000,ACTIVE,Lo,airline-01
+aircraft-23,aircraft1,41,50,3000,ACTIVE,Lorem ipsum dolor sit ametf consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut enim ad minim veniam? Quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor*,airline-01
+aircraft-24,aircraft1,42,50,3000,ACTIVE,Lorem ipsum dolor sit ametf consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut enim ad minim veniam? Quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor,airline-01
+aircraft-25,aircraft1,43,50,3000,ACTIVE,โลเร็ม อิปซัม,airline-01
+aircraft-26,aircraft1,44,50,3000,ACTIVE,لوريم إيبسوم,airline-01
+aircraft-27,aircraft1,45,50,3000,ACTIVE,ل洛伦·伊普森,airline-01
+aircraft-28,aircraft1,46,50,3000,ACTIVE,<marquee>Hacked</marquee>,airline-01
+aircraft-29,aircraft1,47,50,3000,ACTIVE,<script>alert(‘Hacked!’);</script>,airline-01
+aircraft-30,aircraft1,48,50,3000,ACTIVE,' or 'A' = 'A,airline-01
+# extra aircraft data
+aircraft-31,aircraft2,50,50,3000,ACTIVE,Detalles,airline-02
+aircraft-32,aircraft3,51,50,3000,ACTIVE,Detalles,airline-03
+aircraft-33,aircraft4,52,50,3000,ACTIVE,Detalles,airline-04
+aircraft-34,aircraft5,53,50,3000,ACTIVE,Detalles,airline-05
+aircraft-35,aircraft6,54,50,3000,ACTIVE,Detalles,airline-06
+aircraft-36,aircraft7,55,50,3000,ACTIVE,Detalles,airline-07
+aircraft-37,aircraft8,56,50,3000,ACTIVE,Detalles,airline-08
+aircraft-38,aircraft9,57,50,3000,ACTIVE,Detalles,airline-09
+aircraft-39,aircraft10,58,50,3000,ACTIVE,Detalles,airline-10
+aircraft-40,aircraft11,59,50,3000,ACTIVE,Detalles,airline-11
