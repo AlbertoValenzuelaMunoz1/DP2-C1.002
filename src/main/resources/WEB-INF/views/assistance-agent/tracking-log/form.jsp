@@ -14,7 +14,10 @@
 		<jstl:when test="${acme:anyOf(_command, 'show|update|delete|publish') && draftMode == true}">
 			<acme:submit code="agent.tracking-log.form.button.update" action="/assistance-agent/tracking-log/update"/>
 			<acme:submit code="agent.tracking-log.form.button.delete" action="/assistance-agent/tracking-log/delete"/>
-            <acme:submit code="agent.tracking-log.form.button.publish" action="/assistance-agent/tracking-log/publish"/>
+         <jstl:if test="${acme:anyOf(_command, 'show|update|delete|publish') && draftMode == true && claimDraftMode == false}">
+         <acme:submit code="agent.tracking-log.form.button.publish" action="/assistance-agent/tracking-log/publish"/>
+         </jstl:if>
+         
 		</jstl:when>
 		<jstl:when test="${_command == 'create'}">
 			<acme:input-checkbox code="agent.tracking-log.form.label.confirmation" path="confirmation"/>
