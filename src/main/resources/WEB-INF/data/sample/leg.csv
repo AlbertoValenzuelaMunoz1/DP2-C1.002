@@ -11,3 +11,4 @@ leg-9,4324,2000/01/01 0:00,2000/01/01 0:01,airport-02,airport-01,aircraft-02,fli
 leg-10,4568,2019/03/22 20:45,2019/03/23 21:46,airport-04,airport-03,aircraft-04,flight-04,LANDED,true
 leg-11,3288,2026/03/22 20:45,2026/03/22 22:45,airport-04,airport-03,aircraft-04,flight-16,ON_TIME,false
 leg-12,3288,2027/03/22 20:45,2027/03/22 22:45,airport-04,airport-03,aircraft-04,flight-17,ON_TIME,false
+leg-13,4000,2000/01/01 00:01,2000/01/01 00:02,airport-04,airport-03,aircraft-04,flight-17,ON_TIME,false
