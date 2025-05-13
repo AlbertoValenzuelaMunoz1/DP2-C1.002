@@ -86,17 +86,20 @@ public class CustomerPublishBookingService extends AbstractGuiService<Customer, 
 	@Override
 	public void validate(final Booking booking) {
 		boolean confirmation;
-		boolean valid;
+		boolean lastNibbleNotNull;
+		boolean passengersNotEmpty;
 		boolean uniqueLocatorCode;
 		boolean allPassengersPublished;
 		boolean validFlight;
 		confirmation = super.getRequest().getData("confirmation", boolean.class);
-		valid = booking.getLastNibble() != null && !StringHelper.isBlank(booking.getLastNibble()) && !booking.passengers().isEmpty();
+		lastNibbleNotNull = booking.getLastNibble() != null && !StringHelper.isBlank(booking.getLastNibble());
+		passengersNotEmpty = !booking.passengers().isEmpty();
 		uniqueLocatorCode = this.repository.findByLocatorCode(booking.getLocatorCode(), booking.getId()) == null;
 		allPassengersPublished = this.repository.findBookingRecordByBookingId(booking.getId()).stream().allMatch(r -> r.getPassenger().isPublished());
 		validFlight = booking.getFlight() == null || booking.getFlight().scheduledDeparture().after(MomentHelper.getCurrentMoment());
 		super.state(confirmation, "confirmation", "acme.validation.confirmation.message");
-		super.state(valid, "*", "acme.validation.booking.published.message");
+		super.state(passengersNotEmpty, "*", "acme.validation.booking.passengersNotEmpty.message");
+		super.state(lastNibbleNotNull, "lastNibble", "acme.validation.booking.lastNibble.message");
 		super.state(allPassengersPublished, "*", "acme.validation.booking.publishedPassengers.message");
 		super.state(uniqueLocatorCode, "locatorCode", "acme.validation.booking.locatorCode.message");
 		super.state(validFlight, "flight", "acme.validation.booking.flight.message");

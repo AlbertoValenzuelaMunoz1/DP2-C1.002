@@ -17,7 +17,8 @@ acme.validation.log.registration-moment.message = The log registration moment mu
 
 acme.validation.booking.publishedPassengers.message= To publish a booking all passengers must be published
 acme.validation.customer.identifier.message= The customer identifier must be unique
-
+acme.validation.booking.lastNibble.message=A booking must contain the last nibble credit card to be published
+acme.validation.booking.passengersNotEmpty.message=A boooking must contain at least one passengers to be published
 
 acme.validation.booking.publishedPassengers.message= To publish a booking all passengers must be published
 

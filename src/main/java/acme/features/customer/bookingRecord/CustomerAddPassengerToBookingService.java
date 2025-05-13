@@ -76,7 +76,7 @@ public class CustomerAddPassengerToBookingService extends AbstractGuiService<Cus
 		List<Passenger> passengers = this.repository.findAvailablePassengersForBooking(customerId, bookingId);
 		SelectChoices choices = SelectChoices.from(passengers, "fullName", bookingRecord.getPassenger());
 		Dataset dataset = super.unbindObject(bookingRecord, "booking", "passenger");
-		dataset.put("choices", choices);
+		dataset.put("choicesPassenger", choices);
 		dataset.put("published", bookingRecord.getBooking().isPublished());
 		dataset.put("bookingId", bookingRecord.getBooking().getId());
 		super.getResponse().addData(dataset);

@@ -5,7 +5,6 @@ import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
-import java.time.Year;
 import java.util.regex.Pattern;
 
 import javax.validation.Constraint;
@@ -14,6 +13,7 @@ import javax.validation.Payload;
 
 import acme.client.components.validation.AbstractValidator;
 import acme.client.components.validation.Validator;
+import acme.client.helpers.MomentHelper;
 
 @Target(ElementType.FIELD)
 @Retention(RetentionPolicy.RUNTIME)
@@ -50,7 +50,8 @@ public @interface ValidPromotionCode {
 
 			boolean lastTwoDigitsMatchYear = false;
 			try {
-				int year = Year.now().getValue() % 100;
+				@SuppressWarnings("deprecation")
+				int year = MomentHelper.getCurrentMoment().getYear() % 100;
 				String lastTwoDigitsString = promotionCode.substring(5);
 				int lastTwoDigits = Integer.parseInt(lastTwoDigitsString);
 				lastTwoDigitsMatchYear = lastTwoDigits == year;

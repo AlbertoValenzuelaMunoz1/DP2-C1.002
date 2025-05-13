@@ -18,7 +18,7 @@
 		
 		<jstl:when test="${_command== 'create'}">
 			<acme:form >
-				<acme:input-select code="customer.booking-record.form.label.passenger" path="passenger" choices="${choices}"/>
+				<acme:input-select code="customer.booking-record.form.label.passenger" path="passenger" choices="${choicesPassenger}"/>
 				<acme:submit code="customer.booking-record.form.button.create" action="/customer/booking-record/create?bookingId=${bookingId} "/>	
 		</acme:form>
 		</jstl:when>
