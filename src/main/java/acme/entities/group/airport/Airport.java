@@ -32,7 +32,7 @@ public class Airport extends AbstractEntity {
 	//Attributes --------------------------------
 
 	@Mandatory
-	@Column(unique = true)
+	@Automapped
 	@ValidString(min = 1, max = 50)
 	private String				name;
 
