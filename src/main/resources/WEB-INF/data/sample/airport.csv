@@ -1,16 +1,76 @@
 key,name,iata_code,operational_scope,city,country,website,email,contact_phone_number,address
-airport-01,John F. Kennedy International Airport,NEW,INTERNATIONAL,New York,USA,http://jfkairport.com,contact@jfk.com,+1234567890,aaaaaaa
-airport-02,London Heathrow Airport,LHR,DOMESTIC,London,UK,http://heathrow.com,info@heathrow.com,+447911123456,aaaa
-airport-03,Narita International Airport,NRT,INTERNATIONAL,Tokyo,Japan,http://narita-airport.jp,service@narita.jp,+81312345678,aaaaaaa
-airport-04,Charles de Gaulle Airport,CDG,DOMESTIC,Paris,France,http://aeroportsdeparis.fr,help@cdg.fr,+33123456789,aaaaaaa
-airport-05,Frankfurt Airport,FRA,DOMESTIC,Frankfurt,Germany,http://frankfurt-airport.com,assist@fra.de,+496912345678,aaaaaaa
-airport-06,Sydney Kingsford Smith Airport,SYD,INTERNATIONAL,Sydney,Australia,http://sydneyairport.com.au,contact@syd.com.au,+61234567890,aaaaaaa
-airport-07,Guarulhos International Airport,GRU,INTERNATIONAL,São Paulo,Brazil,http://gru.com.br,info@gru.com.br,+5511998765432,aaaaaaa
-airport-08,Dubai International Airport,DXB,INTERNATIONAL,Dubai,UAE,http://dubaiairports.ae,help@dxb.ae,+971501234567,aaaaaaa
-airport-09,Toronto Pearson International Airport,YYZ,INTERNATIONAL,Toronto,Canada,http://torontopearson.com,info@yyz.ca,+14161234567,aaaaaaa
-airport-10,Sheremetyevo International Airport,SVO,INTERNATIONAL,Moscow,Russia,http://svo.aero,contact@svo.ru,+74951234567,aaaaaaa
-airport-11,Adolfo Suárez Madrid-Barajas Airport,MAD,REGIONAL,Madrid,Spain,http://aena.es/mad,contact@mad.aena.es,+34913211100,aaaaaaa
-airport-13,L,BCN,REGIONAL,Barcelona,Spain,ftp://a,a@b.e,+34913221100,L
-airport-14,Lo,ADC,INTERNATIONAL,L,S,ftp://a.b,a@b.es,673653,Lo
-airport-15,"Lorem ipsum dolor sit amet, consectetur adipiscin",SPP,REGIONAL,"Lorem ipsum dolor sit amet, consectetur adipiscin","Lorem ipsum dolor sit amet, consectetur adipiscin","http://www.lorem-ipsum.org/dolor/sit/amet,/consectetur/adipiscing/elit,/sed/do/eiusmod/tempor/incididunt/ut/labore/et/dolore/magna/aliqua/Ut/enim/ad/minim/veniam/quis/nostrud/exercitation/ullamco/laboris/nisi/ut/aliquip/ex/ea/commodo/consequat/duis/aute/",lorem-ipsum@dolor.sit.amet.consectetur.adipiscing.elit.sed.do.eiusmod.tempor.incididunt.ut.labore.et.dolore.magna.aliqua.Ut.enim.ad.minim.veniam.quis.nostrud.exercitation.ullamco.laboris.nisi.ut.aliquip.ex.ea.commodo.consequat.duis.aute.irure.doloris.edu,66666677777712,"Lorem ipsum dolor sit amet, consectetur adipiscin"
-airport-16,"Lorem ipsum dolor sit amet, consectetur adipiscing",TOP,DOMESTIC,"Lorem ipsum dolor sit amet, consectetur adipiscing","Lorem ipsum dolor sit amet, consectetur adipiscing","http://www.lorem-ipsum.org/dolor/sit/amet,/consectetur/adipiscing/elit,/sed/do/eiusmod/tempor/incididunt/ut/labore/et/dolore/magna/aliqua/Ut/enim/ad/minim/veniam/quis/nostrud/exercitation/ullamco/laboris/nisi/ut/aliquip/ex/ea/commodo/consequat/duis/aute/X",lorem-ipsum@dolor.sit.amet.consectetur.adipiscing.elit.sed.do.eiusmod.tempor.incididunt.ut.labore.et.dolore.magna.aliqua.Ut.enim.ad.minim.veniam.quis.nostrud.exercitation.ullamco.laboris.nisi.ut.aliquip.ex.ea.commodo.consequat.duis.aute.irure.dolor.es.org,666666777777128,"Lorem ipsum dolor sit amet, consectetur adipiscing"
+# base-entity
+airport-01,Adolfo Suárez Madrid-Barajas Airport,MAD,REGIONAL,Madrid,Spain,http://aena.es/mad,contact@mad.aena.es,+34913211100,aaaaaaa
+# name variations
+airport-02,L,AAA,REGIONAL,Madrid,Spain,http://aena.es/mad,contact@mad.aena.es,+34913211100,aaaaaaa
+airport-03,Lo,AAB,REGIONAL,Madrid,Spain,http://aena.es/mad,contact@mad.aena.es,+34913211100,aaaaaaa
+airport-04,Lorem ipsum dolor sit ametf consectetur adipiscing,AAC,REGIONAL,Madrid,Spain,http://aena.es/mad,contact@mad.aena.es,+34913211100,aaaaaaa
+airport-05,Lorem ipsum dolor sit ameth consectetur adipiscin,AAD,REGIONAL,Madrid,Spain,http://aena.es/mad,contact@mad.aena.es,+34913211100,aaaaaaa
+airport-06,โลเร็ม อิปซัม,AAE,REGIONAL,Madrid,Spain,http://aena.es/mad,contact@mad.aena.es,+34913211100,aaaaaaa
+airport-07,لوريم إيبسوم,AAF,REGIONAL,Madrid,Spain,http://aena.es/mad,contact@mad.aena.es,+34913211100,aaaaaaa
+airport-08,洛伦·伊普森,AAG,REGIONAL,Madrid,Spain,http://aena.es/mad,contact@mad.aena.es,+34913211100,aaaaaaa
+airport-09,<marquee>Hacked</marquee>,AAH,REGIONAL,Madrid,Spain,http://aena.es/mad,contact@mad.aena.es,+34913211100,aaaaaaa
+airport-10,<script>alert(‘Hacked!’);</script>,AAI,REGIONAL,Madrid,Spain,http://aena.es/mad,contact@mad.aena.es,+34913211100,aaaaaaa
+airport-11,' or 'A' = 'A ,AAJ,REGIONAL,Madrid,Spain,http://aena.es/mad,contact@mad.aena.es,+34913211100,aaaaaaa
+# operational_scope variations
+airport-12,Adolfo Suárez Madrid-Barajas Airport,AAK,INTERNATIONAL,Madrid,Spain,http://aena.es/mad,contact@mad.aena.es,+34913211100,aaaaaaa
+airport-13,Adolfo Suárez Madrid-Barajas Airport,AAL,DOMESTIC,Madrid,Spain,http://aena.es/mad,contact@mad.aena.es,+34913211100,aaaaaaa
+# city variations
+airport-14,Adolfo Suárez Madrid-Barajas Airport,AAM,REGIONAL,L,Spain,http://aena.es/mad,contact@mad.aena.es,+34913211100,aaaaaaa
+airport-15,Adolfo Suárez Madrid-Barajas Airport,AAN,REGIONAL,Lo,Spain,http://aena.es/mad,contact@mad.aena.es,+34913211100,aaaaaaa
+airport-16,Adolfo Suárez Madrid-Barajas Airport,AAO,REGIONAL,Lorem ipsum dolor sit ametf consectetur adipiscing,Spain,http://aena.es/mad,contact@mad.aena.es,+34913211100,aaaaaaa
+airport-17,Adolfo Suárez Madrid-Barajas Airport,AAP,REGIONAL,Lorem ipsum dolor sit ameth consectetur adipiscin,Spain,http://aena.es/mad,contact@mad.aena.es,+34913211100,aaaaaaa
+airport-18,Adolfo Suárez Madrid-Barajas Airport,AAQ,REGIONAL,โลเร็ม อิปซัม,Spain,http://aena.es/mad,contact@mad.aena.es,+34913211100,aaaaaaa
+airport-19,Adolfo Suárez Madrid-Barajas Airport,AAR,REGIONAL,لوريم إيبسوم,Spain,http://aena.es/mad,contact@mad.aena.es,+34913211100,aaaaaaa
+airport-20,Adolfo Suárez Madrid-Barajas Airport,AAS,REGIONAL,洛伦·伊普森,Spain,http://aena.es/mad,contact@mad.aena.es,+34913211100,aaaaaaa
+airport-21,Adolfo Suárez Madrid-Barajas Airport,AAT,REGIONAL,<marquee>Hacked</marquee>,Spain,http://aena.es/mad,contact@mad.aena.es,+34913211100,aaaaaaa
+airport-22,Adolfo Suárez Madrid-Barajas Airport,AAV,REGIONAL,<script>alert(‘Hacked!’);</script>,Spain,http://aena.es/mad,contact@mad.aena.es,+34913211100,aaaaaaa
+airport-23,Adolfo Suárez Madrid-Barajas Airport,AAW,REGIONAL,' or 'A' = 'A ,Spain,http://aena.es/mad,contact@mad.aena.es,+34913211100,aaaaaaa
+# country variations
+airport-24,Adolfo Suárez Madrid-Barajas Airport,AAY,REGIONAL,Madrid,L,http://aena.es/mad,contact@mad.aena.es,+34913211100,aaaaaaa
+airport-25,Adolfo Suárez Madrid-Barajas Airport,AAZ,REGIONAL,Madrid,Lo,http://aena.es/mad,contact@mad.aena.es,+34913211100,aaaaaaa
+airport-26,Adolfo Suárez Madrid-Barajas Airport,ABA,REGIONAL,Madrid,Lorem ipsum dolor sit ametf consectetur adipiscing,http://aena.es/mad,contact@mad.aena.es,+34913211100,aaaaaaa
+airport-27,Adolfo Suárez Madrid-Barajas Airport,ABB,REGIONAL,Madrid,Lorem ipsum dolor sit ameth consectetur adipiscin,http://aena.es/mad,contact@mad.aena.es,+34913211100,aaaaaaa
+airport-28,Adolfo Suárez Madrid-Barajas Airport,ABC,REGIONAL,Madrid,โลเร็ม อิปซัม,http://aena.es/mad,contact@mad.aena.es,+34913211100,aaaaaaa
+airport-29,Adolfo Suárez Madrid-Barajas Airport,ABD,REGIONAL,Madrid,لوريم إيبسوم,http://aena.es/mad,contact@mad.aena.es,+34913211100,aaaaaaa
+airport-30,Adolfo Suárez Madrid-Barajas Airport,ABE,REGIONAL,Madrid,洛伦·伊普森,http://aena.es/mad,contact@mad.aena.es,+34913211100,aaaaaaa
+airport-31,Adolfo Suárez Madrid-Barajas Airport,ABF,REGIONAL,Madrid,<marquee>Hacked</marquee>,http://aena.es/mad,contact@mad.aena.es,+34913211100,aaaaaaa
+airport-32,Adolfo Suárez Madrid-Barajas Airport,ABG,REGIONAL,Madrid,<script>alert(‘Hacked!’);</script>,http://aena.es/mad,contact@mad.aena.es,+34913211100,aaaaaaa
+airport-33,Adolfo Suárez Madrid-Barajas Airport,ABH,REGIONAL,Madrid,' or 'A' = 'A ,http://aena.es/mad,contact@mad.aena.es,+34913211100,aaaaaaa
+# website variations
+airport-34,Adolfo Suárez Madrid-Barajas Airport,ABI,REGIONAL,Madrid,Spain,http://a.b,contact@mad.aena.es,+34913211100,aaaaaaa
+airport-35,Adolfo Suárez Madrid-Barajas Airport,ABJ,REGIONAL,Madrid,Spain,"http://www.lorem-ipsum.org/dolor/sit/amet,/consectetur/adipiscing/elit,/sed/do/eiusmod/tempor/incididunt/ut/labore/et/dolore/magna/aliqua/Ut/enim/ad/minim/veniam/quis/nostrud/exercitation/ullamco/laboris/nisi/ut/aliquip/ex/ea/commodo/consequat/duis/aute/",contact@mad.aena.es,+34913211100,aaaaaaa
+airport-36,Adolfo Suárez Madrid-Barajas Airport,ABK,REGIONAL,Madrid,Spain,"http://www.lorem-ipsum.org/dolor/sit/amet,/consectetur/adipiscing/elit,/sed/do/eiusmod/tempor/incididunt/ut/labore/et/dolore/magna/aliqua/Ut/enim/ad/minim/veniam/quis/nostrud/exercitation/ullamco/laboris/nisi/ut/aliquip/ex/ea/commodo/consequat/duis/aute/X",contact@mad.aena.es,+34913211100,aaaaaaa
+airport-37,Adolfo Suárez Madrid-Barajas Airport,ABL,REGIONAL,Madrid,Spain,http://www.lorem-ipsum.org,contact@mad.aena.es,+34913211100,aaaaaaa
+airport-38,Adolfo Suárez Madrid-Barajas Airport,ABM,REGIONAL,Madrid,Spain,https://www.lorem-ipsum.org,contact@mad.aena.es,+34913211100,aaaaaaa
+airport-39,Adolfo Suárez Madrid-Barajas Airport,ABN,REGIONAL,Madrid,Spain,http://website.com,contact@mad.aena.es,+34913211100,aaaaaaa
+airport-40,Adolfo Suárez Madrid-Barajas Airport,ABO,REGIONAL,Madrid,Spain,http://www.lorem-ipsum.org/dolor/sit.html#dolor,contact@mad.aena.es,+34913211100,aaaaaaa
+airport-41,Adolfo Suárez Madrid-Barajas Airport,ABP,REGIONAL,Madrid,Spain,http://example.org?a=1&b=2,contact@mad.aena.es,+34913211100,aaaaaaa
+airport-42,Adolfo Suárez Madrid-Barajas Airport,ABQ,REGIONAL,Madrid,Spain,http://example.org?,contact@mad.aena.es,+34913211100,aaaaaaa
+airport-43,Adolfo Suárez Madrid-Barajas Airport,ABR,REGIONAL,Madrid,Spain,http://example.org?a,contact@mad.aena.es,+34913211100,aaaaaaa
+# email variations
+airport-44,Adolfo Suárez Madrid-Barajas Airport,ABS,REGIONAL,Madrid,Spain,http://aena.es/mad,acme@lorem-ipsum.org,+34913211100,aaaaaaa
+airport-45,Adolfo Suárez Madrid-Barajas Airport,ABT,REGIONAL,Madrid,Spain,http://aena.es/mad,a@b.es,+34913211100,aaaaaaa
+airport-46,Adolfo Suárez Madrid-Barajas Airport,ABU,REGIONAL,Madrid,Spain,http://aena.es/mad,a@b.e,+34913211100,aaaaaaa
+airport-47,Adolfo Suárez Madrid-Barajas Airport,ABV,REGIONAL,Madrid,Spain,http://aena.es/mad,a@b.esx,+34913211100,aaaaaaa
+airport-48,Adolfo Suárez Madrid-Barajas Airport,ABW,REGIONAL,Madrid,Spain,http://aena.es/mad,lorem-ipsum@dolor.sit.amet.consectetur.adipiscing.elit.sed.do.eiusmod.tempor.incididunt.ut.labore.et.dolore.magna.aliqua.Ut.enim.ad.minim.veniam.quis.nostrud.exercitation.ullamco.laboris.nisi.ut.aliquip.ex.ea.commodo.consequat.duis.aute.irure.doloris.edu,+34913211100,aaaaaaa
+airport-49,Adolfo Suárez Madrid-Barajas Airport,ABY,REGIONAL,Madrid,Spain,http://aena.es/mad,lorem-ipsum@dolor.sit.amet.consectetur.adipiscing.elit.sed.do.eiusmod.tempor.incididunt.ut.labore.et.dolore.magna.aliqua.Ut.enim.ad.minim.veniam.quis.nostrud.exercitation.ullamco.laboris.nisi.ut.aliquip.ex.ea.commodo.consequat.duis.aute.irure.dolor.es.org,+34913211100,aaaaaaa
+airport-50,Adolfo Suárez Madrid-Barajas Airport,ABZ,REGIONAL,Madrid,Spain,http://aena.es/mad,lorem-ipsum@dolor.sit.amet.consectetur.adipiscing.elit.sed.do.eiusmod.tempor.incididunt.ut.labore.et.dolore.magna.aliqua.Ut.enim.ad.minim.veniam.quis.nostrud.exercitation.ullamco.laboris.nisi.ut.aliquip.ex.ea.commodo.consequat.duis.aute.irure.doloris.edu,+34913211100,aaaaaaa
+airport-51,Adolfo Suárez Madrid-Barajas Airport,ACA,REGIONAL,Madrid,Spain,http://aena.es/mad,lorem-ipsum@dolor.sit.amet.consectetur.adipiscing.elit.sed.do.eiusmod.tempor.incididunt.ut.labore.et.dolore.magna.aliqua.Ut.enim.ad.minim.veniam.quis.nostrud.exercitation.ullamco.laboris.nisi.ut.aliquip.ex.ea.commodo.consequat.duis.aute.irure.doloris.edu,+34913211100,aaaaaaa
+airport-52,Adolfo Suárez Madrid-Barajas Airport,ACB,REGIONAL,Madrid,Spain,http://aena.es/mad,lorem-ipsum@dolor.sit.amet.consectetur.adipiscing.elit.sed.do.eiusmod.tempor.incididunt.ut.labore.et.dolore.magna.aliqua.Ut.enim.ad.minim.veniam.quis.nostrud.exercitation.ullamco.laboris.nisi.ut.aliquip.ex.ea.commodo.consequat.duis.aute.irure.doloris.edu,+34913211100,aaaaaaa
+airport-53,Adolfo Suárez Madrid-Barajas Airport,ACC,REGIONAL,Madrid,Spain,http://aena.es/mad,lorem-ipsum@dolor.sit.amet.consectetur.adipiscing.elit.sed.do.eiusmod.tempor.incididunt.ut.labore.et.dolore.magna.aliqua.Ut.enim.ad.minim.veniam.quis.nostrud.exercitation.ullamco.laboris.nisi.ut.aliquip.ex.ea.commodo.consequat.duis.aute.irure.doloris.edu,+34913211100,aaaaaaa
+# contact_phone_number variations
+airport-54,Adolfo Suárez Madrid-Barajas Airport,ACD,REGIONAL,Madrid,Spain,http://aena.es/mad,contact@mad.aena.es,347298,aaaaaaa
+airport-55,Adolfo Suárez Madrid-Barajas Airport,ACE,REGIONAL,Madrid,Spain,http://aena.es/mad,contact@mad.aena.es,3472983,aaaaaaa
+airport-56,Adolfo Suárez Madrid-Barajas Airport,ACF,REGIONAL,Madrid,Spain,http://aena.es/mad,contact@mad.aena.es,347298233,aaaaaaa
+# address variations
+airport-57,Adolfo Suárez Madrid-Barajas Airport,ACG,REGIONAL,Madrid,Spain,http://aena.es/mad,contact@mad.aena.es,+34913211100,L
+airport-58,Adolfo Suárez Madrid-Barajas Airport,ACH,REGIONAL,Madrid,Spain,http://aena.es/mad,contact@mad.aena.es,+34913211100,Lo
+airport-59,Adolfo Suárez Madrid-Barajas Airport,ACI,REGIONAL,Madrid,Spain,http://aena.es/mad,contact@mad.aena.es,+34913211100,Lorem ipsum dolor sit ametf consectetur adipiscing
+airport-60,Adolfo Suárez Madrid-Barajas Airport,ACJ,REGIONAL,Madrid,Spain,http://aena.es/mad,contact@mad.aena.es,+34913211100,Lorem ipsum dolor sit ameth consectetur adipiscin
+airport-61,Adolfo Suárez Madrid-Barajas Airport,ACK,REGIONAL,Madrid,Spain,http://aena.es/mad,contact@mad.aena.es,+34913211100,โลเร็ม อิปซัม
+airport-62,Adolfo Suárez Madrid-Barajas Airport,ACL,REGIONAL,Madrid,Spain,http://aena.es/mad,contact@mad.aena.es,+34913211100,لوريم إيبسوم
+airport-63,Adolfo Suárez Madrid-Barajas Airport,ACM,REGIONAL,Madrid,Spain,http://aena.es/mad,contact@mad.aena.es,+34913211100,洛伦·伊普森
+airport-64,Adolfo Suárez Madrid-Barajas Airport,ACN,REGIONAL,Madrid,Spain,http://aena.es/mad,contact@mad.aena.es,+34913211100,<marquee>Hacked</marquee>
+airport-65,Adolfo Suárez Madrid-Barajas Airport,ACO,REGIONAL,Madrid,Spain,http://aena.es/mad,contact@mad.aena.es,+34913211100,<script>alert(‘Hacked!’);</script>
+airport-66,Adolfo Suárez Madrid-Barajas Airport,ACP,REGIONAL,Madrid,Spain,http://aena.es/mad,contact@mad.aena.es,+34913211100,' or 'A' = 'A

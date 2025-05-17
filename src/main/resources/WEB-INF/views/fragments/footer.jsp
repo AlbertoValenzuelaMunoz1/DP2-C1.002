@@ -33,8 +33,13 @@
 		<acme:footer-option icon="fa fa-language" code="master.footer.label.english" action="/?locale=en"/>
 		<acme:footer-option icon="fa fa-language" code="master.footer.label.spanish" action="/?locale=es"/>
 	</acme:footer-subpanel>
-
+	<jstl:if test="${service != null}">
+		<div class="panel-body" style="margin: 1em 0em 1em 0em; text-align: center;">	
+		<img src="${service.imageLink}" alt="${service.name}" class="img-fluid rounded" style="border-style: solid;"/>
+	</div>
+</jstl:if>
 	<acme:footer-logo logo="images/logo.png" alt="master.company.name">
 		<acme:footer-copyright code="master.company.name"/>
 	</acme:footer-logo>
+	
 </acme:footer-panel>

@@ -41,7 +41,7 @@ public class CustomerUpdateBookingService extends AbstractGuiService<Customer, B
 			}
 
 		}
-		super.getResponse().setAuthorised(booking != null && customer.equals(booking.getCustomer()) && !booking.isPublished());
+		super.getResponse().setAuthorised(booking != null && validFlight && customer.equals(booking.getCustomer()) && !booking.isPublished());
 	}
 
 	@Override

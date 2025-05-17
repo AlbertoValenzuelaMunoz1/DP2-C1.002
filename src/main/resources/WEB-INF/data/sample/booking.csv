@@ -1,9 +1,34 @@
 key,key:customer,key:flight,locatorCode,purchaseMoment,travelClass,lastNibble,published
-booking-01,customer-01,flight-04,A382B2,2012/07/20 0:00,ECONOMY,3928,true
-booking-02,customer-02,flight-04,A32C223,2025/01/01 0:00,BUSINESS,3923,true
-booking-03,customer-01,flight-04,A32D223,2025/01/01 0:00,BUSINESS,,false
-booking-04,customer-02,flight-04,38928936,2024/12/31 23:59,ECONOMY,3934,true
-booking-05,customer-01,flight-04,SDIKAEJD,2000/01/01 0:00,ECONOMY,6534,false
-booking-06,customer-02,flight-04,38201983,2000/01/01 0:01,BUSINESS,8534,true
-booking-07,customer-02,flight-04,38201F83,2000/01/01 0:01,BUSINESS,,false
-booking-08,customer-02,flight-04,38209V83,2000/01/01 0:01,BUSINESS,2534,false
+# base-entity
+booking-01,customer-01,flight-04,A382B2,2012/07/20 0:00,ECONOMY,3928,false
+# locatorCode variations
+booking-02,customer-01,flight-04,34787348,2012/07/20 0:00,ECONOMY,3928,false
+booking-03,customer-01,flight-04,3478348,2012/07/20 0:00,ECONOMY,3928,false
+booking-04,customer-01,flight-04,SSDJKJDK,2012/07/20 0:00,ECONOMY,3928,false
+booking-05,customer-01,flight-04,SSDOKJD,2012/07/20 0:00,ECONOMY,3928,false
+booking-06,customer-01,flight-04,3478DFKK,2012/07/20 0:00,ECONOMY,3928,false
+booking-07,customer-01,flight-04,SSDJKJD,2012/07/20 0:00,ECONOMY,3928,false
+# the locatorCode must always be changed because it is unique
+# purchaseMoment variations
+booking-08,customer-01,flight-04,A382H2,2025/01/01 0:00,ECONOMY,3928,false
+booking-09,customer-01,flight-04,A382A2,2024/12/31 0:00,ECONOMY,3928,false
+booking-10,customer-01,flight-04,SSDHJJD,2000/01/01 0:00,ECONOMY,3928,false
+booking-11,customer-01,flight-04,SSDJVJD,2000/01/01 0:01,ECONOMY,3928,false
+# travelClass variations
+booking-12,customer-01,flight-04,A382L2,2012/07/20 0:00,BUSINESS,3928,false
+# lastNibble variations
+booking-13,customer-01,flight-04,A382N2,2012/07/20 0:00,ECONOMY,9999,false
+booking-14,customer-01,flight-04,A382E2,2012/07/20 0:00,ECONOMY,1111,false
+booking-15,customer-01,flight-04,A382U2,2012/07/20 0:00,ECONOMY,2378,false
+booking-16,customer-01,flight-04,A382W2,2012/07/20 0:00,ECONOMY,,false
+# published variations
+booking-17,customer-01,flight-04,A382P2,2012/07/20 0:00,ECONOMY,3928,true
+# bookings different customer
+booking-18,customer-02,flight-04,A382V2,2012/07/20 0:00,ECONOMY,3928,false
+# extra booking data
+booking-19,customer-01,flight-04,A32D923,2019/01/01 0:00,BUSINESS,3748,true
+booking-20,customer-02,flight-04,A323223,2019/01/01 0:00,BUSINESS,3748,false
+booking-21,customer-02,flight-04,A32D223,2019/01/01 0:00,BUSINESS,3748,true
+booking-22,customer-02,flight-04,A329223,2019/01/01 0:00,BUSINESS,3748,true
+booking-23,customer-02,flight-04,38918936,2024/12/31 23:59,ECONOMY,3934,false
+booking-24,customer-02,flight-04,389F8936,2024/12/31 23:59,BUSINESS,3934,false

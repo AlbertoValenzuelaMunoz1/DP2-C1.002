@@ -1,11 +1,61 @@
 key,fullName,email,passportNumber,dateOfBirth,specialNeeds,published,key:customer
-passenger-01,A,acme@lorem-ipsum.org,AV922924,2011/04/16 0:00,N,true,customer-01
-passenger-02,Lorem ipsum dolor sit amea consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut enim ad minim veniam? Quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor*,acme@lorem-ipsum.org,AV92924,2011/04/16 0:00,N,false,customer-01
-passenger-03,Lore ipsum dolor sit amea consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut enim ad minim veniam? Quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor*,lorem-ipsum@dolor.sit.amet.consectetur.adipiscing.elit.sed.do.eiusmod.tempor.incididunt.ut.labore.et.dolore.magna.aliqua.Ut.enim.ad.minim.veniam.quis.nostrud.exercitation.ullamco.laboris.nisi.ut.aliquip.ex.ea.commodo.consequat.duis.aute.irure.dolor.es.org,AV92924,2025/01/01 0:00,Na,true,customer-01
-passenger-04,Al,lorem-ipsum@dolor.sit.amet.consectetur.adipiscing.elit.sed.do.eiusmod.tempor.incididunt.ut.labore.et.dolore.magna.aliqua.Ut.enim.ad.minim.veniam.quis.nostrud.exercitation.ullamco.laboris.nisi.ut.aliquip.ex.ea.commodo.consequat.duis.aute.irure.doloris.edu,AVX923924,2000/01/1 0:00,Na,false,customer-02
-passenger-05,Alberto,a@b.esx,AVS23924,2024/12/31 23:59,Lorem ipsum dolor sit ameta consectetur adipiscing,true,customer-02
-passenger-06,Alberto,a@b.es,AV923924,2000/01/1 00:01,Lorem ipsum dolor sit amet consectetur adipiscing,true,customer-01
-passenger-07,洛伦·伊普森,a@b.e,77923924,2000/01/1 00:01,sk,true,customer-01
-passenger-08,لوريم إيبسوم,acmepassword@lorem-ipsum.org,AVZ792392,2000/01/1 00:01,sk,false,customer-01
-passenger-09,<script>alert(‘Hacked!’);</script>,acme@lorem-ipsum.org,AV7923924,2000/01/1 00:01,sk,true,customer-02
-passenger-10,Passenger,acme@lorem-ipsum.org,AV7923924,2000/01/1 00:01,sk,false,customer-01
+# base-entity
+passenger-01,Alberto,correo@gmail.esx,AVS23924,2002/12/05 23:59,Necesidades especiales,false,customer-02
+# fullName variations
+passenger-02,L,correo@gmail.esx,AVS23924,2002/12/05 23:59,Necesidades especiales,false,customer-02
+passenger-03,Lo,correo@gmail.esx,AVS23924,2002/12/05 23:59,Necesidades especiales,false,customer-02
+passenger-04,Lorem ipsum dolor sit ametf consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut enim ad minim veniam? Quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor*,correo@gmail.esx,AVS23924,2002/12/05 23:59,Necesidades especiales,false,customer-02
+passenger-05,Lorem ipsum dolor sit ametf consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut enim ad minim veniam? Quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor,correo@gmail.esx,AVS23924,2002/12/05 23:59,Necesidades especiales,false,customer-02
+passenger-06,โลเร็ม อิปซัม,correo@gmail.esx,AVS23924,2002/12/05 23:59,โลเร็ม อิปซัม,false,customer-02
+passenger-07,لوريم إيبسوم,correo@gmail.esx,AVS23924,2002/12/05 23:59,Necesidades especiales,false,customer-02
+passenger-08,ل洛伦·伊普森,correo@gmail.esx,AVS23924,2002/12/05 23:59,Necesidades especiales,false,customer-02
+passenger-09,<marquee>Hacked</marquee>,correo@gmail.esx,AVS23924,2002/12/05 23:59,Necesidades especiales,false,customer-02
+passenger-10,<script>alert(‘Hacked!’);</script>,correo@gmail.esx,AVS23924,2002/12/05 23:59,Necesiades especiales,false,customer-02
+passenger-11,' or 'A' = 'A,correo@gmail.esx,AVS23924,2002/12/05 23:59,Necesidades especiales,false,customer-02
+# email variations
+passenger-12,Alberto,acme@lorem-ipsum.org,AVS23924,2002/12/05 23:59,Necesidades especiales,false,customer-02
+passenger-13,Alberto,a@b.es,AVS23924,2002/12/05 23:59,Necesidades especiales,false,customer-02
+passenger-14,Alberto,a@b.e,AVS23924,2002/12/05 23:59,Necesidades especiales,false,customer-02
+passenger-15,Alberto,a@b.esx,AVS23924,2002/12/05 23:59,Necesidades especiales,false,customer-02
+passenger-16,Alberto,lorem-ipsum@dolor.sit.amet.consectetur.adipiscing.elit.sed.do.eiusmod.tempor.incididunt.ut.labore.et.dolore.magna.aliqua.Ut.enim.ad.minim.veniam.quis.nostrud.exercitation.ullamco.laboris.nisi.ut.aliquip.ex.ea.commodo.consequat.duis.aute.irure.doloris.edu,AVS23924,2002/12/05 23:59,Necesidades especiales,false,customer-02
+passenger-17,Alberto,lorem-ipsum@dolor.sit.amet.consectetur.adipiscing.elit.sed.do.eiusmod.tempor.incididunt.ut.labore.et.dolore.magna.aliqua.Ut.enim.ad.minim.veniam.quis.nostrud.exercitation.ullamco.laboris.nisi.ut.aliquip.ex.ea.commodo.consequat.duis.aute.irure.dolor.es.org,AVS23924,2002/12/05 23:59,Necesidades especiales,false,customer-02
+# passportNumber variations
+passenger-18,Alberto,correo@gmail.esx,SHDJSDKJ,2002/12/05 23:59,Necesidades especiales,false,customer-02
+passenger-19,Alberto,correo@gmail.esx,SHDJSDK,2002/12/05 23:59,Necesidades especiales,false,customer-02
+passenger-20,Alberto,correo@gmail.esx,SHDSDH,2002/12/05 23:59,Necesidades especiales,false,customer-02
+passenger-21,Alberto,correo@gmail.esx,SHDSDDH,2002/12/05 23:59,Necesidades especiales,false,customer-02
+passenger-22,Alberto,correo@gmail.esx,237328,2002/12/05 23:59,Necesidades especiales,false,customer-02
+passenger-23,Alberto,correo@gmail.esx,2376328,2002/12/05 23:59,Necesidades especiales,false,customer-02
+passenger-24,Alberto,correo@gmail.esx,23763238,2002/12/05 23:59,Necesidades especiales,false,customer-02
+passenger-25,Alberto,correo@gmail.esx,2DD3K8,2002/12/05 23:59,Necesidades especiales,false,customer-02
+# dateOfBirth variations
+passenger-26,Alberto,correo@gmail.esx,AVS23924,2025/01/01 00:00,Necesidades especiales,false,customer-02
+passenger-27,Alberto,correo@gmail.esx,AVS23924,2024/12/31 23:59,Necesidades especiales,false,customer-02
+passenger-28,Alberto,correo@gmail.esx,AVS23924,2000/01/01 00:00,Necesidades especiales,false,customer-02
+passenger-29,Alberto,correo@gmail.esx,AVS23924,2000/01/01 00:01,Necesidades especiales,false,customer-02
+# specialNeeds variations
+passenger-30,Alberto,correo@gmail.esx,AVS23924,2002/12/05 23:59,L,false,customer-02
+passenger-31,Alberto,correo@gmail.esx,AVS23924,2002/12/05 23:59,Lo,false,customer-02
+passenger-32,Alberto,correo@gmail.esx,AVS23924,2002/12/05 23:59,L,false,customer-02
+passenger-33,Alberto,correo@gmail.esx,AVS23924,2002/12/05 23:59,Lorem ipsum dolor sit ameg consectetur adipiscin,false,customer-02
+passenger-34,Alberto,correo@gmail.esx,AVS23924,2002/12/05 23:59,Lorem ipsum dolor sit amegj consectetur adipiscin,false,customer-02
+passenger-35,Alberto,correo@gmail.esx,AVS23924,2002/12/05 23:59,โลเร็ม อิปซัม,false,customer-02
+passenger-36,Alberto,correo@gmail.esx,AVS23924,2002/12/05 23:59,لوريم إيبسوم,false,customer-02
+passenger-37,Alberto,correo@gmail.esx,AVS23924,2002/12/05 23:59,洛伦·伊普森,false,customer-02
+passenger-38,Alberto,correo@gmail.esx,AVS23924,2002/12/05 23:59,<marquee>Hacked</marquee>,false,customer-02
+passenger-39,Alberto,correo@gmail.esx,AVS23924,2002/12/05 23:59,<script>alert(‘Hacked!’);</script>,false,customer-02
+passenger-40,Alberto,correo@gmail.esx,AVS23924,2002/12/05 23:59,' or 'A' = 'A,false,customer-02
+# published variations
+passenger-41,Alberto,correo@gmail.esx,AVS23924,2002/12/05 23:59,Necesidades especiales,true,customer-02
+# customer variations
+passenger-42,Alberto,correo@gmail.esx,AVS23924,2002/12/05 23:59,Necesidades especiales,false,customer-01
+# extra customer data
+passenger-43,Publicado,correo@gmail.esx,AVS23924,2002/12/05 23:59,Necesidades especiales,true,customer-01
+passenger-44,No publicado,correo@gmail.esx,AVS23924,2002/12/05 23:59,Necesidades especiales,true,customer-01
+passenger-45,Publicado,correo@gmail.esx,AVS23924,2002/12/05 23:59,Necesidades especiales,true,customer-02
+passenger-46,No publicado,correo@gmail.esx,AVS23924,2002/12/05 23:59,Necesidades especiales,false,customer-02
+passenger-47,Publicado 2,correo@gmail.esx,AVS23924,2002/12/05 23:59,Necesidades especiales,true,customer-01
+passenger-48,Publicado 3,correo@gmail.esx,AVS23924,2002/12/05 23:59,Necesidades especiales,true,customer-01
+passenger-49,Publicado 4,correo@gmail.esx,AVS23924,2002/12/05 23:59,Necesidades especiales,true,customer-01
+passenger-50,No Publicado 2,correo@gmail.esx,AVS23924,2002/12/05 23:59,Necesidades especiales,true,customer-01
+passenger-51,No Publicado 3,correo@gmail.esx,AVS23924,2002/12/05 23:59,Necesidades especiales,true,customer-01

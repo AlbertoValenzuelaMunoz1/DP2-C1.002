@@ -1,5 +1,6 @@
 key,last_update_moment,step_undergoing,resolution_percentage,claimStatus,resolution_details,key:claim
-tlog-01,2000/01/01 00:00,L,0.00,PENDING,L,claim-01
-tlog-02,2000/01/01 00:01,Lo,0.01,ACCEPTED,Lo,claim-02
-tlog-03,2020/12/29 00:00,"Lorem ipsum dolor sit amet, consectetur adipiscin",99.9,REJECTED,"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut enim ad minim veniam? Quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor",claim-03
-tlog-04,2020/12/30 00:00,"Lorem ipsum dolor sit amet, consectetur adipiscing",100.00,PENDING,"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut enim ad minim veniam? Quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor*",claim-04
+tlog-01,2000/01/01 00:04,L,0.00,PENDING,L,claim-01
+tlog-02,2000/01/02 00:04,Lo,0.01,PENDING,Lo,claim-02
+tlog-03,2020/12/29 00:00,"Lorem ipsum dolor sit amet, consectetur adipiscin",99.9,PENDING,"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut enim ad minim veniam? Quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor",claim-03
+tlog-04,2020/12/30 00:00,"Lorem ipsum dolor sit amet, consectetur adipiscing",100.00,REJECTED,"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut enim ad minim veniam? Quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor*",claim-04
+tlog-05,2020/12/30 00:00,"Lorem ipsum dolor sit amet",100.00,ACCEPTED,"Lorem ipsum dolor ",claim-01

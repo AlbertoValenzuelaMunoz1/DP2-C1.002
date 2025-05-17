@@ -1,11 +1,52 @@
 key,name,iataCode,website,type,foundationMoment,email,phoneNumber
-airline-01,Lorem ipsum dolor sit ame,AZX,http://lorem.com/ipsum,LUXURY,2022/06/01 10:00,acme@lorem-ipsum.org,928145
-airline-02,L,ABX,http://lorem.com/ipsum,LOWCOST,2025/01/01 0:00,a@e.e,+928145
-airline-03,<script>alert(‘Hacked!’);</script>,ASX,http://lorem.com/ipsum,LOWCOST,2024/12/31 23:59,a@e.e,+928145
-airline-04,Lorem ipsum dolor sit ametm consectetur adipiscing,ACX,http://lorem.com/ipsum,LOWCOST,2000/01/01 0:01,a@e.es,+928646952461458
-airline-05,Lorem ipsum dolor sit ametm consectetur adipiscin,AVX,https://lorem.com/ipsum,LOWCOST,2000/01/01 0:00,a@e.e,+9281452
-airline-06,Lo,BVX,http://lorem.com:80/ipsum,LOWCOST,2000/01/01 0:00,a@e.e,928646952461458
-airline-07,洛伦·伊普森,ZVX,http://lorem.com:2000/ipsum,STANDARD,2000/01/01 0:00,ommodo.consequat@duis.aute.irur.dolor.es.org,+92864695246145
-airline-08,لوريم إيبسوم,GDX,http://example.org?a&b,STANDARD,2000/01/01 0:00,a@e.e,9228145
-airline-09,airline1,GAX,http://example.org:80/home?a&b,STANDARD,2010/02/03 23:20,airport1@gmail.es,+9228145267
-airline-10,airline2,GNX,http://example.org:80/home?a&b,STANDARD,2010/02/03 23:20,ipsum@dolor.sit.amet.consectetur.adipiscing.elit.sed.do.eiusmod.tempor.incididunt.ut.labore.et.dolore.magna.aliqua.Ut.enim.ad.minim.veniam.quis.nostrud.exercitation.ullamco.laboris.nisi.ut.aliquip.ex.ea.commodo.consequat.duis.aute.irure.dolor.es.org,+9228145267
+# base entity
+airline-01,Aerolinea1,CFX,http://website.com,STANDARD,2004/12/25 12:30,correo@acme.com,347238343
+# iataCode must change because it is unique
+# name variations
+airline-02,L,ABX,http://website.com,STANDARD,2004/12/25 12:30,correo@acme.com,347238343
+airline-03,Lo,ACX,http://website.com,STANDARD,2004/12/25 12:30,correo@acme.com,347238343
+airline-04,Lorem ipsum dolor sit ametf consectetur adipiscing,ADX,http://website.com,STANDARD,2004/12/25 12:30,correo@acme.com,347238343
+airline-05,Lorem ipsum dolor sit ameth consectetur adipiscin,AEX,http://website.com,STANDARD,2004/12/25 12:30,correo@acme.com,347238343
+airline-06,โลเร็ม อิปซัม,AFX,http://website.com,STANDARD,2004/12/25 12:30,correo@acme.com,347238343
+airline-07,لوريم إيبسوم,AGX,http://website.com,STANDARD,2004/12/25 12:30,correo@acme.com,347238343
+airline-08,洛伦·伊普森,AHX,http://website.com,STANDARD,2004/12/25 12:30,correo@acme.com,347238343
+airline-09,<marquee>Hacked</marquee>,AIX,http://website.com,STANDARD,2004/12/25 12:30,correo@acme.com,347238343
+airline-10,<script>alert(‘Hacked!’);</script>,AJX,http://website.com,STANDARD,2004/12/25 12:30,correo@acme.com,347238343
+airline-11,' or 'A' = 'A ,AKX,http://website.com,STANDARD,2004/12/25 12:30,correo@acme.com,347238343
+# website variations
+airline-12,Aerolinea1,ALX,http://lorem.com/ipsum,STANDARD,2004/12/25 12:30,correo@acme.com,347238343
+airline-13,Aerolinea1,AMX,http://a.b,STANDARD,2004/12/25 12:30,correo@acme.com,347238343
+airline-14,Aerolinea1,ANX,"http://www.lorem-ipsum.org/dolor/sit/amet,/consectetur/adipiscing/elit,/sed/do/eiusmod/tempor/incididunt/ut/labore/et/dolore/magna/aliqua/Ut/enim/ad/minim/veniam/quis/nostrud/exercitation/ullamco/laboris/nisi/ut/aliquip/ex/ea/commodo/consequat/duis/aute/",STANDARD,2004/12/25 12:30,correo@acme.com,347238343
+airline-15,Aerolinea1,AOX,"http://www.lorem-ipsum.org/dolor/sit/amet,/consectetur/adipiscing/elit,/sed/do/eiusmod/tempor/incididunt/ut/labore/et/dolore/magna/aliqua/Ut/enim/ad/minim/veniam/quis/nostrud/exercitation/ullamco/laboris/nisi/ut/aliquip/ex/ea/commodo/consequat/duis/aute/X",STANDARD,2004/12/25 12:30,correo@acme.com,347238343
+airline-16,Aerolinea1,APX,http://www.lorem-ipsum.org,STANDARD,2004/12/25 12:30,correo@acme.com,347238343
+airline-17,Aerolinea1,AQX,https://www.lorem-ipsum.org,STANDARD,2004/12/25 12:30,correo@acme.com,347238343
+airline-18,Aerolinea1,ARX,http://website.com,STANDARD,2004/12/25 12:30,correo@acme.com,347238343
+airline-19,Aerolinea1,ASX,http://www.lorem-ipsum.org/dolor/sit.html#dolor,STANDARD,2004/12/25 12:30,correo@acme.com,347238343
+airline-20,Aerolinea1,ATX,http://example.org?a=1&b=2,STANDARD,2004/12/25 12:30,correo@acme.com,347238343
+airline-21,Aerolinea1,AUX,http://example.org?,STANDARD,2004/12/25 12:30,correo@acme.com,347238343
+airline-22,Aerolinea1,AVX,http://example.org?a,STANDARD,2004/12/25 12:30,correo@acme.com,347238343
+airline-23,Aerolinea1,AWX,http://example.org?a&b,STANDARD,2004/12/25 12:30,correo@acme.com,347238343
+airline-24,Aerolinea1,AXX,http://example.org/,STANDARD,2004/12/25 12:30,correo@acme.com,347238343
+airline-25,Aerolinea1,AYX,http://example.org/a,STANDARD,2004/12/25 12:30,correo@acme.com,347238343
+airline-26,Aerolinea1,AZX,http://example.org/a/b,STANDARD,2004/12/25 12:30,correo@acme.com,347238343
+airline-27,Aerolinea1,BAX,http://example.org/a/b?,STANDARD,2004/12/25 12:30,correo@acme.com,347238343
+airline-28,Aerolinea1,BBX,http://example.org/a/b?a&b,STANDARD,2004/12/25 12:30,correo@acme.com,347238343
+# type variations
+airline-29,Aerolinea1,BCX,http://website.com,LUXURY,2004/12/25 12:30,correo@acme.com,347238343
+airline-30,Aerolinea1,BDX,http://website.com,LOWCOST,2004/12/25 12:30,correo@acme.com,347238343
+# foundationMoment variations
+airline-31,Aerolinea1,BEX,http://website.com,STANDARD,2025/01/01 0:00,correo@acme.com,347238343
+airline-32,Aerolinea1,BFX,http://website.com,STANDARD,2024/12/31 23:59,correo@acme.com,347238343
+airline-33,Aerolinea1,BGX,http://website.com,STANDARD,2000/01/01 00:00,correo@acme.com,347238343
+airline-34,Aerolinea1,BHX,http://website.com,STANDARD,2000/01/01 00:01,correo@acme.com,347238343
+# email variations
+airline-35,Aerolinea1,BIX,http://website.com,STANDARD,2004/12/25 12:30,acme@lorem-ipsum.org,347238343
+airline-36,Aerolinea1,BJX,http://website.com,STANDARD,2004/12/25 12:30,a@b.es,347238343
+airline-37,Aerolinea1,BKX,http://website.com,STANDARD,2004/12/25 12:30,a@b.e,347238343
+airline-38,Aerolinea1,BLX,http://website.com,STANDARD,2004/12/25 12:30,a@b.esx,347238343
+airline-39,Aerolinea1,BMX,http://website.com,STANDARD,2004/12/25 12:30,lorem-ipsum@dolor.sit.amet.consectetur.adipiscing.elit.sed.do.eiusmod.tempor.incididunt.ut.labore.et.dolore.magna.aliqua.Ut.enim.ad.minim.veniam.quis.nostrud.exercitation.ullamco.laboris.nisi.ut.aliquip.ex.ea.commodo.consequat.duis.aute.irure.doloris.edu,347238343
+airline-40,Aerolinea1,BNX,http://website.com,STANDARD,2004/12/25 12:30,lorem-ipsum@dolor.sit.amet.consectetur.adipiscing.elit.sed.do.eiusmod.tempor.incididunt.ut.labore.et.dolore.magna.aliqua.Ut.enim.ad.minim.veniam.quis.nostrud.exercitation.ullamco.laboris.nisi.ut.aliquip.ex.ea.commodo.consequat.duis.aute.irure.dolor.es.org,347238343
+# phoneNumber variations
+airline-41,Aerolinea1,BOX,http://website.com,STANDARD,2004/12/25 12:30,correo@acme.com,347298
+airline-42,Aerolinea1,BPX,http://website.com,STANDARD,2004/12/25 12:30,correo@acme.com,3472983
+airline-43,Aerolinea1,BQX,http://website.com,STANDARD,2004/12/25 12:30,correo@acme.com,347298233
