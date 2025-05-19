@@ -1,44 +1,44 @@
 key,tag,transfer,cost,draftMode,description,key:manager
-flight-01,"Base",false,EUR 500000.00,true,"Vuelo base",manager-01
+flight-01,"Base",false,EUR 500000.00,true,"Vuelo base",manager1
 
 # Tag variations
-flight-02,"L",false,EUR 500000.00,true,"Vuelo base",manager-01
-flight-03,"Lo",false,EUR 500000.00,true,"Vuelo base",manager-01
-flight-04,"Lorem ipsum dolor sit amet, consectetur adipiscing",false,EUR 500000.00,true,"Vuelo base",manager-01
-flight-05,"Lorem ipsum dolor sit amet, consectetur adipiscin",false,EUR 500000.00,true,"Vuelo base",manager-01
-flight-06,"โลเร็ม อิปซัม",false,EUR 500000.00,true,"Vuelo base",manager-01
-flight-07,"لوريم إيبسوم",false,EUR 500000.00,true,"Vuelo base",manager-01
-flight-08,"ل洛伦·伊普森",false,EUR 500000.00,true,"Vuelo base",manager-01
-flight-09,"<marquee>Hacked</marquee>",false,EUR 500000.00,true,"Vuelo base",manager-01
-flight-10,"<script>alert(‘Hacked!’);</script>",false,EUR 500000.00,true,"Vuelo base",manager-01
-flight-11,"' or 'A' = 'A",false,EUR 500000.00,true,"Vuelo base",manager-01
+flight-02,"L",false,EUR 500000.00,true,"Vuelo base",manager2
+flight-03,"Lo",false,EUR 500000.00,true,"Vuelo base",manager1
+flight-04,"Lorem ipsum dolor sit amet, consectetur adipiscin",false,EUR 500000.00,true,"Vuelo base",manager1
+flight-05,"Lorem ipsum dolor sit amet, consectetur adipiscing",false,EUR 500000.00,true,"Vuelo base",manager2
+flight-06,"โลเร็ม อิปซัม",false,EUR 500000.00,true,"Vuelo base",manager1
+flight-07,"لوريم إيبسوم",false,EUR 500000.00,true,"Vuelo base",manager2
+flight-08,"ل洛伦·伊普森",false,EUR 500000.00,true,"Vuelo base",manager2
+flight-09,"<marquee>Hacked</marquee>",false,EUR 500000.00,true,"Vuelo base",manager1
+flight-10,"<script>alert(‘Hacked!’);</script>",false,EUR 500000.00,true,"Vuelo base",manager1
+flight-11,"' or 'A' = 'A",false,EUR 500000.00,true,"Vuelo base",manager1
 
 # Transfer Variation
-flight-12,"Base",true,EUR 500000.00,true,"Vuelo base",manager-01
+flight-12,"Base",true,EUR 500000.00,true,"Vuelo base",manager1
 
 # Cost Variation
-flight-13,"Base",false,EUR 0.00,true,"Vuelo base",manager-01
-flight-14,"Base",false,EUR 0.01,true,"Vuelo base",manager-01
-flight-15,"Base",false,EUR 999999.99,true,"Vuelo base",manager-01
-flight-16,"Base",false,EUR 1000000.00,true,"Vuelo base",manager-01
+flight-13,"Base",false,EUR 0.00,true,"Vuelo base",manager1
+flight-14,"Base",false,EUR 0.01,true,"Vuelo base",manager2
+flight-15,"Base",false,EUR 999999.99,true,"Vuelo base",manager2
+flight-16,"Base",false,EUR 1000000.00,true,"Vuelo base",manager1
 
 # Draft mode variation
-flight-17,"Base",false,EUR 500000.00,false,"Vuelo base",manager-01
+flight-17,"Base",false,EUR 500000.00,false,"Vuelo base",manager1
 
 #Description variation
-flight-18,"Base",false,EUR 500000.00,true,"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut*",manager-01
-flight-19,"Base",false,EUR 500000.00,true,"L",manager-01
-flight-20,"Base",false,EUR 500000.00,true,"Lo",manager-01
-flight-21,"Base",false,EUR 500000.00,true,"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut enim ad minim veniam? Quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor",manager-01
-flight-22,"Base",false,EUR 500000.00,true,"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut enim ad minim veniam? Quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor",manager-01
-flight-23,"Base",false,EUR 500000.00,true,"โลเร็ม อิปซัม",manager-01
-flight-24,"Base",false,EUR 500000.00,true,"لوريم إيبسوم",manager-01
-flight-25,"Base",false,EUR 500000.00,true,"洛伦·伊普森",manager-01
-flight-26,"Base",false,EUR 500000.00,true,"<marquee>Hacked</marquee>",manager-01
-flight-27,"Base",false,EUR 500000.00,true,"<script>alert(‘Hacked!’);</script>",manager-01
-flight-28,"Base",false,EUR 500000.00,true,"' or 'A' = 'A ",manager-01
+flight-18,"Base",false,EUR 500000.00,true,"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut*",manager1
+flight-19,"Base",false,EUR 500000.00,true,"L",manager1
+flight-20,"Base",false,EUR 500000.00,true,"Lo",manager2
+flight-21,"Base",false,EUR 500000.00,true,"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut enim ad minim veniam? Quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor",manager2
+flight-22,"Base",false,EUR 500000.00,true,"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut enim ad minim veniam? Quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor",manager2
+flight-23,"Base",false,EUR 500000.00,true,"โลเร็ม อิปซัม",manager1
+flight-24,"Base",false,EUR 500000.00,true,"لوريم إيبسوم",manager1
+flight-25,"Base",false,EUR 500000.00,true,"洛伦·伊普森",manager1
+flight-26,"Base",false,EUR 500000.00,true,"<marquee>Hacked</marquee>",manager1
+flight-27,"Base",false,EUR 500000.00,true,"<script>alert(‘Hacked!’);</script>",manager1
+flight-28,"Base",false,EUR 500000.00,true,"' or 'A' = 'A ",manager1
 
 #Extra
-flight-29,"Futuro1",false,EUR 500000.00,false,"Vuelo en el futuro",manager-01
-flight-30,"Futuro2",false,EUR 7000.00,false,"Vuelo en el futuro",manager-02
-flight-31,"Futuro3",false,EUR 200.00,false,"Vuelo en el futuro",manager-02
+flight-29,"Futuro1",false,EUR 500000.00,false,"Vuelo en el futuro",manager1
+flight-30,"Futuro2",false,EUR 7000.00,false,"Vuelo en el futuro",manager2
+flight-31,"Futuro3",false,EUR 200.00,false,"Vuelo en el futuro",manager2

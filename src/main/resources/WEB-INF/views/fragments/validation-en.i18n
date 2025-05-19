@@ -25,6 +25,8 @@ acme.validation.activity-log.leg-not-finished.message = You cannot save the log 
 acme.validation.activity-log.flight-assignment-not-published.message = This log cannot be published as the selected flight assignment has not been published yet
 acme.validation.log.registration-moment.message = The log registration moment must occur after the leg finishes
 acme.validation.customer.identifier.message= The customer identifier must be unique
+acme.validation.manager.identifier.message= The manager identifier must be unique
+
 acme.validation.booking.lastNibble.message=A booking must contain the last nibble credit card to be published
 acme.validation.booking.passengersNotEmpty.message=A boooking must contain at least one passengers to be published
 

@@ -1,0 +1,8 @@
+authenticated.manager.form.title = Perfil del Manager
+authenticated.manager.form.label.identifier = Identificador
+authenticated.manager.form.label.yearsOfExperience = Años de Experiencia
+authenticated.manager.form.label.birthDate = Fecha de Nacimiento
+authenticated.manager.form.label.link = Enlace Favorito
+authenticated.manager.form.label.airline = Aerolínea
+authenticated.manager.form.button.create = Crear Manager
+authenticated.manager.form.button.update = Actualizar Manager
