@@ -30,6 +30,7 @@ import lombok.Setter;
 @Entity
 @Getter
 @Setter
+
 public class Booking extends AbstractEntity {
 
 	private static final long	serialVersionUID	= 1L;
