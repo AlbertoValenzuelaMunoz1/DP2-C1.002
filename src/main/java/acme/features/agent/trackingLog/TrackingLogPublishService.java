@@ -39,7 +39,7 @@ public class TrackingLogPublishService extends AbstractGuiService<AssistanceAgen
 		trackingLogId = super.getRequest().getData("id", int.class);
 		trackingLog = this.repository.findLogById(trackingLogId);
 
-		status = principal.hasRealmOfType(AssistanceAgent.class) && trackingLog.getClaim().getAssistanceAgent().getId() == currentAssistanceAgentId;
+		status = principal.hasRealmOfType(AssistanceAgent.class) && trackingLog.getClaim().getAssistanceAgent().getId() == currentAssistanceAgentId && !trackingLog.getClaim().isDraftMode();
 
 		super.getResponse().setAuthorised(status);
 
@@ -91,6 +91,9 @@ public class TrackingLogPublishService extends AbstractGuiService<AssistanceAgen
 		Dataset dataset;
 
 		dataset = super.unbindObject(trackingLog, "lastUpdateMoment", "stepUndergoing", "resolutionPercentage", "claimStatus", "resolutionDetails");
+		if (trackingLog.getClaim() != null)
+			dataset.put("claimDraftMode", trackingLog.getClaim().isDraftMode());
+		;
 		SelectChoices statusChoices = SelectChoices.from(IndicatorStatus.class, trackingLog.getClaimStatus());
 		dataset.put("status", statusChoices);
 

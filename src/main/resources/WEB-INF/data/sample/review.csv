@@ -1,0 +1,37 @@
+key,name,moment,subject,text,score,recommendation
+# base-entity
+review-01,review1,2003/12/01 23:00,Asunto,Texto,6.05,true
+# name variations
+review-02,L,2003/12/01 23:00,Asunto,Texto,6.05,true
+review-03,Lo,2003/12/01 23:00,Asunto,Texto,6.05,true
+review-04,Lorem ipsum dolor sit ametf consectetur adipiscing,2003/12/01 23:00,Asunto,Texto,6.05,true
+review-05,Lorem ipsum dolor sit ameth consectetur adipiscin,2003/12/01 23:00,Asunto,Texto,6.05,true
+review-06,โลเร็ม อิปซัม,2003/12/01 23:00,Asunto,Texto,6.05,true
+review-07,لوريم إيبسوم,2003/12/01 23:00,Asunto,Texto,6.05,true
+review-08,洛伦·伊普森,2003/12/01 23:00,Asunto,Texto,6.05,true
+review-09,<marquee>Hacked</marquee>,2003/12/01 23:00,Asunto,Texto,6.05,true
+review-10,<script>alert(‘Hacked!’);</script>,2003/12/01 23:00,Asunto,Texto,6.05,true
+review-11,' or 'A' = 'A ,2003/12/01 23:00,Asunto,Texto,6.05,true
+# moment variations
+review-12,review1,2024/12/12 23:59,Asunto,Texto,6.05,true
+review-13,review1,2025/01/01 00:00,Asunto,Texto,6.05,true
+review-14,review1,2000/01/01 00:01,Asunto,Texto,6.05,true
+review-15,review1,2000/01/01 00:00,Asunto,Texto,6.05,true
+# text variations
+review-16,review1,2003/12/01 23:00,Asunto,L,6.05,true
+review-17,review1,2003/12/01 23:00,Asunto,Lo,6.05,true
+review-18,review1,2003/12/01 23:00,Asunto,Lorem ipsum dolor sit ametf consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut enim ad minim veniam? Quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor*,6.05,true
+review-19,review1,2003/12/01 23:00,Asunto,Lorem ipsum dolor sit ametf consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut enim ad minim veniam? Quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor,6.05,true
+review-20,review1,2003/12/01 23:00,Asunto,โลเร็ม อิปซัม,6.05,true
+review-21,review1,2003/12/01 23:00,Asunto,لوريم إيبسوم,6.05,true
+review-22,review1,2003/12/01 23:00,Asunto,ل洛伦·伊普森,6.05,true
+review-23,review1,2003/12/01 23:00,Asunto,<marquee>Hacked</marquee>,6.05,true
+review-24,review1,2003/12/01 23:00,Asunto,<script>alert(‘Hacked!’);</script>,6.05,true
+review-25,review1,2003/12/01 23:00,Asunto,' or 'A' = 'A,6.05,true
+# score variations
+review-26,review1,2003/12/01 23:00,Asunto,Texto,0.01,true
+review-27,review1,2003/12/01 23:00,Asunto,Texto,0.00,true
+review-28,review1,2003/12/01 23:00,Asunto,Texto,10.00,true
+review-29,review1,2003/12/01 23:00,Asunto,Texto,9.99,true
+# recomendation variations
+review-30,review1,2003/12/01 23:00,Asunto,Texto,6.05,false

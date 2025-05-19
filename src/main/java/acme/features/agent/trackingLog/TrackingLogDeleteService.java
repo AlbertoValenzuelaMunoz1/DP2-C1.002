@@ -71,6 +71,8 @@ public class TrackingLogDeleteService extends AbstractGuiService<AssistanceAgent
 
 		Dataset dataset;
 		dataset = super.unbindObject(trackingLog, "lastUpdateMoment", "stepUndergoing", "resolutionPercentage", "claimStatus", "resolutionDetails");
+		if (trackingLog.getClaim() != null)
+			dataset.put("claimDraftMode", trackingLog.getClaim().isDraftMode());
 
 		SelectChoices statusChoices = SelectChoices.from(IndicatorStatus.class, trackingLog.getClaimStatus());
 		dataset.put("claimStatus", statusChoices);

@@ -27,7 +27,7 @@ public class CustomerDeletePassengerService extends AbstractGuiService<Customer,
 		Customer customer = this.repository.findCustomerById(customerId);
 		int passengerId = super.getRequest().getData("id", int.class);
 		Passenger passenger = this.repository.findPassengerById(passengerId);
-		super.getResponse().setAuthorised(!passenger.isPublished() && passenger.getCustomer().equals(customer));
+		super.getResponse().setAuthorised(passenger != null && !passenger.isPublished() && passenger.getCustomer().equals(customer));
 	}
 
 	@Override

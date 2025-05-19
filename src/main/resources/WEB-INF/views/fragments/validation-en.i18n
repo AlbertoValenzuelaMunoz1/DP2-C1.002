@@ -27,6 +27,8 @@ acme.validation.log.registration-moment.message = The log registration moment mu
 acme.validation.customer.identifier.message= The customer identifier must be unique
 acme.validation.manager.identifier.message= The manager identifier must be unique
 
+acme.validation.booking.lastNibble.message=A booking must contain the last nibble credit card to be published
+acme.validation.booking.passengersNotEmpty.message=A boooking must contain at least one passengers to be published
 
 acme.validation.booking.publishedPassengers.message= To publish a booking all passengers must be published
 
@@ -38,3 +40,6 @@ acme.validation.trackingLog.status.message = When resolution percentage is 100.0
 acme.validation.trackingLog.resolution.message = When resolution percentage is 100.0, resolution cannot be empty
 acme.validation.claim.registrationMoment.message = The registration moment must be after the assistance agent's work start date.
 acme.validation.claim.leg.cancelled.message= Claim must be linked to a leg that occured
+acme.validation.trackingLog.limit-100.message = There cannot be more than two tracking logs with 100% resolution for this claim.
+acme.validation.trackingLog.strict-increase.message = The resolution percentage must not be lower than any existing one for this claim.
+

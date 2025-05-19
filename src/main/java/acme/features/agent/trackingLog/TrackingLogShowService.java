@@ -61,7 +61,11 @@ public class TrackingLogShowService extends AbstractGuiService<AssistanceAgent, 
 		Dataset dataset;
 		SelectChoices status;
 
-		dataset = super.unbindObject(trackingLog, "lastUpdateMoment", "stepUndergoing", "resolutionPercentage", "claimStatus", "resolutionDetails");
+		dataset = super.unbindObject(trackingLog, "lastUpdateMoment", "stepUndergoing", "resolutionPercentage", "claimStatus", "draftMode");
+		if (trackingLog.getClaim() != null)
+			dataset.put("claimDraftMode", trackingLog.getClaim().isDraftMode());
+		if (trackingLog.getResolutionPercentage().equals(100.00))
+			dataset.put("resolutionDetails", trackingLog.getResolutionDetails());
 
 		status = SelectChoices.from(IndicatorStatus.class, trackingLog.getClaimStatus());
 		dataset.put("claimStatus", status);

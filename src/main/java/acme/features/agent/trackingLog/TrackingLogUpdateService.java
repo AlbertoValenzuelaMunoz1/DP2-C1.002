@@ -60,8 +60,21 @@ public class TrackingLogUpdateService extends AbstractGuiService<AssistanceAgent
 
 	@Override
 	public void validate(final TrackingLog trackingLog) {
+		int claimId = trackingLog.getClaim().getId();
+		Double maxExisting = this.repository.findMaxResolutionPercentageByClaimId(claimId);
+
 		if (!trackingLog.isDraftMode())
 			super.state(trackingLog.isDraftMode(), "*", "assistance-agent.tracking-log.form.error.draftMode");
+
+		if (trackingLog.getResolutionPercentage() == 100.00) {
+			int existingCount = this.repository.countFullyResolvedLogs(claimId);
+			super.state(existingCount < 2, "resolutionPercentage", "acme.validation.trackingLog.limit-100.message");
+		}
+
+		if (maxExisting != null) {
+			boolean validPercentage = trackingLog.getResolutionPercentage() >= maxExisting;
+			super.state(validPercentage, "resolutionPercentage", "acme.validation.trackingLog.strict-increase.message");
+		}
 	}
 
 	@Override
@@ -78,6 +91,8 @@ public class TrackingLogUpdateService extends AbstractGuiService<AssistanceAgent
 	public void unbind(final TrackingLog trackingLog) {
 		Dataset dataset;
 		dataset = super.unbindObject(trackingLog, "lastUpdateMoment", "stepUndergoing", "resolutionPercentage", "claimStatus", "resolutionDetails");
+		if (trackingLog.getClaim() != null)
+			dataset.put("claimDraftMode", trackingLog.getClaim().isDraftMode());
 
 		SelectChoices statusChoices = SelectChoices.from(IndicatorStatus.class, trackingLog.getClaimStatus());
 		dataset.put("claimStatus", statusChoices);
