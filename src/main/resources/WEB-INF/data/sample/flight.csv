@@ -4,8 +4,8 @@ flight-01,"Base",false,EUR 500000.00,true,"Vuelo base",manager-01
 # Tag variations
 flight-02,"L",false,EUR 500000.00,true,"Vuelo base",manager-01
 flight-03,"Lo",false,EUR 500000.00,true,"Vuelo base",manager-01
-flight-04,"Lorem ipsum dolor sit ametf consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut enim ad minim veniam? Quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor*",false,EUR 500000.00,true,"Vuelo base",manager-01
-flight-05,"Lorem ipsum dolor sit ametf consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut enim ad minim veniam? Quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor",false,EUR 500000.00,true,"Vuelo base",manager-01
+flight-04,"Lorem ipsum dolor sit amet, consectetur adipiscing",false,EUR 500000.00,true,"Vuelo base",manager-01
+flight-05,"Lorem ipsum dolor sit amet, consectetur adipiscin",false,EUR 500000.00,true,"Vuelo base",manager-01
 flight-06,"โลเร็ม อิปซัม",false,EUR 500000.00,true,"Vuelo base",manager-01
 flight-07,"لوريم إيبسوم",false,EUR 500000.00,true,"Vuelo base",manager-01
 flight-08,"ل洛伦·伊普森",false,EUR 500000.00,true,"Vuelo base",manager-01
