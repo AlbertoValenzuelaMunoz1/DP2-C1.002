@@ -63,3 +63,5 @@ master.menu.user-account.consumer-profile = Perfil de consumidor
 master.menu.manager = Manager
 master.menu.manager.flights = Vuelos
 master.menu.manager.manager-dashboard = Manager Dashboard
+master.menu.user-account.become-manager = Hazte manager
+master.menu.user-account.manager-profile = Perfil de manager

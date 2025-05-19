@@ -8,6 +8,7 @@ import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 import acme.client.components.basis.AbstractObject;
+import acme.client.helpers.MomentHelper;
 import acme.entities.group.airport.Airport;
 import acme.entities.student1.flight.Flight;
 import acme.features.manager.dashboard.ManagerDashboardRepository;
@@ -34,10 +35,11 @@ public class ManagerDashboard extends AbstractObject {
 	private Double				standardDesviation;
 
 
+	@SuppressWarnings("deprecation")
 	public ManagerDashboard(final int managerId, final ManagerDashboardRepository repository) {
 
 		this.ranking = repository.managersRanking().indexOf(managerId) + 1;
-		this.yearsToRetire = 65 - repository.findManagerById(managerId).getYearsOfExperience();
+		this.yearsToRetire = 65 - (MomentHelper.getCurrentMoment().getYear() - repository.findManagerById(managerId).getBirthDate().getYear());
 		this.ratio = (double) repository.onTimeLegs(managerId).size() / (double) repository.delayedLegs(managerId).size();
 
 		List<Flight> flights = repository.flightsByManager(managerId);

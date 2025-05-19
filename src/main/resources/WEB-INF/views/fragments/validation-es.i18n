@@ -23,8 +23,11 @@ acme.validation.booking.publishedPassengers.message= Para publicar una reserva t
 
 ##Manager
 acme.validation.manager.leg.statusAircraft.message = El avión está en mantenimiento
-acme.validation.manager.leg.departureTime.message = El momento de llegada tiene que ser depués del momento de salida
-acme.validation.manager.leg.scheduledDepartureOrder.message = El momento de salida tiene que ser después de la fecha de llegada del tramo anterior
+acme.validation.manager.leg.statusDestAndArrvAirport.message = El aeropuerto de salida no puede ser el mismo que el de llegada
+acme.validation.manager.leg.statusSchedule.message = No puede haber más de un tramo volando al mismo tiempo
+acme.validation.manager.leg.statusShareAircraft.message = El mismo avión no puede estar en más de un tramo donde coincide el tiempo de vuelo
+acme.validation.manager.leg.statusAircraftAirline.message = No puedes elegir un avión que no sea de tu airline.
+acme.validation.manager.leg.statusFlightNumber.message = Este número de vuelo ya esta asignado.
 
 acme.validation.customer.identifier.message= El identificador de un cliente debe ser único
 
