@@ -26,7 +26,7 @@
 	<acme:input-select code="manager.leg.form.label.departureAirport" path="departureAirport" choices="${departureAirports}"/>
 	<acme:input-select code="manager.leg.form.label.arrivalAirport" path="arrivalAirport" choices="${arrivalAirports}"/>
 	<acme:input-select code="manager.leg.form.label.aircraft" path="aircraft" choices="${aircrafts}"/>
-	<acme:input-textbox code="manager.leg.form.label.flight" path="flight"  readonly="true"/>
+	<acme:input-textbox code="manager.leg.form.label.flight" path="flight.tag"  readonly="true"/>
  	<acme:input-textbox code = "manager.flight.form.label.draftMode" path= "draftMode" readonly="true"/>
 
  	

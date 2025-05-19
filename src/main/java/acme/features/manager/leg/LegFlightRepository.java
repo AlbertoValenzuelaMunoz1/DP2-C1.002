@@ -39,4 +39,10 @@ public interface LegFlightRepository extends AbstractRepository {
 
 	@Query("SELECT l FROM Leg l where l.flight.id = :id ORDER BY l.scheduledArrival ASC")
 	Collection<Leg> findLegsOrderedByFlightId(int id);
+
+	@Query("SELECT l From Leg l")
+	Collection<Leg> findAllLegs();
+
+	@Query("SELECT l.flightNumberDigits FROM Leg l")
+	Collection<String> findFlightNumbers();
 }

@@ -42,6 +42,7 @@ public class Flight extends AbstractEntity {
 
 	@Mandatory
 	@ValidMoney
+	@Automapped
 	private Money				cost;
 
 	@Mandatory

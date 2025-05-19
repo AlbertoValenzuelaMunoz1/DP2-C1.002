@@ -1,5 +1,5 @@
 
-package acme.features.manager.leg;
+package acme.features.any.leg;
 
 import java.util.Collection;
 import java.util.Optional;
@@ -7,48 +7,29 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import acme.client.components.models.Dataset;
+import acme.client.components.principals.Any;
 import acme.client.components.views.SelectChoices;
 import acme.client.services.AbstractGuiService;
-import acme.client.services.GuiService;
 import acme.entities.group.aircraft.Aircraft;
 import acme.entities.group.airport.Airport;
 import acme.entities.student1.flight.Flight;
 import acme.entities.student1.leg.Leg;
 import acme.entities.student1.leg.LegStatus;
-import acme.realms.Manager;
 
-@GuiService
-public class LegFlightPublishService extends AbstractGuiService<Manager, Leg> {
+public class AnyLegShowService extends AbstractGuiService<Any, Leg> {
 
 	// Internal state ---------------------------------------------------------
 
 	@Autowired
-	private LegFlightRepository repository;
+	private AnyLegRepository repository;
 
 	// AbstractGuiService interface -------------------------------------------
 
 
 	@Override
 	public void authorise() {
-		boolean status;
-		int masterId;
-		Leg leg;
-		Manager manager;
 
-		masterId = super.getRequest().getData("id", int.class);
-
-		Optional<Leg> optional = this.repository.findLegById(masterId);
-
-		System.out.println(optional.isEmpty());
-
-		leg = optional.isPresent() ? optional.get() : null;
-
-		manager = leg == null ? null : leg.getFlight().getManager();
-
-		status = leg != null && leg.isDraftMode() && super.getRequest().getPrincipal().hasRealm(manager);
-
-		super.getResponse().setAuthorised(status);
-
+		super.getResponse().setAuthorised(true);
 	}
 
 	@Override
@@ -56,37 +37,15 @@ public class LegFlightPublishService extends AbstractGuiService<Manager, Leg> {
 		Leg leg;
 		int id;
 
-		System.out.println("aqui");
-
 		id = super.getRequest().getData("id", int.class);
 		Optional<Leg> optionalLeg = this.repository.findLegById(id);
 		leg = optionalLeg.isPresent() ? optionalLeg.get() : null;
-
-		System.out.println(leg);
 
 		super.getBuffer().addData(leg);
 	}
 
 	@Override
-	public void bind(final Leg leg) {
-		System.out.println("bind");
-		super.bindObject(leg, "flightNumberDigits", "scheduledDeparture", "scheduledArrival", "departureAirport", "arrivalAirport", "aircraft", "flight.tag", "status");
-	}
-
-	@Override
-	public void validate(final Leg leg) {
-		;
-	}
-
-	@Override
-	public void perform(final Leg leg) {
-		leg.setDraftMode(false);
-		this.repository.save(leg);
-	}
-
-	@Override
 	public void unbind(final Leg leg) {
-		System.out.println("unbind");
 		Dataset dataset;
 		Collection<Flight> flights;
 		Collection<Airport> airports;
@@ -110,7 +69,7 @@ public class LegFlightPublishService extends AbstractGuiService<Manager, Leg> {
 		choicesDepartureAirports = SelectChoices.from(airports, "iataCode", leg.getDepartureAirport());
 		choicesAircraft = SelectChoices.from(aircrafts, "model", leg.getAircraft());
 
-		dataset = super.unbindObject(leg, "flightNumberDigits", "scheduledDeparture", "scheduledArrival", "departureAirport", "arrivalAirport", "aircraft", "flight.tag", "status", "draftMode");
+		dataset = super.unbindObject(leg, "flightNumberDigits", "scheduledDeparture", "scheduledArrival", "departureAirport", "arrivalAirport", "aircraft", "flight", "status", "draftMode");
 		dataset.put("masterId", leg.getFlight().getId());
 		dataset.put("flights", choicesFlight);
 		dataset.put("arrivalAirports", choicesArrivalAirports);

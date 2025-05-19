@@ -59,7 +59,7 @@ public class LegFlightDeleteService extends AbstractGuiService<Manager, Leg> {
 	@Override
 	public void bind(final Leg leg) {
 
-		super.bindObject(leg, "flightNumberDigits", "scheduledDeparture", "scheduledArrival", "status", "departureAirport", "arrivalAirport", "aircraft", "flight");
+		super.bindObject(leg, "flightNumberDigits", "scheduledDeparture", "scheduledArrival", "status", "departureAirport", "arrivalAirport", "aircraft", "flight.tag");
 	}
 
 	@Override
@@ -104,7 +104,7 @@ public class LegFlightDeleteService extends AbstractGuiService<Manager, Leg> {
 		choicesDepartureAirports = SelectChoices.from(airports, "iataCode", leg.getDepartureAirport());
 		choicesAircraft = SelectChoices.from(aircrafts, "model", leg.getAircraft());
 
-		dataset = super.unbindObject(leg, "flightNumberDigits", "scheduledDeparture", "scheduledArrival", "departureAirport", "arrivalAirport", "aircraft", "flight", "status", "draftMode");
+		dataset = super.unbindObject(leg, "flightNumberDigits", "scheduledDeparture", "scheduledArrival", "departureAirport", "arrivalAirport", "aircraft", "flight.tag", "status", "draftMode");
 		dataset.put("masterId", leg.getFlight().getId());
 		dataset.put("flights", choicesFlight);
 		dataset.put("arrivalAirports", choicesArrivalAirports);
