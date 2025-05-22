@@ -49,17 +49,12 @@ public class FlightCrewMemberFlightAssignmentUpdateService extends AbstractGuiSe
 
 	@Override
 	public void bind(final FlightAssignment assignment) {
-		int legId;
-		Leg leg;
 		FlightCrewMember member;
 
-		legId = super.getRequest().getData("flightleg", int.class);
-		leg = this.repository.findLegById(legId);
 		member = (FlightCrewMember) super.getRequest().getPrincipal().getActiveRealm();
 
-		super.bindObject(assignment, "duty", "status", "remarks");
+		super.bindObject(assignment, "duty", "status", "remarks", "flightLeg");
 		assignment.setLastUpdate(MomentHelper.getCurrentMoment());
-		assignment.setFlightLeg(leg);
 		assignment.setFlightCrewMember(member);
 	}
 
