@@ -91,7 +91,7 @@ public class FlightCrewMemberFlightAssignmentPublishService extends AbstractGuiS
 	}
 
 	private void validateLegCompatibility(final FlightAssignment assignment) {
-		Collection<Leg> existingLegs = this.repository.findLegsByFlightCrewMemberId(assignment.getFlightCrewMember().getId());
+		Collection<Leg> existingLegs = this.repository.findLegsByFlightCrewMemberId(assignment.getFlightCrewMember().getId(), assignment.getId());
 
 		boolean hasIncompatibleLeg = existingLegs.stream().anyMatch(existingLeg -> this.legIsNotOverlapping(assignment.getFlightLeg(), existingLeg));
 
@@ -100,7 +100,7 @@ public class FlightCrewMemberFlightAssignmentPublishService extends AbstractGuiS
 	}
 
 	private void validateDutyAssignment(final FlightAssignment flightAssignment) {
-		Collection<FlightAssignment> assignedDuties = this.repository.findFlightAssignmentByLegId(flightAssignment.getFlightLeg().getId());
+		Collection<FlightAssignment> assignedDuties = this.repository.findFlightAssignmentByLegId(flightAssignment.getFlightLeg().getId(), flightAssignment.getId());
 
 		boolean legWithCopilot = assignedDuties.stream().anyMatch(assignment -> assignment.getDuty().equals(FlightDuty.CO_PILOT));
 		boolean legWithPilot = assignedDuties.stream().anyMatch(assignment -> assignment.getDuty().equals(FlightDuty.PILOT));
