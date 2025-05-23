@@ -51,11 +51,11 @@ passenger-41,Alberto,correo@gmail.esx,AVS23924,2002/12/05 23:59,Necesidades espe
 passenger-42,Alberto,correo@gmail.esx,AVS23924,2002/12/05 23:59,Necesidades especiales,false,customer-01
 # extra customer data
 passenger-43,Publicado,correo@gmail.esx,AVS23924,2002/12/05 23:59,Necesidades especiales,true,customer-01
-passenger-44,No publicado,correo@gmail.esx,AVS23924,2002/12/05 23:59,Necesidades especiales,true,customer-01
+passenger-44,No publicado,correo@gmail.esx,AVS23924,2002/12/05 23:59,Necesidades especiales,false,customer-01
 passenger-45,Publicado,correo@gmail.esx,AVS23924,2002/12/05 23:59,Necesidades especiales,true,customer-02
 passenger-46,No publicado,correo@gmail.esx,AVS23924,2002/12/05 23:59,Necesidades especiales,false,customer-02
 passenger-47,Publicado 2,correo@gmail.esx,AVS23924,2002/12/05 23:59,Necesidades especiales,true,customer-01
 passenger-48,Publicado 3,correo@gmail.esx,AVS23924,2002/12/05 23:59,Necesidades especiales,true,customer-01
 passenger-49,Publicado 4,correo@gmail.esx,AVS23924,2002/12/05 23:59,Necesidades especiales,true,customer-01
-passenger-50,No Publicado 2,correo@gmail.esx,AVS23924,2002/12/05 23:59,Necesidades especiales,true,customer-01
-passenger-51,No Publicado 3,correo@gmail.esx,AVS23924,2002/12/05 23:59,Necesidades especiales,true,customer-01
+passenger-50,No Publicado 2,correo@gmail.esx,AVS23924,2002/12/05 23:59,Necesidades especiales,false,customer-01
+passenger-51,No Publicado 3,correo@gmail.esx,AVS23924,2002/12/05 23:59,Necesidades especiales,false,customer-01
