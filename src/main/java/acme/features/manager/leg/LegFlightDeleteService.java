@@ -69,11 +69,6 @@ public class LegFlightDeleteService extends AbstractGuiService<Manager, Leg> {
 
 	@Override
 	public void perform(final Leg leg) {
-		//		Collection<Claim> claims;
-		//
-		//		claims = this.repository.findClaimsByLegId(leg.getId());
-		//
-		//		this.repository.deleteAll(claims);
 
 		this.repository.delete(leg);
 	}

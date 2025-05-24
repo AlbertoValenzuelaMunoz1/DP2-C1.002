@@ -76,8 +76,8 @@ public class LegFlightUpdateService extends AbstractGuiService<Manager, Leg> {
 		boolean statusDestAndArrvAirport;
 		boolean statusShareAircraft;
 		boolean statusAircraftAirline;
-		boolean statusFlightNumber;
 		boolean statusFuture;
+		boolean statusArrvAfterDepart;
 		Collection<Leg> allLegs;
 		Collection<Leg> flightsLegs;
 
@@ -121,13 +121,17 @@ public class LegFlightUpdateService extends AbstractGuiService<Manager, Leg> {
 		//legs en el futuro
 		statusFuture = leg.getScheduledArrival() == null || leg.getScheduledDeparture() == null || leg.getScheduledArrival().after(MomentHelper.getCurrentMoment()) && leg.getScheduledDeparture().after(MomentHelper.getCurrentMoment());
 
+		//llegada despues de salida
+		statusArrvAfterDepart = leg.getScheduledArrival() != null && leg.getScheduledDeparture() != null ? leg.getScheduledArrival().after(leg.getScheduledDeparture()) : null;
+
+		super.state(statusArrvAfterDepart, "*", "acme.validation.manager.leg.statusArrvAfterDepart.message");
 		super.state(statusFuture, "*", "acme.validation.manager.leg.statusFuture.message");
 		super.state(statusDestAndArrvAirport, "*", "acme.validation.manager.leg.statusDestAndArrvAirport.message");
 		super.state(statusSchedule, "*", "acme.validation.manager.leg.statusSchedule.message");
 		super.state(statusAircraft, "aircraft", "acme.validation.manager.leg.statusAircraft.message");
 		super.state(statusShareAircraft, "aircraft", "acme.validation.manager.leg.statusShareAircraft.message");
 		super.state(statusAircraftAirline, "aircraft", "acme.validation.manager.leg.statusAircraftAirline.message");
-		super.state(mode, "draftMode", "tiene q estar en modo borrador");
+		super.state(mode, "draftMode", "acme.validation.manager.leg.statusDraftMode.message");
 
 	}
 

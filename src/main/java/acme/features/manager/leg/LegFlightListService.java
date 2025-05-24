@@ -31,8 +31,6 @@ public class LegFlightListService extends AbstractGuiService<Manager, Leg> {
 		flightId = super.getRequest().getData("masterId", int.class);
 		manager = this.repository.findFlightById(flightId).get().getManager();
 
-		System.out.println("Aqui2");
-
 		status = super.getRequest().getPrincipal().hasRealm(manager);
 
 		super.getResponse().setAuthorised(status);
@@ -46,9 +44,7 @@ public class LegFlightListService extends AbstractGuiService<Manager, Leg> {
 		masterId = super.getRequest().getData("masterId", int.class);
 		legs = this.repository.findLegsByFlightId(masterId);
 
-
 		super.getBuffer().addData(legs);
-
 
 		super.getResponse().addGlobal("masterId", masterId);
 
@@ -59,7 +55,6 @@ public class LegFlightListService extends AbstractGuiService<Manager, Leg> {
 		int masterId;
 		Dataset dataset;
 		boolean showCreate;
-
 
 		masterId = super.getRequest().getData("masterId", int.class);
 
