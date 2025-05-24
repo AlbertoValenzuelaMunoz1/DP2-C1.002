@@ -42,7 +42,7 @@ public class TrackingLogValidator extends AbstractValidator<ValidTrackingLog, Tr
 		List<TrackingLog> trackingLogs = this.claimRepository.getTrackingLogsByResolutionOrder(claim.getId());
 		if (!trackingLogs.isEmpty()) {
 			TrackingLog highestTrackingLog = trackingLogs.get(0);
-			if (trackingLog.getResolutionPercentage() < highestTrackingLog.getResolutionPercentage()) {
+			if (trackingLog.getResolutionPercentage() != null && trackingLog.getResolutionPercentage() < highestTrackingLog.getResolutionPercentage()) {
 				String errorMessage = String.format("Resolution percentage %.2f must be higher than the highest resolution percentage %.2f for claim ID %d", trackingLog.getResolutionPercentage(), highestTrackingLog.getResolutionPercentage(),
 					claim.getId());
 				context.disableDefaultConstraintViolation();
