@@ -1,11 +1,53 @@
 key,duty,lastUpdate,status,remarks,key:flightCrewMember,key:flightLeg,draftMode
-assignment-01,PILOT,2024/12/31 23:59,CONFIRMED,"",member1,leg-1,true
-assignment-02,CO_PILOT,2023/05/16 13:59,PENDING,"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut*",member2,leg-2,true
-assignment-03,LEAD_ATTENDANT,2022/09/03 00:30,CONFIRMED,"",member3,leg-3,true
-assignment-04,CABIN_ATTENDANT,2000/01/01 00:01,PENDING,"Lo",member4,leg-4,true
-assignment-05,PILOT,2012/07/02 00:00,CONFIRMED,"L",member2,leg-5,true
-assignment-06,LEAD_ATTENDANT,2022/07/25 16:30,CANCELLED,"' or 'A' = 'A ",member1,leg-6,true
-assignment-07,CO_PILOT,2022/06/02 00:30,PENDING,"لوريم إيبسوم",member2,leg-7,true
-assignment-08,CABIN_ATTENDANT,2020/04/26 17:15,CANCELLED,"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut enim ad minim veniam? Quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor",member3,leg-8,true
-assignment-09,PILOT,2021/01/05 08:45,CONFIRMED,"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut enim ad minim veniam? Quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor*",member4,leg-9,true
-assignment-10,PILOT,2025/01/01 00:00,CONFIRMED,"<marquee>Hacked</marquee>",member1,leg-10,false
+assignment-01,PILOT,2022/09/03 00:30,CONFIRMED,"",member1,leg-21,false
+assignment-02,CO_PILOT,2021/01/05 08:45,CONFIRMED,"",member2,leg-21,false
+assignment-03,LEAD_ATTENDANT,2022/07/25 16:30,PENDING,"",member3,leg-21,false
+assignment-04,CABIN_ATTENDANT,2020/04/26 17:15,CANCELLED,"",member4,leg-21,false
+
+# base entity
+assignment-05,PILOT,2022/06/02 00:00,CONFIRMED,"",member1,leg-21,false
+# duty - standard variations
+assignment-06,PILOT,2022/06/02 00:30,CONFIRMED,"",member1,leg-21,false
+assignment-07,CO_PILOT,2022/06/02 00:30,CONFIRMED,"",member1,leg-21,false
+assignment-08,LEAD_ATTENDANT,2022/06/02 00:30,CONFIRMED,"",member1,leg-21,false
+assignment-09,CABIN_ATTENDANT,2022/06/02 00:30,CONFIRMED,"",member1,leg-21,false
+
+# lastUpadteMoment - standard variations
+assignment-10,PILOT,2012/07/02 00:00,CONFIRMED,"",member1,leg-21,false
+assignment-11,PILOT,2000/01/01 00:00,CONFIRMED,"",member1,leg-21,false
+assignment-12,PILOT,2000/01/01 00:01,CONFIRMED,"",member1,leg-21,false
+assignment-13,PILOT,2024/12/31 23:59,CONFIRMED,"",member1,leg-21,false
+assignment-14,PILOT,2025/01/01 00:00,CONFIRMED,"",member1,leg-21,false
+
+# currentStatus - standard variations
+assignment-15,PILOT,2022/06/02 00:30,CONFIRMED,"",member1,leg-21,false
+assignment-16,PILOT,2022/06/02 00:30,PENDING,"",member1,leg-21,false
+assignment-17,PILOT,2022/06/02 00:30,CANCELLED,"",member1,leg-21,false
+
+# remarks - standard variations
+assignment-18,PILOT,2022/06/02 00:30,CONFIRMED,"Lorem ipsum dolor sit amet; consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut*",member1,leg-21,false
+assignment-19,PILOT,2022/06/02 00:30,CONFIRMED,"",member1,leg-21,false
+assignment-20,PILOT,2022/06/02 00:30,CONFIRMED,"L",member1,leg-21,false
+assignment-21,PILOT,2022/06/02 00:30,CONFIRMED,"Lorem ipsum dolor sit amet; consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut enim ad minim veniam? Quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor",member1,leg-21,false
+assignment-22,PILOT,2022/06/02 00:30,CONFIRMED,"Lorem ipsum dolor sit amet; consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut enim ad minim veniam? Quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor*",member1,leg-21,false
+# remarks - no singular values
+assignment-23,PILOT,2022/06/02 00:30,CONFIRMED,"โลเร็ม อิปซัม",member1,leg-21,false
+assignment-24,PILOT,2022/06/02 00:30,CONFIRMED,"لوريم إيبسوم",member1,leg-21,false
+assignment-25,PILOT,2022/06/02 00:30,CONFIRMED,"洛伦·伊普森",member1,leg-21,false
+assignment-26,PILOT,2022/06/02 00:30,CONFIRMED,"<marquee>Hacked</marquee>",member1,leg-21,false
+assignment-27,PILOT,2022/06/02 00:30,CONFIRMED,"<script>alert(‘Hacked!’);</script>",member1,leg-21,false
+assignment-28,PILOT,2022/06/02 00:30,CONFIRMED,"'' or 'A' = 'A ",member1,leg-21,false
+
+# publish - standard variations
+assignment-29,PILOT,2022/06/02 00:30,CONFIRMED,"",member1,leg-21,false
+assignment-30,PILOT,2022/06/02 00:30,CONFIRMED,"",member1,leg-21,true
+
+# leg - standard variations (legs 21 are in the past; leg 16-17-18-19-20 is in the future) 
+assignment-31,PILOT,2022/06/02 00:00,CONFIRMED,"",member1,leg-21,false
+assignment-32,PILOT,2022/06/02 00:00,CONFIRMED,"",member1,leg-21,false
+assignment-33,PILOT,2022/06/02 00:00,CONFIRMED,"",member1,leg-21,false
+assignment-35,PILOT,2022/06/02 00:00,CONFIRMED,"",member1,leg-16,false
+assignment-36,PILOT,2022/06/02 00:00,CONFIRMED,"",member1,leg-17,false
+assignment-37,PILOT,2022/06/02 00:00,CONFIRMED,"",member1,leg-18,false
+assignment-38,PILOT,2022/06/02 00:00,CONFIRMED,"",member1,leg-19,false
+assignment-39,PILOT,2022/06/02 00:00,CONFIRMED,"",member1,leg-20,false
