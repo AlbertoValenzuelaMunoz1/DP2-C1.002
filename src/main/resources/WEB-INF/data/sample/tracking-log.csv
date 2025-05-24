@@ -1,6 +1,33 @@
-key,last_update_moment,step_undergoing,resolution_percentage,claimStatus,resolution_details,key:claim
-tlog-01,2000/01/01 00:04,L,0.00,PENDING,L,claim-01
-tlog-02,2000/01/02 00:04,Lo,0.01,PENDING,Lo,claim-02
-tlog-03,2020/12/29 00:00,"Lorem ipsum dolor sit amet, consectetur adipiscin",99.9,PENDING,"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut enim ad minim veniam? Quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor",claim-03
-tlog-04,2020/12/30 00:00,"Lorem ipsum dolor sit amet, consectetur adipiscing",100.00,REJECTED,"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut enim ad minim veniam? Quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor*",claim-04
-tlog-05,2020/12/30 00:00,"Lorem ipsum dolor sit amet",100.00,ACCEPTED,"Lorem ipsum dolor ",claim-01
+key,last_update_moment,step_undergoing,resolution_percentage,claimStatus,resolution_details,key:claim,draftMode
+# base Tracking Log
+tlog-01,2020/12/30 00:00,L,0.00,PENDING,L,claim-01,true
+
+# last_update_moment Variations
+tlog-02,2000/01/01 00:04,L,0.07,PENDING,L,claim-01,true
+tlog-03,2000/01/02 00:04,Lo,0.08,PENDING,Lo,claim-02,true
+tlog-04,2020/12/29 00:00,L,99.80,PENDING,L,claim-03,true
+tlog-05,2020/12/30 00:00,L,99.70,PENDING,L,claim-04,true
+tlog-06,2020/12/30 00:00,"Lorem ipsum dolor sit amet",100.00,ACCEPTED,"Lorem ipsum dolor ",claim-01,false
+
+# step_undergoing Variations
+tlog-07,2020/12/30 00:00,L,0.02,PENDING,L,claim-01,true
+tlog-08,2020/12/30 00:00,Lo,0.03,PENDING,L,claim-01,true
+tlog-09,2020/12/30 00:00,"Lorem ipsum dolor sit amet, consectetur adipiscin",0.04,PENDING,L,claim-01,true
+tlog-10,2020/12/30 00:00,"Lorem ipsum dolor sit amet, consectetur adipiscing",0.05,PENDING,L,claim-01,true
+
+# resolution_percentage Variations
+tlog-11,2020/12/30 00:00,L,0.00,PENDING,L,claim-01,true
+tlog-12,2020/12/30 00:00,L,0.01,PENDING,L,claim-01,true
+tlog-13,2020/12/30 00:00,L,99.9,PENDING,L,claim-01,true
+tlog-14,2020/12/30 00:00,L,100.00,ACCEPTED,L,claim-01,true
+
+# claimStatus Variations
+tlog-15,2020/12/30 00:00,L,0.10,PENDING,L,claim-01,true
+tlog-16,2020/12/30 00:00,L,100.00,ACCEPTED,L,claim-07,true
+tlog-17,2020/12/30 00:00,L,100.00,REJECTED,L,claim-07,true
+
+# resolution_details Variations
+tlog-18,2020/12/30 00:00,L,0.50,PENDING,L,claim-01,true
+tlog-19,2020/12/30 00:00,L,0.60,PENDING,Lo,claim-01,true
+tlog-20,2020/12/30 00:00,L,0.70,PENDING,"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut enim ad minim veniam? Quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor",claim-01,true
+tlog-21,2020/12/30 00:00,L,0.80,PENDING,"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut enim ad minim veniam? Quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor*",claim-01,true

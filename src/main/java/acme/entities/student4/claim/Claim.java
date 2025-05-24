@@ -80,7 +80,7 @@ public class Claim extends AbstractEntity {
 		repository = SpringHelper.getBean(TrackingLogRepository.class);
 		TrackingLog topLog = repository.findFirstByClaimIdOrderByResolutionPercentageDesc(this.getId());
 
-		return topLog != null ? topLog.getClaimStatus() : null;
+		return topLog != null ? topLog.getClaimStatus() : IndicatorStatus.PENDING;
 	}
 
 }

@@ -12,6 +12,7 @@ agent.claim.form.label.type = Tipo de reclamación
 agent.claim.form.label.indicator = Estado
 agent.claim.form.label.confirmation = Confirmación
 
+
 agent.claim.form.button.update = Actualizar
 agent.claim.form.button.create = Crear
 assistance-agent.claim.list.title = Tus reclamaciones

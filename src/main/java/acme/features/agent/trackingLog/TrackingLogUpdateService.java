@@ -66,12 +66,12 @@ public class TrackingLogUpdateService extends AbstractGuiService<AssistanceAgent
 		if (!trackingLog.isDraftMode())
 			super.state(trackingLog.isDraftMode(), "*", "assistance-agent.tracking-log.form.error.draftMode");
 
-		if (trackingLog.getResolutionPercentage() == 100.00) {
+		if (trackingLog.getResolutionPercentage() != null && trackingLog.getResolutionPercentage() == 100.00) {
 			int existingCount = this.repository.countFullyResolvedLogs(claimId);
 			super.state(existingCount < 2, "resolutionPercentage", "acme.validation.trackingLog.limit-100.message");
 		}
 
-		if (maxExisting != null) {
+		if (trackingLog.getResolutionPercentage() != null && maxExisting != null) {
 			boolean validPercentage = trackingLog.getResolutionPercentage() >= maxExisting;
 			super.state(validPercentage, "resolutionPercentage", "acme.validation.trackingLog.strict-increase.message");
 		}
@@ -90,7 +90,7 @@ public class TrackingLogUpdateService extends AbstractGuiService<AssistanceAgent
 	@Override
 	public void unbind(final TrackingLog trackingLog) {
 		Dataset dataset;
-		dataset = super.unbindObject(trackingLog, "lastUpdateMoment", "stepUndergoing", "resolutionPercentage", "claimStatus", "resolutionDetails");
+		dataset = super.unbindObject(trackingLog, "lastUpdateMoment", "stepUndergoing", "resolutionPercentage", "claimStatus", "resolutionDetails", "draftMode");
 		if (trackingLog.getClaim() != null)
 			dataset.put("claimDraftMode", trackingLog.getClaim().isDraftMode());
 

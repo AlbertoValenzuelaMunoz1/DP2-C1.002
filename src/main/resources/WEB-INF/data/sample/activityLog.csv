@@ -1,11 +1,56 @@
 key,registrationMoment,incidentType,description,severity,key:flightAssignment,draftMode
-log-01,2024/09/02 00:25,"Lorem ipsum dolor sit ame",โลเร็ม อิปซัม,0,assignment-01,true
-log-02,2019/03/21 23:46,"L","Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut*",1,assignment-02,true
-log-03,2024/09/01 10:03,"Lo",<marquee>Hacked</marquee>,2,assignment-03,true
-log-04,2020/12/31 23:58,"Lorem ipsum dolor sit amet, consectetur adipiscin",L,3,assignment-04,false
-log-05,2021/09/05 05:35,"Lorem ipsum dolor sit amet, consectetur adipiscin",Lo,4,assignment-05,true
-log-06,2019/12/31 23:59,โลเร็ม อิปซัม,<script>alert(‘Hacked!’);</script>,5,assignment-06,true
-log-07,2021/07/02 00:00,لوريم إيبسوم,"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut enim ad minim veniam? Quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor*",6,assignment-07,true
-log-08,2022/09/03 00:30,洛伦·伊普森,"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut enim ad minim veniam? Quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor",7,assignment-08,true
-log-09,2021/01/05 08:45,<marquee>Hacked</marquee>,L,8,assignment-09,true
-log-10,2025/01/01 00:00,<script>alert(‘Hacked!’);</script>,"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut*",9,assignment-10,true
+log-01,2020/09/01 10:05,"Lorem ipsum dolor sit ame","Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut enim ad minim veniam? Quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor",10,assignment-01,false
+log-02,2020/09/01 10:07,"Lorem ipsum dolor sit amet, consectetur adipiscin","Lo",9,assignment-02,false
+log-03,2020/09/01 10:07,"Lorem ipsum dolor sit amet, consectetur adipiscing","L",6,assignment-03,false
+log-04,2020/09/01 10:05,"<marquee>Hacked</marquee>","โลเร็ม อิปซัม",7,assignment-04,false
+
+# base entity
+log-05,2020/09/01 10:05,"Lorem ipsum","Lorem ipsum",0,assignment-01,false
+
+# registrationMoment - standard variations
+log-06,2022/11/01 17:43,"Lorem ipsum","Lorem ipsum",0,assignment-01,false
+log-07,2020/09/01 10:03,"Lorem ipsum","Lorem ipsum",0,assignment-01,false
+log-08,2020/09/01 10:04,"Lorem ipsum","Lorem ipsum",0,assignment-01,false
+log-09,2024/12/31 23:59,"Lorem ipsum","Lorem ipsum",0,assignment-01,false
+log-10,2025/01/01 00:00,"Lorem ipsum","Lorem ipsum",0,assignment-01,false
+
+# incidentType - standard variations
+log-11,2020/09/01 10:05,"Lorem ipsum dolor sit amet.","Lorem ipsum",0,assignment-01,false
+log-12,2020/09/01 10:05,"L","Lorem ipsum",0,assignment-01,false
+log-13,2020/09/01 10:05,"Lo","Lorem ipsum",0,assignment-01,false
+log-14,2020/09/01 10:05,"Lorem ipsum dolor sit amet; consectetur adipiscin","Lorem ipsum",0,assignment-01,false
+log-15,2020/09/01 10:05,"Lorem ipsum dolor sit amet; consectetur adipiscing","Lorem ipsum",0,assignment-01,false
+
+# incidentType - no singular values
+log-16,2020/09/01 10:05,"โลเร็ม อิปซัม","Lorem ipsum",0,assignment-01,false
+log-17,2020/09/01 10:05,"لوريم إيبسوم","Lorem ipsum",0,assignment-01,false
+log-18,2020/09/01 10:05,"洛伦·伊普森","Lorem ipsum",0,assignment-01,false
+log-19,2020/09/01 10:05,"<marquee>Hacked</marquee>","Lorem ipsum",0,assignment-01,false
+log-20,2020/09/01 10:05,"<script>alert(‘Hacked!’);</script>","Lorem ipsum",0,assignment-01,false
+log-21,2020/09/01 10:05,"'' or 'A' = 'A ","Lorem ipsum",0,assignment-01,false
+
+# description - standard values
+log-22,2020/09/01 10:05,"Lorem ipsum","Lorem ipsum dolor sit amet; consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut*",0,assignment-01,false
+log-23,2020/09/01 10:05,"Lorem ipsum","L",0,assignment-01,false
+log-24,2020/09/01 10:05,"Lorem ipsum","Lo",0,assignment-01,false
+log-25,2020/09/01 10:05,"Lorem ipsum","Lorem ipsum dolor sit amet; consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut enim ad minim veniam? Quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor",0,assignment-01,false
+log-26,2020/09/01 10:05,"Lorem ipsum","Lorem ipsum dolor sit amet; consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut enim ad minim veniam? Quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor*",0,assignment-01,false
+
+# description - no singular values
+log-27,2020/09/01 10:05,"Lorem ipsum","โลเร็ม อิปซัม",0,assignment-01,false
+log-28,2020/09/01 10:05,"Lorem ipsum","при",0,assignment-01,false
+log-29,2020/09/01 10:05,"Lorem ipsum","洛伦·伊普森",0,assignment-01,false
+log-30,2020/09/01 10:05,"Lorem ipsum","<marquee>Hacked</marquee>",0,assignment-01,false
+log-31,2020/09/01 10:05,"Lorem ipsum","<script>alert(‘Hacked!’);</script>",0,assignment-01,false
+log-32,2020/09/01 10:05,"Lorem ipsum","'' or 'A' = 'A ",0,assignment-01,false
+
+# severityLevel - standard validations
+log-33,2020/09/01 10:05,"Lorem ipsum","Lorem ipsum",5,assignment-01,false
+log-34,2020/09/01 10:05,"Lorem ipsum","Lorem ipsum",0,assignment-01,false
+log-35,2020/09/01 10:05,"Lorem ipsum","Lorem ipsum",1,assignment-01,false
+log-36,2020/09/01 10:05,"Lorem ipsum","Lorem ipsum",9,assignment-01,false
+log-37,2020/09/01 10:05,"Lorem ipsum","Lorem ipsum",10,assignment-01,false
+
+# publish - standard validations (ahora draftMode)
+log-38,2020/09/01 10:05,"Lorem ipsum","Lorem ipsum",0,assignment-01,false
+log-39,2020/09/01 10:05,"Lorem ipsum","Lorem ipsum",0,assignment-30,true
