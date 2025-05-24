@@ -65,7 +65,7 @@ public class LegFlightUpdateService extends AbstractGuiService<Manager, Leg> {
 
 	@Override
 	public void bind(final Leg leg) {
-		super.bindObject(leg, "scheduledDeparture", "scheduledArrival", "departureAirport", "arrivalAirport", "aircraft");
+		super.bindObject(leg, "scheduledDeparture", "scheduledArrival", "stauts", "departureAirport", "arrivalAirport", "aircraft");
 	}
 
 	@Override
