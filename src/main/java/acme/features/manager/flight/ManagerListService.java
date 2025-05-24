@@ -37,8 +37,6 @@ public class ManagerListService extends AbstractGuiService<Manager, Flight> {
 	@Override
 	public void unbind(final Flight flight) {
 		Dataset dataset;
-		System.out.println("Al clicar");
-
 		dataset = super.unbindObject(flight, "tag", "transfer", "cost", "draftMode");
 		super.addPayload(dataset, flight, "description");
 

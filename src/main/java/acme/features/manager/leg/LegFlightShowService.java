@@ -55,8 +55,6 @@ public class LegFlightShowService extends AbstractGuiService<Manager, Leg> {
 		Optional<Leg> optionalLeg = this.repository.findLegById(id);
 		leg = optionalLeg.isPresent() ? optionalLeg.get() : null;
 
-		System.out.println(leg);
-
 		super.getBuffer().addData(leg);
 	}
 
@@ -85,7 +83,7 @@ public class LegFlightShowService extends AbstractGuiService<Manager, Leg> {
 		choicesDepartureAirports = SelectChoices.from(airports, "iataCode", leg.getDepartureAirport());
 		choicesAircraft = SelectChoices.from(aircrafts, "model", leg.getAircraft());
 
-		dataset = super.unbindObject(leg, "flightNumberDigits", "scheduledDeparture", "scheduledArrival", "departureAirport", "arrivalAirport", "aircraft", "flight", "status", "draftMode");
+		dataset = super.unbindObject(leg, "flightNumberDigits", "scheduledDeparture", "scheduledArrival", "departureAirport", "arrivalAirport", "aircraft", "flight.tag", "status", "draftMode");
 		dataset.put("masterId", leg.getFlight().getId());
 		dataset.put("flights", choicesFlight);
 		dataset.put("arrivalAirports", choicesArrivalAirports);

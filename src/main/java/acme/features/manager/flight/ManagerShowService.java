@@ -40,8 +40,6 @@ public class ManagerShowService extends AbstractGuiService<Manager, Flight> {
 		id = super.getRequest().getData("id", int.class);
 		flight = this.repository.findFlightById(id).get();
 
-		System.out.println(flight);
-
 		super.getBuffer().addData(flight);
 	}
 

@@ -23,11 +23,22 @@ acme.validation.booking.publishedPassengers.message= Para publicar una reserva t
 
 ##Manager
 acme.validation.manager.leg.statusAircraft.message = El avión está en mantenimiento
-acme.validation.manager.leg.statusDestAndArrvAirport.message = El aeropuerto de salida no puede ser el mismo que el de llegada
 acme.validation.manager.leg.statusSchedule.message = No puede haber más de un tramo volando al mismo tiempo
 acme.validation.manager.leg.statusShareAircraft.message = El mismo avión no puede estar en más de un tramo donde coincide el tiempo de vuelo
 acme.validation.manager.leg.statusAircraftAirline.message = No puedes elegir un avión que no sea de tu airline.
 acme.validation.manager.leg.statusFlightNumber.message = Este número de vuelo ya esta asignado.
+acme.validation.manager.leg.draftMode.message = Tiene que estar en modo borrador
+acme.validation.manager.flight.hasLeg.message = Tiene que tener al menos una leg
+acme.validation.manager.fligth.allPublished.message = Las legs deben de estar publicadas
+acme.validation.manager.flight.legsPublish.message = No puedes borrar un vuelo con legs publicadas
+acme.validation.manager.leg.statusFuture.message = Los momentos de salida y el de llegada deben de ser en el futuro
+acme.validation.manager.leg.statusArrvAfterDepart.message =  El momento de llegada debe de ser después del de salida
+acme.validation.manager.leg.statusDestAndArrvAirport.message = El aeropuerto de salida no puede ser el mismo que el de llegada
+acme.validation.manager.leg.statusSchedule.message = No puede coincidir el momento de vuelo entre legs del mismo flight
+acme.validation.manager.leg.statusAircraft.message = El aircraft debe de estar activo
+acme.validation.manager.leg.statusShareAircraft.message = Un aircfat no puede estar en más de una legs que vuelan a la vez
+acme.validation.manager.leg.statusAircraftAirline.message = El aircraft debe pertenecer al airline del manager
+acme.validation.manager.leg.statusDraftMode.message = Debe estar en draft mode
 
 acme.validation.customer.identifier.message= El identificador de un cliente debe ser único
 acme.validation.booking.lastNibble.message=Una reserva debe tener especificada los últimos cuatro dígitos de la tarjeta de crédito para ser publicada

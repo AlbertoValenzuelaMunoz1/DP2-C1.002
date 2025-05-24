@@ -43,9 +43,9 @@ assignment-29,PILOT,2022/06/02 00:30,CONFIRMED,"",member1,leg-21,false
 assignment-30,PILOT,2022/06/02 00:30,CONFIRMED,"",member1,leg-21,true
 
 # leg - standard variations (legs 21 are in the past; leg 16-17-18-19-20 is in the future) 
-assignment-31,PILOT,2022/06/02 00:00,CONFIRMED,"",member1,leg-21,false
-assignment-32,PILOT,2022/06/02 00:00,CONFIRMED,"",member1,leg-21,false
-assignment-33,PILOT,2022/06/02 00:00,CONFIRMED,"",member1,leg-21,false
+assignment-31,PILOT,2020/06/02 20:00,CONFIRMED,"",member1,leg-21,false
+assignment-32,PILOT,2021/06/02 10:00,CONFIRMED,"",member1,leg-21,false
+assignment-33,PILOT,2022/06/02 05:00,CONFIRMED,"",member1,leg-21,false
 assignment-35,PILOT,2022/06/02 00:00,CONFIRMED,"",member1,leg-16,false
 assignment-36,PILOT,2022/06/02 00:00,CONFIRMED,"",member1,leg-17,false
 assignment-37,PILOT,2022/06/02 00:00,CONFIRMED,"",member1,leg-18,false

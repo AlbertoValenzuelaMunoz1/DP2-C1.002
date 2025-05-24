@@ -26,6 +26,20 @@ acme.validation.activity-log.flight-assignment-not-published.message = This log 
 acme.validation.log.registration-moment.message = The log registration moment must occur after the leg finishes
 acme.validation.customer.identifier.message= The customer identifier must be unique
 acme.validation.manager.identifier.message= The manager identifier must be unique
+acme.validation.manager.leg.draftMode.message = Must be in draft mode
+acme.validation.manager.flight.hasLeg.message = Must have at least one leg
+acme.validation.manager.fligth.allPublished.message = Legs must be published
+acme.validation.manager.flight.legsPublish.message = A flight can not be deleted with a published leg
+acme.validation.manager.leg.statusFuture.message = The arrival and departure scheduled must be on the future
+acme.validation.manager.leg.statusArrvAfterDepart.message = The arrival scheduled must be after the departure
+acme.validation.manager.leg.statusDestAndArrvAirport.message = The departure are arrival airport can not be the same.
+acme.validation.manager.leg.statusSchedule.message = The flight time cannot overlap between legs of the same flight.
+acme.validation.manager.leg.statusAircraft.message = The aircraft must be active
+acme.validation.manager.leg.statusShareAircraft.message = An aircraft cannot be assigned to more than one leg flying at the same time
+acme.validation.manager.leg.statusAircraftAirline.message = The aircraft must belong to the manager's airline
+acme.validation.manager.leg.statusDraftMode.message = It must be in draft mode
+
+
 
 acme.validation.booking.lastNibble.message=A booking must contain the last nibble credit card to be published
 acme.validation.booking.passengersNotEmpty.message=A boooking must contain at least one passengers to be published

@@ -78,8 +78,6 @@ public class Flight extends AbstractEntity {
 
 		Leg leg = legs == null || legs.isEmpty() ? null : legs.get(0);
 
-		System.out.println(leg);
-
 		Date date = leg == null ? null : leg.getScheduledArrival();
 
 		return date;
