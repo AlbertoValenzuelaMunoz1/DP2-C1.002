@@ -82,7 +82,7 @@ public class ClaimUpdateService extends AbstractGuiService<AssistanceAgent, Clai
 		choices_leg = SelectChoices.from(legs, "flightNumberDigits", claim.getLeg());
 		legs = this.repository.findAllPublishedCompletedLegs(claim.getRegistrationMoment());
 
-		dataset = super.unbindObject(claim, "registrationMoment", "passengerEmail", "description", "type", "indicator");
+		dataset = super.unbindObject(claim, "registrationMoment", "passengerEmail", "description", "type", "indicator", "draftMode");
 		dataset.put("type", choices);
 		dataset.put("legs", choices_leg);
 		dataset.put("flightNumberDigits", choices_leg.getSelected().getKey());
