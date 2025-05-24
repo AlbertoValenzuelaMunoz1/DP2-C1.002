@@ -2,14 +2,17 @@
 package acme.features.manager.leg;
 
 import java.util.Collection;
+import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
 import acme.client.components.models.Dataset;
 import acme.client.components.views.SelectChoices;
+import acme.client.helpers.MomentHelper;
 import acme.client.services.AbstractGuiService;
 import acme.client.services.GuiService;
+import acme.datatypes.AircraftStatus;
 import acme.entities.group.aircraft.Aircraft;
 import acme.entities.group.airport.Airport;
 import acme.entities.student1.flight.Flight;
@@ -39,8 +42,6 @@ public class LegFlightPublishService extends AbstractGuiService<Manager, Leg> {
 
 		Optional<Leg> optional = this.repository.findLegById(masterId);
 
-		System.out.println(optional.isEmpty());
-
 		leg = optional.isPresent() ? optional.get() : null;
 
 		manager = leg == null ? null : leg.getFlight().getManager();
@@ -56,26 +57,80 @@ public class LegFlightPublishService extends AbstractGuiService<Manager, Leg> {
 		Leg leg;
 		int id;
 
-		System.out.println("aqui");
-
 		id = super.getRequest().getData("id", int.class);
 		Optional<Leg> optionalLeg = this.repository.findLegById(id);
 		leg = optionalLeg.isPresent() ? optionalLeg.get() : null;
-
-		System.out.println(leg);
 
 		super.getBuffer().addData(leg);
 	}
 
 	@Override
 	public void bind(final Leg leg) {
-		System.out.println("bind");
-		super.bindObject(leg, "flightNumberDigits", "scheduledDeparture", "scheduledArrival", "departureAirport", "arrivalAirport", "aircraft", "flight.tag", "status");
+
+		super.bindObject(leg, "flightNumberDigits", "scheduledDeparture", "scheduledArrival", "departureAirport", "arrivalAirport", "aircraft", "status");
 	}
 
 	@Override
 	public void validate(final Leg leg) {
-		;
+		boolean statusAircraft;
+		boolean statusSchedule;
+		boolean statusDestAndArrvAirport;
+		boolean statusShareAircraft;
+		boolean statusAircraftAirline;
+		boolean statusFuture;
+		boolean statusArrvAfterDepart;
+		Collection<Leg> allLegs;
+		Collection<Leg> flightsLegs;
+
+		//aeropuertos de llegada y salida distintos
+		statusDestAndArrvAirport = leg.getArrivalAirport() == null || leg.getDepartureAirport() == null || !leg.getArrivalAirport().equals(leg.getDepartureAirport());
+
+		//aircrafts no solapen
+		allLegs = this.repository.findAllLegs();
+
+		allLegs = allLegs != null ? allLegs.stream().filter(l -> !l.equals(leg)).toList() : null;
+
+		List<Leg> overlapLegs = allLegs != null && leg.getScheduledArrival() != null
+			&& leg.getScheduledDeparture() != null
+				? allLegs.stream()
+					.filter(l -> leg.getScheduledDeparture().after(l.getScheduledArrival()) && leg.getScheduledDeparture().before(l.getScheduledDeparture())
+						|| leg.getScheduledArrival().after(l.getScheduledArrival()) && leg.getScheduledArrival().before(l.getScheduledDeparture()))
+					.toList()
+				: null;
+
+		statusShareAircraft = overlapLegs == null || leg.getAircraft() == null || overlapLegs.stream().allMatch(l -> leg.getAircraft() != l.getAircraft());
+
+		//legs no solapen
+		flightsLegs = this.repository.findLegsByFlightId(leg.getFlight().getId());
+
+		flightsLegs = flightsLegs != null ? flightsLegs.stream().filter(l -> !l.equals(leg)).toList() : null;
+
+		statusSchedule = flightsLegs == null || leg.getScheduledArrival() == null || leg.getScheduledDeparture() == null
+			|| flightsLegs.stream()
+				.allMatch(l -> leg.getScheduledDeparture().after(l.getScheduledArrival()) && leg.getScheduledArrival().after(l.getScheduledArrival()) || leg.getScheduledDeparture().before(l.getScheduledDeparture())
+					&& leg.getScheduledArrival().before(l.getScheduledDeparture()) && !(leg.getScheduledArrival().after(l.getScheduledArrival()) && leg.getScheduledArrival().before(l.getScheduledDeparture()))
+					&& !(leg.getScheduledDeparture().after(l.getScheduledArrival()) && leg.getScheduledArrival().before(l.getScheduledDeparture())));
+
+		//aircraft esté activo
+		statusAircraft = leg.getAircraft() == null || leg.getAircraft().getStatus().equals(AircraftStatus.ACTIVE);
+
+		//aircraft pertenezca misma airline que manager
+		statusAircraftAirline = leg.getAircraft() == null || leg.getAircraft().getAirline().equals(leg.getFlight().getManager().getAirline());
+
+		//legs en el futuro
+		statusFuture = leg.getScheduledArrival() == null || leg.getScheduledDeparture() == null || leg.getScheduledArrival().after(MomentHelper.getCurrentMoment()) && leg.getScheduledDeparture().after(MomentHelper.getCurrentMoment());
+
+		//llegada despues de salida
+		statusArrvAfterDepart = leg.getScheduledArrival() != null && leg.getScheduledDeparture() != null ? leg.getScheduledArrival().after(leg.getScheduledDeparture()) : null;
+
+		super.state(statusArrvAfterDepart, "*", "acme.validation.manager.leg.statusArrvAfterDepart.message");
+		super.state(statusFuture, "*", "acme.validation.manager.leg.statusFuture.message");
+		super.state(statusDestAndArrvAirport, "*", "acme.validation.manager.leg.statusDestAndArrvAirport.message");
+		super.state(statusSchedule, "*", "acme.validation.manager.leg.statusSchedule.message");
+		super.state(statusAircraft, "aircraft", "acme.validation.manager.leg.statusAircraft.message");
+		super.state(statusShareAircraft, "aircraft", "acme.validation.manager.leg.statusShareAircraft.message");
+		super.state(statusAircraftAirline, "aircraft", "acme.validation.manager.leg.statusAircraftAirline.message");
+
 	}
 
 	@Override
@@ -86,7 +141,6 @@ public class LegFlightPublishService extends AbstractGuiService<Manager, Leg> {
 
 	@Override
 	public void unbind(final Leg leg) {
-		System.out.println("unbind");
 		Dataset dataset;
 		Collection<Flight> flights;
 		Collection<Airport> airports;

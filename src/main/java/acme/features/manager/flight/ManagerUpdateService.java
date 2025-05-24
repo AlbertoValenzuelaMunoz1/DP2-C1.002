@@ -55,7 +55,7 @@ public class ManagerUpdateService extends AbstractGuiService<Manager, Flight> {
 
 		mode = flight.isDraftMode();
 
-		super.state(mode, "draftMode", "El vuelo tiene q estar en modo borrador");
+		super.state(mode, "draftMode", "acme.validation.manager.flight.draftMode.message");
 	}
 
 	@Override

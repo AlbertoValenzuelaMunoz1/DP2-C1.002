@@ -54,18 +54,13 @@ public class ManagerDeleteService extends AbstractGuiService<Manager, Flight> {
 
 	@Override
 	public void validate(final Flight flight) {
-		boolean status;
 		boolean legsPublish;
-
-		status = super.getRequest().getData("draftMode", boolean.class);
 
 		Collection<Leg> legs = this.repository.findLegsByFlightId(flight.getId());
 
 		legsPublish = legs.stream().allMatch(Leg::isDraftMode);
 
-		super.state(legsPublish, "*", "no puedes borrar un vuelo con legs publicadas.");
-
-		super.state(status, "draftMode", "no puedes borrar un flight publicado");
+		super.state(legsPublish, "*", "acme.validation.manager.flight.legsPublish.message");
 
 	}
 
