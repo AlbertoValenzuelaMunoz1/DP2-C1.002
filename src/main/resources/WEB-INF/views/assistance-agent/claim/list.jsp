@@ -9,7 +9,7 @@
     <acme:list-column code="agent.claim.list.label.registrationMoment" path="registrationMoment" />
     <acme:list-column code="agent.claim.list.label.passengerEmail" path="passengerEmail" />
     <acme:list-column code="agent.claim.list.label.description" path="description" />
-    <acme:list-column code="assistance-agent.claim.label.leg" path="leg"/>  
+    <acme:list-column code="agent.claim.label.leg" path="leg"/>  
     
     <acme:list-payload path="payload" />
 </acme:list>
