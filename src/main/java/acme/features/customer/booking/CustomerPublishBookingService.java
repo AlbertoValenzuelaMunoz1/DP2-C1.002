@@ -94,9 +94,10 @@ public class CustomerPublishBookingService extends AbstractGuiService<Customer, 
 		confirmation = super.getRequest().getData("confirmation", boolean.class);
 		lastNibbleNotNull = booking.getLastNibble() != null && !StringHelper.isBlank(booking.getLastNibble());
 		passengersNotEmpty = !booking.passengers().isEmpty();
-		uniqueLocatorCode = this.repository.findByLocatorCode(booking.getLocatorCode(), booking.getId()) == null;
+		Booking existingBookingSameLocatorCode = this.repository.findByLocatorCode(booking.getLocatorCode());
+		uniqueLocatorCode = existingBookingSameLocatorCode == null || existingBookingSameLocatorCode.getId() == booking.getId();
 		allPassengersPublished = this.repository.findBookingRecordByBookingId(booking.getId()).stream().allMatch(r -> r.getPassenger().isPublished());
-		validFlight = booking.getFlight() == null || booking.getFlight().scheduledDeparture().after(MomentHelper.getCurrentMoment());
+		validFlight = booking.getFlight() == null || booking.getFlight().scheduledDeparture() == null || booking.getFlight().scheduledDeparture().after(MomentHelper.getCurrentMoment());
 		super.state(confirmation, "confirmation", "acme.validation.confirmation.message");
 		super.state(passengersNotEmpty, "*", "acme.validation.booking.passengersNotEmpty.message");
 		super.state(lastNibbleNotNull, "lastNibble", "acme.validation.booking.lastNibble.message");

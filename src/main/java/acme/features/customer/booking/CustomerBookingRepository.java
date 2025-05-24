@@ -26,8 +26,6 @@ public interface CustomerBookingRepository extends AbstractRepository {
 	public Customer findCustomerById(int id);
 	@Query("select f from Flight f where f.draftMode=false and (select min(l.scheduledDeparture) from Leg l where l.flight=f)>=:now")
 	public Collection<Flight> findAllPublishedFutureFlights(Date now);
-	@Query("select b from Booking b where b.locatorCode=:locatorCode and not b.id=:excludeId")
-	public Booking findByLocatorCode(String locatorCode, int excludeId);
 	@Query("select b from Booking b where b.locatorCode=:locatorCode")
 	public Booking findByLocatorCode(String locatorCode);
 	@Query("select r from BookingRecord r where r.booking.id=:id")
