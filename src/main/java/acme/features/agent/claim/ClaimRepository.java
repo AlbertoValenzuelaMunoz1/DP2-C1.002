@@ -42,4 +42,7 @@ public interface ClaimRepository extends AbstractRepository {
 	@Query("SELECT t FROM TrackingLog t WHERE t.claim.id = ?1 ORDER BY t.resolutionPercentage ASC")
 	List<TrackingLog> getTrackingLogsByResolutionOrder(Integer claimId);
 
+	@Query("select t from TrackingLog t where t.claim.id = :claimId")
+	List<TrackingLog> findAllLogsFromClaim(@Param("claimId") Integer claimId);
+
 }

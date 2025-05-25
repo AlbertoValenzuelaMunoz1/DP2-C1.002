@@ -95,12 +95,13 @@ public class ClaimPublishService extends AbstractGuiService<AssistanceAgent, Cla
 		legs = this.repository.findAllPublishedCompletedLegs(claim.getRegistrationMoment());
 
 		choices_type = SelectChoices.from(ClaimType.class, claim.getType());
-		choices_leg = SelectChoices.from(legs, "flightNumber", claim.getLeg());
+		choices_leg = SelectChoices.from(legs, "flightNumberDigits", claim.getLeg());
 
-		dataset = super.unbindObject(claim, "registrationMoment", "passengerEmail", "description", "type", "indicator");
+		dataset = super.unbindObject(claim, "registrationMoment", "passengerEmail", "description", "type", "indicator", "draftMode");
 		dataset.put("type", choices_type);
 		dataset.put("legs", choices_leg);
-		dataset.put("legFlightNumber", claim.getLeg().getFlightNumberDigits());
+		if (claim.getLeg() != null)
+			dataset.put("flightNumberDigits", claim.getLeg().getFlightNumberDigits());
 
 		super.getResponse().addData(dataset);
 	}

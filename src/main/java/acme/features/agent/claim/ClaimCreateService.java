@@ -105,7 +105,7 @@ public class ClaimCreateService extends AbstractGuiService<AssistanceAgent, Clai
 		Date registrationMoment;
 		registrationMoment = MomentHelper.getCurrentMoment();
 		Collection<Leg> legs = this.repository.findAllPublishedCompletedLegs(registrationMoment);
-		boolean status = leg != null && legs.contains(leg);
+		boolean status = leg == null || legs.contains(leg);
 
 		return status;
 	}

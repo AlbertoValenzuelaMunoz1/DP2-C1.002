@@ -7,10 +7,13 @@ import java.util.Date;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import acme.client.components.models.Dataset;
+import acme.client.components.views.SelectChoices;
 import acme.client.services.AbstractGuiService;
 import acme.client.services.GuiService;
+import acme.datatypes.ClaimType;
 import acme.entities.student1.leg.Leg;
 import acme.entities.student4.claim.Claim;
+import acme.entities.student4.tranckingLog.TrackingLog;
 import acme.realms.AssistanceAgent;
 
 @GuiService
@@ -40,7 +43,7 @@ public class ClaimDeleteService extends AbstractGuiService<AssistanceAgent, Clai
 		}
 
 		status = super.getRequest().getPrincipal().hasRealmOfType(AssistanceAgent.class) && claim != null && claim.getAssistanceAgent().equals(agent) && claim.isDraftMode() && statusLeg
-			&& claim.getVersion() == super.getRequest().getData("version", int.class);
+			&& (super.getRequest().getMethod().equals("GET") || claim.getVersion() == super.getRequest().getData("version", int.class));
 
 		super.getResponse().setAuthorised(status);
 	}
@@ -76,14 +79,28 @@ public class ClaimDeleteService extends AbstractGuiService<AssistanceAgent, Clai
 
 	@Override
 	public void perform(final Claim claim) {
+		Collection<TrackingLog> legs = this.repository.findAllLogsFromClaim(claim.getId());
+		legs.stream().forEach(l -> this.repository.delete(l));
 		this.repository.delete(claim);
 	}
 
 	@Override
 	public void unbind(final Claim claim) {
+		SelectChoices choices_type;
+		SelectChoices choices_leg;
 		Dataset dataset;
+		Collection<Leg> legs;
 
-		dataset = super.unbindObject(claim, "registrationMoment", "passengerEmail", "description", "type", "indicator");
+		legs = this.repository.findAllPublishedCompletedLegs(claim.getRegistrationMoment());
+
+		choices_type = SelectChoices.from(ClaimType.class, claim.getType());
+		choices_leg = SelectChoices.from(legs, "flightNumberDigits", claim.getLeg());
+
+		dataset = super.unbindObject(claim, "registrationMoment", "passengerEmail", "description", "type", "indicator", "draftMode");
+		dataset.put("type", choices_type);
+		dataset.put("legs", choices_leg);
+		if (claim.getLeg() != null)
+			dataset.put("flightNumberDigits", claim.getLeg().getFlightNumberDigits());
 
 		super.getResponse().addData(dataset);
 	}
