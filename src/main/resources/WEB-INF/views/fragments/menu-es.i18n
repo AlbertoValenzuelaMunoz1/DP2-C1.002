@@ -38,6 +38,9 @@ master.menu.consumer = Consumidor
 master.menu.consumer.favourite-link = Enlace favorito
 # master.menu.customer ##########################################################
 
+master.menu.agent = Agente
+master.menu.agent.list-claim = Lista de reclamaciones 
+
 master.menu.customer = Cliente
 master.menu.customer.bookings = Reservas
 master.menu.customer.passengers = Pasajeros

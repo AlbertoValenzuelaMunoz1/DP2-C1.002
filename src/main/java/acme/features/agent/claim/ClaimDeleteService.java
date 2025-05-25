@@ -1,6 +1,9 @@
 
 package acme.features.agent.claim;
 
+import java.util.Collection;
+import java.util.Date;
+
 import org.springframework.beans.factory.annotation.Autowired;
 
 import acme.client.components.models.Dataset;
@@ -20,8 +23,24 @@ public class ClaimDeleteService extends AbstractGuiService<AssistanceAgent, Clai
 	@Override
 	public void authorise() {
 		boolean status;
+		boolean statusLeg = true;
+		boolean nullStatus = true;
+		int claimId = super.getRequest().getData("id", int.class);
+		int agentId = super.getRequest().getPrincipal().getActiveRealm().getId();
+		Claim claim = this.repository.findClaimById(claimId);
+		AssistanceAgent agent = this.repository.findAgentById(agentId);
+		Date Moment;
+		if (claim != null) {
+			Moment = claim.getRegistrationMoment();
+			Leg leg = null;
 
-		status = super.getRequest().getPrincipal().hasRealmOfType(AssistanceAgent.class);
+			Collection<Leg> legs = this.repository.findAllPublishedCompletedLegs(Moment);
+			leg = this.getLeg(claim);
+			statusLeg = leg != null ? legs.contains(leg) : nullStatus;
+		}
+
+		status = super.getRequest().getPrincipal().hasRealmOfType(AssistanceAgent.class) && claim != null && claim.getAssistanceAgent().equals(agent) && claim.isDraftMode() && statusLeg
+			&& claim.getVersion() == super.getRequest().getData("version", int.class);
 
 		super.getResponse().setAuthorised(status);
 	}
@@ -46,7 +65,7 @@ public class ClaimDeleteService extends AbstractGuiService<AssistanceAgent, Clai
 		leg = this.repository.findLegById(legId);
 
 		claim.setLeg(leg);
-		super.bindObject(claim, "registrationMoment", "passengerEmail", "description", "type", "indicator");
+		super.bindObject(claim, "passengerEmail", "description", "type", "indicator");
 	}
 
 	@Override
@@ -67,6 +86,20 @@ public class ClaimDeleteService extends AbstractGuiService<AssistanceAgent, Clai
 		dataset = super.unbindObject(claim, "registrationMoment", "passengerEmail", "description", "type", "indicator");
 
 		super.getResponse().addData(dataset);
+	}
+
+	private Leg getLeg(final Claim claim) {
+		int legId;
+		Leg leg;
+
+		String method = super.getRequest().getMethod();
+
+		if (method.equals("GET"))
+			legId = claim.getLeg().getId();
+		else
+			legId = super.getRequest().getData("leg", int.class);
+		leg = this.repository.findLegById(legId);
+		return leg;
 	}
 
 }

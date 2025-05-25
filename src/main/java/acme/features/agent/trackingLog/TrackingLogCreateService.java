@@ -29,6 +29,7 @@ public class TrackingLogCreateService extends AbstractGuiService<AssistanceAgent
 	@Override
 	public void authorise() {
 		boolean status;
+		boolean statusC = true;
 		int claimId;
 		int currentAssistanceAgentId;
 		Claim claim;
@@ -39,8 +40,9 @@ public class TrackingLogCreateService extends AbstractGuiService<AssistanceAgent
 		currentAssistanceAgentId = principal.getActiveRealm().getId();
 		claimId = super.getRequest().getData("claimId", int.class);
 		claim = this.repository.findClaimById(claimId);
+		Integer TlogId = super.getRequest().getData("id", int.class, 0);
 
-		status = principal.hasRealmOfType(AssistanceAgent.class) && claim.getAssistanceAgent().getId() == currentAssistanceAgentId;
+		status = principal.hasRealmOfType(AssistanceAgent.class) && claim.getAssistanceAgent().getId() == currentAssistanceAgentId && (super.getRequest().getMethod().equals("GET") || TlogId == 0);
 
 		super.getResponse().setAuthorised(status);
 	}
