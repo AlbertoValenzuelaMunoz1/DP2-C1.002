@@ -32,6 +32,10 @@ import lombok.Setter;
 @Table(indexes = {
 	@Index(columnList = "draftMode")
 })
+/*
+ * Mejora el primer paso de la consulta findAllPublishedFutureFlights de CustomerBookingRepository de tipo All
+ * a tipo ref (aunque en el where haya un and con una subconsulta)
+ */
 public class Flight extends AbstractEntity {
 
 	private static final long	serialVersionUID	= 1L;

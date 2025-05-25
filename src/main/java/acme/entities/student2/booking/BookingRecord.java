@@ -19,6 +19,7 @@ import lombok.Setter;
 @Table(indexes = {
 	@Index(columnList = "booking_id, passenger_id")
 })
+// Para la subconsulta dentro de findAvailablePassengersForBooking que usa en el where booking y passenger
 public class BookingRecord extends AbstractEntity {
 
 	/**
