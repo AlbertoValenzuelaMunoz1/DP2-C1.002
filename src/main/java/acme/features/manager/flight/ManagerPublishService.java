@@ -61,7 +61,7 @@ public class ManagerPublishService extends AbstractGuiService<Manager, Flight> {
 		Collection<Leg> legs = this.repository.findLegsByFlightId(flight.getId());
 		boolean hasLeg = !legs.isEmpty();
 
-		super.state(hasLeg, "*", "acme.validation.manager.flight.draftMode.message");
+		super.state(hasLeg, "*", "acme.validation.manager.flight.hasLeg.message");
 
 		if (hasLeg) {
 			boolean allPublished = legs.stream().allMatch(leg -> !leg.isDraftMode());

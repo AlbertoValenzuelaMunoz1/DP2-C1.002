@@ -80,7 +80,7 @@ public class LegFlightCreateService extends AbstractGuiService<Manager, Leg> {
 	public void validate(final Leg leg) {
 		boolean statusAircraft;
 		boolean statusSchedule;
-		boolean statusDestAndArrvAirport;
+		boolean statusDestAndArrvAirport = true;
 		boolean statusShareAircraft;
 		boolean statusAircraftAirline;
 		boolean statusFlightNumber;
@@ -94,15 +94,16 @@ public class LegFlightCreateService extends AbstractGuiService<Manager, Leg> {
 		statusFlightNumber = flightNumbers.stream().allMatch(fn -> !leg.getFlightNumberDigits().equals(fn));
 
 		//aeropuertos de llegada y salida distintos
-		statusDestAndArrvAirport = leg.getArrivalAirport() != null && leg.getDepartureAirport() != null ? !leg.getArrivalAirport().equals(leg.getDepartureAirport()) : null;
+		if (leg.getArrivalAirport() != null && leg.getDepartureAirport() != null)
+			statusDestAndArrvAirport = !leg.getArrivalAirport().equals(leg.getDepartureAirport());
 
 		//aircrafts no solapen
 		allLegs = this.repository.findAllLegs();
 
 		List<Leg> overlapLegs = allLegs != null && leg.getScheduledArrival() != null && leg.getScheduledDeparture() != null ? allLegs.stream()
-			.filter(l -> !(leg.getScheduledDeparture().after(l.getScheduledArrival()) && leg.getScheduledArrival().after(l.getScheduledArrival()) || leg.getScheduledDeparture().before(l.getScheduledDeparture())
-				&& leg.getScheduledArrival().before(l.getScheduledDeparture()) && !(leg.getScheduledArrival().after(l.getScheduledArrival()) && leg.getScheduledArrival().before(l.getScheduledDeparture()))
-				&& !(leg.getScheduledDeparture().after(l.getScheduledArrival()) && leg.getScheduledArrival().before(l.getScheduledDeparture()))))
+			.filter(l -> leg.getScheduledDeparture().compareTo(l.getScheduledDeparture()) >= 0 && leg.getScheduledDeparture().compareTo(l.getScheduledArrival()) <= 0
+				|| leg.getScheduledArrival().compareTo(l.getScheduledDeparture()) >= 0 && leg.getScheduledArrival().compareTo(l.getScheduledArrival()) <= 0
+				|| leg.getScheduledDeparture().compareTo(l.getScheduledDeparture()) <= 0 && leg.getScheduledArrival().compareTo(l.getScheduledArrival()) >= 0)
 			.toList() : null;
 
 		statusShareAircraft = overlapLegs == null || leg.getAircraft() == null || overlapLegs.stream().allMatch(l -> leg.getAircraft() != l.getAircraft());
@@ -131,7 +132,7 @@ public class LegFlightCreateService extends AbstractGuiService<Manager, Leg> {
 		super.state(statusAircraft, "aircraft", "acme.validation.manager.leg.statusAircraft.message");
 		super.state(statusShareAircraft, "aircraft", "acme.validation.manager.leg.statusShareAircraft.message");
 		super.state(statusAircraftAirline, "aircraft", "acme.validation.manager.leg.statusAircraftAirline.message");
-		super.state(statusFlightNumber, "flightNumberDigits", "acme.validation.manager.leg.statusFlightNumber.message");
+		super.state(statusFlightNumber, "flightNumberDigits", "acme.validation.manager.leg.flightNumberDigits.message");
 	}
 
 	@Override
