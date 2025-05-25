@@ -30,7 +30,7 @@ import lombok.Setter;
 @Entity
 @Getter
 @Setter
-
+// Índice para locatorCode no necesario porque se crea automáticamente con @Column(unique=true)
 public class Booking extends AbstractEntity {
 
 	private static final long	serialVersionUID	= 1L;
