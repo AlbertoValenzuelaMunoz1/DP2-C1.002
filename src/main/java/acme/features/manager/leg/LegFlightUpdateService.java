@@ -65,7 +65,7 @@ public class LegFlightUpdateService extends AbstractGuiService<Manager, Leg> {
 
 	@Override
 	public void bind(final Leg leg) {
-		super.bindObject(leg, "scheduledDeparture", "scheduledArrival", "stauts", "departureAirport", "arrivalAirport", "aircraft");
+		super.bindObject(leg, "scheduledDeparture", "scheduledArrival", "status", "departureAirport", "arrivalAirport", "aircraft");
 	}
 
 	@Override
@@ -77,7 +77,7 @@ public class LegFlightUpdateService extends AbstractGuiService<Manager, Leg> {
 		boolean statusShareAircraft;
 		boolean statusAircraftAirline;
 		boolean statusFuture;
-		boolean statusArrvAfterDepart;
+		boolean statusArrvAfterDepart = true;
 		Collection<Leg> allLegs;
 		Collection<Leg> flightsLegs;
 
@@ -91,13 +91,11 @@ public class LegFlightUpdateService extends AbstractGuiService<Manager, Leg> {
 
 		allLegs = allLegs != null ? allLegs.stream().filter(l -> !l.equals(leg)).toList() : null;
 
-		List<Leg> overlapLegs = allLegs != null && leg.getScheduledArrival() != null
-			&& leg.getScheduledDeparture() != null
-				? allLegs.stream()
-					.filter(l -> leg.getScheduledDeparture().after(l.getScheduledArrival()) && leg.getScheduledDeparture().before(l.getScheduledDeparture())
-						|| leg.getScheduledArrival().after(l.getScheduledArrival()) && leg.getScheduledArrival().before(l.getScheduledDeparture()))
-					.toList()
-				: null;
+		List<Leg> overlapLegs = allLegs != null && leg.getScheduledArrival() != null && leg.getScheduledDeparture() != null ? allLegs.stream()
+			.filter(l -> leg.getScheduledDeparture().compareTo(l.getScheduledDeparture()) >= 0 && leg.getScheduledDeparture().compareTo(l.getScheduledArrival()) <= 0
+				|| leg.getScheduledArrival().compareTo(l.getScheduledDeparture()) >= 0 && leg.getScheduledArrival().compareTo(l.getScheduledArrival()) <= 0
+				|| leg.getScheduledDeparture().compareTo(l.getScheduledDeparture()) <= 0 && leg.getScheduledArrival().compareTo(l.getScheduledArrival()) >= 0)
+			.toList() : null;
 
 		statusShareAircraft = overlapLegs == null || leg.getAircraft() == null || overlapLegs.stream().allMatch(l -> leg.getAircraft() != l.getAircraft());
 
@@ -122,7 +120,8 @@ public class LegFlightUpdateService extends AbstractGuiService<Manager, Leg> {
 		statusFuture = leg.getScheduledArrival() == null || leg.getScheduledDeparture() == null || leg.getScheduledArrival().after(MomentHelper.getCurrentMoment()) && leg.getScheduledDeparture().after(MomentHelper.getCurrentMoment());
 
 		//llegada despues de salida
-		statusArrvAfterDepart = leg.getScheduledArrival() != null && leg.getScheduledDeparture() != null ? leg.getScheduledArrival().after(leg.getScheduledDeparture()) : null;
+		if (leg.getScheduledArrival() != null && leg.getScheduledDeparture() != null)
+			statusArrvAfterDepart = leg.getScheduledArrival().after(leg.getScheduledDeparture());
 
 		super.state(statusArrvAfterDepart, "*", "acme.validation.manager.leg.statusArrvAfterDepart.message");
 		super.state(statusFuture, "*", "acme.validation.manager.leg.statusFuture.message");

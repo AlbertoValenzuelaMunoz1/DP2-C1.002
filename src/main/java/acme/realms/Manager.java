@@ -22,6 +22,11 @@ import acme.entities.group.airline.Airline;
 import lombok.Getter;
 import lombok.Setter;
 
+/*
+ * No es necesario crear el indice para la consulta findManagerByIdentifier
+ * ya que la propiedad identifier tiene la anotacion de @Column(unique = true),
+ * por tanto se genera de forma automatica el indice
+ */
 @Entity
 @Getter
 @Setter
