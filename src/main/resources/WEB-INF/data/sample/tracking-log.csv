@@ -19,7 +19,7 @@ tlog-10,2020/12/30 00:00,"Lorem ipsum dolor sit amet, consectetur adipiscing",0.
 tlog-11,2020/12/30 00:00,L,0.00,PENDING,L,claim-01,true
 tlog-12,2020/12/30 00:00,L,0.01,PENDING,L,claim-01,true
 tlog-13,2020/12/30 00:00,L,99.9,PENDING,L,claim-01,true
-tlog-14,2020/12/30 00:00,L,100.00,ACCEPTED,L,claim-01,true
+tlog-14,2020/12/30 00:00,L,100.00,ACCEPTED,L,claim-01,false
 
 # claimStatus Variations
 tlog-15,2020/12/30 00:00,L,0.10,PENDING,L,claim-01,true
