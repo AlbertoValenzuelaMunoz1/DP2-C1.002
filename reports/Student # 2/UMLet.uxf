@@ -2,14 +2,14 @@
 <diagram program="umlet" version="15.1">
   <help_text>
 </help_text>
-  <zoom_level>9</zoom_level>
+  <zoom_level>8</zoom_level>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>594</x>
-      <y>630</y>
-      <w>432</w>
-      <h>117</h>
+      <x>528</x>
+      <y>432</y>
+      <w>480</w>
+      <h>120</h>
     </coordinates>
     <panel_attributes>&lt;&lt;Entity&gt;&gt;
 Booking
@@ -18,6 +18,7 @@ Booking
 + purchaseMoment: Date {Mandatory, ValidMoment(past=true), Temporal(TIMESTAMP)}
 + travelClass: TravelClass {Mandatory, Valid, Automapped}
 + price: Money {Mandatory, ValidMoney(min=0.), Automapped}
++ customer: Customer {Mandatory,ManyToOne(optional=false),Valid}
 - lastCardNibble: String {Optional,ValidString(min = 4, max = 4, pattern = "^[0-9]{4}$"), Automapped}
 bg=orange</panel_attributes>
     <additional_attributes/>
@@ -25,10 +26,10 @@ bg=orange</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>612</x>
-      <y>180</y>
-      <w>432</w>
-      <h>153</h>
+      <x>544</x>
+      <y>32</y>
+      <w>384</w>
+      <h>136</h>
     </coordinates>
     <panel_attributes>&lt;&lt;Entity&gt;&gt;
 Customer
@@ -46,10 +47,10 @@ bg=orange
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>1260</x>
-      <y>225</y>
-      <w>432</w>
-      <h>117</h>
+      <x>1120</x>
+      <y>72</y>
+      <w>384</w>
+      <h>112</h>
     </coordinates>
     <panel_attributes>&lt;&lt;Entity&gt;&gt;
 Passenger
@@ -58,6 +59,7 @@ Passenger
 + email: String {Mandatory, ValidEmail, Automapped}
 + passportNumber: String {Mandatory, ValidString(pattern = "^[A-Z0-9]{6,9}$"), Automapped}
 + dateOfBirth: Date {Mandatory, ValidMoment(past=true), Temporal(TIMESTAMP)}
++ customer: Customer {Mandatory,ManyToOne(optional=false),Valid}
 - specialNeeds: String {Optional, ValidString(max = 50, min = 0), Automapped}
 bg=orange</panel_attributes>
     <additional_attributes/>
@@ -65,10 +67,10 @@ bg=orange</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>801</x>
-      <y>324</y>
-      <w>45</w>
-      <h>324</h>
+      <x>712</x>
+      <y>160</y>
+      <w>40</w>
+      <h>288</h>
     </coordinates>
     <panel_attributes>lt=&lt;-
 m1=1
@@ -79,10 +81,10 @@ m2=*
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>1233</x>
-      <y>630</y>
-      <w>432</w>
-      <h>117</h>
+      <x>1096</x>
+      <y>432</y>
+      <w>384</w>
+      <h>104</h>
     </coordinates>
     <panel_attributes>&lt;&lt;Entity&gt;&gt;
 BookingRecord
@@ -94,38 +96,38 @@ bg=orange</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>1017</x>
-      <y>675</y>
-      <w>234</w>
-      <h>45</h>
+      <x>1000</x>
+      <y>472</y>
+      <w>112</w>
+      <h>40</h>
     </coordinates>
     <panel_attributes>lt=&lt;-
 m1=1
 m2=*
 </panel_attributes>
-    <additional_attributes>10.0;20.0;240.0;20.0</additional_attributes>
+    <additional_attributes>10.0;20.0;120.0;20.0</additional_attributes>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>1431</x>
-      <y>333</y>
-      <w>36</w>
-      <h>315</h>
+      <x>1272</x>
+      <y>176</y>
+      <w>32</w>
+      <h>272</h>
     </coordinates>
     <panel_attributes>lt=&lt;-
 m1=1
 m2=*
 </panel_attributes>
-    <additional_attributes>10.0;10.0;10.0;330.0</additional_attributes>
+    <additional_attributes>10.0;10.0;10.0;320.0</additional_attributes>
   </element>
   <element>
     <id>UMLClass</id>
     <coordinates>
       <x>0</x>
-      <y>621</y>
-      <w>432</w>
-      <h>117</h>
+      <y>424</y>
+      <w>384</w>
+      <h>104</h>
     </coordinates>
     <panel_attributes>&lt;&lt;Entity&gt;&gt;
 Flight
@@ -137,10 +139,10 @@ bg=orange</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>423</x>
-      <y>657</y>
-      <w>189</w>
-      <h>45</h>
+      <x>376</x>
+      <y>456</y>
+      <w>168</w>
+      <h>40</h>
     </coordinates>
     <panel_attributes>lt=&lt;-
 m1=1
