@@ -39,6 +39,7 @@ acme.validation.manager.leg.statusAircraft.message = El aircraft debe de estar a
 acme.validation.manager.leg.statusShareAircraft.message = Un aircfat no puede estar en más de una legs que vuelan a la vez
 acme.validation.manager.leg.statusAircraftAirline.message = El aircraft debe pertenecer al airline del manager
 acme.validation.manager.leg.statusDraftMode.message = Debe estar en draft mode
+acme.validation.manager.leg.flightNumberDigits.message = Este número de vuelo ya esta en uso
 
 acme.validation.customer.identifier.message= El identificador de un cliente debe ser único
 acme.validation.booking.lastNibble.message=Una reserva debe tener especificada los últimos cuatro dígitos de la tarjeta de crédito para ser publicada

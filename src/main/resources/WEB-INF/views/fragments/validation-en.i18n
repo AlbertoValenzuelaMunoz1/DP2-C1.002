@@ -38,6 +38,7 @@ acme.validation.manager.leg.statusAircraft.message = The aircraft must be active
 acme.validation.manager.leg.statusShareAircraft.message = An aircraft cannot be assigned to more than one leg flying at the same time
 acme.validation.manager.leg.statusAircraftAirline.message = The aircraft must belong to the manager's airline
 acme.validation.manager.leg.statusDraftMode.message = It must be in draft mode
+acme.validation.manager.leg.flightNumberDigits.message = This Flight Number is already set
 
 
 
