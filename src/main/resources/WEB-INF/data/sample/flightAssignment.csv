@@ -1,6 +1,6 @@
 key,duty,lastUpdate,status,remarks,key:flightCrewMember,key:flightLeg,draftMode
 assignment-01,PILOT,2022/09/03 00:30,CONFIRMED,"",member1,leg-21,false
-assignment-02,CO_PILOT,2021/01/05 08:45,CONFIRMED,"",member2,leg-21,false
+assignment-02,CO_PILOT,2021/01/05 08:45,CONFIRMED,"",member1,leg-21,false
 assignment-03,LEAD_ATTENDANT,2022/07/25 16:30,PENDING,"",member3,leg-21,false
 assignment-04,CABIN_ATTENDANT,2020/04/26 17:15,CANCELLED,"",member4,leg-21,false
 
@@ -50,4 +50,4 @@ assignment-35,PILOT,2022/06/02 00:00,CONFIRMED,"",member1,leg-16,false
 assignment-36,PILOT,2022/06/02 00:00,CONFIRMED,"",member1,leg-17,false
 assignment-37,PILOT,2022/06/02 00:00,CONFIRMED,"",member1,leg-18,false
 assignment-38,PILOT,2022/06/02 00:00,CONFIRMED,"",member1,leg-19,false
-assignment-39,PILOT,2022/06/02 00:00,CONFIRMED,"",member1,leg-20,false
+assignment-39,PILOT,2022/06/02 00:00,CONFIRMED,"",member2,leg-19,true

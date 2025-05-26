@@ -152,9 +152,6 @@ public class FlightCrewMemberFlightAssignmentPublishService extends AbstractGuiS
 
 		member = assignment.getFlightCrewMember();
 
-		Collection<FlightCrewMember> crewMembers = this.repository.findCrewMembersByAirline(member.getAirline());
-		SelectChoices selectedCrew = SelectChoices.from(crewMembers, "employeeCode", assignment.getFlightCrewMember());
-
 		legs = this.repository.findPublishedFutureOwnedLegs(MomentHelper.getCurrentMoment(), member.getAirline());
 		Leg currentLeg = assignment.getFlightLeg();
 		if (currentLeg != null && !legs.contains(currentLeg))
@@ -169,8 +166,6 @@ public class FlightCrewMemberFlightAssignmentPublishService extends AbstractGuiS
 		dataset.put("duties", duties);
 		dataset.put("flightLeg", selectedLegs.getSelected().getKey());
 		dataset.put("legs", selectedLegs);
-		dataset.put("flightCrewMember", selectedCrew.getSelected().getKey());
-		dataset.put("crewMembers", selectedCrew);
 
 		super.getResponse().addData(dataset);
 	}
