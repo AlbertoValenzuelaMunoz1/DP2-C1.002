@@ -8,14 +8,13 @@
 # purposes.  The copyright owner does not offer any warranties or representations, nor do
 # they accept any liabilities with respect to them.
 
-This is a starter project.  It is intended to be a core learning asset for the students
-who have enrolled the Design and Testing subject of the Software Engineering curriculum of the 
-University of Seville.  This project helps them start working on their new information system 
-projects.
+This project was developed by Group C1.002 for the course Design and Testing II at the University of Seville.
 
-To get this project up and running, please follow the guideline in the theory/lab materials,
-taking into account that you must link the appropriate version of the Acme-Framework excluding 
-the following resources:
+Project Overview
+Acme AirNav Solutions, Inc. (Acme ANS, Inc. for short) is a fictitious company that specializes in helping airports manage their resources and coordinate operations through custom software solutions.
+This project focuses on building a Web Information System (WIS) designed to support airports in managing logistics for charter flights.
+Technologies Used
+Programming Language: Java
 
-- **/fragments/**
+Project based on: Hello-World (adapted and extended to fit the WIS context)
  
