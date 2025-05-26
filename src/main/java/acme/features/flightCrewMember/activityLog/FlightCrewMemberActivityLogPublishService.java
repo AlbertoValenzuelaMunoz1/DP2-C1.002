@@ -32,7 +32,7 @@ public class FlightCrewMemberActivityLogPublishService extends AbstractGuiServic
 		logId = super.getRequest().getData("id", int.class);
 		log = this.repository.findActivityLogById(logId);
 		member = log == null ? null : log.getFlightAssignment().getFlightCrewMember();
-		status = member != null && log.isDraftMode() && super.getRequest().getPrincipal().hasRealm(member);
+		status = log != null && log.isDraftMode() && super.getRequest().getPrincipal().hasRealm(member);
 
 		super.getResponse().setAuthorised(status);
 	}
@@ -60,7 +60,7 @@ public class FlightCrewMemberActivityLogPublishService extends AbstractGuiServic
 		Date now = MomentHelper.getCurrentMoment();
 		if (assignment.isDraftMode())
 			super.state(false, "*", "acme.validation.activity-log.flight-assignment-not-published.message");
-		if (now.before(assignment.getFlightLeg().getScheduledArrival()))
+		if (MomentHelper.isBefore(now, assignment.getFlightLeg().getScheduledArrival()))
 			super.state(false, "*", "acme.validation.activity-log.leg-not-finished.message");
 	}
 
@@ -78,13 +78,13 @@ public class FlightCrewMemberActivityLogPublishService extends AbstractGuiServic
 		FlightCrewMember member;
 
 		member = (FlightCrewMember) super.getRequest().getPrincipal().getActiveRealm();
-		assignments = this.repository.findFlightAssignmentsByMemberIdAndPublished(member.getId());
+		assignments = this.repository.findFlightAssignmentsByMemberIdOrPublished(member.getId());
 		selectedAssignments = SelectChoices.from(assignments, "flightLeg.flightNumberDigits", log.getFlightAssignment());
 
 		dataset = super.unbindObject(log, "registrationMoment", "incidentType", "description", "severity", "draftMode");
 		dataset.put("assignments", selectedAssignments);
 		dataset.put("assignment", selectedAssignments.getSelected().getKey());
-		dataset.put("masterId", super.getRequest().getData("masterId", int.class));
+		dataset.put("masterId", log.getFlightAssignment().getId());
 
 		super.getResponse().addData(dataset);
 	}

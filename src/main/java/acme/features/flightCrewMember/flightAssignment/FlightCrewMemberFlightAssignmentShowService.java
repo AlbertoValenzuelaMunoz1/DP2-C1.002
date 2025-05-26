@@ -2,11 +2,13 @@
 package acme.features.flightCrewMember.flightAssignment;
 
 import java.util.Collection;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
 import acme.client.components.models.Dataset;
 import acme.client.components.views.SelectChoices;
+import acme.client.helpers.MomentHelper;
 import acme.client.services.AbstractGuiService;
 import acme.client.services.GuiService;
 import acme.datatypes.AssignmentStatus;
@@ -57,19 +59,37 @@ public class FlightCrewMemberFlightAssignmentShowService extends AbstractGuiServ
 		SelectChoices duties;
 		Collection<Leg> legs;
 		SelectChoices selectedLegs;
-		String memberCode;
+		String employeeCode;
+		FlightCrewMember member;
 
-		legs = this.repository.findAllLegs();
-		memberCode = assignment.getFlightCrewMember().getEmployeeCode();
+		member = assignment.getFlightCrewMember();
+
+		Collection<FlightCrewMember> crewMembers;
+		SelectChoices selectedCrew;
+
+		crewMembers = List.of(member); // Solo el que está asignado
+		selectedCrew = SelectChoices.from(crewMembers, "employeeCode", member);
+
+		if (assignment.isDraftMode()) {
+			legs = this.repository.findPublishedFutureOwnedLegs(MomentHelper.getCurrentMoment(), member.getAirline());
+
+			Leg currentLeg = assignment.getFlightLeg();
+			if (!legs.contains(currentLeg))
+				legs.add(currentLeg);
+		} else
+			legs = this.repository.findPublishedLegs();
+
+		employeeCode = assignment.getFlightCrewMember().getEmployeeCode();
 		statuses = SelectChoices.from(AssignmentStatus.class, assignment.getStatus());
 		duties = SelectChoices.from(FlightDuty.class, assignment.getDuty());
 		selectedLegs = SelectChoices.from(legs, "flightNumberDigits", assignment.getFlightLeg());
 
 		dataset = super.unbindObject(assignment, "duty", "lastUpdate", "status", "remarks", "draftMode");
 		dataset.put("statuses", statuses);
-		dataset.put("member", memberCode);
+		dataset.put("crewMembers", selectedCrew);
+		dataset.put("employeeCode", employeeCode);
 		dataset.put("duties", duties);
-		dataset.put("flightLeg", selectedLegs.getSelected().getKey());
+		dataset.put("leg", selectedLegs.getSelected().getKey());
 		dataset.put("legs", selectedLegs);
 
 		super.getResponse().addData(dataset);

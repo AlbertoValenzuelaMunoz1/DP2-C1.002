@@ -2,7 +2,6 @@
 package acme.features.flightCrewMember.activityLog;
 
 import java.util.Collection;
-import java.util.Date;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
@@ -24,7 +23,15 @@ public class FlightCrewMemberActivityLogCreateService extends AbstractGuiService
 
 	@Override
 	public void authorise() {
-		super.getResponse().setAuthorised(true);
+		boolean status;
+		int masterId;
+		FlightAssignment assignment;
+
+		masterId = super.getRequest().getData("masterId", int.class);
+		assignment = this.repository.findFlightAssignmentById(masterId);
+		status = assignment != null && super.getRequest().getPrincipal().hasRealm(assignment.getFlightCrewMember());
+
+		super.getResponse().setAuthorised(status);
 	}
 
 	@Override
@@ -46,24 +53,19 @@ public class FlightCrewMemberActivityLogCreateService extends AbstractGuiService
 
 	@Override
 	public void bind(final ActivityLog log) {
-		Date now;
 		int assignmentId;
 		FlightAssignment assignment;
 
 		assignmentId = super.getRequest().getData("masterId", int.class);
 		assignment = this.repository.findFlightAssignmentById(assignmentId);
-		now = MomentHelper.getCurrentMoment();
 
 		super.bindObject(log, "incidentType", "description", "severity");
-		log.setRegistrationMoment(now);
+		log.setRegistrationMoment(MomentHelper.getCurrentMoment());
 		log.setFlightAssignment(assignment);
 	}
 
 	@Override
 	public void validate(final ActivityLog log) {
-		Date now = MomentHelper.getCurrentMoment();
-		if (MomentHelper.isBefore(now, log.getFlightAssignment().getFlightLeg().getScheduledArrival()))
-			super.state(false, "*", "El momento de registro del registro debe ocurrir después de que termine la escala");
 		;
 	}
 
@@ -81,11 +83,12 @@ public class FlightCrewMemberActivityLogCreateService extends AbstractGuiService
 
 		member = (FlightCrewMember) super.getRequest().getPrincipal().getActiveRealm();
 		assignments = this.repository.findFlightAssignmentsByMemberId(member.getId());
-		selectedAssignments = SelectChoices.from(assignments, "leg.flightNumber", log.getFlightAssignment());
+		selectedAssignments = SelectChoices.from(assignments, "flightLeg.flightNumberDigits", log.getFlightAssignment());
 
-		dataset = super.unbindObject(log, "registrationMoment", "incidentType", "description", "severity", "draftMode");
+		dataset = super.unbindObject(log, "incidentType", "description", "severity", "draftMode");
 		dataset.put("assignments", selectedAssignments);
 		dataset.put("assignment", selectedAssignments.getSelected().getKey());
+		dataset.put("registrationMoment", log.getRegistrationMoment());
 		dataset.put("masterId", super.getRequest().getData("masterId", int.class));
 
 		super.getResponse().addData(dataset);

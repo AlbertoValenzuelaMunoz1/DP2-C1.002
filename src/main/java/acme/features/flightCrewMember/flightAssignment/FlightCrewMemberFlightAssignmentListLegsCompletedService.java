@@ -28,13 +28,11 @@ public class FlightCrewMemberFlightAssignmentListLegsCompletedService extends Ab
 	@Override
 	public void load() {
 		Collection<FlightAssignment> assignments;
-		int id;
 		Date now;
 
-		id = super.getRequest().getPrincipal().getActiveRealm().getId();
 		now = MomentHelper.getCurrentMoment();
 
-		assignments = this.repository.findCompletedPublishedOrMemberAssignments(id, now);
+		assignments = this.repository.findCompletedPublishedAssignments(now);
 
 		super.getBuffer().addData(assignments);
 	}
