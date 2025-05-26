@@ -49,9 +49,11 @@ master.menu.user-account.customer-profile=Customer profile
 master.menu.customer.customer-dashboard=Customer dashboard
 # master.menu.flightCrewMember ##########################################################
 
-master.menu.flight-crew-member = Flight Crew Member
-master.menu.flight-crew-member.flightAssignmentCompleted = List completed flight assignments 
-master.menu.flight-crew-member.flightAssignmentPlanned = List planned flight assignments 
+master.menu.flightCrewMember = Flight Crew Member
+master.menu.flightCrewMember.flightAssignmentCompleted = List completed flight assignments 
+master.menu.flightCrewMember.flightAssignmentPlanned = List planned flight assignments 
+master.menu.flightCrewMember.flightAssignmentMinePlanned = List my planned flight assignments
+master.menu.flightCrewMember.flightAssignmentMineCompleted = List my completed flight assignments
 # master.menu.assistance-agent ####################################################
 
 master.menu.agent = Agent

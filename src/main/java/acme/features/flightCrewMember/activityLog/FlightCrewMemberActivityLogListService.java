@@ -6,6 +6,7 @@ import java.util.Collection;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import acme.client.components.models.Dataset;
+import acme.client.components.views.SelectChoices;
 import acme.client.services.AbstractGuiService;
 import acme.client.services.GuiService;
 import acme.entities.student3.activityLog.ActivityLog;
@@ -21,21 +22,31 @@ public class FlightCrewMemberActivityLogListService extends AbstractGuiService<F
 
 	@Override
 	public void authorise() {
+		boolean status;
 		int masterId;
-		int flightCrewMemberId;
+		FlightAssignment assignment;
 
 		masterId = super.getRequest().getData("masterId", int.class);
-		flightCrewMemberId = super.getRequest().getPrincipal().getActiveRealm().getId();
-		super.getResponse().setAuthorised(true);
+		assignment = this.repository.findFlightAssignmentById(masterId);
+		status = assignment != null;
+
+		super.getResponse().setAuthorised(status);
 	}
 
 	@Override
 	public void load() {
 		int masterId;
+		int memberId;
+		int ownerId;
 		Collection<ActivityLog> logs;
 
 		masterId = super.getRequest().getData("masterId", int.class);
-		logs = this.repository.findActivityLogsByMasterId(masterId);
+		memberId = super.getRequest().getPrincipal().getActiveRealm().getId();
+		ownerId = this.repository.findFlightAssignmentById(masterId).getFlightCrewMember().getId();
+		if (ownerId == memberId)
+			logs = this.repository.findActivityLogsByMasterId(masterId);
+		else
+			logs = this.repository.findPublishedActivityLogsByMasterId(masterId);
 
 		super.getBuffer().addData(logs);
 	}
@@ -43,9 +54,30 @@ public class FlightCrewMemberActivityLogListService extends AbstractGuiService<F
 	@Override
 	public void unbind(final ActivityLog log) {
 		Dataset dataset;
+		SelectChoices selectedAssignments;
+		Collection<FlightAssignment> assignments;
+		String flightNumber;
+		FlightCrewMember member;
+
+		member = (FlightCrewMember) super.getRequest().getPrincipal().getActiveRealm();
+		assignments = this.repository.findFlightAssignmentsByMemberIdOrPublished(member.getId());
+		selectedAssignments = SelectChoices.from(assignments, "flightLeg.flightNumberDigits", log.getFlightAssignment());
+		flightNumber = log.getFlightAssignment().getFlightLeg().getFlightNumberDigits();
+
+		dataset = super.unbindObject(log, "incidentType", "severity", "draftMode");
+		super.addPayload(dataset, log, "description", "registrationMoment");
+		dataset.put("flightNumberDigits", flightNumber);
+		dataset.put("masterId", log.getFlightAssignment().getId());
+		dataset.put("assignments", selectedAssignments);
+		dataset.put("assignment", selectedAssignments.getSelected().getKey());
+
+		super.getResponse().addData(dataset);
+	}
+
+	@Override
+	public void unbind(final Collection<ActivityLog> log) {
 		int masterId;
 		FlightAssignment assignment;
-		boolean showingCreate;
 		boolean correctFlightCrewMember;
 		int memberId;
 		int userId;
@@ -56,15 +88,9 @@ public class FlightCrewMemberActivityLogListService extends AbstractGuiService<F
 		memberId = assignment.getFlightCrewMember().getId();
 
 		correctFlightCrewMember = memberId == userId;
-		showingCreate = !assignment.isDraftMode() && correctFlightCrewMember;
-
-		dataset = super.unbindObject(log, "incidentType", "severity", "registrationMoment");
-		dataset.put("flightNumberDigits", log.getFlightAssignment().getFlightLeg().getFlightNumberDigits());
 
 		super.getResponse().addGlobal("masterId", masterId);
-		super.getResponse().addGlobal("showingCreate", showingCreate);
-		super.addPayload(dataset, log, "description");
-		super.getResponse().addData(dataset);
+		super.getResponse().addGlobal("showingCreate", correctFlightCrewMember);
 
 	}
 

@@ -5,7 +5,7 @@
 
 <acme:list>
 	<acme:list-column code="flight-crew-member.activity-log.list.label.flight-number-digits" path="flightNumberDigits" width="34%"/>
-	<acme:list-column code="flight-crew-member.activity-log.form.label.incident-type" path="incidentType" width="33%"/>
+	<acme:list-column code="flight-crew-member.activity-log.list.label.incident-type" path="incidentType" width="33%"/>
 	<acme:list-column code="flight-crew-member.activity-log.list.label.severity" path="severity" width="33%"/>
 	<acme:list-payload path="payload"/>	
 	

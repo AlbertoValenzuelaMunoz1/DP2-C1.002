@@ -7,6 +7,7 @@ import javax.validation.ConstraintValidatorContext;
 
 import acme.client.components.validation.AbstractValidator;
 import acme.client.components.validation.Validator;
+import acme.client.helpers.MomentHelper;
 import acme.entities.student1.leg.Leg;
 import acme.entities.student3.activityLog.ActivityLog;
 
@@ -23,13 +24,14 @@ public class ActivityLogValidator extends AbstractValidator<ValidActivityLog, Ac
 		assert context != null;
 
 		boolean result;
-		if (log == null)
-			super.state(context, false, "*", "javax.validation.constraints.NotNull.message");
-		else {
+		boolean isNull;
+		isNull = log == null || log.getFlightAssignment() == null || log.getFlightAssignment().getFlightLeg() == null;
+
+		if (!isNull) {
 			Leg leg = log.getFlightAssignment().getFlightLeg();
 			Date endMoment = leg.getScheduledArrival();
 			Date registrationMoment = log.getRegistrationMoment();
-			boolean isAfter = registrationMoment.after(endMoment);
+			boolean isAfter = MomentHelper.isAfter(registrationMoment, endMoment);
 
 			super.state(context, isAfter, "registrationMoment", "acme.validation.log.registration-moment.message");
 		}

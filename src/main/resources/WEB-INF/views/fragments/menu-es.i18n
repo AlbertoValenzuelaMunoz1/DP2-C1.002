@@ -49,9 +49,11 @@ master.menu.user-account.customer-profile=Perfil de cliente
 master.menu.customer.customer-dashboard=Estadísticas del cliente
 # master.menu.flight-crewMember ##########################################################
 
-master.menu.flight-crew-member = Miembro de la tripulación de vuelo
-master.menu.flight-crew-member.flightAssignmentCompleted = Ver asignaciones de vuelo completadas
-master.menu.flight-crew-member.flightAssignmentPlanned = Ver asignaciones de vuelo planificadas
+master.menu.flightCrewMember = Miembro de la tripulación de vuelo
+master.menu.flightCrewMember.flightAssignmentCompleted = Ver asignaciones de vuelo completadas
+master.menu.flightCrewMember.flightAssignmentPlanned = Ver asignaciones de vuelo planificadas
+master.menu.flightCrewMember.flightAssignmentMinePlanned = Ver mis asignaciones de vuelo planificadas
+master.menu.flightCrewMember.flightAssignmentMineCompleted = Ver mis asignaciones de vuelo completadas
 # master.menu.user-account ####################################################
 
 master.menu.user-account = Cuenta

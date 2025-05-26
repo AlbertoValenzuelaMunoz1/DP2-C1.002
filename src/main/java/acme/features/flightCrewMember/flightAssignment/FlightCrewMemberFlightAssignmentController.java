@@ -17,7 +17,13 @@ public class FlightCrewMemberFlightAssignmentController extends AbstractGuiContr
 	private FlightCrewMemberFlightAssignmentListLegsCompletedService	listCompletedService;
 
 	@Autowired
+	private FlightCrewMemberFlightAssignmentListMyLegsCompletedService	listMyCompletedService;
+
+	@Autowired
 	private FlightCrewMemberFlightAssignmentListLegsPlannedService		listPlannedService;
+
+	@Autowired
+	private FlightCrewMemberFlightAssignmentListMyLegsPlannedService	listMyPlannedService;
 
 	@Autowired
 	private FlightCrewMemberFlightAssignmentShowService					showService;
@@ -38,7 +44,9 @@ public class FlightCrewMemberFlightAssignmentController extends AbstractGuiContr
 	@PostConstruct
 	protected void initialise() {
 		super.addCustomCommand("list-completed", "list", this.listCompletedService);
+		super.addCustomCommand("list-mine-completed", "list", this.listMyCompletedService);
 		super.addCustomCommand("list-planned", "list", this.listPlannedService);
+		super.addCustomCommand("list-mine-planned", "list", this.listMyPlannedService);
 		super.addBasicCommand("show", this.showService);
 		super.addBasicCommand("delete", this.deleteService);
 		super.addBasicCommand("create", this.createService);
