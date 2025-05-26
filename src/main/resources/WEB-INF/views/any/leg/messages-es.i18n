@@ -1,0 +1,6 @@
+any.leg.list.title = Tramos de Vuelo
+any.leg.list.label.flightNumberDigits = Número de Vuelo
+any.leg.list.label.scheduledDeparture = Salida Programada
+any.leg.list.label.scheduledArrival = Llegada Programada
+any.leg.list.label.departureAirport = Aeropuerto de Salida
+any.leg.list.label.arrivalAirport = Aeropuerto de Llegada

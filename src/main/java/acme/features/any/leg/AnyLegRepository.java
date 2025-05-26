@@ -2,7 +2,6 @@
 package acme.features.any.leg;
 
 import java.util.Collection;
-import java.util.Optional;
 
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
@@ -17,7 +16,7 @@ import acme.entities.student1.leg.Leg;
 public interface AnyLegRepository extends AbstractRepository {
 
 	@Query("SELECT l FROM Leg l WHERE l.flight.id = :id")
-	Optional<Leg> findLegById(int id);
+	Collection<Leg> findLegById(int id);
 
 	@Query("Select air from Aircraft air")
 	Collection<Aircraft> findAllAircrafts();
