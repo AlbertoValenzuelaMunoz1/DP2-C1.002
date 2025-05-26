@@ -68,3 +68,5 @@ master.menu.manager.flights = Vuelos
 master.menu.manager.manager-dashboard = Manager Dashboard
 master.menu.user-account.become-manager = Hazte manager
 master.menu.user-account.manager-profile = Perfil de manager
+master.menu.any = Cualquiera
+master.menu.any.flightsPublished = Vuelos publicados

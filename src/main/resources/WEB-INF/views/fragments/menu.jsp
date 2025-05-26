@@ -19,12 +19,17 @@
 <acme:menu-bar>
 	<acme:menu-left>
 		<acme:menu-option code="master.menu.anonymous" access="isAnonymous()">
-			<acme:menu-suboption code="master.menu.anonymous.favourite-link" action="http://www.example.com/"/>
-			<acme:menu-suboption code="master.menu.anonymous.favourite-link-Rafa" action="https://www.youtube.com/watch?v=ML6r5pwKX1E"/> 
-			<acme:menu-suboption code="master.menu.anonymous.favourite-link-Alberto" action="https://ev.us.es/"/>
-			<acme:menu-suboption code="master.menu.anonymous.favourite-link-Antonio" action="https://i.redd.it/0p0d4a8etnl51.jpg"/>
-			<acme:menu-suboption code="master.menu.anonymous.favourite-link-Fernando" action="https://www.futbin.com/"/>
-			<acme:menu-suboption code="master.menu.anonymous.favourite-link-Guillermo" action="https://www.instagram.com/"/>
+			<acme:menu-suboption code="master.menu.any.favourite-link" action="http://www.example.com/"/>
+			<acme:menu-suboption code="master.menu.any.favourite-link-Rafa" action="https://www.youtube.com/watch?v=ML6r5pwKX1E"/> 
+			<acme:menu-suboption code="master.menu.any.favourite-link-Alberto" action="https://ev.us.es/"/>
+			<acme:menu-suboption code="master.menu.any.favourite-link-Antonio" action="https://i.redd.it/0p0d4a8etnl51.jpg"/>
+			<acme:menu-suboption code="master.menu.any.favourite-link-Fernando" action="https://www.futbin.com/"/>
+			<acme:menu-suboption code="master.menu.any.favourite-link-Guillermo" action="https://www.instagram.com/"/>
+		</acme:menu-option>
+		
+		<acme:menu-option code="master.menu.any">
+			<acme:menu-suboption code="master.menu.any.flightsPublished" action="/any/flight/list"/>
+
 		</acme:menu-option>
 		
 		<acme:menu-option code="master.menu.administrator" access="hasRealm('Administrator')">
