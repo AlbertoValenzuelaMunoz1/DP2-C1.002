@@ -1,6 +1,6 @@
 key,key:user-account,employeeCode,phoneNumber,languageSkills,availabilityStatus,salary,yearsOfExperience,key:airline
 member1,user-account-member-01,"US123456",+12025550123,"English, Spanish, Chinese",AVAILABLE,EUR 40000,5,airline-01
-member2,user-account-member-02,"ES654321",+34678901234,"Arabic, Spanish, Chinese",ON_VACATION,EUR 55000,18,airline-02
+member2,user-account-member-02,"ES654321",+34678901234,"Arabic, Spanish, Chinese",AVAILABLE,EUR 55000,18,airline-01
 member3,user-account-member-03,"MX987654",+525512345678,"Greek, English",ON_LEAVE,EUR 47000,11,airline-03
 member4,user-account-member-04,"DE456789",+4917612345678,"Germany",AVAILABLE,EUR 51000,14,airline-04
 member,user-account-member-05,"JP123789",+819012345678,"Japanese, Spanish, Chinese",AVAILABLE,EUR 38000,0,airline-05
