@@ -10,4 +10,5 @@
 
 D01 This is the first version of Acme-ANS, it is a customization from the Hello-World starter.
 D02 This is the second version of Acme-ANS, it includes all entitites from information requirements
-D03 Thi is the third version of Acme-ANS, it includes all features from the functional requirements
+D03 This is the third version of Acme-ANS, it includes all features from the functional requirements
+D04 This is the forth version of Acme-ANS, which includes the testing of the features developed in the D03 release
