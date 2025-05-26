@@ -42,6 +42,15 @@ public interface TrackingLogRepository extends AbstractRepository {
 	@Query("select count(t) from TrackingLog t where t.claim.id = :claimId and t.resolutionPercentage = 100.00")
 	int countFullyResolvedLogs(@Param("claimId") int claimId);
 
+	@Query("""
+		    select count(t)
+		    from TrackingLog t
+		    where t.claim.id = :claimId
+		      and t.resolutionPercentage = 100.00
+		      and t.id <> :excludeId
+		""")
+	int countFullyResolvedLogsExcluding(@Param("claimId") int claimId, @Param("excludeId") int excludeId);
+
 	@Query("select max(t.resolutionPercentage) from TrackingLog t where t.claim.id = :claimId")
 	Double findMaxResolutionPercentageByClaimId(@Param("claimId") int claimId);
 

@@ -63,6 +63,7 @@ public class TrackingLogUpdateService extends AbstractGuiService<AssistanceAgent
 	@Override
 	public void validate(final TrackingLog trackingLog) {
 		int claimId = trackingLog.getClaim().getId();
+		int trackingLogId = super.getRequest().getData("id", int.class);
 		Double maxExisting = this.repository.findMaxResolutionPercentageByClaimId(claimId);
 		TrackingLog existing = this.repository.findLogById(trackingLog.getId());
 		Double previousPercentage = existing.getResolutionPercentage();
@@ -72,7 +73,7 @@ public class TrackingLogUpdateService extends AbstractGuiService<AssistanceAgent
 			super.state(trackingLog.isDraftMode(), "*", "assistance-agent.tracking-log.form.error.draftMode");
 
 		if (trackingLog.getResolutionPercentage() != null && trackingLog.getResolutionPercentage() == 100.00) {
-			int existingCount = this.repository.countFullyResolvedLogs(claimId);
+			int existingCount = this.repository.countFullyResolvedLogsExcluding(claimId, trackingLogId);
 			super.state(existingCount < 2, "resolutionPercentage", "acme.validation.trackingLog.limit-100.message");
 		}
 
