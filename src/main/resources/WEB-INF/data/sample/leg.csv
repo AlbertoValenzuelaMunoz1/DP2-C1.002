@@ -1,34 +1,35 @@
 key,flightNumberDigits,scheduledDeparture,scheduledArrival,key:departureAirport,key:arrivalAirport,key:aircraft,key:flight,status,draftMode
-leg-1,3213,2012/07/02 00:00,2012/07/02 00:01,airport-01,airport-02,aircraft-01,flight-01,ON_TIME,true
-
+leg-1,CFX3213,2012/07/02 00:00,2012/07/02 00:01,airport-01,airport-02,aircraft-01,flight-01,ON_TIME,true
 # scheduledDeparture Variations
-leg-2,2999,2012/07/02 00:00,2019/03/16 20:45,airport-01,airport-02,aircraft-01,flight-01,ON_TIME,true
-leg-3,2763,2000/01/01 00:00,2019/03/16 20:45,airport-01,airport-02,aircraft-01,flight-01,ON_TIME,true
-leg-4,9179,2000/01/01 00:01,2019/03/16 20:45,airport-01,airport-02,aircraft-01,flight-01,ON_TIME,true
-leg-5,2812,2024/12/31 23:59,2019/03/16 20:45,airport-01,airport-02,aircraft-01,flight-01,ON_TIME,true
-leg-6,8440,2025/01/01 00:00,2019/03/16 20:45,airport-01,airport-02,aircraft-01,flight-01,ON_TIME,true
-
+leg-2,CFX2999,2012/07/02 00:00,2019/03/16 20:45,airport-01,airport-02,aircraft-01,flight-01,ON_TIME,true
+leg-3,CFX2763,2000/01/01 00:00,2019/03/16 20:45,airport-01,airport-02,aircraft-01,flight-01,ON_TIME,true
+leg-4,CFX9179,2000/01/01 00:01,2019/03/16 20:45,airport-01,airport-02,aircraft-01,flight-01,ON_TIME,true
+leg-5,CFX2812,2024/12/31 23:59,2019/03/16 20:45,airport-01,airport-02,aircraft-01,flight-01,ON_TIME,true
+leg-6,CFX8440,2025/01/01 00:00,2019/03/16 20:45,airport-01,airport-02,aircraft-01,flight-01,ON_TIME,true
 # scheduledArrival Variations
-leg-7,7630,2012/07/01 00:00,2012/07/02 00:00,airport-01,airport-02,aircraft-01,flight-01,ON_TIME,true
-# leg-8,5260,2012/07/02 00:45,2000/01/01 00:00,airport-01,airport-02,aircraft-01,flight-01,ON_TIME,true
-leg-8,4768,2000/01/01 00:00,2000/01/01 00:01,airport-01,airport-02,aircraft-07,flight-02,ON_TIME,true
-leg-9,3495,2012/07/02 00:00,2024/12/31 23:59,airport-01,airport-02,aircraft-05,flight-03,ON_TIME,true
-leg-10,1645,2012/07/02 00:00,2025/01/01 00:00,airport-01,airport-02,aircraft-06,flight-04,ON_TIME,true
-
+leg-7,CFX7630,2012/07/01 00:00,2012/07/02 00:00,airport-01,airport-02,aircraft-01,flight-01,ON_TIME,true
+# leg-8,CFX5260,2012/07/02 00:45,2000/01/01 00:00,airport-01,airport-02,aircraft-01,flight-01,ON_TIME,true
+leg-8,CFX4768,2000/01/01 00:00,2000/01/01 00:01,airport-01,airport-02,aircraft-07,flight-02,ON_TIME,true
+leg-9,CFX3495,2012/07/02 00:00,2024/12/31 23:59,airport-01,airport-02,aircraft-05,flight-03,ON_TIME,true
+leg-10,CFX1645,2012/07/02 00:00,2025/01/01 00:00,airport-01,airport-02,aircraft-06,flight-04,ON_TIME,true
 # status Variations
-leg-11,2161,2012/07/02 00:00,2012/07/02 00:01,airport-01,airport-02,aircraft-05,flight-19,ON_TIME,true
-leg-12,3701,2012/07/02 00:00,2012/07/02 00:01,airport-01,airport-02,aircraft-06,flight-20,DELAYED,true
-leg-13,2100,2012/07/02 00:00,2012/07/02 00:01,airport-01,airport-02,aircraft-07,flight-21,CANCELLED,true
-leg-14,9426,2012/07/02 00:00,2012/07/02 00:01,airport-01,airport-02,aircraft-08,flight-22,ON_TIME,true
-leg-15,9634,2012/07/02 00:00,2012/07/02 00:01,airport-01,airport-02,aircraft-09,flight-12,LANDED,true
-
-
+leg-11,CFX2161,2012/07/02 00:00,2012/07/02 00:01,airport-01,airport-02,aircraft-05,flight-19,ON_TIME,true
+leg-12,CFX3701,2012/07/02 00:00,2012/07/02 00:01,airport-01,airport-02,aircraft-06,flight-20,DELAYED,true
+leg-13,CFX2100,2012/07/02 00:00,2012/07/02 00:01,airport-01,airport-02,aircraft-07,flight-21,CANCELLED,true
+leg-14,CFX9426,2012/07/02 00:00,2012/07/02 00:01,airport-01,airport-02,aircraft-08,flight-22,ON_TIME,true
+leg-15,CFX9634,2012/07/02 00:00,2012/07/02 00:01,airport-01,airport-02,aircraft-09,flight-12,LANDED,true
 # Extra
-leg-16,5377,2025/01/08 00:00,2025/01/08 04:00,airport-01,airport-02,aircraft-01,flight-29,ON_TIME,false
-leg-17,3311,2025/01/08 00:01,2025/01/08 04:00,airport-01,airport-02,aircraft-02,flight-30,ON_TIME,false
-leg-18,2776,2200/12/31 23:58,2200/12/31 23:59,airport-01,airport-02,aircraft-01,flight-29,ON_TIME,false
-leg-19,6107,2025/07/14 15:31,2025/07/14 20:31,airport-01,airport-02,aircraft-07,flight-30,ON_TIME,false
-leg-20,4527,2025/07/14 21:15,2025/07/15 01:15,airport-01,airport-02,aircraft-07,flight-30,ON_TIME,false
-
+leg-16,CFX5377,2025/01/08 00:00,2025/01/08 04:00,airport-01,airport-02,aircraft-01,flight-29,ON_TIME,false
+leg-17,CFX3311,2025/01/08 00:01,2025/01/08 04:00,airport-01,airport-02,aircraft-02,flight-30,ON_TIME,false
+leg-18,CFX2776,2200/12/31 23:58,2200/12/31 23:59,airport-01,airport-02,aircraft-01,flight-29,ON_TIME,false
+leg-19,CFX6107,2025/07/14 15:31,2025/07/14 20:31,airport-01,airport-02,aircraft-07,flight-30,ON_TIME,false
+leg-20,CFX4527,2025/07/14 21:15,2025/07/15 01:15,airport-01,airport-02,aircraft-07,flight-30,ON_TIME,false
 # Leg auxiliar para Student4
-leg-21,4000,2000/01/01 00:01,2000/01/01 00:02,airport-04,airport-03,aircraft-04,flight-17,ON_TIME,false
+leg-21,CFX4000,2000/01/01 00:01,2000/01/01 00:02,airport-04,airport-03,aircraft-04,flight-17,ON_TIME,false
+
+# Leg para todos los member
+leg-22,1111,2026/01/08 00:00,2026/01/08 04:00,airport-01,airport-02,aircraft-01,flight-29,ON_TIME,false
+leg-23,2222,2027/01/08 00:01,2027/01/08 04:00,airport-01,airport-02,aircraft-02,flight-29,ON_TIME,false
+leg-24,3333,2028/01/08 00:00,2028/01/08 04:00,airport-01,airport-02,aircraft-32,flight-29,ON_TIME,false
+leg-25,4444,2029/01/08 00:01,2029/01/08 04:00,airport-01,airport-02,aircraft-33,flight-29,ON_TIME,false
+leg-26,5555,2030/01/08 00:00,2030/01/08 04:00,airport-01,airport-02,aircraft-31,flight-29,ON_TIME,false

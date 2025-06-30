@@ -42,6 +42,7 @@ public class LegFlightCreateService extends AbstractGuiService<Manager, Leg> {
 		if (super.getRequest().getMethod().equals("POST")) {
 			int id = super.getRequest().getData("id", int.class, 0);
 			validId = id == 0;
+
 		}
 
 		masterId = super.getRequest().getData("masterId", int.class);
@@ -72,8 +73,16 @@ public class LegFlightCreateService extends AbstractGuiService<Manager, Leg> {
 
 	@Override
 	public void bind(final Leg leg) {
+		Flight flight;
+		String iataCode;
 
-		super.bindObject(leg, "flightNumberDigits", "scheduledDeparture", "scheduledArrival", "departureAirport", "arrivalAirport", "aircraft", "status");
+		flight = leg.getFlight();
+
+		iataCode = flight.getManager().getAirline().getIataCode();
+
+		leg.setFlightNumberDigits(iataCode + super.getRequest().getData("flightNumberDigits", String.class));
+
+		super.bindObject(leg, "scheduledDeparture", "scheduledArrival", "departureAirport", "arrivalAirport", "aircraft", "status");
 	}
 
 	@Override
@@ -111,11 +120,17 @@ public class LegFlightCreateService extends AbstractGuiService<Manager, Leg> {
 		//legs no solapen
 		flightsLegs = this.repository.findLegsByFlightId(leg.getFlight().getId());
 
-		statusSchedule = flightsLegs == null || leg.getScheduledArrival() == null || leg.getScheduledDeparture() == null
+		//		statusSchedule = flightsLegs == null || leg.getScheduledArrival() == null || leg.getScheduledDeparture() == null
+		//			|| flightsLegs.stream()
+		//				.allMatch(l -> leg.getScheduledDeparture().after(l.getScheduledArrival()) && leg.getScheduledArrival().after(l.getScheduledArrival()) || leg.getScheduledDeparture().before(l.getScheduledDeparture())
+		//					&& leg.getScheduledArrival().before(l.getScheduledDeparture()) && !(leg.getScheduledArrival().after(l.getScheduledArrival()) && leg.getScheduledArrival().before(l.getScheduledDeparture()))
+		//					&& !(leg.getScheduledDeparture().after(l.getScheduledArrival()) && leg.getScheduledDeparture().before(l.getScheduledDeparture())));
+
+		statusSchedule = leg.getScheduledArrival() == null || leg.getScheduledDeparture() == null || flightsLegs == null
 			|| flightsLegs.stream()
-				.allMatch(l -> leg.getScheduledDeparture().after(l.getScheduledArrival()) && leg.getScheduledArrival().after(l.getScheduledArrival()) || leg.getScheduledDeparture().before(l.getScheduledDeparture())
-					&& leg.getScheduledArrival().before(l.getScheduledDeparture()) && !(leg.getScheduledArrival().after(l.getScheduledArrival()) && leg.getScheduledArrival().before(l.getScheduledDeparture()))
-					&& !(leg.getScheduledDeparture().after(l.getScheduledArrival()) && leg.getScheduledArrival().before(l.getScheduledDeparture())));
+				.allMatch(l -> leg.getScheduledDeparture().compareTo(l.getScheduledDeparture()) != 0 && leg.getScheduledArrival().compareTo(l.getScheduledArrival()) != 0 && leg.getScheduledDeparture().compareTo(l.getScheduledArrival()) != 0
+					&& leg.getScheduledArrival().compareTo(l.getScheduledDeparture()) != 0 && (leg.getScheduledDeparture().compareTo(l.getScheduledDeparture()) <= 0 && leg.getScheduledArrival().compareTo(l.getScheduledDeparture()) <= 0
+						|| leg.getScheduledDeparture().compareTo(l.getScheduledArrival()) >= 0 && leg.getScheduledArrival().compareTo(l.getScheduledArrival()) >= 0));
 
 		//aircraft esté activo
 		statusAircraft = leg.getAircraft() == null || leg.getAircraft().getStatus().equals(AircraftStatus.ACTIVE);
@@ -159,7 +174,9 @@ public class LegFlightCreateService extends AbstractGuiService<Manager, Leg> {
 		choicesDepartureAirports = SelectChoices.from(airports, "iataCode", leg.getDepartureAirport());
 		choicesAircraft = SelectChoices.from(aircrafts, "model", leg.getAircraft());
 
-		dataset = super.unbindObject(leg, "flightNumberDigits", "scheduledDeparture", "scheduledArrival", "departureAirport", "arrivalAirport", "aircraft", "flight.tag", "status", "draftMode");
+		dataset = super.unbindObject(leg, "scheduledDeparture", "scheduledArrival", "departureAirport", "arrivalAirport", "aircraft", "flight.tag", "status", "draftMode");
+		if (super.getRequest().getMethod().equals("POST"))
+			dataset.put("flightNumberDigits", leg.getFlightNumberDigits().substring(3));
 		dataset.put("masterId", leg.getFlight().getId());
 		dataset.put("arrivalAirports", choicesArrivalAirports);
 		dataset.put("departureAirports", choicesDepartureAirports);

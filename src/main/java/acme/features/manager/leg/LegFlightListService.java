@@ -2,12 +2,14 @@
 package acme.features.manager.leg;
 
 import java.util.Collection;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
 import acme.client.components.models.Dataset;
 import acme.client.services.AbstractGuiService;
 import acme.client.services.GuiService;
+import acme.entities.student1.flight.Flight;
 import acme.entities.student1.leg.Leg;
 import acme.realms.Manager;
 
@@ -27,9 +29,13 @@ public class LegFlightListService extends AbstractGuiService<Manager, Leg> {
 		boolean status;
 		int flightId;
 		Manager manager;
+		Optional<Flight> optionalFlight;
 
 		flightId = super.getRequest().getData("masterId", int.class);
-		manager = this.repository.findFlightById(flightId).get().getManager();
+
+		optionalFlight = this.repository.findFlightById(flightId);
+
+		manager = optionalFlight.isEmpty() ? null : optionalFlight.get().getManager();
 
 		status = super.getRequest().getPrincipal().hasRealm(manager);
 
@@ -40,6 +46,8 @@ public class LegFlightListService extends AbstractGuiService<Manager, Leg> {
 	public void load() {
 		Collection<Leg> legs;
 		int masterId;
+		boolean showCreate;
+		Optional<Flight> optionalFlight;
 
 		masterId = super.getRequest().getData("masterId", int.class);
 		legs = this.repository.findLegsByFlightId(masterId);
@@ -48,22 +56,23 @@ public class LegFlightListService extends AbstractGuiService<Manager, Leg> {
 
 		super.getResponse().addGlobal("masterId", masterId);
 
+		optionalFlight = this.repository.findFlightById(masterId);
+
+		Flight flight = optionalFlight.isPresent() ? optionalFlight.get() : null;
+
+		showCreate = flight != null ? flight.isDraftMode() : null;
+
+		super.getResponse().addGlobal("showCreate", showCreate);
+
 	}
 
 	@Override
 	public void unbind(final Leg leg) {
-		int masterId;
 		Dataset dataset;
-		boolean showCreate;
-
-		masterId = super.getRequest().getData("masterId", int.class);
 
 		dataset = super.unbindObject(leg, "flightNumberDigits", "scheduledDeparture", "scheduledArrival", "departureAirport", "arrivalAirport", "status");
 		super.addPayload(dataset, leg, "aircraft", "flight");
 
-		showCreate = leg != null && leg.getFlight().isDraftMode();
-
-		super.getResponse().addGlobal("showCreate", showCreate);
 		super.getResponse().addData(dataset);
 	}
 
