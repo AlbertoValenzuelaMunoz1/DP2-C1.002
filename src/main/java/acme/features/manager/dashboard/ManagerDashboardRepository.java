@@ -23,16 +23,16 @@ public interface ManagerDashboardRepository extends AbstractRepository {
 	@Query("SELECT f FROM Flight f WHERE f.manager.id = :id")
 	public List<Flight> flightsByManager(int id);
 
-	@Query("SELECT l FROM Leg l WHERE l.flight.manager.id = :id and l.status = 'DELAYED'")
+	@Query("SELECT l FROM Leg l WHERE l.flight.manager.id = :id and l.status = acme.entities.student1.leg.LegStatus.DELAYED")
 	public List<Leg> delayedLegs(int id);
 
-	@Query("SELECT l FROM Leg l WHERE l.flight.manager.id = :id and l.status = 'ON_TIME'")
+	@Query("SELECT l FROM Leg l WHERE l.flight.manager.id = :id and l.status = acme.entities.student1.leg.LegStatus.ON_TIME")
 	public List<Leg> onTimeLegs(int id);
 
-	@Query("SELECT l FROM Leg l WHERE l.flight.manager.id = :id and l.status = 'LANDED'")
+	@Query("SELECT l FROM Leg l WHERE l.status = acme.entities.student1.leg.LegStatus.LANDED and l.flight.manager.id=:id")
 	public List<Leg> landedLegs(int id);
 
-	@Query("SELECT l FROM Leg l WHERE l.flight.manager.id = :id and l.status = 'CANCELLED'")
+	@Query("SELECT l FROM Leg l WHERE l.flight.manager.id = :id and l.status = acme.entities.student1.leg.LegStatus.CANCELLED")
 	public List<Leg> canceledLegs(int id);
 
 	@Query("SELECT AVG(f.cost.amount) FROM Flight f WHERE f.manager.id = :id")
