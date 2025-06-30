@@ -12,6 +12,7 @@ acme.validation.booking.published.message = A booking must contain the last nibb
 acme.validation.booking.locatorCode.message = The locator code must be unique
 acme.validation.booking.flight.message = The flight must be in the future
 acme.validation.airline.iataCode.message = The IATA code must be unique
+acme.validation.leg.flightNumber.message = The pattern is not correct. You must write 4 numbers
 
 
 
