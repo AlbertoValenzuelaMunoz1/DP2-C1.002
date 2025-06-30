@@ -1,6 +1,7 @@
 manager.leg.list.title = Tramos de Vuelo
 manager.leg.form.title = Tramo de Vuelo
-manager.leg.form.label.flightNumberDigits = Número de Vuelo
+manager.leg.form.label.flightNumberDigits = Número de Vuelo (Solo añade 4 números. El IATAcode se añade automáticamente)
+manager.leg.form.label.flightNumberDigitsUpdateAndPublish = Número de Vuelo
 manager.leg.form.label.scheduledDeparture = Salida Programada
 manager.leg.form.label.scheduledArrival = Llegada Programada
 manager.leg.form.label.status = Estado

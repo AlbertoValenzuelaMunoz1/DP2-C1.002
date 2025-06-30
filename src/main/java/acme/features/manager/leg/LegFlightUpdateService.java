@@ -47,6 +47,7 @@ public class LegFlightUpdateService extends AbstractGuiService<Manager, Leg> {
 		manager = leg == null ? null : leg.getFlight().getManager();
 
 		status = leg != null && leg.isDraftMode() && super.getRequest().getPrincipal().hasRealm(manager);
+		//&& leg.getVersion() == super.getRequest().getData("version", int.class);
 
 		super.getResponse().setAuthorised(status);
 	}
@@ -65,6 +66,7 @@ public class LegFlightUpdateService extends AbstractGuiService<Manager, Leg> {
 
 	@Override
 	public void bind(final Leg leg) {
+
 		super.bindObject(leg, "scheduledDeparture", "scheduledArrival", "status", "departureAirport", "arrivalAirport", "aircraft");
 	}
 
@@ -104,11 +106,17 @@ public class LegFlightUpdateService extends AbstractGuiService<Manager, Leg> {
 
 		flightsLegs = flightsLegs != null ? flightsLegs.stream().filter(l -> !l.equals(leg)).toList() : null;
 
-		statusSchedule = flightsLegs == null || leg.getScheduledArrival() == null || leg.getScheduledDeparture() == null
+		//		statusSchedule = flightsLegs == null || leg.getScheduledArrival() == null || leg.getScheduledDeparture() == null
+		//			|| flightsLegs.stream()
+		//				.allMatch(l -> leg.getScheduledDeparture().after(l.getScheduledArrival()) && leg.getScheduledArrival().after(l.getScheduledArrival()) || leg.getScheduledDeparture().before(l.getScheduledDeparture())
+		//					&& leg.getScheduledArrival().before(l.getScheduledDeparture()) && !(leg.getScheduledArrival().after(l.getScheduledArrival()) && leg.getScheduledArrival().before(l.getScheduledDeparture()))
+		//					&& !(leg.getScheduledDeparture().after(l.getScheduledArrival()) && leg.getScheduledArrival().before(l.getScheduledDeparture())));
+
+		statusSchedule = leg.getScheduledArrival() == null || leg.getScheduledDeparture() == null || flightsLegs == null
 			|| flightsLegs.stream()
-				.allMatch(l -> leg.getScheduledDeparture().after(l.getScheduledArrival()) && leg.getScheduledArrival().after(l.getScheduledArrival()) || leg.getScheduledDeparture().before(l.getScheduledDeparture())
-					&& leg.getScheduledArrival().before(l.getScheduledDeparture()) && !(leg.getScheduledArrival().after(l.getScheduledArrival()) && leg.getScheduledArrival().before(l.getScheduledDeparture()))
-					&& !(leg.getScheduledDeparture().after(l.getScheduledArrival()) && leg.getScheduledArrival().before(l.getScheduledDeparture())));
+				.allMatch(l -> leg.getScheduledDeparture().compareTo(l.getScheduledDeparture()) != 0 && leg.getScheduledArrival().compareTo(l.getScheduledArrival()) != 0 && leg.getScheduledDeparture().compareTo(l.getScheduledArrival()) != 0
+					&& leg.getScheduledArrival().compareTo(l.getScheduledDeparture()) != 0 && (leg.getScheduledDeparture().compareTo(l.getScheduledDeparture()) <= 0 && leg.getScheduledArrival().compareTo(l.getScheduledDeparture()) <= 0
+						|| leg.getScheduledDeparture().compareTo(l.getScheduledArrival()) >= 0 && leg.getScheduledArrival().compareTo(l.getScheduledArrival()) >= 0));
 
 		//aircraft esté activo
 		statusAircraft = leg.getAircraft() == null || leg.getAircraft().getStatus().equals(AircraftStatus.ACTIVE);

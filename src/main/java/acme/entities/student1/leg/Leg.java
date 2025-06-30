@@ -8,8 +8,6 @@ import java.util.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.EnumType;
-import javax.persistence.Enumerated;
 import javax.persistence.Index;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
@@ -31,14 +29,22 @@ import lombok.Setter;
 @Entity
 @Getter
 @Setter
-@Table(indexes = @Index(columnList = "scheduledArrival,draftMode")) //Indice consulta que toma las legs que cumplen los requisitos 
+@Table(indexes = {
+	@Index(columnList = "scheduledArrival,draftMode")
+//@Index(columnList = "status")
+/*
+No añado el indice de status porque probe ejecutando el comando en DBeaver y no servía de nada,
+decidí dejarlo fuera porque añadir muchos indices puede llegar a perjudicar el rendimiento.
+*/
+})
+//Indice consulta que toma las legs que cumplen los requisitos 
 public class Leg extends AbstractEntity {
 
 	private static final long	serialVersionUID	= 1L;
 
 	@Mandatory
 	@Column(unique = true)
-	@ValidString(pattern = "^[0-9]{4}$")
+	@ValidString(pattern = "^[A-Z]{3}[0-9]{4}$", message = "{acme.validation.leg.flightNumber.message}")
 	private String				flightNumberDigits;
 
 	@Mandatory
@@ -72,7 +78,7 @@ public class Leg extends AbstractEntity {
 	private Flight				flight;
 
 	@Mandatory
-	@Enumerated(EnumType.STRING)
+	@Valid
 	@Automapped
 	private LegStatus			status;
 

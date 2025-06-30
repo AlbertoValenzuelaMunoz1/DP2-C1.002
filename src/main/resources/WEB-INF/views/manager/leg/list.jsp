@@ -13,6 +13,7 @@
 	<acme:list-payload path="payload"/>
 </acme:list>
 
-
+<jstl:if test="${showCreate == true}">
 	<acme:button code="manager.leg.list.button.create" action="/manager/leg/create?masterId=${masterId}"/>
-
+</jstl:if>
+	

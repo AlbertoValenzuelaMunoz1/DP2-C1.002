@@ -12,11 +12,11 @@
  		
   	<jstl:choose>
   		<jstl:when test="${_command == 'create'}">
-  			<acme:input-integer code="manager.leg.form.label.flightNumberDigits" path="flightNumberDigits"/>
+  			<acme:input-integer code="manager.leg.form.label.flightNumberDigits" path="flightNumberDigits" placeholder="XXXX"/>
 		</jstl:when>
 		
 		<jstl:when test="${acme:anyOf(_command, 'show|update|delete|publish')}">
-  			<acme:input-double 	code="manager.leg.form.label.flightNumberDigits" path="flightNumberDigits" readonly="true"/>
+  			<acme:input-double 	code="manager.leg.form.label.flightNumberDigitsUpdateAndPublish" path="flightNumberDigits" readonly="true"/>
 		</jstl:when>
   	</jstl:choose>
 	<acme:input-moment code="manager.leg.form.label.scheduledDeparture" path="scheduledDeparture" />
