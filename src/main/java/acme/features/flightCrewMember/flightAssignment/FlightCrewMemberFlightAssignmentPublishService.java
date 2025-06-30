@@ -110,7 +110,7 @@ public class FlightCrewMemberFlightAssignmentPublishService extends AbstractGuiS
 	}
 
 	private void validateLegCompatibility(final FlightAssignment assignment) {
-		Collection<Leg> existingLegs = this.repository.findLegsByFlightCrewMemberId(assignment.getFlightCrewMember().getId());
+		Collection<Leg> existingLegs = this.repository.findLegsByFlightCrewMemberId(assignment.getFlightCrewMember().getId(), assignment.getId());
 
 		boolean hasIncompatibleLeg = existingLegs.stream().anyMatch(existingLeg -> this.legIsNotOverlapping(assignment.getFlightLeg(), existingLeg));
 
@@ -121,8 +121,8 @@ public class FlightCrewMemberFlightAssignmentPublishService extends AbstractGuiS
 	private void validateDutyAssignment(final FlightAssignment flightAssignment) {
 		Collection<FlightAssignment> assignedDuties = this.repository.findFlightAssignmentByLegId(flightAssignment.getFlightLeg().getId());
 
-		boolean legWithCopilot = assignedDuties.stream().anyMatch(assignment -> assignment.getDuty().equals(FlightDuty.CO_PILOT));
-		boolean legWithPilot = assignedDuties.stream().anyMatch(assignment -> assignment.getDuty().equals(FlightDuty.PILOT));
+		boolean legWithCopilot = assignedDuties.stream().filter(assignment -> assignment.getId() != flightAssignment.getId()).anyMatch(assignment -> assignment.getDuty().equals(FlightDuty.CO_PILOT));
+		boolean legWithPilot = assignedDuties.stream().filter(assignment -> assignment.getId() != flightAssignment.getId()).anyMatch(assignment -> assignment.getDuty().equals(FlightDuty.PILOT));
 
 		super.state(!(flightAssignment.getDuty().equals(FlightDuty.PILOT) && legWithPilot), "*", "acme.validation.flight-assignment.leg-has-pilot.message");
 		super.state(!(flightAssignment.getDuty().equals(FlightDuty.CO_PILOT) && legWithCopilot), "*", "acme.validation.flight-assignment.leg-has-copilot.message");
@@ -131,7 +131,7 @@ public class FlightCrewMemberFlightAssignmentPublishService extends AbstractGuiS
 	private boolean legIsNotOverlapping(final Leg newLeg, final Leg existingLeg) {
 		boolean isDepartureOverlapping = MomentHelper.isInRange(newLeg.getScheduledDeparture(), existingLeg.getScheduledDeparture(), existingLeg.getScheduledArrival());
 		boolean isArrivalOverlapping = MomentHelper.isInRange(newLeg.getScheduledArrival(), existingLeg.getScheduledDeparture(), existingLeg.getScheduledArrival());
-		return isDepartureOverlapping && isArrivalOverlapping;
+		return isDepartureOverlapping || isArrivalOverlapping;
 	}
 
 	@Override
