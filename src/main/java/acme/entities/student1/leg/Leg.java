@@ -32,6 +32,10 @@ import lombok.Setter;
 @Table(indexes = {
 	@Index(columnList = "scheduledArrival,draftMode")
 //@Index(columnList = "status")
+/*
+No añado el indice de status porque probe ejecutando el comando en DBeaver y no servía de nada,
+decidí dejarlo fuera porque añadir muchos indices puede llegar a perjudicar el rendimiento.
+*/
 })
 //Indice consulta que toma las legs que cumplen los requisitos 
 public class Leg extends AbstractEntity {
