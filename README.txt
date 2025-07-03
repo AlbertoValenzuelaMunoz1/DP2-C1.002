@@ -8,7 +8,7 @@
 # purposes.  The copyright owner does not offer any warranties or representations, nor do
 # they accept any liabilities with respect to them.
 
-This project was developed by Group C1.002 for the course Design and Testing II at the University of Seville.
+This project was developed by Group C2.002 for the course Design and Testing II at the University of Seville.
 
 Project Overview
 Acme AirNav Solutions, Inc. (Acme ANS, Inc. for short) is a fictitious company that specializes in helping airports manage their resources and coordinate operations through custom software solutions.

@@ -1,4 +1,4 @@
-# DP2-C1.002
+# DP2-C2.002
 
 This project was developed by Group C1.002 for the course Design and Testing II at the University of Seville.
 
