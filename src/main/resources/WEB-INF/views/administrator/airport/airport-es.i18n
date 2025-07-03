@@ -22,6 +22,7 @@ administrator.airport.form.label.email = Correo electrónico
 administrator.airport.form.label.address = Dirección
 administrator.airport.form.label.contactPhoneNumber = Teléfono de contacto
 
+administrator.airport.form.button.create = Crear
 administrator.airport.list.button.create = Crear
 administrator.airport.form.button.update = Actualizar
 administrator.airport.form.label.confirmation = Confirma que el aeropuerto es correcto
