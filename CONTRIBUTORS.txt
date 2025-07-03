@@ -8,9 +8,7 @@
 # purposes.  The copyright owner does not offer any warranties or representations, nor do
 # they accept any liabilities with respect to them.
 
-- Alberto Valenzuela Muñoz (albvalmunn@alum.us.es)
 - Fernando Cobos García (fercobgar@alum.us.es)
 - Antonio Roldán Pérez (antrolper@alum.us.es)
-- Rafael Pineda Pérez (rafpinper@alum.us.es)
-- Guillermo Rodriguez Carrillo (guirodcar@alum.us.es)
+
 
