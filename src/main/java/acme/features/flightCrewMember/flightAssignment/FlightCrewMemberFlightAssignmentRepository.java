@@ -35,9 +35,6 @@ public interface FlightCrewMemberFlightAssignmentRepository extends AbstractRepo
 	@Query("select l from Leg l where l.draftMode = false and l.scheduledArrival > :now and l.aircraft.airline = :airline")
 	Collection<Leg> findPublishedFutureOwnedLegs(Date now, Airline airline);
 
-	@Query("select l from Leg l where l.draftMode = false")
-	Collection<Leg> findPublishedLegs();
-
 	@Query("select l from Leg l where l.id = :legId")
 	Leg findLegById(int legId);
 
