@@ -2,7 +2,6 @@
 package acme.features.flightCrewMember.flightAssignment;
 
 import java.util.Collection;
-import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
@@ -61,32 +60,33 @@ public class FlightCrewMemberFlightAssignmentShowService extends AbstractGuiServ
 		SelectChoices selectedLegs;
 		String employeeCode;
 		FlightCrewMember member;
+		SelectChoices selectedMembers;
+
+		FlightCrewMember activeMember = (FlightCrewMember) super.getRequest().getPrincipal().getActiveRealm();
 
 		member = assignment.getFlightCrewMember();
 
 		Collection<FlightCrewMember> crewMembers;
-		SelectChoices selectedCrew;
 
-		crewMembers = List.of(member); // Solo el que está asignado
-		selectedCrew = SelectChoices.from(crewMembers, "employeeCode", member);
+		crewMembers = this.repository.findCrewMembersByAirline(activeMember.getAirline());
 
-		if (assignment.isDraftMode()) {
-			legs = this.repository.findPublishedFutureOwnedLegs(MomentHelper.getCurrentMoment(), member.getAirline());
+		legs = this.repository.findPublishedFutureOwnedLegs(MomentHelper.getCurrentMoment(), member.getAirline());
 
-			Leg currentLeg = assignment.getFlightLeg();
-			if (!legs.contains(currentLeg))
-				legs.add(currentLeg);
-		} else
-			legs = this.repository.findPublishedLegs();
+		if (!crewMembers.contains(assignment.getFlightCrewMember()))
+			crewMembers.add(assignment.getFlightCrewMember());
+		Leg currentLeg = assignment.getFlightLeg();
+		if (!legs.contains(currentLeg))
+			legs.add(currentLeg);
 
 		employeeCode = assignment.getFlightCrewMember().getEmployeeCode();
 		statuses = SelectChoices.from(AssignmentStatus.class, assignment.getStatus());
 		duties = SelectChoices.from(FlightDuty.class, assignment.getDuty());
 		selectedLegs = SelectChoices.from(legs, "flightNumberDigits", assignment.getFlightLeg());
+		selectedMembers = SelectChoices.from(crewMembers, "employeeCode", assignment.getFlightCrewMember());
 
 		dataset = super.unbindObject(assignment, "duty", "lastUpdate", "status", "remarks", "draftMode");
 		dataset.put("statuses", statuses);
-		dataset.put("crewMembers", selectedCrew);
+		dataset.put("crewMembers", selectedMembers);
 		dataset.put("employeeCode", employeeCode);
 		dataset.put("duties", duties);
 		dataset.put("leg", selectedLegs.getSelected().getKey());
