@@ -18,6 +18,7 @@ acme.validation.leg.flightNumber.message = El formato no es correcto. Debes escr
 
 acme.validation.activity-log.leg-not-finished.message = No puedes guardar el registro porque la escala seleccionada aún no ha finalizado
 acme.validation.activity-log.flight-assignment-not-published.message = Este registro no puede ser publicado porque la asignación de vuelo seleccionada no ha sido publicada todavía
+acme.validation.log.registration-moment.message = El momento de registro del debe ocurrir después de que termine la escala.
 
 acme.validation.booking.publishedPassengers.message= Para publicar una reserva todos sus pasajeros deben estar publicados
 

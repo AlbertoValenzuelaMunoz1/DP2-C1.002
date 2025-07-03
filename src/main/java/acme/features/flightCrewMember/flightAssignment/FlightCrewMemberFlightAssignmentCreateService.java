@@ -101,18 +101,8 @@ public class FlightCrewMemberFlightAssignmentCreateService extends AbstractGuiSe
 			if (assignment.getDuty() != null)
 				this.validateDutyAssignment(assignment);
 
-			//			this.validateLegHasNotOccurred(assignment.getFlightLeg());
 		}
 	}
-
-	//	private void validateLegHasNotOccurred(final Leg leg) {
-	//		Date scheduledArrival = leg.getScheduledArrival();
-	//		Date now = MomentHelper.getCurrentMoment();
-	//		boolean hasOccurred = MomentHelper.isAfter(now, scheduledArrival);
-	//		if (hasOccurred)
-	//			super.state(false, "*", "acme.validation.flight-assignment.leg-has-occurred.message");
-	//
-	//	}
 
 	private void validateStatusAvailability(final FlightCrewMember member) {
 		AvailabilityStatus status = member.getAvailabilityStatus();
